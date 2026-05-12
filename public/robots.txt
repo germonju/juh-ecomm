@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://juh-ecomm.fr/sitemap.xml
