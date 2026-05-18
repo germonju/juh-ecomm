@@ -1,114 +1,121 @@
-import process from 'process';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
 import https from 'https';
 
-// Load environment variables
-dotenv.config();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const BASE_URL = 'https://www.juh-ecomm.fr';
+const SITEMAP_URL = `${BASE_URL}/sitemap.xml`;
 
-async function fetchFromEdgeFunction(url) {
+// Hardcoded credentials — same as customSupabaseClient.js
+const SUPABASE_URL = 'https://altplorphoohlgjmonbd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsdHBsb3JwaG9vaGxnam1vbmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NjgwNzAsImV4cCI6MjA4MDU0NDA3MH0.1ZbFI32wZsdSZ5EQ1vomEFLofggBC-CGWybj_n76ZhE';
+
+// Static pages — noindex pages (api-docs, seo-audit, mentions-legales, politique-confidentialite) sont exclus
+const STATIC_PAGES = [
+  { loc: `${BASE_URL}/`,                    changefreq: 'weekly',  priority: '1.0' },
+  { loc: `${BASE_URL}/contact`,             changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/tracking-hub`,        changefreq: 'monthly', priority: '0.9' },
+  { loc: `${BASE_URL}/gtm-server-side`,     changefreq: 'monthly', priority: '0.9' },
+  { loc: `${BASE_URL}/ga4-advanced`,        changefreq: 'monthly', priority: '0.9' },
+  { loc: `${BASE_URL}/audit-google-ads`,    changefreq: 'monthly', priority: '0.9' },
+  { loc: `${BASE_URL}/shopify`,             changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/google-my-business`,  changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/conversions-offline`, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/consent-mode`,        changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/conciergerie`,        changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/reponse-leads`,       changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/automatisation-hub`,  changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/landing-pages`,       changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/blog`,                changefreq: 'daily',   priority: '0.9' },
+];
+
+function fetchJson(url, headers) {
   return new Promise((resolve, reject) => {
-    https.get(url, (res) => {
+    https.get(url, { headers }, (res) => {
       let data = '';
-
       if (res.statusCode < 200 || res.statusCode >= 300) {
-        return reject(new Error(`Status Code: ${res.statusCode}`));
+        return reject(new Error(`HTTP ${res.statusCode}`));
       }
-
-      res.on('data', chunk => {
-        data += chunk;
-      });
-
+      res.on('data', chunk => { data += chunk; });
       res.on('end', () => {
-        resolve(data);
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('Invalid JSON')); }
       });
-    }).on('error', err => {
-      reject(err);
-    });
+    }).on('error', reject);
   });
 }
 
-async function generateFiles() {
-  console.log('🚀 Starting SEO Files Generation with WWW subdomain...');
-  
-  const publicDir = path.join(__dirname, '../public');
-  if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir, { recursive: true });
+async function fetchPublishedArticles() {
+  const url = `${SUPABASE_URL}/rest/v1/articles?status=eq.published&select=slug,publish_date,updated_at&order=publish_date.desc`;
+  const headers = {
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+  };
+  try {
+    const articles = await fetchJson(url, headers);
+    console.log(`  ✓ ${articles.length} articles récupérés depuis Supabase`);
+    return articles;
+  } catch (err) {
+    console.warn(`  ⚠️ Articles non récupérés: ${err.message}`);
+    return [];
   }
+}
 
-  // --- 1. DETERMINE EDGE FUNCTION URL ---
-  let edgeFunctionUrl = '';
-  const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+function buildSitemap(staticPages, articles) {
+  const today = new Date().toISOString().split('T')[0];
 
-  if (supabaseUrl) {
-    const match = supabaseUrl.match(/https:\/\/([^.]+)\.supabase\.co/);
-    if (match && match[1]) {
-      const projectRef = match[1];
-      edgeFunctionUrl = `https://${projectRef}.supabase.co/functions/v1/generate-sitemap`;
-      console.log(`🔗 Edge Function URL: ${edgeFunctionUrl}`);
-    }
-  }
+  const staticEntries = staticPages.map(p => `  <url>
+    <loc>${p.loc}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${p.changefreq}</changefreq>
+    <priority>${p.priority}</priority>
+  </url>`).join('\n');
 
-  // Updated sitemap base URL to include www
-  const sitemapUrl = 'https://www.juh-ecomm.fr/sitemap.xml';
+  const articleEntries = articles.map(a => {
+    const lastmod = (a.updated_at || a.publish_date || today).split('T')[0];
+    return `  <url>
+    <loc>${BASE_URL}/blog/${a.slug}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>`;
+  }).join('\n');
 
-  // --- 2. FETCH AND SAVE SITEMAP ---
-  if (edgeFunctionUrl) {
-    try {
-      console.log('Fetching sitemap from Edge Function...');
-      const sitemapContent = await fetchFromEdgeFunction(edgeFunctionUrl);
-      
-      // Ensure the content actually contains www as a secondary check
-      if (!sitemapContent.includes('www.juh-ecomm.fr')) {
-        console.warn('⚠️ Warning: Edge function response might be missing www subdomain. Please check edge function deployment.');
-      }
-
-      fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapContent);
-      console.log('✅ public/sitemap.xml generated dynamically from Edge Function (with WWW).');
-    } catch (error) {
-      console.error('❌ Failed to fetch sitemap from Edge Function:', error.message);
-      console.log('Generating fallback static sitemap with WWW...');
-      
-      const fallbackSitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.juh-ecomm.fr</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+${staticEntries}
+${articleEntries}
 </urlset>`;
-      fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), fallbackSitemap);
-    }
-  } else {
-    console.log('⚠️ No Supabase URL found. Cannot fetch dynamic sitemap.');
-  }
+}
 
-  // --- 3. GENERATE ROBOTS.TXT ---
+async function generateFiles() {
+  console.log('🚀 Génération du sitemap...');
+
+  const publicDir = path.join(__dirname, '../public');
+  fs.mkdirSync(publicDir, { recursive: true });
+
+  console.log('\n📋 Articles de blog:');
+  const articles = await fetchPublishedArticles();
+
+  const sitemap = buildSitemap(STATIC_PAGES, articles);
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemap);
+  console.log(`\n✅ sitemap.xml généré (${STATIC_PAGES.length} pages + ${articles.length} articles)`);
+
   const robotsContent = `User-agent: *
 Allow: /
 
-# Block all technical routes
 Disallow: /api/
 Disallow: /admin/
 Disallow: /preview/
-Disallow: /_next/
 Disallow: /internal/
 Disallow: /private/
-Disallow: /docs/
 
-# Sitemap
-Sitemap: ${sitemapUrl}
+Sitemap: ${SITEMAP_URL}
 `;
-  
   fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsContent);
-  console.log('✅ public/robots.txt generated');
-  console.log('   - Blocked /api/');
-  console.log(`   - Sitemap: ${sitemapUrl}`);
+  console.log('✅ robots.txt généré');
 }
 
 generateFiles();
