@@ -140,7 +140,7 @@ const ConciergeriePage = () => {
         <meta property="og:description" content="Service de conciergerie marketing pour piloter votre stratégie. Expertise, optimisation continue et résultats garantis." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/conciergerie-og.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/conciergerie-og.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Conciergerie Marketing Expert | JUH Ecomm Data" />
         <meta name="twitter:description" content="Maîtrisez votre stratégie marketing avec notre service de conciergerie. Pilotage expert et résultats mesurables." />

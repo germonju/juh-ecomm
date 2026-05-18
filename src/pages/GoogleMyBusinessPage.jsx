@@ -146,11 +146,11 @@ const GoogleMyBusinessPage = () => {
         <meta property="og:type" content="website" />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
       </Helmet>
 
       {/* 1. Hero Section */}

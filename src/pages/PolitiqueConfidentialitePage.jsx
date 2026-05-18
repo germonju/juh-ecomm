@@ -12,6 +12,7 @@ const PolitiqueConfidentialitePage = () => {
     <>
       <Helmet>
         <title>Politique de Confidentialité - Juh Ecomm Data</title>
+        <meta name="robots" content="noindex, follow" />
         <meta name="description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
         <link rel="canonical" href={canonicalUrl} />
         
@@ -21,7 +22,7 @@ const PolitiqueConfidentialitePage = () => {
         <meta property="og:description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -29,7 +30,7 @@ const PolitiqueConfidentialitePage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Politique de Confidentialité - Juh Ecomm Data" />
         <meta name="twitter:description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

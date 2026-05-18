@@ -219,7 +219,7 @@ const SeoAuditPage = () => {
         <meta property="og:description" content="Outil d'audit SEO complet : analyse technique du site et vérification du contenu des articles de blog." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -227,7 +227,7 @@ const SeoAuditPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Audit SEO Complet · Analyse technique & Articles | Juh Ecomm Data" />
         <meta name="twitter:description" content="Outil d'audit SEO complet : analyse technique du site et vérification du contenu des articles de blog." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

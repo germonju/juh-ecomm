@@ -89,7 +89,7 @@ const BlogPostPage = () => {
     if (article.image_name) {
       return `/images/blog/${article.image_name}.webp`;
     }
-    return article.featured_image || 'https://juh-ecomm.fr/images/og-image.jpg';
+    return article.featured_image || 'https://www.juh-ecomm.fr/images/og-image.jpg';
   };
 
   const handleImageError = (e) => {

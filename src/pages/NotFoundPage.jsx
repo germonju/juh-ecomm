@@ -23,7 +23,7 @@ const NotFoundPage = () => {
         <meta property="og:description" content="La page que vous recherchez n'existe pas." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -31,7 +31,7 @@ const NotFoundPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Page non trouvée | Juh Ecomm Data" />
         <meta name="twitter:description" content="La page que vous recherchez n'existe pas." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

@@ -141,7 +141,7 @@ const LandingPagesPage = () => {
         <meta property="og:description" content="Créez des landing pages haute conversion. Designs optimisés et copywriting persuasif pour maximiser vos conversions." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
         
         {/* Twitter Card tags */}
@@ -149,7 +149,7 @@ const LandingPagesPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Landing Pages Haute Conversion | JUH Ecomm Data" />
         <meta name="twitter:description" content="Créez des landing pages haute conversion avec notre expertise. Designs optimisés et tests A/B." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

@@ -90,7 +90,7 @@ const ShopifyPage = () => {
         <meta property="og:description" content="Optimisez votre boutique Shopify avec intégrations Google Ads et GA4. Stratégie de croissance pour vos ventes." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -98,7 +98,7 @@ const ShopifyPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Shopify Optimisé | JUH Ecomm Data" />
         <meta name="twitter:description" content="Optimisez votre boutique Shopify avec notre expertise. Intégrations avancées et stratégie de croissance." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

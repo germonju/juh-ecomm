@@ -12,6 +12,7 @@ const MentionsLegalesPage = () => {
     <>
       <Helmet>
         <title>Mentions Légales - Juh Ecomm Data</title>
+        <meta name="robots" content="noindex, follow" />
         <meta name="description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation du site." />
         <link rel="canonical" href={canonicalUrl} />
         
@@ -21,7 +22,7 @@ const MentionsLegalesPage = () => {
         <meta property="og:description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -29,7 +30,7 @@ const MentionsLegalesPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Mentions Légales - Juh Ecomm Data" />
         <meta name="twitter:description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

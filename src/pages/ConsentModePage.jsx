@@ -86,7 +86,7 @@ const ConsentModePage = () => {
         <meta property="og:title" content="Consent Mode V2 & CMP | Juh Ecomm Data" />
         <meta property="og:description" content="Mise en conformité RGPD avec Consent Mode V2. Installation CMP, configuration GTM, données fiables et légales." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -94,7 +94,7 @@ const ConsentModePage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Consent Mode V2 & CMP | Juh Ecomm Data" />
         <meta name="twitter:description" content="Mise en conformité RGPD avec Consent Mode V2. Installation CMP, configuration GTM, données fiables et légales." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

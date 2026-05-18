@@ -69,7 +69,7 @@ const ReponseLeadsPage = () => {
         <meta property="og:description" content="Répondez instantanément à chaque demande avec une IA. Augmentez votre taux de conversion et ne perdez plus jamais un lead." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -77,7 +77,7 @@ const ReponseLeadsPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Réponse Automatique aux Leads | Juh Ecomm Data" />
         <meta name="twitter:description" content="Répondez instantanément à chaque demande avec une IA. Augmentez votre taux de conversion et ne perdez plus jamais un lead." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

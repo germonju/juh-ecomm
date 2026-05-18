@@ -86,7 +86,7 @@ const HomePage = () => {
         <meta property="og:description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -94,8 +94,47 @@ const HomePage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Expert Tracking Server-Side & Automatisation E-commerce | Juh Ecomm Data" />
         <meta name="twitter:description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Person",
+              "@id": "https://www.juh-ecomm.fr/#julien",
+              "name": "Julien Germon",
+              "jobTitle": "Expert Tracking & Data Analytics",
+              "description": "Consultant Senior en tracking e-commerce, GTM Server-Side, GA4 et automatisation marketing. +15 ans d'expérience.",
+              "url": "https://www.juh-ecomm.fr",
+              "sameAs": ["https://www.digitalkeys.fr"],
+              "worksFor": {
+                "@type": "Organization",
+                "name": "Digitalkeys",
+                "url": "https://www.digitalkeys.fr"
+              },
+              "knowsAbout": ["GTM Server-Side","Google Analytics 4","Google Ads","Consent Mode V2","Tracking E-commerce","Automatisation Marketing","Shopify","RGPD"]
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://www.juh-ecomm.fr/#website",
+              "url": "https://www.juh-ecomm.fr",
+              "name": "Juh Ecomm Data",
+              "description": "Expert freelance en tracking e-commerce, GTM Server-Side, GA4 et automatisation marketing pour TPE et PME.",
+              "inLanguage": "fr-FR",
+              "publisher": { "@id": "https://www.juh-ecomm.fr/#julien" }
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": "https://www.juh-ecomm.fr/#service",
+              "name": "Juh Ecomm Data",
+              "url": "https://www.juh-ecomm.fr",
+              "description": "Services freelance en tracking e-commerce, GTM Server-Side, GA4, Google Ads et automatisation marketing.",
+              "provider": { "@id": "https://www.juh-ecomm.fr/#julien" },
+              "areaServed": { "@type": "Country", "name": "France" },
+              "serviceType": ["Tracking E-commerce","GTM Server-Side","Google Analytics 4","Audit Google Ads","Consent Mode","Automatisation Marketing"]
+            }
+          ]
+        })}</script>
       </Helmet>
 
       <div className="pt-16 lg:pt-20">

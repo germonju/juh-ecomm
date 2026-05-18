@@ -146,7 +146,7 @@ const Ga4AdvancedPage = () => {
         <meta property="og:description" content="Maîtrisez GA4 avancé pour exploiter vos données. Configurations avancées et audiences personnalisées." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -154,7 +154,7 @@ const Ga4AdvancedPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="GA4 Avancé | JUH Ecomm Data" />
         <meta name="twitter:description" content="Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données et insights." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:url" content={canonicalUrl} />
       </Helmet>
 

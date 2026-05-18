@@ -31,7 +31,7 @@ const ApiDocsPage = () => {
         <meta property="og:type" content="website" />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 
         {/* Twitter Card tags */}
@@ -39,7 +39,7 @@ const ApiDocsPage = () => {
         <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Documentation API Blog | Juh Ecomm Data" />
         <meta name="twitter:description" content="Documentation de l'API pour la gestion des articles de blog. Endpoints, authentification et exemples." />
-        <meta name="twitter:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
       </Helmet>
 
       <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
