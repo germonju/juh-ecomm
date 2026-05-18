@@ -80,7 +80,7 @@ const ShopifyPage = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
       <Helmet>
-        <title>Shopify Optimisé | JUH Ecomm Data</title>
+        <title>Shopify Tracking GA4 & Google Ads Expert | JUH Ecomm Data</title>
         <meta name="description" content="Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes." />
         <link rel="canonical" href={canonicalUrl} />
         

@@ -103,7 +103,7 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contactez JUH Ecomm Data | JUH Ecomm Data</title>
+        <title>Contactez votre Expert Tracking & Data | JUH Ecomm Data</title>
         <meta name="description" content="Contactez notre équipe d'experts JUH Ecomm Data. Discutez de votre stratégie marketing et découvrez comment nous pouvons accélérer votre croissance e-commerce." />
         <link rel="canonical" href={canonicalUrl} />
         

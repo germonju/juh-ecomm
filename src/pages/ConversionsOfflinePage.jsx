@@ -96,7 +96,7 @@ const ConversionsOfflinePage = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-lime-500/30">
       <Helmet>
-        <title>Conversions Offline | JUH Ecomm Data</title>
+        <title>Conversions Offline Google Ads & GA4 | JUH Ecomm Data</title>
         <meta name="description" content="Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes digitales pour une vision 360° de votre ROI." />
         <link rel="canonical" href={canonicalUrl} />
         

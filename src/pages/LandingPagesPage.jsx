@@ -131,7 +131,7 @@ const LandingPagesPage = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-amber-500/30">
       <Helmet>
-        <title>Landing Pages Haute Conversion | JUH Ecomm Data</title>
+        <title>Landing Pages Haute Conversion & A/B Testing | JUH Ecomm</title>
         <meta name="description" content="Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion." />
         <link rel="canonical" href={canonicalUrl} />
         

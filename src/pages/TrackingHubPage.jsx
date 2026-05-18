@@ -135,7 +135,7 @@ const TrackingHubPage = () => {
   return (
     <>
       <Helmet>
-        <title>Tracking Hub Complet | JUH Ecomm Data</title>
+        <title>Tracking Hub : GA4, GTM & Conversions Expert | JUH Ecomm</title>
         <meta name="description" content="Centralisez votre tracking avec notre hub complet. Maîtrisez Google Analytics 4, GTM et vos données de conversion pour une stratégie data-driven optimale." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Tracking Hub Complet | JUH Ecomm Data" />

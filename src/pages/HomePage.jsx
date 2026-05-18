@@ -76,7 +76,7 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>Expert Tracking Server-Side & Automatisation E-commerce | Juh Ecomm Data</title>
+        <title>Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm</title>
         <meta name="description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
         <link rel="canonical" href={canonicalUrl} />
         

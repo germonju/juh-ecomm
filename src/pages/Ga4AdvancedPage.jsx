@@ -136,7 +136,7 @@ const Ga4AdvancedPage = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-orange-500/30">
       <Helmet>
-        <title>GA4 Avancé | JUH Ecomm Data</title>
+        <title>GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm</title>
         <meta name="description" content="Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables." />
         <link rel="canonical" href={canonicalUrl} />
         

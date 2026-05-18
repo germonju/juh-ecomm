@@ -115,7 +115,7 @@ const GtmServerSidePage = () => {
   return (
     <>
       <Helmet>
-        <title>GTM Server-Side | JUH Ecomm Data</title>
+        <title>GTM Server-Side : Tracking Cookieless & RGPD | JUH Ecomm</title>
         <meta name="description" content="Implémentez GTM Server-Side pour améliorer votre tracking et conformité RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="GTM Server-Side | JUH Ecomm Data" />

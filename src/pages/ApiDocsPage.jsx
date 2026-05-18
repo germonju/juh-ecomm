@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 import { Terminal, Key, Copy, CheckCircle2, BookOpen, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -8,6 +9,9 @@ import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const ApiDocsPage = () => {
+  const location = useLocation();
+  const canonicalUrl = getCanonicalUrl(location.pathname);
+
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text);
   };
@@ -25,7 +29,8 @@ const ApiDocsPage = () => {
         <meta property="og:title" content="Documentation API Blog | Juh Ecomm Data" />
         <meta property="og:description" content="Documentation de l'API pour la gestion des articles de blog. Endpoints, authentification et exemples." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://juh-ecomm.fr/api/docs" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
 

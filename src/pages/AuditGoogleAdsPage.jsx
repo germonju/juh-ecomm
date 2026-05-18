@@ -150,7 +150,7 @@ const AuditGoogleAdsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Audit Google Ads Expert | Optimisation ROI & Performance | Juh Ecomm Data</title>
+        <title>Audit Google Ads Expert : ROI & Performance | JUH Ecomm</title>
         <meta name="description" content="Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen." />
         <link rel="canonical" href={canonicalUrl} />
         

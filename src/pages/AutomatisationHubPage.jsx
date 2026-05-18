@@ -71,7 +71,7 @@ const AutomatisationHubPage = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
       <Helmet>
-        <title>Automatisation Marketing Hub | JUH Ecomm Data</title>
+        <title>Automatisation Marketing : Workflows & Make | JUH Ecomm</title>
         <meta name="description" content="Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance." />
         <link rel="canonical" href={canonicalUrl} />
         

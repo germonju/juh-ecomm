@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 import { 
   MapPin, 
   Store, 
@@ -26,6 +27,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Badge } from '@/components/ui/badge';
 
 const GoogleMyBusinessPage = () => {
+  const location = useLocation();
+  const canonicalUrl = getCanonicalUrl(location.pathname);
+
   const businessTypes = [
     { icon: Utensils, label: "Restaurants & Bars" },
     { icon: Store, label: "Commerces de proximité" },
@@ -132,7 +136,7 @@ const GoogleMyBusinessPage = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-lime-500/30">
       <Helmet>
-        <title>Google My Business Optimisé | JUH Ecomm Data</title>
+        <title>Google My Business : Visibilité Locale Expert | JUH Ecomm</title>
         <meta name="description" content="Optimisez votre fiche Google My Business pour augmenter votre visibilité locale. Attirez plus de clients et améliorez votre présence en ligne sur Google Maps." />
         <meta property="og:title" content="Google My Business Optimisé | JUH Ecomm Data" />
         <meta property="og:description" content="Optimisez votre fiche Google My Business pour augmenter votre visibilité locale et attirer plus de clients." />
@@ -140,7 +144,8 @@ const GoogleMyBusinessPage = () => {
         <meta name="twitter:description" content="Optimisez votre fiche Google My Business pour augmenter votre visibilité locale et attirer plus de clients." />
         <meta property="og:site_name" content="Juh Ecomm Data" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://juh-ecomm.fr/automatisation/google-my-business/" />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content="https://juh-ecomm.fr/images/og-image.jpg" />
         <meta property="og:locale" content="fr_FR" />
         <meta name="twitter:card" content="summary_large_image" />

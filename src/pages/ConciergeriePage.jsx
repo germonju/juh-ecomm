@@ -133,8 +133,8 @@ const ConciergeriePage = () => {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
       <Helmet>
-        <title>Service Conciergerie Marketing | JUH Ecomm Data</title>
-        <meta name="description" content="Maîtrisez votre stratégie marketing avec notre service de conciergerie. Pilotage expert, optimisation continue et résultats mesurables pour votre croissance e-commerce." />
+        <title>Conciergerie Marketing : Pilotage Expert | JUH Ecomm Data</title>
+        <meta name="description" content="Service de conciergerie marketing : pilotage expert de vos campagnes, optimisation continue et résultats mesurables pour votre croissance e-commerce." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Service Conciergerie Marketing | JUH Ecomm Data" />
         <meta property="og:description" content="Service de conciergerie marketing pour piloter votre stratégie. Expertise, optimisation continue et résultats garantis." />
