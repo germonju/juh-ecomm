@@ -176,7 +176,7 @@ const HomePage = () => {
                 Expert Tracking E-commerce & Leadgen | Data Analytics
               </h1>
               <p className="text-xl lg:text-2xl text-slate-300 mb-8 leading-relaxed">
-                Transformez Vos Données en Croissance. Configurez un système de mesure fiable pour prendre les bonnes décisions.
+                Transformez vos données en croissance. Configurez un système de mesure fiable pour prendre les bonnes décisions.
               </p>
 
               {/* Technologies Block */}
