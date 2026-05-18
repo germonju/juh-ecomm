@@ -143,9 +143,12 @@ const HomePage = () => {
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto text-center">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-violet-400 to-lime-400 bg-clip-text text-transparent">
-                Transformez Vos Données en Croissance
+              <h1 className="text-xl lg:text-2xl font-semibold mb-3 text-cyan-400 tracking-wide uppercase">
+                Expert Tracking E-commerce & Leadgen | Data Analytics
               </h1>
+              <h2 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-violet-400 to-lime-400 bg-clip-text text-transparent">
+                Transformez Vos Données en Croissance
+              </h2>
               <p className="text-xl lg:text-2xl text-slate-300 mb-8 leading-relaxed">Expert en tracking e-commerce, leadgen et automatisation marketing. Configurez un système de mesure fiable pour prendre les bonnes décisions.</p>
               
               {/* Technologies Block */}
