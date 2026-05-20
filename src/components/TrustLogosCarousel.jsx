@@ -124,7 +124,10 @@ const LogoItem = ({ logo }) => {
           src={logo.url}
           alt={`Logo ${logo.name}`}
           className="max-h-12 lg:max-h-16 w-auto object-contain"
+          width="120"
+          height="48"
           loading="lazy"
+          decoding="async"
           onError={() => setHasError(true)}
         />
       ) : (

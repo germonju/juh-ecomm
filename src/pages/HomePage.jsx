@@ -185,70 +185,49 @@ const HomePage = () => {
                 <div className="hero-tech-logos">
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="GA4" />
+                      <img src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="GA4" width="32" height="32" decoding="async" />
                       <span className="tech-label">GA4</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/ee5becf811966bb125a637ec7467b286.png"
-                        alt="GTM"
-                      />
+                      <img src="/images/logos/gtm.png" alt="GTM" width="32" height="32" decoding="async" />
                       <span className="tech-label">GTM</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/802a19355bc675baaf8eb2023debb67d.png"
-                        alt="Google Ads"
-                      />
+                      <img src="/images/logos/google-ads.png" alt="Google Ads" width="32" height="32" decoding="async" />
                       <span className="tech-label">GOOGLE ADS</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://m-img.org/spai/w_78+q_lossless+ret_img+to_webp/fr.matomo.org/wp-content/uploads/2022/04/matomo-icon-1.png"
-                        alt="Matomo"
-                      />
+                      <img src="https://matomo.org/wp-content/uploads/2022/04/matomo-icon-1.png" alt="Matomo" width="32" height="32" decoding="async" />
                       <span className="tech-label">MATOMO</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/2b7b2ad999e4f858fce0f6835e3b3b61.png"
-                        alt="Addingwell"
-                      />
+                      <img src="/images/logos/addingwell.png" alt="Addingwell" width="32" height="32" decoding="async" />
                       <span className="tech-label">ADDINGWELL</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/2aee3187598fbea66b3bc035f399632b.png"
-                        alt="n8n"
-                      />
+                      <img src="/images/logos/n8n.png" alt="n8n" width="32" height="32" decoding="async" />
                       <span className="tech-label">N8N</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/e5748bfaa05e4175a4fa7fe1fb0cdf0b.png"
-                        alt="Make"
-                      />
+                      <img src="/images/logos/make.png" alt="Make" width="32" height="32" decoding="async" />
                       <span className="tech-label">MAKE</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img
-                        src="https://raw.githubusercontent.com/lobehub/lobe-icons/refs/heads/master/packages/static-png/dark/claude-color.png"
-                        alt="Claude Anthropic logo"
-                      />
+                      <img src="/images/logos/claude.png" alt="Claude" width="32" height="32" decoding="async" />
                       <span className="tech-label">CLAUDE</span>
                     </div>
                   </div>
@@ -323,10 +302,13 @@ const HomePage = () => {
 
                       <div className="relative rounded-full p-1 bg-gradient-to-br from-white/20 to-white/5 border border-white/10 shadow-2xl">
                         <img
-                          src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/6c7788c0bd7b3b4d92ca18c20952f694.jpg"
+                          src="/images/julien-germon.jpg"
                           alt="Julien Germon, expert en tracking et stratégie data depuis 15 ans"
                           className="w-48 h-48 rounded-full object-cover relative z-10"
+                          width="192"
+                          height="192"
                           loading="lazy"
+                          decoding="async"
                         />
                       </div>
 

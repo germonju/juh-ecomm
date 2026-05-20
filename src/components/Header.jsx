@@ -70,10 +70,13 @@ const Header = () => {
             className="flex items-center gap-3 group"
             onClick={() => handleMenuClick('logo')}
           >
-            <img 
-              src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/8fee8d7d42c2e3c68f9f7b880a71ab17.png" 
-              alt="Juh Ecomm Data Logo" 
+            <img
+              src="/images/logo.png"
+              alt="Juh Ecomm Data Logo"
               className="h-8 w-auto object-contain transition-transform group-hover:scale-105"
+              width="32"
+              height="32"
+              decoding="async"
             />
             <span className="text-lg lg:text-2xl font-bold bg-gradient-to-r from-cyan-400 via-violet-400 to-lime-400 bg-clip-text text-transparent group-hover:opacity-80 transition-opacity whitespace-nowrap">
               Juh Ecomm Data
