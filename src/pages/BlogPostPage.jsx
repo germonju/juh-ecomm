@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Tag, AlertCircle, FileQuestion } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getArticleBySlug, BLOG_CATEGORIES } from '@/lib/blogService';
@@ -165,7 +165,7 @@ const BlogPostPage = () => {
 
         {/* Featured Image */}
         {(article.featured_image || article.image_name) && (
-          <m.div 
+          <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="mb-16 rounded-2xl overflow-hidden shadow-2xl shadow-black/50 border border-slate-800 bg-slate-950 aspect-video relative group"
@@ -178,7 +178,7 @@ const BlogPostPage = () => {
               loading="lazy"
               onError={handleImageError}
             />
-          </m.div>
+          </motion.div>
         )}
 
         {hasContentH1 && (
@@ -192,7 +192,7 @@ const BlogPostPage = () => {
         )}
 
         {/* Main Article Content */}
-        <m.div 
+        <motion.div 
           ref={contentRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

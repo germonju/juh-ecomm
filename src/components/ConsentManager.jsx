@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 
 const ConsentManager = () => {
@@ -208,7 +208,7 @@ const ConsentManager = () => {
       {isVisible && (
         <>
           {/* Overlay */}
-          <m.div
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -218,7 +218,7 @@ const ConsentManager = () => {
           >
 
             {/* Popup */}
-            <m.div
+            <motion.div
               initial={{ opacity: 0, y: 50, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.95 }}
@@ -339,8 +339,8 @@ const ConsentManager = () => {
                   </div>
                 </div>
               )}
-            </m.div>
-          </m.div>
+            </motion.div>
+          </motion.div>
         </>
       )}
     </AnimatePresence>

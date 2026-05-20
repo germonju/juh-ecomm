@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
 import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
@@ -36,7 +36,7 @@ const MentionsLegalesPage = () => {
 
       <div className="pt-16 lg:pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="container mx-auto px-4 lg:px-8 py-20">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -125,7 +125,7 @@ const MentionsLegalesPage = () => {
                 </p>
               </section>
             </div>
-          </m.div>
+          </motion.div>
         </div>
       </div>
     </>

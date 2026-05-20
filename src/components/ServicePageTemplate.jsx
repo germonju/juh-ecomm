@@ -1,5 +1,5 @@
 import React from 'react';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -49,7 +49,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
     <div className="pt-16 lg:pt-20">
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
-          <m.div
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -71,7 +71,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
             </Button>
-          </m.div>
+          </motion.div>
         </div>
       </section>
 
@@ -81,7 +81,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
             {features.map((feature, index) => {
               const Icon = feature.icon;
               return (
-                <m.div
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
                   </div>
                   <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
                   <p className="text-slate-400">{feature.description}</p>
-                </m.div>
+                </motion.div>
               );
             })}
           </div>
@@ -104,7 +104,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
       <section className="py-20 lg:py-32 bg-gradient-to-br from-slate-800 to-slate-900">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <m.div
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -117,11 +117,11 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
               <p className="text-xl text-slate-400">
                 Une solution complète clés en main
               </p>
-            </m.div>
+            </motion.div>
 
             <div className="grid md:grid-cols-2 gap-4">
               {benefits.map((benefit, index) => (
-                <m.div
+                <motion.div
                   key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -131,11 +131,11 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
                 >
                   <CheckCircle className={`w-6 h-6 ${colors.icon} flex-shrink-0 mt-0.5`} />
                   <span className="text-slate-300">{benefit}</span>
-                </m.div>
+                </motion.div>
               ))}
             </div>
 
-            <m.div
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -152,7 +152,7 @@ const ServicePageTemplate = ({ title, subtitle, features, benefits, accentColor 
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-            </m.div>
+            </motion.div>
           </div>
         </div>
       </section>

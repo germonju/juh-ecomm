@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
-import { m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Shield, 
   SearchCheck, 
@@ -310,7 +310,7 @@ const ConsentModePage = () => {
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <m.div
+              <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -342,7 +342,7 @@ const ConsentModePage = () => {
                 
                 <AnimatePresence>
                   {openFaq === index && (
-                    <m.div
+                    <motion.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -355,10 +355,10 @@ const ConsentModePage = () => {
                           {faq.answer}
                         </p>
                       </div>
-                    </m.div>
+                    </motion.div>
                   )}
                 </AnimatePresence>
-              </m.div>
+              </motion.div>
             ))}
           </div>
         </div>

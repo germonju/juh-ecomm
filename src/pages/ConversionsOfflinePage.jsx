@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { m, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const FaqItem = ({ question, answer }) => {
@@ -32,7 +32,7 @@ const FaqItem = ({ question, answer }) => {
       </button>
       <AnimatePresence>
         {isOpen && (
-          <m.div
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -42,7 +42,7 @@ const FaqItem = ({ question, answer }) => {
             <p className="pb-4 text-slate-400 leading-relaxed">
               {answer}
             </p>
-          </m.div>
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

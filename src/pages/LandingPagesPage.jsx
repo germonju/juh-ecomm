@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
-import { m } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
   Zap, 
@@ -156,7 +156,7 @@ const LandingPagesPage = () => {
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-          <m.div 
+          <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -184,7 +184,7 @@ const LandingPagesPage = () => {
                 </a>
               </Button>
             </div>
-          </m.div>
+          </motion.div>
         </div>
       </section>
 
@@ -198,7 +198,7 @@ const LandingPagesPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {problems.map((item, idx) => (
-              <m.div 
+              <motion.div 
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -211,11 +211,11 @@ const LandingPagesPage = () => {
                 </div>
                 <h3 className="text-xl font-bold text-slate-200 mb-3">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{item.text}</p>
-              </m.div>
+              </motion.div>
             ))}
           </div>
 
-          <m.div 
+          <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="bg-gradient-to-r from-red-950/40 to-slate-900 border border-red-500/20 rounded-xl p-6 md:p-8 flex items-center gap-6 max-w-4xl mx-auto"
@@ -229,7 +229,7 @@ const LandingPagesPage = () => {
                 Une page qui charge en <span className="text-white font-bold">5 secondes</span> a un taux de rebond <span className="text-white font-bold">90% plus élevé</span> qu'une page qui charge en <span className="text-white font-bold">2 secondes</span>. La vitesse est votre première fonctionnalité.
               </p>
             </div>
-          </m.div>
+          </motion.div>
         </div>
       </section>
 
@@ -244,7 +244,7 @@ const LandingPagesPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {solutions.map((item, idx) => (
-              <m.div 
+              <motion.div 
                 key={idx}
                 whileHover={{ y: -5 }}
                 className="bg-slate-900/50 backdrop-blur-sm p-8 rounded-xl border border-slate-800 hover:border-amber-500/40 hover:shadow-2xl hover:shadow-amber-500/5 transition-all"
@@ -253,7 +253,7 @@ const LandingPagesPage = () => {
                 <item.icon className="w-10 h-10 text-amber-400 mb-6" />
                 <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{item.text}</p>
-              </m.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -306,7 +306,7 @@ const LandingPagesPage = () => {
 
           <div className="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-800 before:to-transparent">
             {processSteps.map((step, idx) => (
-              <m.div 
+              <motion.div 
                 key={idx}
                 initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -325,7 +325,7 @@ const LandingPagesPage = () => {
                   </div>
                   <div className="text-slate-400 text-sm leading-relaxed">{step.desc}</div>
                 </div>
-              </m.div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -342,7 +342,7 @@ const LandingPagesPage = () => {
 
           <div className="grid md:grid-cols-3 gap-6 mb-12">
             {supportCards.map((card, idx) => (
-              <m.div
+              <motion.div
                 key={idx}
                 whileHover={{ scale: 1.05, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
                 className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-xl border border-slate-700 hover:border-amber-500/40 transition-all duration-300"
@@ -352,11 +352,11 @@ const LandingPagesPage = () => {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">{card.title}</h3>
                 <p className="text-slate-400 leading-relaxed text-sm">{card.desc}</p>
-              </m.div>
+              </motion.div>
             ))}
           </div>
 
-          <m.div 
+          <motion.div 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto bg-amber-950/20 border border-amber-500/20 rounded-lg p-6 flex gap-4 items-start"
@@ -365,7 +365,7 @@ const LandingPagesPage = () => {
             <p className="text-amber-100 text-sm md:text-base leading-relaxed">
               <span className="font-bold">Maintenance continue ?</span> Pour des modifications régulières et une optimisation constante, je propose des formules de suivi mensuel adaptées à vos besoins.
             </p>
-          </m.div>
+          </motion.div>
         </div>
       </section>
 
