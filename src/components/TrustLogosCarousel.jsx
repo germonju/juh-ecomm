@@ -3,74 +3,23 @@ import { motion } from 'framer-motion';
 
 const TrustLogosCarousel = () => {
   const logos = [
-    {
-      name: "EM Lyon",
-      url: "https://em-lyon.com/themes/custom/emlyon/logo.svg"
-    },
-    {
-      name: "Deejo",
-      url: "https://b2044221.smushcdn.com/2044221/wp-content/uploads/2021/05/unnamed-e1622189966626.png"
-    },
-    {
-      name: "Akinod",
-      url: "	https://cdn.consentmanager.net/delivery/img/logo1750757896x2602.gif"
-    },
-    {
-      name: "Moulin Rouge",
-      url: "https://medias.moulinrouge.fr/app/uploads/2021/10/logo.png"
-    },
-    {
-      name: "Noviscore",
-      url: "https://www.noviscore.fr/build/img/fr/noviscore.0fa24db2.svg"
-    },
-    {
-      name: "Artled",
-      url: "https://www.artled.fr/wp-content/uploads/artled-logo_400.jpg"
-    },
-    {
-      name: "VIP Concept",
-      url: "https://www.logiciel-belami.com/wp-content/uploads/2019/03/logo-belami.png"
-    },
-    {
-      name: "Wesco",
-      url: "https://static.wesco.fr/media/logo/stores/19/logo-26.png"
-    },
-    {
-      name: "Libralerte",
-      url: "https://cdn.prod.website-files.com/63494a7d6e9ed53699dea41f/63e527da8f4c18854f64ac7c_LOGO1_FONDTRANSPARENT_Plan%20de%20travail%201%20copie.webp"
-    },
-    {
-      name: "Château de Versailles",
-      url: "https://www.emosia.fr/wp-content/uploads/2021/01/logo-chateau-de-versailles-soleil.png"
-    },
-    {
-      name: "Blackfox",
-      url: "https://blackfox-nature.com/wp-content/uploads/2024/09/NOUVEAU-LOGO-BLACKFOX-300x152.png"
-    },
-    {
-      name: "Café Coton",
-      url: "https://www.masculin.com/wp-content/uploads/sites/2/2023/02/cafe-coton-logo-2023.png"
-    },
-    {
-      name: "Nathan",
-      url: "https://static-www.nathan.fr/reseaux_sociaux/logo-editions-nathan-MKMVOD-NYMFI9.png"
-    },
-    {
-      name: "PerfectStay",
-      url: "https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/909ad732e835fdc287486f432de78f1c.jpg"
-    },
-    {
-      name: "Ice-Watch",
-      url: "https://cdn.worldvectorlogo.com/logos/ice-watch-logo.svg"
-    },
-    {
-      name: "Mondialbox",
-      url: "https://ac-franchise.com/uploads/2022/08/Article-Franchise-Mondial-Box.jpg"
-    },
-    {
-      name: "Transavia Holidays",
-      url: "https://api-upload-public.s3.eu-west-1.amazonaws.com/website/3b9a18f8-d19c-0144-6d60-adbd594e38e2/static/logo.png"
-    }
+    { name: "EM Lyon",              url: "/images/logos/clients/em-lyon.svg" },
+    { name: "Deejo",                url: "/images/logos/clients/deejo.png" },
+    { name: "Akinod",               url: "/images/logos/clients/akinod.png" },
+    { name: "Moulin Rouge",         url: "/images/logos/clients/moulin-rouge.png" },
+    { name: "Noviscore",            url: "/images/logos/clients/noviscore.svg" },
+    { name: "Artled",               url: "/images/logos/clients/artled.jpg" },
+    { name: "VIP Concept",          url: "/images/logos/clients/vip-concept.png" },
+    { name: "Wesco",                url: "/images/logos/clients/wesco.png" },
+    { name: "Libralerte",           url: "/images/logos/clients/libralerte.png" },
+    { name: "Château de Versailles",url: "/images/logos/clients/versailles.png" },
+    { name: "Blackfox",             url: "/images/logos/clients/blackfox.png" },
+    { name: "Café Coton",           url: "/images/logos/clients/cafe-coton.png" },
+    { name: "Nathan",               url: "/images/logos/clients/nathan.png" },
+    { name: "PerfectStay",          url: "/images/logos/clients/perfectstay.jpg" },
+    { name: "Ice-Watch",            url: "/images/logos/clients/ice-watch.svg" },
+    { name: "Mondialbox",           url: "/images/logos/clients/mondialbox.jpg" },
+    { name: "Transavia Holidays",   url: "/images/logos/clients/transavia.png" },
   ];
 
   // Double the logos for a seamless infinite scroll
