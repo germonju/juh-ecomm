@@ -18,7 +18,7 @@ const TrustLogosCarousel = () => {
     { name: "Nathan",               url: "/images/logos/clients/nathan.webp" },
     { name: "PerfectStay",          url: "/images/logos/clients/perfectstay.webp" },
     { name: "Ice-Watch",            url: "/images/logos/clients/ice-watch.svg" },
-    { name: "Mondialbox",           url: "/images/logos/clients/mondialbox.jpg" },
+    { name: "Mondialbox",           url: "/images/logos/clients/mondialbox.webp" },
     { name: "Transavia Holidays",   url: "/images/logos/clients/transavia.webp" },
   ];
 
