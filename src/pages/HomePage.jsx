@@ -191,13 +191,13 @@ const HomePage = () => {
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/gtm.png" alt="GTM" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/gtm.webp" alt="GTM" width="32" height="32" decoding="async" />
                       <span className="tech-label">GTM</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/google-ads.png" alt="Google Ads" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/google-ads.webp" alt="Google Ads" width="32" height="32" decoding="async" />
                       <span className="tech-label">GOOGLE ADS</span>
                     </div>
                   </div>
@@ -209,25 +209,25 @@ const HomePage = () => {
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/addingwell.png" alt="Addingwell" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/addingwell.webp" alt="Addingwell" width="32" height="32" decoding="async" />
                       <span className="tech-label">ADDINGWELL</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/n8n.png" alt="n8n" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/n8n.webp" alt="n8n" width="32" height="32" decoding="async" />
                       <span className="tech-label">N8N</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/make.png" alt="Make" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/make.webp" alt="Make" width="32" height="32" decoding="async" />
                       <span className="tech-label">MAKE</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/claude.png" alt="Claude" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/claude.webp" alt="Claude" width="32" height="32" decoding="async" />
                       <span className="tech-label">CLAUDE</span>
                     </div>
                   </div>
@@ -302,7 +302,7 @@ const HomePage = () => {
 
                       <div className="relative rounded-full p-1 bg-gradient-to-br from-white/20 to-white/5 border border-white/10 shadow-2xl">
                         <img
-                          src="/images/julien-germon.jpg"
+                          src="/images/julien-germon.webp"
                           alt="Julien Germon, expert en tracking et stratégie data depuis 15 ans"
                           className="w-48 h-48 rounded-full object-cover relative z-10"
                           width="192"
