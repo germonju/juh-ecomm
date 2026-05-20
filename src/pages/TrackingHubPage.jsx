@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Target, TrendingUp, Shield, Zap, CheckCircle, ArrowRight, Database, Search, Tag, Globe, ClipboardCheck, FileText, Server, Workflow, Settings, CheckCircle2, MessageCircle, Link as LinkIcon } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -150,7 +150,7 @@ const TrackingHubPage = () => {
       <div className="pt-16 lg:pt-20">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -177,7 +177,7 @@ const TrackingHubPage = () => {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
               </Button>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
@@ -392,7 +392,7 @@ const TrackingHubPage = () => {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <motion.div
+                  <m.div
                     key={index}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -405,7 +405,7 @@ const TrackingHubPage = () => {
                     </div>
                     <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-slate-400">{feature.description}</p>
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>
@@ -674,7 +674,7 @@ const TrackingHubPage = () => {
         <section className="py-20 lg:py-32 bg-gradient-to-br from-slate-800 to-slate-900">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -687,11 +687,11 @@ const TrackingHubPage = () => {
                 <p className="text-xl text-slate-400">
                   Une solution complète clés en main
                 </p>
-              </motion.div>
+              </m.div>
 
               <div className="grid md:grid-cols-2 gap-4">
                 {benefits.map((benefit, index) => (
-                  <motion.div
+                  <m.div
                     key={index}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -701,11 +701,11 @@ const TrackingHubPage = () => {
                   >
                     <CheckCircle className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-300">{benefit}</span>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -722,7 +722,7 @@ const TrackingHubPage = () => {
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </section>

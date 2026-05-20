@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
 import { BLOG_CATEGORIES } from '@/lib/blogService';
 
@@ -96,7 +96,7 @@ const Header = () => {
               </button>
               <AnimatePresence>
                 {openDropdown === 'tracking' && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -114,7 +114,7 @@ const Header = () => {
                         {link.name}
                       </Link>
                     ))}
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -140,7 +140,7 @@ const Header = () => {
               </button>
               <AnimatePresence>
                 {openDropdown === 'automatisation' && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -158,7 +158,7 @@ const Header = () => {
                         {link.name}
                       </Link>
                     ))}
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -175,7 +175,7 @@ const Header = () => {
               </button>
               <AnimatePresence>
                 {openDropdown === 'blog' && (
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
@@ -200,7 +200,7 @@ const Header = () => {
                         {category.name}
                       </Link>
                     ))}
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -236,7 +236,7 @@ const Header = () => {
 
         <AnimatePresence>
           {isMobileMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
@@ -255,7 +255,7 @@ const Header = () => {
                   </button>
                   <AnimatePresence>
                     {openDropdown === 'tracking' && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -271,7 +271,7 @@ const Header = () => {
                             {link.name}
                           </Link>
                         ))}
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -296,7 +296,7 @@ const Header = () => {
                   </button>
                   <AnimatePresence>
                     {openDropdown === 'automatisation' && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -312,7 +312,7 @@ const Header = () => {
                             {link.name}
                           </Link>
                         ))}
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -328,7 +328,7 @@ const Header = () => {
                   </button>
                   <AnimatePresence>
                     {openDropdown === 'blog' && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
@@ -351,7 +351,7 @@ const Header = () => {
                             {category.name}
                           </Link>
                         ))}
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
                 </div>
@@ -375,7 +375,7 @@ const Header = () => {
                   Contact
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </nav>
