@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import { DataLayerProvider } from '@/contexts/DataLayerContext';
@@ -9,27 +9,31 @@ import ConsentManager from '@/components/ConsentManager';
 import AdParamsCapture from '@/components/AdParamsCapture';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
+// HomePage chargée immédiatement (critique pour le LCP)
 import HomePage from '@/pages/HomePage';
-import ContactPage from '@/pages/ContactPage';
-import AuditGoogleAdsPage from '@/pages/AuditGoogleAdsPage';
-import GtmServerSidePage from '@/pages/GtmServerSidePage';
-import Ga4AdvancedPage from '@/pages/Ga4AdvancedPage';
-import ShopifyPage from '@/pages/ShopifyPage';
-import GoogleMyBusinessPage from '@/pages/GoogleMyBusinessPage';
-import ConversionsOfflinePage from '@/pages/ConversionsOfflinePage';
-import ConciergeriePage from '@/pages/ConciergeriePage';
-import ReponseLeadsPage from '@/pages/ReponseLeadsPage';
-import AutomatisationHubPage from '@/pages/AutomatisationHubPage';
-import TrackingHubPage from '@/pages/TrackingHubPage';
-import ConsentModePage from '@/pages/ConsentModePage';
-import BlogPage from '@/pages/BlogPage';
-import BlogPostPage from '@/pages/BlogPostPage';
-import ApiDocsPage from '@/pages/ApiDocsPage';
-import MentionsLegalesPage from '@/pages/MentionsLegalesPage';
-import PolitiqueConfidentialitePage from '@/pages/PolitiqueConfidentialitePage';
-import SeoAuditPage from '@/pages/SeoAuditPage';
-import NotFoundPage from '@/pages/NotFoundPage';
-import LandingPagesPage from '@/pages/LandingPagesPage';
+
+// Toutes les autres pages en lazy loading — chargées uniquement quand visitées
+const ContactPage             = lazy(() => import('@/pages/ContactPage'));
+const AuditGoogleAdsPage      = lazy(() => import('@/pages/AuditGoogleAdsPage'));
+const GtmServerSidePage       = lazy(() => import('@/pages/GtmServerSidePage'));
+const Ga4AdvancedPage         = lazy(() => import('@/pages/Ga4AdvancedPage'));
+const ShopifyPage             = lazy(() => import('@/pages/ShopifyPage'));
+const GoogleMyBusinessPage    = lazy(() => import('@/pages/GoogleMyBusinessPage'));
+const ConversionsOfflinePage  = lazy(() => import('@/pages/ConversionsOfflinePage'));
+const ConciergeriePage        = lazy(() => import('@/pages/ConciergeriePage'));
+const ReponseLeadsPage        = lazy(() => import('@/pages/ReponseLeadsPage'));
+const AutomatisationHubPage   = lazy(() => import('@/pages/AutomatisationHubPage'));
+const TrackingHubPage         = lazy(() => import('@/pages/TrackingHubPage'));
+const ConsentModePage         = lazy(() => import('@/pages/ConsentModePage'));
+const LandingPagesPage        = lazy(() => import('@/pages/LandingPagesPage'));
+const BlogPage                = lazy(() => import('@/pages/BlogPage'));
+const BlogPostPage            = lazy(() => import('@/pages/BlogPostPage'));
+const ApiDocsPage             = lazy(() => import('@/pages/ApiDocsPage'));
+const MentionsLegalesPage     = lazy(() => import('@/pages/MentionsLegalesPage'));
+const PolitiqueConfidentialitePage = lazy(() => import('@/pages/PolitiqueConfidentialitePage'));
+const SeoAuditPage            = lazy(() => import('@/pages/SeoAuditPage'));
+const NotFoundPage            = lazy(() => import('@/pages/NotFoundPage'));
 
 function App() {
   // Domain redirect logic: automatically redirect non-www "juh-ecomm.fr" to "www.juh-ecomm.fr"
@@ -62,6 +66,7 @@ function App() {
           <div className="min-h-screen flex flex-col bg-slate-50">
             <Header />
             <main className="flex-grow">
+              <Suspense fallback={null}>
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/contact" element={<ContactPage />} />
@@ -85,6 +90,7 @@ function App() {
                 <Route path="/seo-audit" element={<SeoAuditPage />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
+              </Suspense>
             </main>
             <Footer />
           </div>
