@@ -203,7 +203,7 @@ const HomePage = () => {
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="https://matomo.org/wp-content/uploads/2022/04/matomo-icon-1.png" alt="Matomo" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/matomo.svg" alt="Matomo" width="32" height="32" decoding="async" />
                       <span className="tech-label">MATOMO</span>
                     </div>
                   </div>
