@@ -118,33 +118,39 @@ export const ServerFlowIllustration = () => (
   </div>
 );
 
-/* ─── GA4 — dashboard analytics fantôme ─── */
+/* ─── GA4 — scatter plot + courbe de tendance ─── */
 export const AnalyticsChartIllustration = () => (
   <div className={base} aria-hidden="true">
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
-          @keyframes ac-line{0%{stroke-dashoffset:600}100%{stroke-dashoffset:0}}
-          @keyframes ac-bar{0%{opacity:0}100%{opacity:1}}
+          @keyframes ac-line{0%{stroke-dashoffset:700}100%{stroke-dashoffset:0}}
+          @keyframes ac-dot{0%,100%{opacity:.1}50%{opacity:.25}}
         `}</style>
       </defs>
-      {[150,250,350,450].map((y,i) => (
-        <line key={i} x1="200" y1={y} x2="1000" y2={y}
-          stroke="#f97316" strokeWidth="1" opacity=".03" />
+      {/* grille minimaliste — tirets légers */}
+      {[160,260,360,460].map((y,i) => (
+        <line key={i} x1="160" y1={y} x2="1040" y2={y}
+          stroke="#f97316" strokeWidth="1" strokeDasharray="4 12" opacity=".06" />
       ))}
-      {[220,340,460,580,700,820,940].map((x,i) => (
-        <rect key={i} x={x} y={[340,240,280,180,220,160,200][i]} width="80"
-          height={480-[340,240,280,180,220,160,200][i]} rx="4"
-          fill="#f97316" opacity=".04"
-          style={{animation:`ac-bar .6s ${i*0.1}s ease-out both`}} />
-      ))}
+      {/* courbe de tendance — trait fin */}
       <polyline
-        points="260,340 380,240 500,280 620,180 740,220 860,160 980,200"
-        fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="600"
-        style={{animation:'ac-line 2.5s ease-out both',opacity:.08}} />
-      {[[260,340],[380,240],[500,280],[620,180],[740,220],[860,160],[980,200]].map(([cx,cy],i) => (
-        <circle key={i} cx={cx} cy={cy} r="3" fill="#f97316" opacity=".12" />
+        points="180,420 300,340 420,370 540,260 660,300 780,220 900,250 1020,180"
+        fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="700"
+        style={{animation:'ac-line 3s ease-out both',opacity:.15}} />
+      {/* seconde courbe — sessions */}
+      <polyline
+        points="180,460 300,400 420,420 540,320 660,360 780,290 900,310 1020,250"
+        fill="none" stroke="#fb923c" strokeWidth="1" strokeDasharray="700"
+        style={{animation:'ac-line 3.5s ease-out both',opacity:.08}} />
+      {/* points de données uniquement */}
+      {[[180,420],[300,340],[420,370],[540,260],[660,300],[780,220],[900,250],[1020,180]].map(([cx,cy],i) => (
+        <circle key={i} cx={cx} cy={cy} r="3" fill="none" stroke="#f97316" strokeWidth="1.5"
+          style={{animation:`ac-dot ${1.5+i*0.3}s ease-in-out infinite`,opacity:.2}} />
       ))}
+      {/* axes */}
+      <line x1="160" y1="120" x2="160" y2="500" stroke="#f97316" strokeWidth="1" opacity=".08" />
+      <line x1="160" y1="500" x2="1060" y2="500" stroke="#f97316" strokeWidth="1" opacity=".08" />
     </svg>
   </div>
 );
@@ -388,37 +394,40 @@ export const DecisionTreeIllustration = () => (
   </div>
 );
 
-/* ─── Shopify — entonnoir e-commerce ─── */
+/* ─── Shopify — flux de données e-commerce ─── */
 export const EcommerceFunnelIllustration = () => (
   <div className={base} aria-hidden="true">
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
-          @keyframes ef-pulse{0%,100%{opacity:.1}50%{opacity:.25}}
+          @keyframes ef-flow{0%{stroke-dashoffset:400}100%{stroke-dashoffset:0}}
+          @keyframes ef-dot{0%,100%{opacity:.1}50%{opacity:.3}}
         `}</style>
       </defs>
+      {/* lignes de flux diagonales */}
+      {[80,160,240,320,400,480,560].map((y,i) => (
+        <line key={i} x1="0" y1={y} x2="1200" y2={y+160}
+          stroke="#10b981" strokeWidth="1" strokeDasharray="400"
+          style={{animation:`ef-flow ${4+i*0.4}s linear infinite`,opacity:.06}} />
+      ))}
+      {/* nœuds de conversion */}
       {[
-        {x:100,w:1000,y:80, h:60,label:'TRAFIC',        color:'#10b981'},
-        {x:180,w:840, y:175,h:60,label:'PRODUITS',      color:'#34d399'},
-        {x:280,w:640, y:270,h:60,label:'PANIER',        color:'#6ee7b7'},
-        {x:380,w:440, y:365,h:60,label:'CHECKOUT',      color:'#10b981'},
-        {x:460,w:280, y:455,h:50,label:'ACHAT ✓',       color:'#34d399'},
-      ].map(({x,w,y,h,label,color},i) => (
+        [200,200,'VISIT'],[400,280,'FICHE'],[600,220,'PANIER'],
+        [800,300,'CHECK'],[1000,240,'ACHAT'],
+      ].map(([cx,cy,label],i) => (
         <g key={i}>
-          <rect x={x} y={y} width={w} height={h} rx="6"
-            fill={color} opacity=".025"
-            style={{animation:`ef-pulse ${2+i*0.3}s ease-in-out infinite`}} />
-          <rect x={x} y={y} width={w} height={h} rx="6"
-            fill="none" stroke={color} strokeWidth="1" opacity=".07" />
-          <text x={x+w/2} y={y+h/2+4} textAnchor="middle" fill={color}
-            fontSize="11" opacity=".1" fontFamily="monospace">{label}</text>
+          <circle cx={cx} cy={cy} r="22" fill="none" stroke="#10b981" strokeWidth="1" opacity=".15" />
+          <circle cx={cx} cy={cy} r="4" fill="#10b981"
+            style={{animation:`ef-dot ${2+i*0.4}s ease-in-out infinite`}} />
+          <text x={cx} y={cy+36} textAnchor="middle" fill="#10b981"
+            fontSize="9" opacity=".15" fontFamily="monospace">{label}</text>
         </g>
       ))}
-      {[0,1,2].map(i => (
-        <circle key={i} cx={600+i*40} cy="80" r="2" fill="#10b981" opacity=".25">
-          <animate attributeName="cy" values="80;455" dur={`${3+i*0.6}s`} repeatCount="indefinite" />
-          <animate attributeName="opacity" values=".25;.05" dur={`${3+i*0.6}s`} repeatCount="indefinite" />
-        </circle>
+      {/* liaisons entre nœuds */}
+      {[[200,200,400,280],[400,280,600,220],[600,220,800,300],[800,300,1000,240]].map(([x1,y1,x2,y2],i) => (
+        <path key={i} d={`M${x1+22},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2-22},${y2}`}
+          fill="none" stroke="#10b981" strokeWidth="1" strokeDasharray="400"
+          style={{animation:`ef-flow ${2.5+i*0.5}s linear infinite`,opacity:.12}} />
       ))}
     </svg>
   </div>
