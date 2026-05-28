@@ -1,6 +1,6 @@
 import React from 'react';
 
-const base = "absolute inset-0 w-full h-full pointer-events-none overflow-hidden";
+const base = "absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-[1]";
 
 /* ─── HomePage — constellation data ─── */
 export const DataNetworkIllustration = () => (
@@ -130,20 +130,20 @@ export const AnalyticsChartIllustration = () => (
       </defs>
       {[150,250,350,450].map((y,i) => (
         <line key={i} x1="200" y1={y} x2="1000" y2={y}
-          stroke="#f97316" strokeWidth="1" opacity=".06" />
+          stroke="#f97316" strokeWidth="1" opacity=".03" />
       ))}
       {[220,340,460,580,700,820,940].map((x,i) => (
         <rect key={i} x={x} y={[340,240,280,180,220,160,200][i]} width="80"
           height={480-[340,240,280,180,220,160,200][i]} rx="4"
-          fill="#f97316" opacity=".08"
+          fill="#f97316" opacity=".04"
           style={{animation:`ac-bar .6s ${i*0.1}s ease-out both`}} />
       ))}
       <polyline
         points="260,340 380,240 500,280 620,180 740,220 860,160 980,200"
-        fill="none" stroke="#f97316" strokeWidth="2" strokeDasharray="600"
-        style={{animation:'ac-line 2.5s ease-out both',opacity:.25}} />
+        fill="none" stroke="#f97316" strokeWidth="1.5" strokeDasharray="600"
+        style={{animation:'ac-line 2.5s ease-out both',opacity:.08}} />
       {[[260,340],[380,240],[500,280],[620,180],[740,220],[860,160],[980,200]].map(([cx,cy],i) => (
-        <circle key={i} cx={cx} cy={cy} r="4" fill="#f97316" opacity=".35" />
+        <circle key={i} cx={cx} cy={cy} r="3" fill="#f97316" opacity=".12" />
       ))}
     </svg>
   </div>
@@ -406,18 +406,18 @@ export const EcommerceFunnelIllustration = () => (
       ].map(({x,w,y,h,label,color},i) => (
         <g key={i}>
           <rect x={x} y={y} width={w} height={h} rx="6"
-            fill={color} opacity=".05"
+            fill={color} opacity=".025"
             style={{animation:`ef-pulse ${2+i*0.3}s ease-in-out infinite`}} />
           <rect x={x} y={y} width={w} height={h} rx="6"
-            fill="none" stroke={color} strokeWidth="1" opacity=".15" />
+            fill="none" stroke={color} strokeWidth="1" opacity=".07" />
           <text x={x+w/2} y={y+h/2+4} textAnchor="middle" fill={color}
-            fontSize="11" opacity=".25" fontFamily="monospace">{label}</text>
+            fontSize="11" opacity=".1" fontFamily="monospace">{label}</text>
         </g>
       ))}
       {[0,1,2].map(i => (
-        <circle key={i} cx={600+i*40} cy="80" r="3" fill="#10b981" opacity=".5">
+        <circle key={i} cx={600+i*40} cy="80" r="2" fill="#10b981" opacity=".25">
           <animate attributeName="cy" values="80;455" dur={`${3+i*0.6}s`} repeatCount="indefinite" />
-          <animate attributeName="opacity" values=".5;.1" dur={`${3+i*0.6}s`} repeatCount="indefinite" />
+          <animate attributeName="opacity" values=".25;.05" dur={`${3+i*0.6}s`} repeatCount="indefinite" />
         </circle>
       ))}
     </svg>
@@ -435,25 +435,73 @@ export const WireframeIllustration = () => (
         `}</style>
       </defs>
       <rect x="340" y="80" width="520" height="440" rx="8"
-        fill="none" stroke="#f59e0b" strokeWidth="1.5" opacity=".2"
+        fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".1"
         strokeDasharray="500"
         style={{animation:'wf-draw 3s ease-out both'}} />
-      <rect x="340" y="80" width="520" height="50" rx="8" fill="#f59e0b" opacity=".05" />
-      <rect x="360" y="95" width="120" height="16" rx="3" fill="#f59e0b" opacity=".12" />
-      <rect x="740" y="95" width="60" height="16" rx="8" fill="#f59e0b" opacity=".15" />
+      <rect x="340" y="80" width="520" height="50" rx="8" fill="#f59e0b" opacity=".025" />
+      <rect x="360" y="95" width="120" height="16" rx="3" fill="#f59e0b" opacity=".06" />
+      <rect x="740" y="95" width="60" height="16" rx="8" fill="#f59e0b" opacity=".07" />
       <rect x="360" y="150" width="480" height="120" rx="4"
-        fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".1" />
-      <line x1="360" y1="150" x2="840" y2="270" stroke="#f59e0b" strokeWidth="1" opacity=".06" />
-      <line x1="840" y1="150" x2="360" y2="270" stroke="#f59e0b" strokeWidth="1" opacity=".06" />
+        fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".05" />
+      <line x1="360" y1="150" x2="840" y2="270" stroke="#f59e0b" strokeWidth="1" opacity=".03" />
+      <line x1="840" y1="150" x2="360" y2="270" stroke="#f59e0b" strokeWidth="1" opacity=".03" />
       {[290,310,330].map((y,i) => (
         <rect key={i} x={400+i*10} y={y} width={300-i*40} height="8" rx="2"
-          fill="#f59e0b" opacity=".08" />
+          fill="#f59e0b" opacity=".04" />
       ))}
       <rect x="480" y="360" width="240" height="44" rx="22"
-        fill="#f59e0b" opacity=".12"
+        fill="#f59e0b" opacity=".05"
         style={{animation:'wf-pulse 2s ease-in-out infinite'}} />
       <rect x="480" y="360" width="240" height="44" rx="22"
-        fill="none" stroke="#f59e0b" strokeWidth="1.5" opacity=".25" />
+        fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".1" />
+    </svg>
+  </div>
+);
+
+/* ─── Blog — flux de contenu / articles ─── */
+export const BlogIllustration = () => (
+  <div className={base} aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>{`
+          @keyframes bl-flow{0%{stroke-dashoffset:300}100%{stroke-dashoffset:0}}
+          @keyframes bl-pulse{0%,100%{opacity:.06}50%{opacity:.14}}
+        `}</style>
+      </defs>
+      {/* cartes articles fantômes */}
+      {[
+        [80,140,320,180],[440,100,320,220],[780,140,320,180],
+        [80,360,200,160],[320,380,200,140],[560,360,200,160],[800,380,200,140],[1040,360,120,160],
+      ].map(([x,y,w,h],i) => (
+        <g key={i}>
+          <rect x={x} y={y} width={w} height={h} rx="6"
+            fill="none" stroke="#334155" strokeWidth="1" opacity=".2" />
+          <rect x={x+10} y={y+10} width={w-20} height={h*0.4} rx="3"
+            fill="#334155" opacity=".08" />
+          {[0,1,2].map(j => (
+            <rect key={j} x={x+10} y={y+h*0.5+j*14} width={w-20-(j*30)} height="6" rx="2"
+              fill="#334155" opacity=".07" />
+          ))}
+        </g>
+      ))}
+      {/* lignes de connexion entre cartes */}
+      {[[240,230,600,210],[760,210,940,230],[600,210,600,380]].map(([x1,y1,x2,y2],i) => (
+        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
+          stroke="#475569" strokeWidth="1" strokeDasharray="300"
+          style={{animation:`bl-flow ${3+i*0.5}s linear infinite`,opacity:.12}} />
+      ))}
+      {/* tags flottants */}
+      {[
+        [200,110,'GA4'],[520,80,'GTM'],[860,110,'Ads'],
+        [140,340,'RGPD'],[380,360,'Tracking'],[620,340,'Shopify'],
+      ].map(([x,y,label],i) => (
+        <g key={i} style={{animation:`bl-pulse ${2+i*0.4}s ease-in-out infinite`}}>
+          <rect x={x} y={y} width={label.length*8+16} height="22" rx="11"
+            fill="none" stroke="#475569" strokeWidth="1" opacity=".2" />
+          <text x={x+label.length*4+8} y={y+15} textAnchor="middle"
+            fill="#64748b" fontSize="9" fontFamily="monospace" opacity=".3">{label}</text>
+        </g>
+      ))}
     </svg>
   </div>
 );

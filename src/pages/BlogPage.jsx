@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { BlogIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -111,6 +112,7 @@ const BlogPage = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 bg-slate-900 border-b border-slate-800">
+        <BlogIllustration />
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMzQxNTUiIGZpbGwtb3BhY2l0eT0iMC4xIj48cGF0aCBkPSJNMzYgMzR2Mi1oMmMwLTEuMS0uOS0yLTItMnptMC00aDJjMS4xIDAgMiAuOSAyIDJoLTJ2LTJ6bS0yIDJ2Mmgydi0yaC0yem0tMiAwaC0ydjJoMnYtMnptMC00aDJ2LTJjMC0xLjEtLjktMi0yLTJ2Mmgyem0tMiAydjJoMnYtMmgtMnptLTIgMGgtMnYyaDJ2LTJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
         <div className="container mx-auto px-4 relative z-10 text-center">
           <motion.div
