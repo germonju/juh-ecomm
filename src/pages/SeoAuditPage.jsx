@@ -210,6 +210,7 @@ const SeoAuditPage = () => {
     <>
       <Helmet>
         <title>Audit SEO Complet : Technique & Contenu | Juh Ecomm Data</title>
+        <meta name="robots" content="noindex, nofollow" />
         <meta name="description" content="Outil d'audit SEO complet : analysez la structure technique de votre site et le contenu de vos articles de blog pour améliorer votre référencement naturel." />
         <link rel="canonical" href={canonicalUrl} />
         
