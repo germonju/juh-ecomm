@@ -1,5 +1,4 @@
 import React from 'react';
-import { EcommerceFunnelIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -105,7 +104,6 @@ const ShopifyPage = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <EcommerceFunnelIllustration />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">

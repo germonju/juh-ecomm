@@ -1,5 +1,4 @@
 import React from 'react';
-import { RadarIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { Target, TrendingUp, Shield, Zap, CheckCircle, ArrowRight, Database, Search, Tag, Globe, ClipboardCheck, FileText, Server, Workflow, Settings, CheckCircle2, MessageCircle, Link as LinkIcon } from 'lucide-react';
@@ -155,7 +154,6 @@ const TrackingHubPage = () => {
 
       <div className="pt-16 lg:pt-20">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">
-          <RadarIllustration />
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}

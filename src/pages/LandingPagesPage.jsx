@@ -1,5 +1,4 @@
 import React from 'react';
-import { WireframeIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -156,7 +155,6 @@ const LandingPagesPage = () => {
 
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <WireframeIllustration />
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { WorkflowIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { MessageSquare, Clock, TrendingUp, ShieldCheck, Home, Key, Users, Wifi, MapPin, Coffee, AlertCircle, ArrowRight, Check, Star } from 'lucide-react';
@@ -150,7 +149,6 @@ const ConciergeriePage = () => {
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
-        <WorkflowIllustration />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-violet-900/30 via-slate-900 to-slate-900" />
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
           <div className="inline-block px-3 py-1 mb-6 text-sm font-medium rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300">

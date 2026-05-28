@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { ShieldCircuitIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -100,7 +99,6 @@ const ConsentModePage = () => {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <ShieldCircuitIllustration />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
