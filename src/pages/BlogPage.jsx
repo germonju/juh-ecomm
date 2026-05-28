@@ -97,8 +97,8 @@ const BlogPage = () => {
   return (
     <div className="min-h-screen bg-slate-900 pt-20">
       <Helmet>
-        <title>{currentCategory ? `${currentCategory.name} - Blog Marketing Digital | JUH Ecomm Data` : 'Blog Marketing Digital | JUH Ecomm Data'}</title>
-        <meta name="description" content="Découvrez nos guides complets sur Google Ads, GA4, GTM et e-commerce. Conseils d'experts, cas d'études et stratégies pour optimiser votre performance digitale." />
+        <title>{currentCategory ? `${currentCategory.name} — Blog Tracking & Ads | JUH Ecomm` : 'Blog Expert Google Ads, GA4 & GTM | JUH Ecomm Data'}</title>
+        <meta name="description" content="Guides complets sur Google Ads, GA4 et GTM e-commerce. Conseils d'experts, cas d'études et stratégies pour optimiser votre performance digitale." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Blog Marketing Digital | JUH Ecomm Data" />
         <meta property="og:description" content="Guides experts sur Google Ads, GA4, GTM et e-commerce. Stratégies et conseils pour optimiser votre performance." />

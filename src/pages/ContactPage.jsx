@@ -104,13 +104,20 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contactez votre Expert Tracking & Data | JUH Ecomm Data</title>
-        <meta name="description" content="Contactez notre équipe d'experts JUH Ecomm Data. Discutez de votre stratégie marketing et découvrez comment nous pouvons accélérer votre croissance e-commerce." />
+        <meta name="description" content="Discutez de votre stratégie marketing avec nos experts JUH Ecomm Data. Découvrez comment accélérer votre croissance e-commerce dès maintenant." />
         <link rel="canonical" href={canonicalUrl} />
-        
         <meta property="og:title" content="Contactez JUH Ecomm Data | JUH Ecomm Data" />
         <meta property="og:description" content="Contactez notre équipe d'experts. Discutez de votre stratégie et découvrez comment nous pouvons vous aider." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Contactez JUH Ecomm Data | JUH Ecomm Data" />
         <meta name="twitter:description" content="Contactez notre équipe d'experts JUH Ecomm Data. Accélérez votre croissance e-commerce." />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
       </Helmet>
 
       <div className="min-h-screen pt-24 pb-20 bg-slate-950 relative overflow-hidden">

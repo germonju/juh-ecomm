@@ -140,11 +140,16 @@ const TrackingHubPage = () => {
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Tracking Hub Complet | JUH Ecomm Data" />
         <meta property="og:description" content="Centralisez votre tracking avec GA4, GTM et conversions. Maîtrisez vos données pour une stratégie data-driven." />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Tracking Hub Complet | JUH Ecomm Data" />
         <meta name="twitter:description" content="Centralisez votre tracking avec notre hub complet. Maîtrisez GA4, GTM et vos données de conversion." />
         <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
       </Helmet>
 
       <div className="pt-16 lg:pt-20">

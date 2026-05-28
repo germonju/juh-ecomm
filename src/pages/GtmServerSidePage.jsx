@@ -116,15 +116,20 @@ const GtmServerSidePage = () => {
     <>
       <Helmet>
         <title>GTM Server-Side : Tracking Cookieless & RGPD | JUH Ecomm</title>
-        <meta name="description" content="Implémentez GTM Server-Side pour améliorer votre tracking et conformité RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données." />
+        <meta name="description" content="Implémentez GTM Server-Side pour améliorer votre tracking RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données." />
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="GTM Server-Side | JUH Ecomm Data" />
         <meta property="og:description" content="Implémentez GTM Server-Side pour améliorer votre tracking et conformité RGPD. Données de qualité supérieure." />
+        <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="GTM Server-Side | JUH Ecomm Data" />
         <meta name="twitter:description" content="Implémentez GTM Server-Side pour améliorer votre tracking et conformité RGPD. Réduisez la dépendance aux cookies." />
         <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>

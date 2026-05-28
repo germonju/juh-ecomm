@@ -185,49 +185,49 @@ const HomePage = () => {
                 <div className="hero-tech-logos">
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg" alt="GA4" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/ga4.svg" alt="GA4" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">GA4</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/gtm.webp" alt="GTM" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/gtm.webp" alt="GTM" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">GTM</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/google-ads.webp" alt="Google Ads" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/google-ads.webp" alt="Google Ads" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">GOOGLE ADS</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/matomo.svg" alt="Matomo" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/matomo.svg" alt="Matomo" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">MATOMO</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/addingwell.webp" alt="Addingwell" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/addingwell.webp" alt="Addingwell" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">ADDINGWELL</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/n8n.webp" alt="n8n" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/n8n.webp" alt="n8n" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">N8N</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/make.webp" alt="Make" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/make.webp" alt="Make" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">MAKE</span>
                     </div>
                   </div>
                   <div className="tech-item">
                     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "4px" }}>
-                      <img src="/images/logos/claude.webp" alt="Claude" width="32" height="32" decoding="async" />
+                      <img src="/images/logos/claude.webp" alt="Claude" width="32" height="32" decoding="async" loading="lazy" />
                       <span className="tech-label">CLAUDE</span>
                     </div>
                   </div>

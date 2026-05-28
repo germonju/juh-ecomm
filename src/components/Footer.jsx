@@ -68,9 +68,10 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <img 
-                src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/8fee8d7d42c2e3c68f9f7b880a71ab17.png" 
-                alt="Juh Ecomm Data Logo" 
+                src="/images/logo.png"
+                alt="Juh Ecomm Data Logo"
                 className="h-10 w-auto object-contain"
+                width="40" height="40"
               />
               <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-violet-400 to-lime-400 bg-clip-text text-transparent">
                 Juh Ecomm Data
@@ -125,7 +126,7 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/automatisation/conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                <Link to="/conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Service pour conciergerie
                 </Link>
               </li>

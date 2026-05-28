@@ -102,8 +102,16 @@ const ConversionsOfflinePage = () => {
         
         <meta property="og:title" content="Conversions Offline | JUH Ecomm Data" />
         <meta property="og:description" content="Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@juh_ecomm" />
         <meta name="twitter:title" content="Conversions Offline | JUH Ecomm Data" />
         <meta name="twitter:description" content="Tracez vos conversions offline avec Google Ads et GA4. Vision 360° de votre ROI." />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>
