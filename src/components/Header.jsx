@@ -43,23 +43,26 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [openDropdown]);
 
-  // Removed 'Landing Pages' from trackingLinks as it is now a main menu item
   const trackingLinks = [
-    { name: 'Audit Google Ads', path: '/audit-google-ads' },
-    { name: 'Consent Mode', path: '/consent-mode' },
-    { name: 'Conversions Offline', path: '/conversions-offline' },
-    { name: 'GA4 Avancé', path: '/ga4-advanced' },
+    { name: 'Tracking Hub', path: '/tracking-hub' },
     { name: 'GTM Server-Side', path: '/gtm-server-side' },
+    { name: 'GA4 Avancé', path: '/ga4-advanced' },
     { name: 'Shopify Tracking', path: '/shopify' },
-    { name: 'Tracking Hub', path: '/tracking-hub' }
-  ].sort((a, b) => a.name.localeCompare(b.name));
+  ];
+
+  const performanceLinks = [
+    { name: 'Audit Google Ads', path: '/audit-google-ads' },
+    { name: 'Conversions Offline', path: '/conversions-offline' },
+    { name: 'Landing Pages', path: '/landing-pages' },
+    { name: 'Consent Mode', path: '/consent-mode' },
+  ];
 
   const automatisationLinks = [
     { name: 'Automatisation Hub', path: '/automatisation-hub' },
-    { name: 'Google My Business', path: '/google-my-business' },
     { name: 'Réponse Leads', path: '/reponse-leads' },
-    { name: 'Service pour conciergerie', path: '/conciergerie' }
-  ].sort((a, b) => a.name.localeCompare(b.name));
+    { name: 'Google My Business', path: '/google-my-business' },
+    { name: 'Service pour conciergerie', path: '/conciergerie' },
+  ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
@@ -84,7 +87,7 @@ const Header = () => {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-8">
-            {/* Tracking Dropdown */}
+            {/* Tracking & Data Dropdown */}
             <div className="relative group">
               <button
                 className="flex items-center space-x-1 text-slate-300 hover:text-cyan-400 transition-colors py-2 font-medium"
@@ -119,14 +122,40 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {/* Landing Pages Direct Link */}
-            <Link 
-              to="/landing-pages" 
-              className="text-slate-300 hover:text-amber-400 transition-colors py-2 font-medium"
-              onClick={() => handleMenuClick('Landing Pages')}
-            >
-              Landing Pages
-            </Link>
+            {/* Performance Dropdown */}
+            <div className="relative group">
+              <button
+                className="flex items-center space-x-1 text-slate-300 hover:text-amber-400 transition-colors py-2 font-medium"
+                onMouseEnter={() => setOpenDropdown('performance')}
+                onClick={() => handleMenuClick('performance-menu')}
+              >
+                <span>Performance</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openDropdown === 'performance' ? 'rotate-180' : ''} group-hover:rotate-180`} />
+              </button>
+              <AnimatePresence>
+                {openDropdown === 'performance' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 mt-2 w-56 bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden"
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    {performanceLinks.map((link) => (
+                      <Link
+                        key={link.path}
+                        to={link.path}
+                        className="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-amber-400 transition-colors"
+                        onClick={() => handleMenuClick(link.name)}
+                      >
+                        {link.name}
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* Automatisation Dropdown */}
             <div className="relative group">
@@ -209,10 +238,10 @@ const Header = () => {
               href="https://simulateur.juh-ecomm.fr"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-1 text-slate-300 hover:text-amber-400 transition-colors font-medium"
+              className="flex items-center space-x-1 text-slate-300 hover:text-lime-400 transition-colors font-medium"
               onClick={() => handleMenuClick('simulateur')}
             >
-              <span>Accès au Simulateur</span>
+              <span>Simulateur</span>
               <ExternalLink className="w-3 h-3" />
             </a>
 
@@ -276,14 +305,37 @@ const Header = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Landing Pages Mobile Link */}
-                <Link
-                  to="/landing-pages"
-                  className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-amber-400 transition-colors font-medium"
-                  onClick={() => handleMenuClick('Landing Pages')}
-                >
-                  <span>Landing Pages</span>
-                </Link>
+                {/* Performance Mobile */}
+                <div>
+                  <button
+                    className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-amber-400 transition-colors"
+                    onClick={() => setOpenDropdown(openDropdown === 'performance' ? null : 'performance')}
+                  >
+                    <span>Performance</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'performance' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openDropdown === 'performance' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-2 mt-2"
+                      >
+                        {performanceLinks.map((link) => (
+                          <Link
+                            key={link.path}
+                            to={link.path}
+                            className="block px-4 py-2 text-slate-400 hover:text-amber-400 transition-colors"
+                            onClick={() => handleMenuClick(link.name)}
+                          >
+                            {link.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
 
                 {/* Automatisation Mobile */}
                 <div>
@@ -360,10 +412,10 @@ const Header = () => {
                   href="https://simulateur.juh-ecomm.fr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-amber-400 transition-colors font-medium"
+                  className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-lime-400 transition-colors font-medium"
                   onClick={() => handleMenuClick('simulateur')}
                 >
-                  <span>Accès au Simulateur</span>
+                  <span>Simulateur</span>
                   <ExternalLink className="w-4 h-4" />
                 </a>
 
