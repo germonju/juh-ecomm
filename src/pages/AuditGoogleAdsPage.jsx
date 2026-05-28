@@ -1,4 +1,5 @@
 import React from 'react';
+import { AuditScanIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -174,6 +175,7 @@ const AuditGoogleAdsPage = () => {
 
       {/* Main container with standard page background */}
       <div className="min-h-screen bg-slate-900 pt-24 pb-20 relative overflow-hidden">
+        <AuditScanIllustration />
         {/* Background decorative elements to restore depth */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-violet-600/10 to-transparent pointer-events-none" />
         <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />

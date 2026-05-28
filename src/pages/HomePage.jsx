@@ -1,4 +1,5 @@
 import React from "react";
+import { DataNetworkIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -163,6 +164,7 @@ const HomePage = () => {
 
       <div className="pt-16 lg:pt-20">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">
+          <DataNetworkIllustration />
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMmQ3ZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItaDJjMC0xLjEtLjktMi0yLTJ6bTAtNGgyYzEuMSAwIDIgLjkgMiAyaC0ydi0yem0tMiAydjJoMnYtMmgtMnptLTIgMGgtMnYyaDJ2LTJ6bTItMnYtMmgydjJoLTJ6bTAtNGgydi0yYzAtMS4xLS45LTItMi0ydjJoMnptLTIgMnYtMmgtMnYyaDJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
 
           <div className="container mx-auto px-4 lg:px-8 relative z-10">

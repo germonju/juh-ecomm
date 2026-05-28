@@ -1,4 +1,5 @@
 import React from 'react';
+import { ServerFlowIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Server, Lock, Gauge, BarChart3, CheckCircle2, Shield, Zap, Globe, Database, LineChart, UserCheck, Activity, PieChart, ArrowRight, Laptop, Layers, Share2, Cog, Clock } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
@@ -139,6 +140,7 @@ const GtmServerSidePage = () => {
         
         {/* HERO */}
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">
+          <ServerFlowIllustration />
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM4YjNWZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJjMC0xLjEtLjktMi0yLTJ6bTAtNGgyYzEuMSAwIDIgLjkgMiAyaC0ydi0yem0tMiAydjJoMnYtMmgtMnptLTIgMGgtMnYyaDJ2LTJ6bTItMnYtMmgydjJoLTJ6bTAtNGgydi0yYzAtMS4xLS45LTItMi0ydjJoMnptLTIgMnYtMmgtMnYyaDJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
