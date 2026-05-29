@@ -27,25 +27,8 @@ export const DataNetworkIllustration = () => {
           <style>{`
             @keyframes dn2-flow{0%{stroke-dashoffset:180}100%{stroke-dashoffset:0}}
             @keyframes dn2-dot{0%,100%{opacity:.15}50%{opacity:.4}}
-            @keyframes dn2-s1{0%{transform:translateX(0)}100%{transform:translateX(-1600px)}}
-            @keyframes dn2-s2{0%{transform:translateX(-500px)}100%{transform:translateX(-2100px)}}
-            @keyframes dn2-s3{0%{transform:translateX(-1000px)}100%{transform:translateX(-2600px)}}
           `}</style>
         </defs>
-        {/* code JS dataLayer ecommerce défilant */}
-        {[
-          {y:42,  anim:'dn2-s1', dur:'20s', code:"dataLayer.push({ event: 'purchase', ecommerce: { transaction_id: 'T-1042', value: 149.90, currency: 'EUR', items: [{ item_id: 'SKU-001', item_name: 'Pack Pro', price: 149.90, quantity: 1 }] } });"},
-          {y:135, anim:'dn2-s3', dur:'26s', code:"dataLayer.push({ event: 'add_to_cart', ecommerce: { currency: 'EUR', value: 49.90, items: [{ item_id: 'SKU-002', item_name: 'Audit GTM', price: 49.90, item_category: 'Tracking' }] } });"},
-          {y:240, anim:'dn2-s2', dur:'18s', code:"dataLayer.push({ event: 'view_item', ecommerce: { currency: 'EUR', items: [{ item_id: 'SKU-003', item_name: 'GTM Server-Side', price: 299.00, item_list_name: 'Services' }] } });"},
-          {y:370, anim:'dn2-s1', dur:'22s', code:"dataLayer.push({ event: 'begin_checkout', ecommerce: { currency: 'EUR', value: 149.90, coupon: 'PROMO10', items: [{ item_id: 'SKU-001', price: 149.90 }] } });"},
-          {y:460, anim:'dn2-s3', dur:'16s', code:"dataLayer.push({ event: 'generate_lead', value: 1.0, currency: 'EUR', lead_source: 'organic', service: 'Tracking Hub' });   dataLayer.push({ event: 'page_view', page_title: document.title });"},
-          {y:545, anim:'dn2-s2', dur:'24s', code:"dataLayer.push({ event: 'refund', ecommerce: { transaction_id: 'T-1042', value: 149.90, currency: 'EUR' } });   dataLayer.push({ event: 'login', method: 'Google' });"},
-        ].map(({y,anim,dur,code},i) => (
-          <text key={i} y={y} fill="#8b5cf6" fontSize="10" fontFamily="monospace" opacity=".07"
-            style={{animation:`${anim} ${dur} linear infinite`}}>
-            {code}
-          </text>
-        ))}
         {edges.map(([a,b],i) => (
           <line key={i}
             x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
@@ -240,6 +223,9 @@ export const AnalyticsChartIllustration = () => (
         <style>{`
           @keyframes ac-line{0%{stroke-dashoffset:700}100%{stroke-dashoffset:0}}
           @keyframes ac-dot{0%,100%{opacity:.1}50%{opacity:.25}}
+          @keyframes ac-v1{0%{transform:translateY(-100%)}100%{transform:translateY(700px)}}
+          @keyframes ac-v2{0%{transform:translateY(-300px)}100%{transform:translateY(900px)}}
+          @keyframes ac-v3{0%{transform:translateY(-500px)}100%{transform:translateY(1100px)}}
         `}</style>
       </defs>
       {/* grille minimaliste — tirets légers */}
@@ -265,6 +251,19 @@ export const AnalyticsChartIllustration = () => (
       {/* axes */}
       <line x1="160" y1="120" x2="160" y2="500" stroke="#f97316" strokeWidth="1" opacity=".08" />
       <line x1="160" y1="500" x2="1060" y2="500" stroke="#f97316" strokeWidth="1" opacity=".08" />
+      {/* colonnes de code dataLayer défilant de haut en bas */}
+      {[
+        {x:260,  anim:'ac-v1', dur:'14s', lines:["dataLayer.push({","  event: 'view_item',","  ecommerce: {","    currency: 'EUR',","    items: [{","      item_id: 'SKU-001',","      item_name: 'Pack Pro',","      price: 149.90,","      quantity: 1","    }]","  }","});","","dataLayer.push({","  event: 'add_to_cart',","  ecommerce: {","    value: 49.90,","  }","});"]},
+        {x:560,  anim:'ac-v3', dur:'18s', lines:["dataLayer.push({","  event: 'purchase',","  ecommerce: {","    transaction_id:","      'T-2048',","    value: 299.00,","    currency: 'EUR',","    tax: 49.83,","    shipping: 0,","  }","});","","dataLayer.push({","  event: 'begin_checkout',","  value: 299.00,","});"]},
+        {x:860,  anim:'ac-v2', dur:'16s', lines:["dataLayer.push({","  event: 'generate_lead',","  lead_source: 'cpc',","  service: 'GA4',","  value: 1.0,","});","","dataLayer.push({","  event: 'page_view',","  page_title:","    document.title,","  page_location:","    location.href,","});"]},
+      ].map(({x,anim,dur,lines},col) => (
+        <g key={col} style={{animation:`${anim} ${dur} linear infinite`}}>
+          {lines.map((line,i) => (
+            <text key={i} x={x} y={i*16} fill="#f97316" fontSize="10"
+              fontFamily="monospace" opacity=".09">{line}</text>
+          ))}
+        </g>
+      ))}
     </svg>
   </div>
 );
