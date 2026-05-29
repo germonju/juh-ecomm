@@ -174,17 +174,12 @@ const AuditGoogleAdsPage = () => {
       </Helmet>
 
       {/* Main container with standard page background */}
-      <div className="min-h-screen bg-slate-900 pt-24 pb-20 relative overflow-hidden">
-        <AuditScanIllustration />
-        {/* Background decorative elements to restore depth */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-violet-600/10 to-transparent pointer-events-none" />
-        <div className="absolute top-[10%] left-[5%] w-64 h-64 bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
-        <div className="absolute top-[20%] right-[5%] w-96 h-96 bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
-
+      <div className="min-h-screen bg-slate-900 pt-24 pb-20">
         <section className="container mx-auto px-4 lg:px-8 relative z-10">
-          
+
           {/* Hero Section */}
-          <div className="max-w-4xl mx-auto text-center mb-20">
+          <div className="max-w-4xl mx-auto text-center mb-20 relative overflow-hidden">
+            <AuditScanIllustration />
             <Badge className="mb-4 bg-violet-500/10 text-violet-400 border-violet-500/20 px-4 py-1 text-sm rounded-full">
               Expertise Google Ads & Analytics
             </Badge>
