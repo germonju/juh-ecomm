@@ -53,6 +53,9 @@ export const RadarIllustration = () => (
           @keyframes th-scan{0%{stroke-dashoffset:1200}100%{stroke-dashoffset:0}}
           @keyframes th-pulse{0%,100%{opacity:.05}50%{opacity:.18}}
           @keyframes th-tick{0%,100%{opacity:.1}50%{opacity:.3}}
+          @keyframes th-scroll-1{0%{transform:translateX(0)}100%{transform:translateX(-1400px)}}
+          @keyframes th-scroll-2{0%{transform:translateX(-600px)}100%{transform:translateX(-2000px)}}
+          @keyframes th-scroll-3{0%{transform:translateX(-200px)}100%{transform:translateX(-1600px)}}
         `}</style>
       </defs>
       {/* grille technique pleine largeur */}
@@ -101,6 +104,20 @@ export const RadarIllustration = () => (
       {[[200,420],[320,380],[440,300],[560,260],[680,200],[800,180],[920,150],[1040,120]].map(([cx,cy],i) => (
         <circle key={i} cx={cx} cy={cy} r="3" fill="none" stroke="#22d3ee" strokeWidth="1.5"
           style={{animation:`th-tick ${2+i*0.4}s ease-in-out infinite`}} />
+      ))}
+      {/* lignes de code JS qui défilent */}
+      {[
+        {y:52,  anim:'th-scroll-1', dur:'18s', code:"dataLayer.push({ event: 'purchase', ecommerce: { value: 149.90, currency: 'EUR', items: [{ item_id: 'SKU_001' }] } });   gtag('event','conversion',{ send_to:'AW-XXXXX', value: 149.90 });   fbq('track','Purchase',{ value: 149.90, currency: 'EUR' });"},
+        {y:155, anim:'th-scroll-3', dur:'22s', code:"window._paq.push(['trackEcommerceOrder','ORD-1042',149.90]);   fetch('/collect',{ method:'POST', body: JSON.stringify({ client_id: ga_cid, events:[{name:'purchase'}] }) });"},
+        {y:210, anim:'th-scroll-2', dur:'16s', code:"gtag('set','user_properties',{ customer_type: 'returning' });   dataLayer.push({ event: 'add_to_cart', ecommerce: { currency: 'EUR', value: 49.90 } });   analytics.track('Page Viewed', { path: window.location.pathname });"},
+        {y:345, anim:'th-scroll-1', dur:'24s', code:"const gclid = new URLSearchParams(location.search).get('gclid');   sessionStorage.setItem('gclid', gclid);   gtag('event','generate_lead',{ value: 1, currency:'EUR', gclid });"},
+        {y:465, anim:'th-scroll-3', dur:'20s', code:"if(consent.analytics){ gtag('consent','update',{ analytics_storage:'granted' }); }   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());"},
+        {y:530, anim:'th-scroll-2', dur:'14s', code:"TagManager.dataLayer({ dataLayer: { event: 'page_view', page_title: document.title } });   clarity('set','user_id', userId);   hotjar.identify(userId, { plan: 'pro' });"},
+      ].map(({y,anim,dur,code},i) => (
+        <text key={i} y={y} fill="#22d3ee" fontSize="11" fontFamily="monospace" opacity=".07"
+          style={{animation:`${anim} ${dur} linear infinite`,display:'inline'}}>
+          {code}
+        </text>
       ))}
       {/* annotations techniques */}
       {[['80,420','EVENT'],['440,290','CONV.'],['800,168','PEAK'],['1040,108','MAX']].map(([pos,label],i) => {
