@@ -600,7 +600,7 @@ export const BlogIllustration = () => (
         [360,200,60,'#0891b2'],[440,290,60,'#22d3ee'],[520,170,60,'#06b6d4'],
       ].map(([x,y,w,color],i) => (
         <rect key={i} x={x} y={y} width={w} height={500-y} rx="3"
-          fill="none" stroke={color} strokeWidth="1.5" opacity=".18"
+          fill="none" stroke={color} strokeWidth="1.5" opacity=".09"
           style={{transformOrigin:`${x+w/2}px 500px`,animation:`bl-bar .8s ${i*0.15}s ease-out both`}} />
       ))}
       {/* barres — groupe droit (couleur différente) */}
