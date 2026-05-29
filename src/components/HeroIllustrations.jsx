@@ -27,8 +27,25 @@ export const DataNetworkIllustration = () => {
           <style>{`
             @keyframes dn2-flow{0%{stroke-dashoffset:180}100%{stroke-dashoffset:0}}
             @keyframes dn2-dot{0%,100%{opacity:.15}50%{opacity:.4}}
+            @keyframes dn2-s1{0%{transform:translateX(0)}100%{transform:translateX(-1600px)}}
+            @keyframes dn2-s2{0%{transform:translateX(-500px)}100%{transform:translateX(-2100px)}}
+            @keyframes dn2-s3{0%{transform:translateX(-1000px)}100%{transform:translateX(-2600px)}}
           `}</style>
         </defs>
+        {/* code JS dataLayer ecommerce défilant */}
+        {[
+          {y:42,  anim:'dn2-s1', dur:'20s', code:"dataLayer.push({ event: 'purchase', ecommerce: { transaction_id: 'T-1042', value: 149.90, currency: 'EUR', items: [{ item_id: 'SKU-001', item_name: 'Pack Pro', price: 149.90, quantity: 1 }] } });"},
+          {y:135, anim:'dn2-s3', dur:'26s', code:"dataLayer.push({ event: 'add_to_cart', ecommerce: { currency: 'EUR', value: 49.90, items: [{ item_id: 'SKU-002', item_name: 'Audit GTM', price: 49.90, item_category: 'Tracking' }] } });"},
+          {y:240, anim:'dn2-s2', dur:'18s', code:"dataLayer.push({ event: 'view_item', ecommerce: { currency: 'EUR', items: [{ item_id: 'SKU-003', item_name: 'GTM Server-Side', price: 299.00, item_list_name: 'Services' }] } });"},
+          {y:370, anim:'dn2-s1', dur:'22s', code:"dataLayer.push({ event: 'begin_checkout', ecommerce: { currency: 'EUR', value: 149.90, coupon: 'PROMO10', items: [{ item_id: 'SKU-001', price: 149.90 }] } });"},
+          {y:460, anim:'dn2-s3', dur:'16s', code:"dataLayer.push({ event: 'generate_lead', value: 1.0, currency: 'EUR', lead_source: 'organic', service: 'Tracking Hub' });   dataLayer.push({ event: 'page_view', page_title: document.title });"},
+          {y:545, anim:'dn2-s2', dur:'24s', code:"dataLayer.push({ event: 'refund', ecommerce: { transaction_id: 'T-1042', value: 149.90, currency: 'EUR' } });   dataLayer.push({ event: 'login', method: 'Google' });"},
+        ].map(({y,anim,dur,code},i) => (
+          <text key={i} y={y} fill="#8b5cf6" fontSize="10" fontFamily="monospace" opacity=".07"
+            style={{animation:`${anim} ${dur} linear infinite`}}>
+            {code}
+          </text>
+        ))}
         {edges.map(([a,b],i) => (
           <line key={i}
             x1={nodes[a][0]} y1={nodes[a][1]} x2={nodes[b][0]} y2={nodes[b][1]}
