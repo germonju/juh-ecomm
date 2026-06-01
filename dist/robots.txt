@@ -1,3 +1,10 @@
 User-agent: *
 Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /preview/
+Disallow: /internal/
+Disallow: /private/
+
 Sitemap: https://www.juh-ecomm.fr/sitemap.xml
