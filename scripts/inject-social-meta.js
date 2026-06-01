@@ -2,15 +2,16 @@
  * Post-build script: for each public route, write dist/{route}/index.html
  * with title, canonical, OG, and Twitter tags baked directly into <head>.
  *
- * Why: social crawlers (Facebook, LinkedIn, WhatsApp, Twitter/X) do not
- * execute JavaScript, so react-helmet tags are invisible to them. This
- * script pre-populates the static HTML so link previews work correctly.
+ * Why: social crawlers and Google do not execute JavaScript, so react-helmet
+ * tags are invisible to them. This script pre-populates the static HTML so
+ * link previews and indexation work correctly for all pages including blog posts.
  *
  * Run automatically after `vite build` via the build script in package.json.
  */
 
 import fs from 'fs';
 import path from 'path';
+import https from 'https';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -18,6 +19,10 @@ const distDir = path.join(__dirname, '../dist');
 const BASE_URL = 'https://www.juh-ecomm.fr';
 const OG_IMAGE = `${BASE_URL}/images/og-image.jpg`;
 const SITE_NAME = 'Juh Ecomm Data';
+
+// Supabase credentials (same as generate-sitemap.js)
+const SUPABASE_URL = 'https://altplorphoohlgjmonbd.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsdHBsb3JwaG9vaGxnam1vbmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NjgwNzAsImV4cCI6MjA4MDU0NDA3MH0.1ZbFI32wZsdSZ5EQ1vomEFLofggBC-CGWybj_n76ZhE';
 
 const routes = [
   {
@@ -103,47 +108,82 @@ const routes = [
   },
 ];
 
-function buildMetaTags(route) {
-  const url = `${BASE_URL}${route.path === '/' ? '' : route.path}`;
-  const image = route.ogImage || OG_IMAGE;
+function fetchJson(url, headers) {
+  return new Promise((resolve, reject) => {
+    https.get(url, { headers }, (res) => {
+      let data = '';
+      if (res.statusCode < 200 || res.statusCode >= 300) {
+        return reject(new Error(`HTTP ${res.statusCode}`));
+      }
+      res.on('data', chunk => { data += chunk; });
+      res.on('end', () => {
+        try { resolve(JSON.parse(data)); }
+        catch (e) { reject(new Error('Invalid JSON')); }
+      });
+    }).on('error', reject);
+  });
+}
+
+async function fetchPublishedArticles() {
+  const url = `${SUPABASE_URL}/rest/v1/articles?status=eq.published&select=slug,meta_title,title,meta_description,image_name,featured_image&order=publish_date.desc`;
+  const headers = {
+    'apikey': SUPABASE_ANON_KEY,
+    'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+  };
+  try {
+    const articles = await fetchJson(url, headers);
+    console.log(`  ✓ ${articles.length} articles récupérés depuis Supabase`);
+    return articles;
+  } catch (err) {
+    console.warn(`  ⚠️ Articles non récupérés: ${err.message}`);
+    return [];
+  }
+}
+
+function escapeAttr(str) {
+  return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 'website' }) {
+  const url = `${BASE_URL}${routePath === '/' ? '' : routePath}`;
+  const image = ogImage || OG_IMAGE;
+  const safeTitle = escapeAttr(title);
+  const safeDesc = escapeAttr(description);
+  const safeImage = escapeAttr(image);
+  const safeUrl = escapeAttr(url);
 
   return `
-    <title>${route.title}</title>
-    <meta name="description" content="${route.description}" />
-    <link rel="canonical" href="${url}" />
+    <title>${safeTitle}</title>
+    <meta name="description" content="${safeDesc}" />
+    <link rel="canonical" href="${safeUrl}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="${url}" />
-    <meta property="og:title" content="${route.title}" />
-    <meta property="og:description" content="${route.description}" />
-    <meta property="og:image" content="${image}" />
+    <meta property="og:type" content="${ogType}" />
+    <meta property="og:url" content="${safeUrl}" />
+    <meta property="og:title" content="${safeTitle}" />
+    <meta property="og:description" content="${safeDesc}" />
+    <meta property="og:image" content="${safeImage}" />
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@juh_ecomm" />
-    <meta name="twitter:url" content="${url}" />
-    <meta name="twitter:title" content="${route.title}" />
-    <meta name="twitter:description" content="${route.description}" />
-    <meta name="twitter:image" content="${image}" />`;
+    <meta name="twitter:url" content="${safeUrl}" />
+    <meta name="twitter:title" content="${safeTitle}" />
+    <meta name="twitter:description" content="${safeDesc}" />
+    <meta name="twitter:image" content="${safeImage}" />`;
 }
 
-function injectIntoHtml(html, route) {
-  const metaTags = buildMetaTags(route);
+function injectIntoHtml(html, routeData) {
+  const metaTags = buildMetaTags(routeData);
 
-  // Replace the base title with the route-specific one
   let result = html.replace(/<title>[^<]*<\/title>/, '');
-
-  // Strip any existing description/og/twitter tags from the base index.html
-  // (there usually aren't any, but be safe)
   result = result.replace(/<meta name="description"[^>]*>/gi, '');
   result = result.replace(/<meta property="og:[^>]*>/gi, '');
   result = result.replace(/<meta name="twitter:[^>]*>/gi, '');
   result = result.replace(/<link rel="canonical"[^>]*>/gi, '');
 
-  // Inject before </head>
   return result.replace('</head>', `${metaTags}\n  </head>`);
 }
 
-function run() {
+async function run() {
   const indexPath = path.join(distDir, 'index.html');
 
   if (!fs.existsSync(indexPath)) {
@@ -154,14 +194,13 @@ function run() {
   const baseHtml = fs.readFileSync(indexPath, 'utf-8');
   let count = 0;
 
+  // Static routes
   for (const route of routes) {
     const html = injectIntoHtml(baseHtml, route);
 
     if (route.path === '/') {
-      // Root — overwrite dist/index.html in place
       fs.writeFileSync(indexPath, html);
     } else {
-      // Sub-routes — create dist/{route}/index.html
       const routeDir = path.join(distDir, route.path);
       fs.mkdirSync(routeDir, { recursive: true });
       fs.writeFileSync(path.join(routeDir, 'index.html'), html);
@@ -171,7 +210,38 @@ function run() {
     console.log(`  ✓ ${route.path}`);
   }
 
-  console.log(`\n✅ Injected social meta tags into ${count} routes.`);
+  // Blog post routes — fetched from Supabase
+  console.log('\n📝 Articles de blog:');
+  const articles = await fetchPublishedArticles();
+
+  for (const article of articles) {
+    const slug = article.slug;
+    if (!slug) continue;
+
+    const title = article.meta_title || article.title || SITE_NAME;
+    const description = article.meta_description || title;
+    const ogImage = article.image_name
+      ? `${BASE_URL}/images/blog/${article.image_name}.webp`
+      : (article.featured_image || OG_IMAGE);
+
+    const routeData = {
+      path: `/blog/${slug}`,
+      title,
+      description,
+      ogImage,
+      ogType: 'article',
+    };
+
+    const html = injectIntoHtml(baseHtml, routeData);
+    const routeDir = path.join(distDir, 'blog', slug);
+    fs.mkdirSync(routeDir, { recursive: true });
+    fs.writeFileSync(path.join(routeDir, 'index.html'), html);
+
+    count++;
+    console.log(`  ✓ /blog/${slug}`);
+  }
+
+  console.log(`\n✅ Injected social meta tags into ${count} routes (${routes.length} static + ${articles.length} blog posts).`);
 }
 
 run();

@@ -1,10 +1,12 @@
 ## Pages
-- [- Blog Marketing Digital | JUH Ecomm Data` : 'Blog Marketing Digital | JUH Ecomm Data'}](/blog): Découvrez nos guides complets sur Google Ads, GA4, GTM et e-commerce. Conseils d
+- [— Blog Tracking & Ads | JUH Ecomm` : 'Blog Expert Google Ads, GA4 & GTM | JUH Ecomm Data'}](/blog): Guides complets sur Google Ads, GA4 et GTM e-commerce. Conseils d
 - [Article introuvable | Juh Ecomm Data](/blogpost): Cet article de blog n
-- [Audit Google Ads Expert | Optimisation ROI & Performance | Juh Ecomm Data](/auditgoogleads): Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen.
-- [Automatisation Marketing Hub | JUH Ecomm Data](/automatisationhub): Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance.
+- [Audit Google Ads Expert : ROI & Performance | JUH Ecomm](/auditgoogleads): Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen.
+- [Automatisation Marketing : Workflows & Make | JUH Ecomm](/automatisationhub): Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance.
 - [Consent Mode V2 & CMP - Conformité RGPD | Juh Ecomm Data](/consentmode): Mise en conformité RGPD avec Google Consent Mode V2. Audit, installation de CMP (Cookiebot, Axeptio...) et configuration GTM pour respecter la vie privée.
-- [GA4 Avancé | JUH Ecomm Data](/ga4advanced): Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables.
-- [GTM Server-Side | JUH Ecomm Data](/gtmserverside): Implémentez GTM Server-Side pour améliorer votre tracking et conformité RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données.
-- [Landing Pages Haute Conversion | JUH Ecomm Data](/landingpages): Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion.
-- [Shopify Optimisé | JUH Ecomm Data](/shopify): Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes.
+- [Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm](/home): Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d
+- [GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm](/ga4advanced): Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables.
+- [Google My Business : Visibilité Locale Expert | JUH Ecomm](/googlemybusiness): Optimisez votre fiche Google My Business pour augmenter votre visibilité locale. Attirez plus de clients et améliorez votre présence en ligne sur Google Maps.
+- [GTM Server-Side : Tracking Cookieless & RGPD | JUH Ecomm](/gtmserverside): Implémentez GTM Server-Side pour améliorer votre tracking RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données.
+- [Landing Pages Haute Conversion & A/B Testing | JUH Ecomm](/landingpages): Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion.
+- [Shopify Tracking GA4 & Google Ads Expert | JUH Ecomm Data](/shopify): Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes.
