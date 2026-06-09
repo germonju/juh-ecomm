@@ -21,6 +21,8 @@ juh-ecomm/
 │   ├── robots.txt              # Généré par scripts/generate-sitemap.js
 │   ├── llms.txt                # Généré par tools/generate-llms.js
 │   └── images/                 # Images statiques (logos clients, OG, etc.)
+├── functions/                  # Cloudflare Pages Functions (middleware edge)
+│   └── _middleware.js          # Cookie restore Addingwell (_aw_master_id, 390j)
 ├── scripts/                    # Scripts Node.js du pipeline de build
 │   ├── generate-sitemap.js     # Étape 2 du build : sitemap.xml + robots.txt
 │   ├── inject-social-meta.js   # Étape 4 du build : HTML statique SEO
