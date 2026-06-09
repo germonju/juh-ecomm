@@ -68,7 +68,6 @@ function buildSitemap(staticPages, articles) {
 
   const staticEntries = staticPages.map(p => `  <url>
     <loc>${p.loc}</loc>
-    <lastmod>${today}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`).join('\n');
