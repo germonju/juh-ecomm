@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Fichiers de référence à maintenir
+
+Ces fichiers dans `.claude/` doivent être tenus à jour automatiquement :
+
+| Fichier | Rôle | Quand mettre à jour |
+|---|---|---|
+| `.claude/PROJECT.md` | Description du site et du projet | Si l'objet, la stack ou les services changent |
+| `.claude/STRUCTURE.md` | Arborescence et architecture | Si des fichiers/dossiers sont ajoutés ou restructurés |
+| `.claude/DEVLOG.md` | Journal horodaté des actions | Automatique via hook après chaque commit |
+| `.claude/BEST_PRACTICES.md` | Améliorations : quoi, comment, pourquoi | Après chaque amélioration technique significative |
+
 ## Commands
 
 ```bash
