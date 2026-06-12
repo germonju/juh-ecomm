@@ -20,6 +20,13 @@ function getMainDomain(hostname) {
 
 export async function onRequest(context) {
   const { request, next } = context;
+  const url = new URL(request.url);
+
+  // Redirection 301 serveur non-www → www (nécessaire pour l'indexation Google)
+  if (url.hostname === 'juh-ecomm.fr') {
+    url.hostname = 'www.juh-ecomm.fr';
+    return Response.redirect(url.toString(), 301);
+  }
 
   const cookieName = '_aw_master_id';
   const cookies = parseCookies(request.headers.get('Cookie'));

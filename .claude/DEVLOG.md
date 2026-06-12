@@ -40,3 +40,6 @@
 - Un seul repo actif : **germonju/juh-ecomm**
 
 ---
+
+#### 2026-06-09 17:30 — `main`
+- 83c6e49 feat: cookie restore Addingwell via Cloudflare Pages middleware
