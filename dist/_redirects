@@ -1,5 +1,3 @@
-# Redirection non-www → www (301 permanent)
-https://juh-ecomm.fr/* https://www.juh-ecomm.fr/:splat 301
-
 # SPA fallback : toutes les routes sans fichier statique → index.html
+# Note: la redirection non-www → www est gérée dans functions/_middleware.js
 /* /index.html 200
