@@ -43,3 +43,43 @@
 
 #### 2026-06-09 17:30 — `main`
 - 83c6e49 feat: cookie restore Addingwell via Cloudflare Pages middleware
+
+---
+
+## 2026-06-12 — Session : Fix redirection SEO non-www → www
+
+### Problème identifié
+
+**142 pages non indexées** en Google Search Console avec le motif **"Autre page avec balise canonique correcte"**.
+
+Cause racine : la règle dans `public/_redirects` utilisait une URL absolue comme source :
+```
+https://juh-ecomm.fr/* https://www.juh-ecomm.fr/:splat 301
+```
+Cloudflare Pages **n'accepte pas les URLs absolues comme source** dans `_redirects` — seuls les chemins relatifs (`/path/*`) sont valides. La règle était donc ignorée silencieusement.
+
+Conséquence : Google crawlait les deux versions (www et non-www), voyait les canoniques correctes pointant vers www, et marquait les URLs non-www comme "détectées non indexées". La redirection JS dans `App.jsx` (`window.location.replace`) ne suffit pas car Google peut crawlait les deux versions avant l'exécution du JS.
+
+### Diagnostic
+
+- Vérification `curl -I http://juh-ecomm.fr/blog/` → 301 vers `https://juh-ecomm.fr/blog/` (sans www = redirection HTTP→HTTPS de Cloudflare, pas la nôtre)
+- Le middleware `functions/_middleware.js` existant gérait uniquement les cookies Addingwell — aucune logique de redirection de domaine
+
+### Action réalisée
+
+#### `5a36f31` — fix: redirection 301 non-www → www via middleware Cloudflare Pages *(main)*
+- **`functions/_middleware.js`** : ajout en tête de `onRequest` d'une détection `url.hostname === 'juh-ecomm.fr'` → `Response.redirect(url.toString(), 301)` vers www. S'exécute côté Workers avant tout rendu HTML.
+- **`public/_redirects`** : suppression de la règle invalide, remplacement par un commentaire explicatif.
+
+### Vérification
+
+```bash
+curl -I https://juh-ecomm.fr/blog/
+# HTTP/2 301 — location: https://www.juh-ecomm.fr/blog/ ✅
+```
+
+### Prochaines étapes SEO
+
+- Demander une revalidation dans Search Console sur la propriété `juh-ecomm.fr` (sans www)
+- Les pages "Autre page avec balise canonique correcte" disparaîtront progressivement au fil des re-crawls (délai : quelques semaines)
+- Les ~110 pages "Sans objet" (non crawlées) se résoudront d'elles-mêmes une fois Google stabilisé sur www

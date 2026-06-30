@@ -1,3 +1,8 @@
-# SPA fallback : toutes les routes sans fichier statique → index.html
-# Note: la redirection non-www → www est gérée dans functions/_middleware.js
-/* /index.html 200
+# Plus de fallback SPA catch-all : chaque route React est pré-rendue en
+# fichier statique par scripts/inject-social-meta.js (pages, articles, noindex).
+# Toute URL inconnue tombe donc sur dist/404.html, servi par Cloudflare Pages
+# avec un vrai code HTTP 404 (évite les soft 404 où /* renvoyait 200 + la home).
+#
+# Note: la redirection non-www → www est gérée dans functions/_middleware.js.
+# Cloudflare Pages redirige automatiquement /foo → /foo/ (308) ; canonical et
+# sitemap déclarent la version AVEC slash pour rester cohérents.

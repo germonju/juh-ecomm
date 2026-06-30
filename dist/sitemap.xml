@@ -2,867 +2,882 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.juh-ecomm.fr/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/contact</loc>
+    <loc>https://www.juh-ecomm.fr/contact/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/tracking-hub</loc>
+    <loc>https://www.juh-ecomm.fr/tracking-hub/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/gtm-server-side</loc>
+    <loc>https://www.juh-ecomm.fr/gtm-server-side/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/ga4-advanced</loc>
+    <loc>https://www.juh-ecomm.fr/ga4-advanced/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/audit-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/audit-google-ads/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/shopify</loc>
+    <loc>https://www.juh-ecomm.fr/shopify/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/google-my-business</loc>
+    <loc>https://www.juh-ecomm.fr/google-my-business/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/conversions-offline</loc>
+    <loc>https://www.juh-ecomm.fr/conversions-offline/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/consent-mode</loc>
+    <loc>https://www.juh-ecomm.fr/consent-mode/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/conciergerie</loc>
+    <loc>https://www.juh-ecomm.fr/conciergerie/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/reponse-leads</loc>
+    <loc>https://www.juh-ecomm.fr/reponse-leads/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/automatisation-hub</loc>
+    <loc>https://www.juh-ecomm.fr/automatisation-hub/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/landing-pages</loc>
+    <loc>https://www.juh-ecomm.fr/landing-pages/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog</loc>
+    <loc>https://www.juh-ecomm.fr/blog/</loc>
+    <lastmod>2026-06-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ga4-analytics-advisor-ia-capacites-limites</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ga4-analytics-advisor-ia-capacites-limites/</loc>
     <lastmod>2026-06-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/cookie-ga-ga4-format-gs2-2025</loc>
+    <loc>https://www.juh-ecomm.fr/blog/cookie-ga-ga4-format-gs2-2025/</loc>
     <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-shopify-ga4-server-side-guide-2026</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-shopify-ga4-server-side-guide-2026/</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/sgtm-ipv6-meta-capi-ip-qualite-signaux</loc>
+    <loc>https://www.juh-ecomm.fr/blog/sgtm-ipv6-meta-capi-ip-qualite-signaux/</loc>
     <lastmod>2026-06-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/sgtm-first-party-scripts-google-server-side</loc>
+    <loc>https://www.juh-ecomm.fr/blog/sgtm-first-party-scripts-google-server-side/</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/gtm-consentement-rgpd-tribunal-allemand</loc>
+    <loc>https://www.juh-ecomm.fr/blog/gtm-consentement-rgpd-tribunal-allemand/</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/trafic-direct-ga4-causes-et-solutions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/trafic-direct-ga4-causes-et-solutions/</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/import-conversions-offline-google-ads-automatisation</loc>
+    <loc>https://www.juh-ecomm.fr/blog/import-conversions-offline-google-ads-automatisation/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/sous-domaines-ga4-cross-domain-tracking-self-referrals</loc>
+    <loc>https://www.juh-ecomm.fr/blog/sous-domaines-ga4-cross-domain-tracking-self-referrals/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/safari-gclid-attribution-itp-protection</loc>
+    <loc>https://www.juh-ecomm.fr/blog/safari-gclid-attribution-itp-protection/</loc>
     <lastmod>2026-06-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/cnil-ga4-proxification-server-side-conforme</loc>
+    <loc>https://www.juh-ecomm.fr/blog/cnil-ga4-proxification-server-side-conforme/</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/privacy-sandbox-abandonnee-google-strategie-tracking</loc>
+    <loc>https://www.juh-ecomm.fr/blog/privacy-sandbox-abandonnee-google-strategie-tracking/</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/limites-techniques-ga4-plafonds-echantillonnage-cardinalite</loc>
+    <loc>https://www.juh-ecomm.fr/blog/limites-techniques-ga4-plafonds-echantillonnage-cardinalite/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ad-blockers-tracking-bypass-conversions-invisibles</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ad-blockers-tracking-bypass-conversions-invisibles/</loc>
     <lastmod>2026-05-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/trafic-ia-ga4-chatgpt-gemini-perplexity</loc>
+    <loc>https://www.juh-ecomm.fr/blog/trafic-ia-ga4-chatgpt-gemini-perplexity/</loc>
     <lastmod>2026-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/audit-tracking-analytics-ga4-2026</loc>
+    <loc>https://www.juh-ecomm.fr/blog/audit-tracking-analytics-ga4-2026/</loc>
     <lastmod>2026-05-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/google-tag-gateway-first-party-tracking</loc>
+    <loc>https://www.juh-ecomm.fr/blog/google-tag-gateway-first-party-tracking/</loc>
     <lastmod>2026-05-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/basic-advanced-consent-mode-gtm</loc>
+    <loc>https://www.juh-ecomm.fr/blog/basic-advanced-consent-mode-gtm/</loc>
     <lastmod>2026-05-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/not-set-ga4-causes-solutions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/not-set-ga4-causes-solutions/</loc>
     <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/segments-vs-audiences-ga4-differences-usages-pieges</loc>
+    <loc>https://www.juh-ecomm.fr/blog/segments-vs-audiences-ga4-differences-usages-pieges/</loc>
     <lastmod>2026-05-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/plan-de-tracking-ecommerce-template-methode</loc>
+    <loc>https://www.juh-ecomm.fr/blog/plan-de-tracking-ecommerce-template-methode/</loc>
     <lastmod>2026-05-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/attribution-last-click-mauvaises-decisions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/attribution-last-click-mauvaises-decisions/</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/shopify-checkout-extensibility-tracking</loc>
+    <loc>https://www.juh-ecomm.fr/blog/shopify-checkout-extensibility-tracking/</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/smart-bidding-signaux-conversion-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/smart-bidding-signaux-conversion-google-ads/</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tableau-de-bord-kpi-ecommerce-looker-studio</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tableau-de-bord-kpi-ecommerce-looker-studio/</loc>
     <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-mer-cac-ltv-roas-poas-guide</loc>
+    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-mer-cac-ltv-roas-poas-guide/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/meta-capi-server-side-conversions-api-guide</loc>
+    <loc>https://www.juh-ecomm.fr/blog/meta-capi-server-side-conversions-api-guide/</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-leadgen-suivi-lead-to-sale</loc>
+    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-leadgen-suivi-lead-to-sale/</loc>
     <lastmod>2026-04-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ltv-cac-ratio-ecommerce-calcul</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ltv-cac-ratio-ecommerce-calcul/</loc>
     <lastmod>2026-04-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/campagne-notoriete-pme-ecommerce-2026</loc>
+    <loc>https://www.juh-ecomm.fr/blog/campagne-notoriete-pme-ecommerce-2026/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/exclusion-audiences-listes-clients-acquisition</loc>
+    <loc>https://www.juh-ecomm.fr/blog/exclusion-audiences-listes-clients-acquisition/</loc>
     <lastmod>2026-04-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-flux-produit-gtm</loc>
+    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-flux-produit-gtm/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/acquisition-sea-ltv-tracking-crm-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/acquisition-sea-ltv-tracking-crm-ecommerce/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/landing-page-leadgen-structure-taux-conversion</loc>
+    <loc>https://www.juh-ecomm.fr/blog/landing-page-leadgen-structure-taux-conversion/</loc>
     <lastmod>2026-04-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ga4-bigquery-export-donnees-brutes-analyse</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ga4-bigquery-export-donnees-brutes-analyse/</loc>
     <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/migration-server-side-gtm-checklist</loc>
+    <loc>https://www.juh-ecomm.fr/blog/migration-server-side-gtm-checklist/</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-basic-vs-advanced-conformite-google</loc>
+    <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-basic-vs-advanced-conformite-google/</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/qualite-evenements-meta-capi-server-side</loc>
+    <loc>https://www.juh-ecomm.fr/blog/qualite-evenements-meta-capi-server-side/</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/taux-de-consentement-impact-budget-publicitaire</loc>
+    <loc>https://www.juh-ecomm.fr/blog/taux-de-consentement-impact-budget-publicitaire/</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/signaux-audit-campagnes-google-ads-urgent</loc>
+    <loc>https://www.juh-ecomm.fr/blog/signaux-audit-campagnes-google-ads-urgent/</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-artisans-services</loc>
+    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-artisans-services/</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/performance-max-algorithme-signaux-conversion-assets</loc>
+    <loc>https://www.juh-ecomm.fr/blog/performance-max-algorithme-signaux-conversion-assets/</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/google-cnil-conformite-rgpd-france-2026</loc>
+    <loc>https://www.juh-ecomm.fr/blog/google-cnil-conformite-rgpd-france-2026/</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/explorations-ga4-rapports-personnalises</loc>
+    <loc>https://www.juh-ecomm.fr/blog/explorations-ga4-rapports-personnalises/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/problemes-tracking-shopify</loc>
+    <loc>https://www.juh-ecomm.fr/blog/problemes-tracking-shopify/</loc>
     <lastmod>2026-03-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/sms-ou-email-demandes-avis-automatisees</loc>
+    <loc>https://www.juh-ecomm.fr/blog/sms-ou-email-demandes-avis-automatisees/</loc>
     <lastmod>2026-03-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/crm-google-ads-connecter-ventes-campagnes</loc>
+    <loc>https://www.juh-ecomm.fr/blog/crm-google-ads-connecter-ventes-campagnes/</loc>
     <lastmod>2026-03-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/roas-vs-roi-google-ads-quelle-metrique-utiliser</loc>
+    <loc>https://www.juh-ecomm.fr/blog/roas-vs-roi-google-ads-quelle-metrique-utiliser/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/taux-refus-cookies-impact-tracking-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/taux-refus-cookies-impact-tracking-ecommerce/</loc>
     <lastmod>2026-03-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-guide-etape-par-etape</loc>
+    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-guide-etape-par-etape/</loc>
     <lastmod>2026-03-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/gestion-budget-google-ads-petit-gros-budget</loc>
+    <loc>https://www.juh-ecomm.fr/blog/gestion-budget-google-ads-petit-gros-budget/</loc>
     <lastmod>2026-03-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-ca-ht-marge-brute-ltv-cac-poas</loc>
+    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-ca-ht-marge-brute-ltv-cac-poas/</loc>
     <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/acquisition-client-2026-emailing-retention</loc>
+    <loc>https://www.juh-ecomm.fr/blog/acquisition-client-2026-emailing-retention/</loc>
     <lastmod>2026-03-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/maximiser-valeur-leads-google-ads-roas-cible</loc>
+    <loc>https://www.juh-ecomm.fr/blog/maximiser-valeur-leads-google-ads-roas-cible/</loc>
     <lastmod>2026-03-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/make-vs-zapier-vs-n8n-outil-automatisation-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/make-vs-zapier-vs-n8n-outil-automatisation-ecommerce/</loc>
     <lastmod>2026-03-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/campagnes-notoriete-consideration-croissance-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/campagnes-notoriete-consideration-croissance-ecommerce/</loc>
     <lastmod>2026-03-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-rentabilite-ltv-roas-marge</loc>
+    <loc>https://www.juh-ecomm.fr/blog/kpi-ecommerce-rentabilite-ltv-roas-marge/</loc>
     <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/pourquoi-feed-shopping-premier-levier-optimisation</loc>
+    <loc>https://www.juh-ecomm.fr/blog/pourquoi-feed-shopping-premier-levier-optimisation/</loc>
     <lastmod>2026-02-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/addingwell-server-side-monitoring-support-conformite</loc>
+    <loc>https://www.juh-ecomm.fr/blog/addingwell-server-side-monitoring-support-conformite/</loc>
     <lastmod>2026-02-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ratio-ltv-cac-optimiser-rentabilite-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ratio-ltv-cac-optimiser-rentabilite-ecommerce/</loc>
     <lastmod>2026-02-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/enhanced-conversions-leads-tracking-campagnes-leadgen</loc>
+    <loc>https://www.juh-ecomm.fr/blog/enhanced-conversions-leads-tracking-campagnes-leadgen/</loc>
     <lastmod>2026-02-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/meta-capi-server-side-gtm-implementation</loc>
+    <loc>https://www.juh-ecomm.fr/blog/meta-capi-server-side-gtm-implementation/</loc>
     <lastmod>2026-02-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/pourquoi-digitalkeys-se-demarque-des-autres-agences</loc>
+    <loc>https://www.juh-ecomm.fr/blog/pourquoi-digitalkeys-se-demarque-des-autres-agences/</loc>
     <lastmod>2026-02-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/marge-vs-volume-croissance-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/marge-vs-volume-croissance-ecommerce/</loc>
     <lastmod>2026-02-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/fenetre-attribution-conversions-offline</loc>
+    <loc>https://www.juh-ecomm.fr/blog/fenetre-attribution-conversions-offline/</loc>
     <lastmod>2026-02-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/connecter-ga4-google-ads-optimiser-campagnes</loc>
+    <loc>https://www.juh-ecomm.fr/blog/connecter-ga4-google-ads-optimiser-campagnes/</loc>
     <lastmod>2026-02-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/addingwell-server-side-tracking-retour-experience</loc>
+    <loc>https://www.juh-ecomm.fr/blog/addingwell-server-side-tracking-retour-experience/</loc>
     <lastmod>2026-02-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/attribution-marketing-comprendre-origine-ventes</loc>
+    <loc>https://www.juh-ecomm.fr/blog/attribution-marketing-comprendre-origine-ventes/</loc>
     <lastmod>2026-02-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/addingwell-vs-concurrence-comparatif-tracking-server-side</loc>
+    <loc>https://www.juh-ecomm.fr/blog/addingwell-vs-concurrence-comparatif-tracking-server-side/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/google-ads-optimise-mauvais-leads-conversions-offline</loc>
+    <loc>https://www.juh-ecomm.fr/blog/google-ads-optimise-mauvais-leads-conversions-offline/</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-definition-cas-usage</loc>
+    <loc>https://www.juh-ecomm.fr/blog/remarketing-dynamique-google-ads-definition-cas-usage/</loc>
     <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/donnees-ga4-shopify-correspondent-pas-solutions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/donnees-ga4-shopify-correspondent-pas-solutions/</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-formulaires-valeur-leads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-formulaires-valeur-leads/</loc>
     <lastmod>2026-01-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/roas-eleve-non-rentable-campagnes-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/roas-eleve-non-rentable-campagnes-google-ads/</loc>
     <lastmod>2026-01-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ventes-croisees-google-ads-panier-moyen</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ventes-croisees-google-ads-panier-moyen/</loc>
     <lastmod>2026-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/automatiser-calcul-rentabilite-ecommerce-marge-roas-ltv</loc>
+    <loc>https://www.juh-ecomm.fr/blog/automatiser-calcul-rentabilite-ecommerce-marge-roas-ltv/</loc>
     <lastmod>2026-01-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/automatiser-pause-mots-cles-campagnes-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/automatiser-pause-mots-cles-campagnes-google-ads/</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/scripts-google-ads-automatisation-gestion-campagnes</loc>
+    <loc>https://www.juh-ecomm.fr/blog/scripts-google-ads-automatisation-gestion-campagnes/</loc>
     <lastmod>2026-01-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/datalayer-ecommerce-evenements-indispensables-rentabilite</loc>
+    <loc>https://www.juh-ecomm.fr/blog/datalayer-ecommerce-evenements-indispensables-rentabilite/</loc>
     <lastmod>2026-01-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/prix-revient-merchant-center-pilotage-roi</loc>
+    <loc>https://www.juh-ecomm.fr/blog/prix-revient-merchant-center-pilotage-roi/</loc>
     <lastmod>2026-01-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/pourquoi-suivre-acquisition-nouveaux-clients</loc>
+    <loc>https://www.juh-ecomm.fr/blog/pourquoi-suivre-acquisition-nouveaux-clients/</loc>
     <lastmod>2026-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/lead-scoring-google-ads-guide-complet</loc>
+    <loc>https://www.juh-ecomm.fr/blog/lead-scoring-google-ads-guide-complet/</loc>
     <lastmod>2026-01-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/calculer-marge-brute-marge-nette-ecommerce-roas</loc>
+    <loc>https://www.juh-ecomm.fr/blog/calculer-marge-brute-marge-nette-ecommerce-roas/</loc>
     <lastmod>2026-01-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-cross-domain-ga4-plusieurs-sites</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-cross-domain-ga4-plusieurs-sites/</loc>
     <lastmod>2025-12-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ventes-croisees-google-ads-configuration-guide</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ventes-croisees-google-ads-configuration-guide/</loc>
     <lastmod>2025-12-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/conversions-hors-ligne-google-ads-leadgen</loc>
+    <loc>https://www.juh-ecomm.fr/blog/conversions-hors-ligne-google-ads-leadgen/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/datalayer-site-web-tracking-gtm</loc>
+    <loc>https://www.juh-ecomm.fr/blog/datalayer-site-web-tracking-gtm/</loc>
     <lastmod>2025-12-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ga4-e-commerce-rapports-rentabilite</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ga4-e-commerce-rapports-rentabilite/</loc>
     <lastmod>2025-12-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/digitalkeys-agence-performance-marketing-digital</loc>
+    <loc>https://www.juh-ecomm.fr/blog/digitalkeys-agence-performance-marketing-digital/</loc>
     <lastmod>2025-12-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-nouveaux-clients-google-ads-ltv</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-nouveaux-clients-google-ads-ltv/</loc>
     <lastmod>2025-12-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/addingwell-solution-tracking-ecommerce-shopify-partenariat</loc>
+    <loc>https://www.juh-ecomm.fr/blog/addingwell-solution-tracking-ecommerce-shopify-partenariat/</loc>
     <lastmod>2025-12-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ltv-cpa-roas-strategie-acquisition-rentable</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ltv-cpa-roas-strategie-acquisition-rentable/</loc>
     <lastmod>2025-12-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/prix-revient-flux-merchant-center-optimiser-campagnes-shopping</loc>
+    <loc>https://www.juh-ecomm.fr/blog/prix-revient-flux-merchant-center-optimiser-campagnes-shopping/</loc>
     <lastmod>2025-12-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/customer-match-google-ads-automatisation</loc>
+    <loc>https://www.juh-ecomm.fr/blog/customer-match-google-ads-automatisation/</loc>
     <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-marge-ga4-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-marge-ga4-google-ads/</loc>
     <lastmod>2025-12-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/comparatif-cmp-2025-cookiebot-axeptio-didomi</loc>
+    <loc>https://www.juh-ecomm.fr/blog/comparatif-cmp-2025-cookiebot-axeptio-didomi/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/automatisation-marketing-tpe-comment-commencer</loc>
+    <loc>https://www.juh-ecomm.fr/blog/automatisation-marketing-tpe-comment-commencer/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/evenements-ga4-boutique-en-ligne-guide</loc>
+    <loc>https://www.juh-ecomm.fr/blog/evenements-ga4-boutique-en-ligne-guide/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/plan-taggage-ecommerce-guide-complet</loc>
+    <loc>https://www.juh-ecomm.fr/blog/plan-taggage-ecommerce-guide-complet/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/shopify-checkout-extensibility-tracking-conversions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/shopify-checkout-extensibility-tracking-conversions/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/safari-firefox-tracking-server-side-solution</loc>
+    <loc>https://www.juh-ecomm.fr/blog/safari-firefox-tracking-server-side-solution/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/gtm-server-side-contourne-ad-blockers-legalement</loc>
+    <loc>https://www.juh-ecomm.fr/blog/gtm-server-side-contourne-ad-blockers-legalement/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/shopify-gtm-server-side-tracking</loc>
+    <loc>https://www.juh-ecomm.fr/blog/shopify-gtm-server-side-tracking/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/audiences-ga4-segments-remarketing-ecommerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/audiences-ga4-segments-remarketing-ecommerce/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/itp-cookies-tiers-restrictions-navigateurs-2025</loc>
+    <loc>https://www.juh-ecomm.fr/blog/itp-cookies-tiers-restrictions-navigateurs-2025/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/verifier-tracking-ecommerce-fonctionne</loc>
+    <loc>https://www.juh-ecomm.fr/blog/verifier-tracking-ecommerce-fonctionne/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/automatisations-google-my-business-visibilite-locale</loc>
+    <loc>https://www.juh-ecomm.fr/blog/automatisations-google-my-business-visibilite-locale/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/import-conversions-offline-manuel-vs-automatise</loc>
+    <loc>https://www.juh-ecomm.fr/blog/import-conversions-offline-manuel-vs-automatise/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/enhanced-conversions-google-ads-guide-complet</loc>
+    <loc>https://www.juh-ecomm.fr/blog/enhanced-conversions-google-ads-guide-complet/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/rgpd-tracking-ecommerce-ce-que-vous-avez-droit-faire</loc>
+    <loc>https://www.juh-ecomm.fr/blog/rgpd-tracking-ecommerce-ce-que-vous-avez-droit-faire/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/consent-mode-conserver-donnees-refus-cookies</loc>
+    <loc>https://www.juh-ecomm.fr/blog/consent-mode-conserver-donnees-refus-cookies/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/compte-google-ads-gaspille-argent-signes</loc>
+    <loc>https://www.juh-ecomm.fr/blog/compte-google-ads-gaspille-argent-signes/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/gtm-server-side-guide-complet-debutant</loc>
+    <loc>https://www.juh-ecomm.fr/blog/gtm-server-side-guide-complet-debutant/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/gclid-google-ads-capture-conversion-offline</loc>
+    <loc>https://www.juh-ecomm.fr/blog/gclid-google-ads-capture-conversion-offline/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/collecter-avis-google-automatiser-sans-spam</loc>
+    <loc>https://www.juh-ecomm.fr/blog/collecter-avis-google-automatiser-sans-spam/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/erreurs-tracking-google-ads-faussent-donnees</loc>
+    <loc>https://www.juh-ecomm.fr/blog/erreurs-tracking-google-ads-faussent-donnees/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/rapports-ga4-indispensables-e-commerce</loc>
+    <loc>https://www.juh-ecomm.fr/blog/rapports-ga4-indispensables-e-commerce/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/smart-bidding-google-ads-comment-ca-marche-donnees-conversion</loc>
+    <loc>https://www.juh-ecomm.fr/blog/smart-bidding-google-ads-comment-ca-marche-donnees-conversion/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-first-party-vs-third-party-2025</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-first-party-vs-third-party-2025/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/mesurer-vrai-roi-campagnes-google-ads</loc>
+    <loc>https://www.juh-ecomm.fr/blog/mesurer-vrai-roi-campagnes-google-ads/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/reponse-automatique-leads-pourquoi-chaque-minute-compte</loc>
+    <loc>https://www.juh-ecomm.fr/blog/reponse-automatique-leads-pourquoi-chaque-minute-compte/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/web-pixels-shopify-nouveau-tracking-2025</loc>
+    <loc>https://www.juh-ecomm.fr/blog/web-pixels-shopify-nouveau-tracking-2025/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-ecommerce-perd-30-pourcent-conversions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-ecommerce-perd-30-pourcent-conversions/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/comment-choisir-cmp-consent-management-platform</loc>
+    <loc>https://www.juh-ecomm.fr/blog/comment-choisir-cmp-consent-management-platform/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ga4-ecommerce-guide-configuration-complete</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ga4-ecommerce-guide-configuration-complete/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/tracking-shopify-complique-solutions</loc>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-shopify-complique-solutions/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-google-conformite-rgpd-guide</loc>
+    <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-google-conformite-rgpd-guide/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/audit-google-ads-checklist-15-points-essentiels</loc>
+    <loc>https://www.juh-ecomm.fr/blog/audit-google-ads-checklist-15-points-essentiels/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/datalayer-shopify-guide-complet-tracking</loc>
+    <loc>https://www.juh-ecomm.fr/blog/datalayer-shopify-guide-complet-tracking/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/ga4-vs-universal-analytics-differences-business</loc>
+    <loc>https://www.juh-ecomm.fr/blog/ga4-vs-universal-analytics-differences-business/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/server-side-vs-client-side-tracking-difference</loc>
+    <loc>https://www.juh-ecomm.fr/blog/server-side-vs-client-side-tracking-difference/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-google-ads-guide-leadgen</loc>
+    <loc>https://www.juh-ecomm.fr/blog/conversions-offline-google-ads-guide-leadgen/</loc>
     <lastmod>2025-12-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

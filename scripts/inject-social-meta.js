@@ -94,10 +94,10 @@ const CONVERSIONS_FAQ_ITEMS = [
 
 function buildBreadcrumb(routePath, pageName) {
   const items = [
-    { '@type': 'ListItem', position: 1, name: 'Accueil', item: BASE_URL },
+    { '@type': 'ListItem', position: 1, name: 'Accueil', item: canonicalUrl('/') },
   ];
   if (routePath !== '/') {
-    items.push({ '@type': 'ListItem', position: 2, name: pageName, item: `${BASE_URL}${routePath}` });
+    items.push({ '@type': 'ListItem', position: 2, name: pageName, item: canonicalUrl(routePath) });
   }
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }
@@ -107,9 +107,9 @@ function buildBreadcrumbArticle(slug, title) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: BASE_URL },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
-      { '@type': 'ListItem', position: 3, name: title, item: `${BASE_URL}/blog/${slug}` },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: canonicalUrl('/') },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: canonicalUrl('/blog') },
+      { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl(`/blog/${slug}`) },
     ],
   };
 }
@@ -126,27 +126,30 @@ function buildFaqSchema(items) {
   };
 }
 
-function buildArticleSchema({ title, description, image, publishDate, slug }) {
+function buildArticleSchema({ title, description, image, publishDate, modifiedDate, slug }) {
+  const articleUrl = canonicalUrl(`/blog/${slug}`);
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description: description,
     image: image,
+    inLanguage: 'fr-FR',
     datePublished: publishDate || undefined,
+    dateModified: modifiedDate || publishDate || undefined,
     author: {
       '@type': 'Person',
       name: AUTHOR_NAME,
-      url: BASE_URL,
+      url: canonicalUrl('/'),
     },
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
-      url: BASE_URL,
+      url: canonicalUrl('/'),
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo.png` },
     },
-    url: `${BASE_URL}/blog/${slug}`,
-    mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${slug}` },
+    url: articleUrl,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
   };
 }
 
@@ -168,6 +171,7 @@ const routes = [
     title: `Expert Tracking Server-Side & Automatisation E-commerce | ${SITE_NAME}`,
     description: "Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience.",
     breadcrumbName: 'Accueil',
+    h1: 'Expert Tracking Server-Side & Automatisation E-commerce',
   },
   {
     path: '/contact',
@@ -258,6 +262,18 @@ const routes = [
   },
 ];
 
+// Pages exclues de l'indexation. On les pré-rend quand même (avec un
+// <meta robots noindex> statique) pour deux raisons :
+//   1. garantir le noindex dès le crawl, sans dépendre du rendu JS ;
+//   2. donner un fichier statique à CHAQUE route React, ce qui permet de
+//      retirer le fallback SPA et de servir une vraie 404 (cf. _redirects).
+const NOINDEX_ROUTES = [
+  { path: '/api-docs',                  title: `Documentation API | ${SITE_NAME}`,            breadcrumbName: 'API' },
+  { path: '/seo-audit',                 title: `Audit SEO | ${SITE_NAME}`,                    breadcrumbName: 'Audit SEO' },
+  { path: '/mentions-legales',          title: `Mentions légales | ${SITE_NAME}`,             breadcrumbName: 'Mentions légales' },
+  { path: '/politique-confidentialite', title: `Politique de confidentialité | ${SITE_NAME}`, breadcrumbName: 'Politique de confidentialité' },
+];
+
 // ---------------------------------------------------------------------------
 // Supabase fetch
 // ---------------------------------------------------------------------------
@@ -279,7 +295,7 @@ function fetchJson(url, headers) {
 }
 
 async function fetchPublishedArticles() {
-  const url = `${SUPABASE_URL}/rest/v1/articles?status=eq.published&select=slug,meta_title,title,meta_description,image_name,featured_image,publish_date&order=publish_date.desc`;
+  const url = `${SUPABASE_URL}/rest/v1/articles?status=eq.published&select=slug,meta_title,title,meta_description,image_name,featured_image,publish_date,updated_at&order=publish_date.desc`;
   const headers = {
     'apikey': SUPABASE_ANON_KEY,
     'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
@@ -302,17 +318,29 @@ function escapeAttr(str) {
   return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 'website' }) {
-  const url = `${BASE_URL}${routePath === '/' ? '' : routePath}`;
+// Cloudflare Pages sert chaque route avec un slash final (/foo/) et redirige
+// /foo → /foo/ en 308. Canonical, og:url et les URLs JSON-LD doivent donc
+// déclarer la version AVEC slash, sinon ils pointent vers une redirection.
+function canonicalUrl(routePath) {
+  if (routePath === '/') return `${BASE_URL}/`;
+  const clean = routePath.endsWith('/') ? routePath : `${routePath}/`;
+  return `${BASE_URL}${clean}`;
+}
+
+function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 'website', noindex = false }) {
+  const url = canonicalUrl(routePath);
   const image = ogImage || OG_IMAGE;
   const safeTitle = escapeAttr(title);
   const safeDesc = escapeAttr(description);
   const safeImage = escapeAttr(image);
   const safeUrl = escapeAttr(url);
+  const robotsTag = noindex
+    ? '\n    <meta name="robots" content="noindex,follow" />'
+    : '';
 
   return `
     <title>${safeTitle}</title>
-    <meta name="description" content="${safeDesc}" />
+    <meta name="description" content="${safeDesc}" />${robotsTag}
     <link rel="canonical" href="${safeUrl}" />
     <meta property="og:site_name" content="${SITE_NAME}" />
     <meta property="og:type" content="${ogType}" />
@@ -329,17 +357,38 @@ function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 
     <meta name="twitter:image" content="${safeImage}" />`;
 }
 
-function injectIntoHtml(html, routeData, schemas = []) {
+function escapeHtml(str) {
+  return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
+// Corps minimal pré-rendu injecté dans #root : H1 + chapô visibles dès le
+// crawl (avant exécution du JS). React remplace ce contenu au montage.
+// Évite que Google voie une page vide (risque thin-content / soft 404).
+function buildPrerenderBody({ heading, lead }) {
+  if (!heading) return '';
+  const h1 = `<h1>${escapeHtml(heading)}</h1>`;
+  const p = lead ? `<p>${escapeHtml(lead)}</p>` : '';
+  return `<div data-prerender="seo">${h1}${p}</div>`;
+}
+
+function injectIntoHtml(html, routeData, schemas = [], bodyHtml = '') {
   const metaTags = buildMetaTags(routeData);
   const jsonLdTags = schemas.length > 0 ? '\n' + buildJsonLdTags(schemas) : '';
 
   let result = html.replace(/<title>[^<]*<\/title>/, '');
   result = result.replace(/<meta name="description"[^>]*>/gi, '');
+  result = result.replace(/<meta name="robots"[^>]*>/gi, '');
   result = result.replace(/<meta property="og:[^>]*>/gi, '');
   result = result.replace(/<meta name="twitter:[^>]*>/gi, '');
   result = result.replace(/<link rel="canonical"[^>]*>/gi, '');
 
-  return result.replace('</head>', `${metaTags}${jsonLdTags}\n  </head>`);
+  result = result.replace('</head>', `${metaTags}${jsonLdTags}\n  </head>`);
+
+  if (bodyHtml) {
+    result = result.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
+  }
+
+  return result;
 }
 
 // ---------------------------------------------------------------------------
@@ -364,7 +413,8 @@ async function run() {
       schemas.push(buildFaqSchema(route.faqItems));
     }
 
-    const html = injectIntoHtml(baseHtml, route, schemas);
+    const bodyHtml = buildPrerenderBody({ heading: route.h1 || route.breadcrumbName, lead: route.description });
+    const html = injectIntoHtml(baseHtml, route, schemas, bodyHtml);
 
     if (route.path === '/') {
       fs.writeFileSync(indexPath, html);
@@ -376,6 +426,40 @@ async function run() {
 
     count++;
     console.log(`  ✓ ${route.path}`);
+  }
+
+  console.log('\n🚫 Pages noindex:');
+  for (const route of NOINDEX_ROUTES) {
+    const routeData = { ...route, description: route.title, noindex: true };
+    const bodyHtml = buildPrerenderBody({ heading: route.breadcrumbName });
+    const html = injectIntoHtml(baseHtml, routeData, [], bodyHtml);
+    const routeDir = path.join(distDir, route.path);
+    fs.mkdirSync(routeDir, { recursive: true });
+    fs.writeFileSync(path.join(routeDir, 'index.html'), html);
+    count++;
+    console.log(`  ✓ ${route.path} (noindex)`);
+  }
+
+  // Page 404 statique : servie par Cloudflare Pages avec un vrai HTTP 404
+  // pour toute route inconnue (le catch-all SPA a été retiré de _redirects).
+  const notFoundHtml = injectIntoHtml(
+    baseHtml,
+    { path: '/404', title: `Page introuvable (404) | ${SITE_NAME}`, description: "La page demandée n'existe pas ou a été déplacée.", noindex: true },
+    [],
+    buildPrerenderBody({ heading: 'Page introuvable', lead: "La page demandée n'existe pas ou a été déplacée." }),
+  );
+  fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml);
+  console.log('  ✓ /404.html (HTTP 404)');
+
+  // Purge des articles pré-rendus orphelins (dépubliés/supprimés) : on
+  // reconstruit dist/blog uniquement à partir des articles publiés.
+  const blogDir = path.join(distDir, 'blog');
+  if (fs.existsSync(blogDir)) {
+    for (const entry of fs.readdirSync(blogDir, { withFileTypes: true })) {
+      if (entry.isDirectory()) {
+        fs.rmSync(path.join(blogDir, entry.name), { recursive: true, force: true });
+      }
+    }
   }
 
   console.log('\n📝 Articles de blog:');
@@ -393,6 +477,9 @@ async function run() {
     const publishDate = article.publish_date
       ? new Date(article.publish_date).toISOString().split('T')[0]
       : undefined;
+    const modifiedDate = article.updated_at
+      ? new Date(article.updated_at).toISOString().split('T')[0]
+      : undefined;
 
     const routeData = {
       path: `/blog/${slug}`,
@@ -403,11 +490,12 @@ async function run() {
     };
 
     const schemas = [
-      buildArticleSchema({ title, description, image: ogImage, publishDate, slug }),
+      buildArticleSchema({ title, description, image: ogImage, publishDate, modifiedDate, slug }),
       buildBreadcrumbArticle(slug, title),
     ];
 
-    const html = injectIntoHtml(baseHtml, routeData, schemas);
+    const bodyHtml = buildPrerenderBody({ heading: article.title || title, lead: description });
+    const html = injectIntoHtml(baseHtml, routeData, schemas, bodyHtml);
     const routeDir = path.join(distDir, 'blog', slug);
     fs.mkdirSync(routeDir, { recursive: true });
     fs.writeFileSync(path.join(routeDir, 'index.html'), html);
@@ -416,7 +504,7 @@ async function run() {
     console.log(`  ✓ /blog/${slug}`);
   }
 
-  console.log(`\n✅ ${count} routes traitées (${routes.length} statiques + ${articles.length} articles blog).`);
+  console.log(`\n✅ ${count} routes traitées (${routes.length} statiques + ${NOINDEX_ROUTES.length} noindex + ${articles.length} articles blog + 404).`);
 }
 
 run();

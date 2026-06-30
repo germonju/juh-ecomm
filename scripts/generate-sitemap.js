@@ -63,11 +63,19 @@ async function fetchPublishedArticles() {
   }
 }
 
+// Cloudflare Pages sert les routes avec un slash final (/foo/) et redirige
+// /foo → /foo/ en 308. Le sitemap doit donc déclarer la version AVEC slash
+// pour éviter une redirection sur chaque URL et un conflit de canonical.
+function withSlash(url) {
+  return url.endsWith('/') ? url : `${url}/`;
+}
+
 function buildSitemap(staticPages, articles) {
   const today = new Date().toISOString().split('T')[0];
 
   const staticEntries = staticPages.map(p => `  <url>
-    <loc>${p.loc}</loc>
+    <loc>${withSlash(p.loc)}</loc>
+    <lastmod>${today}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`).join('\n');
@@ -75,7 +83,7 @@ function buildSitemap(staticPages, articles) {
   const articleEntries = articles.map(a => {
     const lastmod = (a.updated_at || a.publish_date || today).split('T')[0];
     return `  <url>
-    <loc>${BASE_URL}/blog/${a.slug}</loc>
+    <loc>${withSlash(`${BASE_URL}/blog/${a.slug}`)}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -68,13 +68,21 @@
 
 ---
 
-## Redirect non-www → www
+## Redirect non-www → www (Cloudflare Pages)
 
-**Quoi :** Redirection 301 `juh-ecomm.fr` → `www.juh-ecomm.fr` gérée par `public/_redirects`.
+**Quoi :** Redirection 301 `juh-ecomm.fr` → `www.juh-ecomm.fr` gérée par `functions/_middleware.js` (Cloudflare Workers).
 
-**Comment :** Ligne dans `_redirects` : `https://juh-ecomm.fr/* https://www.juh-ecomm.fr/:splat 301`
+**Comment :**
+```js
+// Dans onRequest(), avant await next()
+const url = new URL(request.url);
+if (url.hostname === 'juh-ecomm.fr') {
+  url.hostname = 'www.juh-ecomm.fr';
+  return Response.redirect(url.toString(), 301);
+}
+```
 
-**Pourquoi :** La redirection côté serveur (Cloudflare, 301 permanent) est plus fiable et rapide que la redirection client-side dans `App.jsx` (via `window.location.replace`). Google préfère les 301 pour consolider le PageRank sur l'URL canonique www.
+**Pourquoi :** Cloudflare Pages `_redirects` **n'accepte pas les URLs absolues comme source** — une règle `https://juh-ecomm.fr/* ...` est silencieusement ignorée. Pour rediriger entre hostnames, il faut passer par un middleware Pages Function (Workers). La redirection client-side JS (`window.location.replace`) ne suffit pas pour Google qui peut crawler les deux versions avant l'exécution du JS — résultat : motif "Autre page avec balise canonique correcte" en Search Console.
 
 ---
 
@@ -85,3 +93,18 @@
 **Comment :** MutationObserver qui surveille les changements DOM et insère ` ` (espace fine insécable) devant les ponctuations doubles.
 
 **Pourquoi :** Règle typographique française obligatoire. Les outils d'édition (Supabase rich text, etc.) ne l'appliquent pas automatiquement.
+
+---
+
+## Indexation : trailing slash, vraie 404 et corps pré-rendu (Cloudflare Pages + SPA)
+
+**Quoi :** Trois correctifs structurels d'indexation appliqués à `scripts/inject-social-meta.js`, `scripts/generate-sitemap.js` et `public/_redirects`.
+
+**Comment :**
+1. **Trailing slash** — canonical, `og:url`, URLs JSON-LD et `<loc>` du sitemap se terminent désormais par `/` (helpers `canonicalUrl()` / `withSlash()`). Cloudflare Pages sert `/foo/index.html` à `/foo/` et redirige `/foo` → `/foo/` en 308 ; déclarer la version sans slash faisait pointer chaque canonical et chaque URL du sitemap vers une redirection.
+2. **Vraie 404** — retrait du fallback SPA `/* /index.html 200` dans `_redirects` + génération de `dist/404.html`. Toutes les routes React (y compris les 4 pages noindex) sont désormais pré-rendues en fichier statique, donc seules les URLs réellement inconnues tombent sur la 404 (HTTP 404 natif Cloudflare Pages). Avant, toute URL erronée renvoyait 200 + la home = soft 404.
+3. **Corps minimal pré-rendu** — `buildPrerenderBody()` injecte `<h1>` + chapô dans `<div id="root">` (vide auparavant). React utilise `createRoot` (pas `hydrateRoot`) → le contenu est remplacé au montage, aucun mismatch d'hydratation. Évite que Google voie une page vide au premier crawl (risque thin-content / soft 404 sur les 130+ articles).
+
+Bonus : pages noindex pré-rendues avec `<meta robots noindex>` statique, purge des articles orphelins dans `dist/blog/`, `dateModified` + `inLanguage` ajoutés au JSON-LD `Article`.
+
+**Pourquoi :** La home s'indexait mais pas les pages internes ni les articles. Cause : canonical/sitemap pointaient vers des 308, soft 404 généralisé, et `#root` vide rendu uniquement côté JS. Ces trois défauts se combinaient pour bloquer/retarder l'indexation. Voir [[project_seo_redirect]].
