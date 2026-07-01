@@ -1,0 +1,16 @@
+# Cloudflare Pages — en-têtes HTTP personnalisés.
+
+# Assets buildés par Vite : nom de fichier avec hash (immuable). On les met
+# en cache long terme côté navigateur ; le hash change à chaque build donc
+# l'invalidation est automatique. Par défaut Cloudflare Pages sert max-age=0.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images : cache moyen terme (mises à jour ponctuelles).
+/images/*
+  Cache-Control: public, max-age=2592000
+
+# Sécurité (impact SEO indirect — qualité/confiance).
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Frame-Options: SAMEORIGIN

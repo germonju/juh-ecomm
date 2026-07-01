@@ -153,6 +153,30 @@ function buildArticleSchema({ title, description, image, publishDate, modifiedDa
   };
 }
 
+// Schema Organization (home uniquement) : association marque ↔ site, logo
+// dans les SERP, knowledge graph. Renforce l'E-E-A-T.
+const LINKEDIN_URL = 'https://www.linkedin.com/in/julien-germon-27630b141/';
+
+function buildOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: canonicalUrl('/'),
+    logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo.png` },
+    image: OG_IMAGE,
+    description: "Expert en tracking server-side, GA4, Google Ads et automatisation e-commerce.",
+    sameAs: [LINKEDIN_URL],
+    founder: { '@type': 'Person', name: 'Julien Germon', url: LINKEDIN_URL },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      url: canonicalUrl('/contact'),
+      availableLanguage: ['fr'],
+    },
+  };
+}
+
 function buildJsonLdTags(schemas) {
   return schemas
     .map(s => `  <script type="application/ld+json">${JSON.stringify(s)}</script>`)
@@ -261,6 +285,25 @@ const routes = [
     breadcrumbName: 'Blog',
   },
 ];
+
+// H1 réels des composants React, repris à l'identique pour le corps
+// pré-rendu (cohérence entre la vague pré-rendu et la vague rendu JS).
+const H1_BY_PATH = {
+  '/contact': 'Parlons de votre projet tracking',
+  '/audit-google-ads': 'Optimisez vos campagnes avec un Audit Google Ads complet',
+  '/gtm-server-side': 'Google Tag Manager Server-Side',
+  '/ga4-advanced': 'GA4 Avancé',
+  '/shopify': 'Tracking Shopify & E-commerce',
+  '/google-my-business': 'Google My Business automatisé',
+  '/conversions-offline': 'Conversions Offline Google Ads',
+  '/conciergerie': 'Service pour conciergerie : automatisation Airbnb & Booking',
+  '/reponse-leads': 'Réponse Leads',
+  '/automatisation-hub': 'Automatisation Hub',
+  '/tracking-hub': 'Tracking Hub',
+  '/consent-mode': 'Consent Mode V2, CMP et mise en conformité RGPD',
+  '/landing-pages': 'Landing Pages Haute Conversion pour Vos Campagnes Publicitaires',
+  '/blog': 'Le Blog Expert Data',
+};
 
 // Pages exclues de l'indexation. On les pré-rend quand même (avec un
 // <meta robots noindex> statique) pour deux raisons :
@@ -409,11 +452,15 @@ async function run() {
   console.log('📄 Pages statiques:');
   for (const route of routes) {
     const schemas = [buildBreadcrumb(route.path, route.breadcrumbName)];
+    if (route.path === '/') {
+      schemas.push(buildOrganizationSchema());
+    }
     if (route.faqItems) {
       schemas.push(buildFaqSchema(route.faqItems));
     }
 
-    const bodyHtml = buildPrerenderBody({ heading: route.h1 || route.breadcrumbName, lead: route.description });
+    const heading = route.h1 || H1_BY_PATH[route.path] || route.breadcrumbName;
+    const bodyHtml = buildPrerenderBody({ heading, lead: route.description });
     const html = injectIntoHtml(baseHtml, route, schemas, bodyHtml);
 
     if (route.path === '/') {
