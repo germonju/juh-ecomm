@@ -249,6 +249,12 @@ const routes = [
     ogImage: `${BASE_URL}/images/conciergerie-og.jpg`,
   },
   {
+    path: '/back-office-conciergerie',
+    title: `Back Office Conciergerie : Gestion Automatisée | JUH Ecomm Data`,
+    description: "Back office sur mesure pour conciergeries : fiches contact automatiques, statistiques temps réel, facturation automatisée, analyse d'annonces et retouche photo.",
+    breadcrumbName: 'Back Office Conciergerie',
+  },
+  {
     path: '/reponse-leads',
     title: `Réponse Leads - Automatisation Prospection | ${SITE_NAME}`,
     description: "Automatisez la gestion de vos leads. Réponses instantanées, qualification automatique et suivi personnalisé pour maximiser votre taux de conversion.",
@@ -297,6 +303,7 @@ const H1_BY_PATH = {
   '/google-my-business': 'Google My Business automatisé',
   '/conversions-offline': 'Conversions Offline Google Ads',
   '/conciergerie': 'Service pour conciergerie : automatisation Airbnb & Booking',
+  '/back-office-conciergerie': 'Back office sur mesure pour conciergeries',
   '/reponse-leads': 'Réponse Leads',
   '/automatisation-hub': 'Automatisation Hub',
   '/tracking-hub': 'Tracking Hub',

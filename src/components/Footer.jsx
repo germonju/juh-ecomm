@@ -131,6 +131,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/back-office-conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  Back office conciergerie
+                </Link>
+              </li>
+              <li>
                 <a 
                   href="https://simulateur.juh-ecomm.fr"
                   target="_blank"

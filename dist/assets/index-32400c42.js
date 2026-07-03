@@ -1,1 +1,0 @@
-import{r as o,V as n,d as s}from"./index-86cb6e78.js";var u=s["useId".toString()]||(()=>{}),c=0;function x(t){const[e,r]=o.useState(u());return n(()=>{t||r(a=>a??String(c++))},[t]),t||(e?`radix-${e}`:"")}var i=o.createContext(void 0);function d(t){const e=o.useContext(i);return t||e||"ltr"}export{d as a,x as u};

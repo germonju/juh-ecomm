@@ -351,6 +351,41 @@ const ConciergeriePage = () => {
         </div>
       </section>
 
+      {/* Cross-sell Back Office */}
+      <section className="py-20 px-4 bg-slate-800/30">
+        <div className="container mx-auto">
+          <div className="bg-gradient-to-r from-cyan-900/20 to-violet-900/20 rounded-2xl p-8 lg:p-12 border border-cyan-500/20 relative overflow-hidden">
+            <div className="relative z-10 flex flex-col lg:flex-row items-center gap-10">
+              <div className="flex-1">
+                <div className="inline-block px-3 py-1 mb-4 text-sm font-medium rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+                  Nouveau
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">Allez plus loin avec le back office sur mesure</h3>
+                <p className="text-slate-300 mb-6">
+                  La messagerie automatisée gère vos voyageurs. Le back office automatise le reste : fiches contact
+                  dans votre téléphone, statistiques en temps réel par propriétaire, rapports automatiques et
+                  facturation entièrement automatisée.
+                </p>
+                <ul className="space-y-2 mb-8">
+                  <li className="flex items-center text-slate-400 text-sm">
+                    <Check className="w-4 h-4 text-cyan-400 mr-2" /> Fiches contact voyageurs créées automatiquement
+                  </li>
+                  <li className="flex items-center text-slate-400 text-sm">
+                    <Check className="w-4 h-4 text-cyan-400 mr-2" /> Statistiques, rapports propriétaires et facturation automatisés
+                  </li>
+                </ul>
+                <Button asChild variant="outline" className="border-cyan-500 text-cyan-400 hover:bg-cyan-950">
+                  <Link to="/back-office-conciergerie">Découvrir le back office conciergerie</Link>
+                </Button>
+              </div>
+              <div className="hidden lg:block">
+                <TrendingUp className="w-40 h-40 text-slate-700/50" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Cross-sell GMB */}
       <section className="py-20 px-4">
         <div className="container mx-auto">

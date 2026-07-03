@@ -83,3 +83,6 @@ curl -I https://juh-ecomm.fr/blog/
 - Demander une revalidation dans Search Console sur la propriété `juh-ecomm.fr` (sans www)
 - Les pages "Autre page avec balise canonique correcte" disparaîtront progressivement au fil des re-crawls (délai : quelques semaines)
 - Les ~110 pages "Sans objet" (non crawlées) se résoudront d'elles-mêmes une fois Google stabilisé sur www
+
+#### 2026-07-01 11:23 — `main`
+- 7a2e9cf perf(seo): cache assets immuable, schema Organization, HSTS, H1 synchronisés

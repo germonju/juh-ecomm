@@ -22,6 +22,7 @@ const ShopifyPage             = lazy(() => import('@/pages/ShopifyPage'));
 const GoogleMyBusinessPage    = lazy(() => import('@/pages/GoogleMyBusinessPage'));
 const ConversionsOfflinePage  = lazy(() => import('@/pages/ConversionsOfflinePage'));
 const ConciergeriePage        = lazy(() => import('@/pages/ConciergeriePage'));
+const BackOfficeConciergeriePage = lazy(() => import('@/pages/BackOfficeConciergeriePage'));
 const ReponseLeadsPage        = lazy(() => import('@/pages/ReponseLeadsPage'));
 const AutomatisationHubPage   = lazy(() => import('@/pages/AutomatisationHubPage'));
 const TrackingHubPage         = lazy(() => import('@/pages/TrackingHubPage'));
@@ -77,6 +78,7 @@ function App() {
                 <Route path="/google-my-business" element={<GoogleMyBusinessPage />} />
                 <Route path="/conversions-offline" element={<ConversionsOfflinePage />} />
                 <Route path="/conciergerie" element={<ConciergeriePage />} />
+                <Route path="/back-office-conciergerie" element={<BackOfficeConciergeriePage />} />
                 <Route path="/reponse-leads" element={<ReponseLeadsPage />} />
                 <Route path="/automatisation-hub" element={<AutomatisationHubPage />} />
                 <Route path="/tracking-hub" element={<TrackingHubPage />} />

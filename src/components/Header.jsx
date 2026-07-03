@@ -62,6 +62,7 @@ const Header = () => {
     { name: 'Réponse Leads', path: '/reponse-leads' },
     { name: 'Google My Business', path: '/google-my-business' },
     { name: 'Service pour conciergerie', path: '/conciergerie' },
+    { name: 'Back office conciergerie', path: '/back-office-conciergerie' },
   ];
 
   return (

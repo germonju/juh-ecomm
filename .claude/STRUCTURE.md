@@ -62,7 +62,7 @@ src/
 │   ├── HomePage.jsx            # Chargée immédiatement (critique LCP)
 │   ├── BlogPage.jsx            # Liste articles depuis Supabase
 │   ├── BlogPostPage.jsx        # Article individuel avec SEO dynamique
-│   └── [14 autres pages de service]
+│   └── [15 autres pages de service]
 ├── components/
 │   ├── ui/                     # shadcn/ui (style New York, base neutral)
 │   ├── Header.jsx
@@ -100,6 +100,7 @@ src/
 | `/conversions-offline` | ConversionsOfflinePage | Oui | Oui |
 | `/consent-mode` | ConsentModePage | Oui | Oui |
 | `/conciergerie` | ConciergeriePage | Oui | Oui |
+| `/back-office-conciergerie` | BackOfficeConciergeriePage | Oui | Oui |
 | `/reponse-leads` | ReponseLeadsPage | Oui | Oui |
 | `/automatisation-hub` | AutomatisationHubPage | Oui | Oui |
 | `/landing-pages` | LandingPagesPage | Oui | Oui |

@@ -2,7 +2,7 @@ import React from 'react';
 import { CircuitBoardIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
-import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key } from 'lucide-react';
+import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
@@ -53,8 +53,15 @@ const AutomatisationHubPage = () => {
       icon: Key,
       title: 'Service pour conciergerie',
       description: 'Répondez automatiquement aux messages de vos voyageurs Airbnb et Booking 24h/24. Gérez plusieurs logements sans multiplier le temps passé.',
-      link: '/automatisation/conciergerie',
+      link: '/conciergerie',
       color: 'text-emerald-400'
+    },
+    {
+      icon: LayoutDashboard,
+      title: 'Back office conciergerie',
+      description: 'Fiches contact automatiques, statistiques en temps réel par propriétaire, rapports automatiques et facturation entièrement automatisée.',
+      link: '/back-office-conciergerie',
+      color: 'text-cyan-400'
     }
   ];
 
@@ -123,7 +130,7 @@ const AutomatisationHubPage = () => {
               Découvrez nos packs d'automatisation clés en main pour des besoins spécifiques.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {services.map((service, index) => (
               <Card key={index} className="bg-slate-900 border-slate-800 hover:border-violet-500/50 transition-all duration-300 flex flex-col h-full group">
                 <CardHeader>
