@@ -6,3 +6,10 @@
 # Note: la redirection non-www → www est gérée dans functions/_middleware.js.
 # Cloudflare Pages redirige automatiquement /foo → /foo/ (308) ; canonical et
 # sitemap déclarent la version AVEC slash pour rester cohérents.
+
+# Anciennes URLs (encore explorées par Google, cf. Search Console) → 301
+# vers leurs équivalents actuels pour consolider les signaux.
+/automatisation        /automatisation-hub/  301
+/automatisation/       /automatisation-hub/  301
+/tracking-server-side  /gtm-server-side/     301
+/tracking-server-side/ /gtm-server-side/     301
