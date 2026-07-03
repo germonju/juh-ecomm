@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  Smartphone, BarChart3, FileText, Send, Receipt, Upload, TrendingUp,
+  Smartphone, BarChart3, Send, Receipt, Upload, TrendingUp,
   Sparkles, Camera, Clock, Zap, ArrowRight, Check, LayoutDashboard,
   SearchCheck, ImagePlus, Wand2, Download, Users, Euro, CalendarCheck
 } from 'lucide-react';
@@ -35,9 +35,7 @@ const DashboardIllustration = () => (
     <circle cx="46" cy="28" r="4" fill="#fbbf24" />
     <circle cx="62" cy="28" r="4" fill="#34d399" />
     <text x="440" y="33" textAnchor="end" fill="#64748b" fontSize="11" fontFamily="sans-serif">Temps réel</text>
-    <circle cx="428" cy="29" r="3" fill="#34d399">
-      <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
-    </circle>
+    <circle cx="428" cy="29" r="3" fill="#34d399" className="animate-pulse motion-reduce:animate-none" />
     {/* Cartes KPI */}
     <g fontFamily="sans-serif">
       <rect x="24" y="48" width="136" height="58" rx="8" fill="#1e293b" />
@@ -117,7 +115,7 @@ const PhoneContactIllustration = () => (
 
 // Schéma de flux : réservation → back office → actions automatiques
 const FlowSchemaIllustration = () => (
-  <svg viewBox="0 0 760 300" className="w-full h-auto" role="img" aria-label="Schéma du flux automatisé : une réservation alimente la fiche contact, les statistiques, le rapport propriétaire et la facturation">
+  <svg viewBox="0 0 760 300" className="w-full h-auto min-w-[600px] md:min-w-0" role="img" aria-label="Schéma du flux automatisé : une réservation alimente la fiche contact, les statistiques, le rapport propriétaire et la facturation">
     <defs>
       <marker id="flowArrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
         <path d="M0,0 L6,3 L0,6 Z" fill="#8b5cf6" />
@@ -294,7 +292,11 @@ const BackOfficeConciergeriePage = () => {
         <meta property="og:description" content="Automatisez votre gestion : fiches contact, statistiques par propriétaire, rapports automatiques et facturation. Gagnez des heures chaque semaine." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Juh Ecomm Data" />
+        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
+        <meta property="og:locale" content="fr_FR" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <meta name="twitter:title" content="Back Office Conciergerie Automatisé | JUH Ecomm Data" />
         <meta name="twitter:description" content="Fiches contact automatiques, statistiques temps réel, facturation automatisée. Le back office pensé pour les conciergeries." />
         <meta name="twitter:url" content={canonicalUrl} />
@@ -303,6 +305,7 @@ const BackOfficeConciergeriePage = () => {
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-900/30 via-slate-900 to-slate-900" />
+        <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="container mx-auto relative z-10 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -355,12 +358,12 @@ const BackOfficeConciergeriePage = () => {
           </p>
           <div className="bg-slate-900 border border-slate-700/50 rounded-xl overflow-hidden">
             {timeWasters.map((item, index) => (
-              <div key={index} className={`flex items-center justify-between gap-4 px-6 py-4 ${index !== timeWasters.length - 1 ? 'border-b border-slate-800' : ''}`}>
+              <div key={index} className={`flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-4 px-6 py-4 ${index !== timeWasters.length - 1 ? 'border-b border-slate-800' : ''}`}>
                 <div className="flex items-center gap-3">
                   <Clock className="w-5 h-5 text-amber-400 flex-shrink-0" />
                   <span className="text-slate-300">{item.task}</span>
                 </div>
-                <span className="text-sm text-slate-500 whitespace-nowrap hidden sm:block">{item.freq}</span>
+                <span className="text-sm text-slate-500 whitespace-nowrap pl-8 sm:pl-0">{item.freq}</span>
               </div>
             ))}
           </div>
@@ -387,7 +390,7 @@ const BackOfficeConciergeriePage = () => {
       </section>
 
       {/* Fonctionnalités du back office */}
-      <section id="fonctionnalites" className="py-20 px-4 bg-slate-800/30">
+      <section id="fonctionnalites" className="py-20 px-4 bg-slate-800/30 scroll-mt-20">
         <div className="container mx-auto max-w-6xl">
           <div className="flex items-center justify-center gap-3 mb-4">
             <LayoutDashboard className="w-7 h-7 text-violet-400" />
@@ -577,7 +580,7 @@ const BackOfficeConciergeriePage = () => {
       </section>
 
       {/* Tarif sur devis */}
-      <section id="tarifs" className="py-20 px-4 bg-slate-900">
+      <section id="tarifs" className="py-20 px-4 bg-slate-900 scroll-mt-20">
         <div className="container mx-auto max-w-3xl">
           <Card className="bg-slate-900 border-2 border-cyan-500 overflow-hidden relative shadow-2xl shadow-cyan-900/20">
             <CardHeader className="text-center pt-10 pb-2">

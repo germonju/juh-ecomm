@@ -89,3 +89,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-03 17:07 — `main`
 - 154c60c feat: nouvelle page service back office conciergerie
+
+#### 2026-07-03 17:09 — `main`
+- f5728a2 docs: mise à jour DEVLOG
