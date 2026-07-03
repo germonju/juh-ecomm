@@ -671,6 +671,56 @@ export const BlogIllustration = () => (
 );
 
 /* ─── Conciergerie — workflow nœuds ─── */
+/* ─── Back office conciergerie — réservations vers dashboard ─── */
+export const BackOfficeFlowIllustration = () => (
+  <div className={base} aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>{`
+          @keyframes bo-flow{0%{stroke-dashoffset:200}100%{stroke-dashoffset:0}}
+          @keyframes bo-pulse{0%,100%{opacity:.12}50%{opacity:.3}}
+          @keyframes bo-bar{0%{transform:scaleY(.2)}50%{transform:scaleY(1)}100%{transform:scaleY(.2)}}
+        `}</style>
+      </defs>
+      {[
+        {x:150,y:180,label:'AIRBNB', color:'#22d3ee',main:false},
+        {x:150,y:300,label:'BOOKING',color:'#22d3ee',main:false},
+        {x:150,y:420,label:'DIRECT', color:'#22d3ee',main:false},
+        {x:430,y:300,label:'BACK OFFICE',color:'#06b6d4',main:true},
+        {x:720,y:160,label:'CONTACT',color:'#8b5cf6',main:false},
+        {x:720,y:280,label:'STATS',  color:'#8b5cf6',main:false},
+        {x:720,y:400,label:'RAPPORT',color:'#8b5cf6',main:false},
+        {x:720,y:520,label:'FACTURE',color:'#8b5cf6',main:false},
+      ].map(({x,y,label,color,main},i) => (
+        <g key={i}>
+          {main && <circle cx={x} cy={y} r="40" fill={color} opacity=".08"
+            style={{animation:`bo-pulse 2s ease-in-out infinite`}} />}
+          <rect x={x-42} y={y-18} width="84" height="36" rx={main?18:6}
+            fill="none" stroke={color} strokeWidth={main?1.5:1} opacity={main?.25:.15} />
+          <text x={x} y={y+4} textAnchor="middle" fill={color}
+            fontSize="9" opacity={main?.35:.2} fontFamily="monospace">{label}</text>
+        </g>
+      ))}
+      {[
+        [150,180,430,300],[150,300,430,300],[150,420,430,300],
+        [430,300,720,160],[430,300,720,280],[430,300,720,400],[430,300,720,520],
+      ].map(([x1,y1,x2,y2],i) => (
+        <path key={i}
+          d={`M${x1+42},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2-42},${y2}`}
+          fill="none" stroke="#22d3ee" strokeWidth="1.5" strokeDasharray="200"
+          style={{animation:`bo-flow ${2+i*0.3}s linear infinite`,opacity:.12}} />
+      ))}
+      {/* mini graphique à barres animé — coin droit */}
+      {[0,1,2,3,4,5].map((i) => (
+        <rect key={i} x={950+i*36} y="360" width="18" height="120" rx="3"
+          fill="#8b5cf6" opacity=".1"
+          style={{animation:`bo-bar ${2.4+i*0.4}s ease-in-out infinite`,transformOrigin:`${959+i*36}px 480px`}} />
+      ))}
+      <line x1="940" y1="480" x2="1170" y2="480" stroke="#8b5cf6" strokeWidth="1" opacity=".1" />
+    </svg>
+  </div>
+);
+
 export const WorkflowIllustration = () => (
   <div className={base} aria-hidden="true">
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">

@@ -3,10 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
 import {
   Smartphone, BarChart3, Send, Receipt, Upload, TrendingUp,
-  Sparkles, Camera, Clock, Zap, ArrowRight, Check, LayoutDashboard,
+  Sparkles, Camera, Clock, Zap, ArrowRight, Check, LayoutDashboard, Trophy,
   SearchCheck, ImagePlus, Wand2, Download, Users, Euro, CalendarCheck
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { BackOfficeFlowIllustration } from '@/components/HeroIllustrations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
@@ -16,63 +17,76 @@ import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 // Illustrations SVG sur mesure
 // ---------------------------------------------------------------------------
 
-// Mockup de dashboard : graphique d'évolution CA/commissions + KPI
+// Mockup fidèle du back office (thème clair, données fictives) : onglets,
+// KPI et graphique CA/commissions comme dans le produit réel.
 const DashboardIllustration = () => (
-  <svg viewBox="0 0 480 320" className="w-full h-auto" role="img" aria-label="Aperçu du back office : graphiques d'évolution et KPI en temps réel">
-    <defs>
-      <linearGradient id="boArea" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.4" />
-        <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
-      </linearGradient>
-      <linearGradient id="boLine" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#22d3ee" />
-        <stop offset="100%" stopColor="#8b5cf6" />
-      </linearGradient>
-    </defs>
-    {/* Fenêtre */}
-    <rect x="8" y="8" width="464" height="304" rx="14" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
-    <circle cx="30" cy="28" r="4" fill="#f87171" />
-    <circle cx="46" cy="28" r="4" fill="#fbbf24" />
-    <circle cx="62" cy="28" r="4" fill="#34d399" />
-    <text x="440" y="33" textAnchor="end" fill="#64748b" fontSize="11" fontFamily="sans-serif">Temps réel</text>
-    <circle cx="428" cy="29" r="3" fill="#34d399" className="animate-pulse motion-reduce:animate-none" />
+  <svg viewBox="0 0 480 360" className="w-full h-auto drop-shadow-2xl" role="img" aria-label="Aperçu du back office : onglets Stats, Facturation, Import, Biens et Retouche, indicateurs clés et graphique CA et commissions par mois">
+    {/* Fenêtre claire */}
+    <rect x="4" y="4" width="472" height="352" rx="14" fill="#f8fafc" stroke="#e2e8f0" strokeWidth="1.5" />
+    {/* Barre de navigation */}
+    <rect x="4" y="4" width="472" height="40" rx="14" fill="#ffffff" />
+    <rect x="4" y="30" width="472" height="14" fill="#ffffff" />
+    <line x1="4" y1="44" x2="476" y2="44" stroke="#e2e8f0" strokeWidth="1" />
+    <g fontFamily="sans-serif">
+      <text x="20" y="29" fill="#0f172a" fontSize="12" fontWeight="bold">Back-office — Ma Conciergerie</text>
+      {/* Onglets */}
+      <rect x="216" y="12" width="46" height="22" rx="11" fill="#eff6ff" stroke="#3b82f6" strokeWidth="1.2" />
+      <text x="239" y="27" textAnchor="middle" fill="#1d4ed8" fontSize="10" fontWeight="bold">Stats</text>
+      <text x="298" y="27" textAnchor="middle" fill="#475569" fontSize="10">Facturation</text>
+      <text x="357" y="27" textAnchor="middle" fill="#475569" fontSize="10">Import</text>
+      <text x="402" y="27" textAnchor="middle" fill="#475569" fontSize="10">Biens</text>
+      <text x="450" y="27" textAnchor="middle" fill="#475569" fontSize="10">Retouche</text>
+    </g>
     {/* Cartes KPI */}
     <g fontFamily="sans-serif">
-      <rect x="24" y="48" width="136" height="58" rx="8" fill="#1e293b" />
-      <text x="36" y="68" fill="#94a3b8" fontSize="10">Chiffre d'affaires</text>
-      <text x="36" y="92" fill="#f8fafc" fontSize="18" fontWeight="bold">24 830 €</text>
-      <text x="128" y="92" fill="#34d399" fontSize="10">+18 %</text>
-
-      <rect x="172" y="48" width="136" height="58" rx="8" fill="#1e293b" />
-      <text x="184" y="68" fill="#94a3b8" fontSize="10">Commissions</text>
-      <text x="184" y="92" fill="#f8fafc" fontSize="18" fontWeight="bold">4 966 €</text>
-      <text x="276" y="92" fill="#34d399" fontSize="10">+12 %</text>
-
-      <rect x="320" y="48" width="136" height="58" rx="8" fill="#1e293b" />
-      <text x="332" y="68" fill="#94a3b8" fontSize="10">Nuitées</text>
-      <text x="332" y="92" fill="#f8fafc" fontSize="18" fontWeight="bold">312</text>
-      <text x="424" y="92" fill="#22d3ee" fontSize="10">+9 %</text>
-    </g>
-    {/* Graphique d'évolution */}
-    <g>
-      <line x1="24" y1="150" x2="456" y2="150" stroke="#1e293b" strokeWidth="1" />
-      <line x1="24" y1="190" x2="456" y2="190" stroke="#1e293b" strokeWidth="1" />
-      <line x1="24" y1="230" x2="456" y2="230" stroke="#1e293b" strokeWidth="1" />
-      <line x1="24" y1="270" x2="456" y2="270" stroke="#1e293b" strokeWidth="1" />
-      <path d="M24,270 L86,252 L148,258 L210,224 L272,232 L334,196 L396,178 L456,150 L456,290 L24,290 Z" fill="url(#boArea)" />
-      <path d="M24,270 L86,252 L148,258 L210,224 L272,232 L334,196 L396,178 L456,150" fill="none" stroke="url(#boLine)" strokeWidth="3" strokeLinecap="round" />
       {[
-        [24, 270], [86, 252], [148, 258], [210, 224], [272, 232], [334, 196], [396, 178], [456, 150]
-      ].map(([cx, cy], i) => (
-        <circle key={i} cx={cx} cy={cy} r="4" fill="#0f172a" stroke="#22d3ee" strokeWidth="2" />
+        { x: 16,  accent: '#1e293b', label: 'CA HÉBERGEMENT', value: '24 830 €', sub: '42 réservations' },
+        { x: 132, accent: '#14b8a6', label: "TAUX D'OCCUP.",   value: '64 %',    sub: '26 logements' },
+        { x: 248, accent: '#f59e0b', label: 'NUITS LOUÉES',    value: '312',     sub: '/ 780 disponibles' },
+        { x: 364, accent: '#ef4444', label: 'COMMISSION',      value: '4 966 €', sub: 'net après charges' },
+      ].map((kpi, i) => (
+        <g key={i}>
+          <rect x={kpi.x} y="56" width="100" height="64" rx="8" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+          <rect x={kpi.x + 6} y="55" width="88" height="3" rx="1.5" fill={kpi.accent} />
+          <text x={kpi.x + 10} y="74" fill="#64748b" fontSize="7" letterSpacing="0.5">{kpi.label}</text>
+          <text x={kpi.x + 10} y="96" fill="#0f172a" fontSize="16" fontWeight="bold">{kpi.value}</text>
+          <text x={kpi.x + 10} y="110" fill="#94a3b8" fontSize="7.5">{kpi.sub}</text>
+        </g>
       ))}
     </g>
-    <g fontFamily="sans-serif" fontSize="9" fill="#64748b">
-      <text x="24" y="304">Jan</text>
-      <text x="148" y="304">Mar</text>
-      <text x="272" y="304">Mai</text>
-      <text x="396" y="304">Juil</text>
+    {/* Graphique CA & Commissions */}
+    <rect x="16" y="132" width="448" height="212" rx="10" fill="#ffffff" stroke="#e2e8f0" strokeWidth="1" />
+    <g fontFamily="sans-serif">
+      <text x="32" y="156" fill="#0f172a" fontSize="11" fontWeight="bold">CA &amp; Commissions par mois</text>
+      <circle cx="330" cy="152" r="4" fill="#1e293b" />
+      <text x="339" y="156" fill="#475569" fontSize="9">CA</text>
+      <circle cx="368" cy="152" r="4" fill="#f59e0b" />
+      <text x="377" y="156" fill="#475569" fontSize="9">Commission</text>
     </g>
+    {/* Grille pointillée */}
+    {[180, 220, 260, 300].map((y, i) => (
+      <line key={i} x1="32" y1={y} x2="448" y2={y} stroke="#e2e8f0" strokeWidth="1" strokeDasharray="3 5" />
+    ))}
+    {/* Barres : CA (navy) + commission (ambre) */}
+    {[
+      { m: 'jan.', ca: 42,  com: 8 },
+      { m: 'fév.', ca: 55,  com: 11 },
+      { m: 'mars', ca: 48,  com: 9 },
+      { m: 'avr.', ca: 76,  com: 15 },
+      { m: 'mai',  ca: 92,  com: 18 },
+      { m: 'juin', ca: 70,  com: 14 },
+      { m: 'juil.', ca: 118, com: 23 },
+      { m: 'août', ca: 132, com: 26 },
+    ].map((bar, i) => {
+      const x = 44 + i * 52;
+      return (
+        <g key={i} fontFamily="sans-serif">
+          <rect x={x} y={318 - bar.ca} width="14" height={bar.ca} rx="4" fill="#1e293b" />
+          <rect x={x + 18} y={318 - bar.com} width="10" height={bar.com} rx="3" fill="#f59e0b" />
+          <text x={x + 14} y="332" textAnchor="middle" fill="#94a3b8" fontSize="8">{bar.m}</text>
+        </g>
+      );
+    })}
   </svg>
 );
 
@@ -218,12 +232,17 @@ const BackOfficeConciergeriePage = () => {
       icon: TrendingUp,
       title: "Graphiques d'évolution",
       description: "CA, commissions, nombre de réservations, nuitées, frais de ménage… Suivez tout ce qui vous semble essentiel et pertinent, en un coup d'œil."
+    },
+    {
+      icon: Trophy,
+      title: "Classement de vos logements",
+      description: "Taux d'occupation, nuits louées, répartition du CA par plateforme (Airbnb, Booking, direct) : identifiez ce qui performe et ce qui décroche."
     }
   ];
 
   const timeWasters = [
-    { task: "Recopier les infos de réservation dans le téléphone", freq: "À chaque réservation" },
-    { task: "Compiler les statistiques par propriétaire sur Excel", freq: "Chaque fin de mois" },
+    { task: "Création de contact dans votre téléphone à chaque réservation", freq: "À chaque réservation" },
+    { task: "Compiler les statistiques par propriétaire", freq: "Chaque fin de mois" },
     { task: "Rédiger et envoyer les rapports aux propriétaires", freq: "Chaque fin de mois" },
     { task: "Calculer les commissions et éditer les factures", freq: "Chaque fin de mois" },
     { task: "Retoucher les photos des annonces une par une", freq: "À chaque nouveau logement" }
@@ -305,6 +324,7 @@ const BackOfficeConciergeriePage = () => {
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-cyan-900/30 via-slate-900 to-slate-900" />
+        <BackOfficeFlowIllustration />
         <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="container mx-auto relative z-10 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -399,7 +419,7 @@ const BackOfficeConciergeriePage = () => {
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
             Un outil construit autour de vos processus, avec les KPI précis dont vous avez besoin — pas un logiciel générique de plus.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {backOfficeFeatures.map((feature, index) => (
               <Card key={index} className="bg-slate-900 border-slate-700/50 hover:border-violet-500/30 transition-all">
                 <CardHeader>
@@ -535,7 +555,47 @@ const BackOfficeConciergeriePage = () => {
               </div>
             ))}
           </div>
-          <div className="mt-12 bg-gradient-to-r from-violet-900/20 to-cyan-900/20 border border-violet-500/20 rounded-xl p-6 text-center max-w-3xl mx-auto">
+          {/* Aperçu de l'outil : retouches rapides en un clic */}
+          <div className="mt-14 bg-white rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto shadow-2xl">
+            <div className="flex items-center justify-between mb-5">
+              <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider">Retouches rapides — aperçu de l'outil</h3>
+              <span className="text-xs text-slate-400">4 sélectionnées</span>
+            </div>
+            <div className="flex flex-wrap gap-2.5" role="list" aria-label="Exemples de retouches rapides disponibles">
+              {[
+                { label: "Améliore la luminosité", selected: true },
+                { label: "Rendu professionnel", selected: false },
+                { label: "Lisse les draps", selected: false },
+                { label: "Supprime le désordre", selected: false },
+                { label: "Ciel bleu", selected: true },
+                { label: "Supprime les reflets", selected: false },
+                { label: "Ambiance chaleureuse", selected: true },
+                { label: "Supprime les câbles", selected: true },
+                { label: "Verdure éclatante", selected: false },
+              ].map((chip, i) => (
+                <span
+                  key={i}
+                  role="listitem"
+                  className={`px-4 py-2 rounded-full text-sm font-medium border ${
+                    chip.selected
+                      ? 'bg-slate-900 text-white border-slate-900'
+                      : 'bg-white text-slate-700 border-slate-300'
+                  }`}
+                >
+                  {chip.label}
+                </span>
+              ))}
+            </div>
+            <div className="mt-6 flex items-center gap-4">
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-900 text-white text-sm font-semibold">
+                <Wand2 className="w-4 h-4" />
+                Lancer la retouche
+              </span>
+              <span className="text-sm text-slate-400">Vos consignes libres sont aussi acceptées</span>
+            </div>
+          </div>
+
+          <div className="mt-10 bg-gradient-to-r from-violet-900/20 to-cyan-900/20 border border-violet-500/20 rounded-xl p-6 text-center max-w-3xl mx-auto">
             <p className="text-lg text-violet-200">
               <Sparkles className="inline-block w-5 h-5 mr-2 -mt-1" />
               <strong>Gain de temps énorme :</strong> retoucher 40 photos manuellement prend une journée. Ici, quelques minutes de préparation suffisent.

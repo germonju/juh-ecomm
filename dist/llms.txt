@@ -3,6 +3,7 @@
 - [Article introuvable | Juh Ecomm Data](/blogpost): Cet article de blog n
 - [Audit Google Ads Expert : ROI & Performance | JUH Ecomm](/auditgoogleads): Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen.
 - [Automatisation Marketing : Workflows & Make | JUH Ecomm](/automatisationhub): Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance.
+- [Back Office Conciergerie : Gestion Automatisée | JUH Ecomm Data](/backofficeconciergerie): Back office sur mesure pour conciergeries : fiches contact automatiques, statistiques temps réel, facturation automatisée, analyse d
 - [Consent Mode V2 & CMP - Conformité RGPD | Juh Ecomm Data](/consentmode): Mise en conformité RGPD avec Google Consent Mode V2. Audit, installation de CMP (Cookiebot, Axeptio...) et configuration GTM pour respecter la vie privée.
 - [Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm](/home): Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d
 - [GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm](/ga4advanced): Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables.

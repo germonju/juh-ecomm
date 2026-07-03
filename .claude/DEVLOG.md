@@ -92,3 +92,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-03 17:09 — `main`
 - f5728a2 docs: mise à jour DEVLOG
+
+#### 2026-07-03 17:17 — `main`
+- aa40bdb style(back-office): repasse UI/UX homogène avec le reste du site
