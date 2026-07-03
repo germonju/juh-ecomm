@@ -86,3 +86,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-01 11:23 — `main`
 - 7a2e9cf perf(seo): cache assets immuable, schema Organization, HSTS, H1 synchronisés
+
+#### 2026-07-03 17:07 — `main`
+- 154c60c feat: nouvelle page service back office conciergerie
