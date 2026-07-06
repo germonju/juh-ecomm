@@ -2,12 +2,23 @@
 - [— Blog Tracking & Ads | JUH Ecomm` : 'Blog Expert Google Ads, GA4 & GTM | JUH Ecomm Data'}](/blog): Guides complets sur Google Ads, GA4 et GTM e-commerce. Conseils d
 - [Article introuvable | Juh Ecomm Data](/blogpost): Cet article de blog n
 - [Audit Google Ads Expert : ROI & Performance | JUH Ecomm](/auditgoogleads): Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen.
+- [Audit SEO Complet : Technique & Contenu | Juh Ecomm Data](/seoaudit): Outil d
 - [Automatisation Marketing : Workflows & Make | JUH Ecomm](/automatisationhub): Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance.
 - [Back Office Conciergerie : Gestion Automatisée | JUH Ecomm Data](/backofficeconciergerie): Back office sur mesure pour conciergeries : fiches contact automatiques, statistiques temps réel, facturation automatisée, analyse d
+- [Conciergerie Marketing : Pilotage Expert | JUH Ecomm Data](/conciergerie): Service de conciergerie marketing : pilotage expert de vos campagnes, optimisation continue et résultats mesurables pour votre croissance e-commerce.
 - [Consent Mode V2 & CMP - Conformité RGPD | Juh Ecomm Data](/consentmode): Mise en conformité RGPD avec Google Consent Mode V2. Audit, installation de CMP (Cookiebot, Axeptio...) et configuration GTM pour respecter la vie privée.
+- [Contactez votre Expert Tracking & Data | JUH Ecomm Data](/contact): Discutez de votre stratégie marketing avec nos experts JUH Ecomm Data. Découvrez comment accélérer votre croissance e-commerce dès maintenant.
+- [Conversions Offline Google Ads & GA4 | JUH Ecomm Data](/conversionsoffline): Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes digitales pour une vision 360° de votre ROI.
+- [Création d'Agent IA Conversationnel sur Mesure | JUH Ecomm Data](/agentia): Un agent IA conversationnel relié à votre planning, vos clients, votre facturation et votre base de données. Réponses instantanées et tâches accomplies à votre place.
+- [Documentation API Blog | Juh Ecomm Data](/apidocs): Documentation de l
 - [Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm](/home): Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d
 - [GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm](/ga4advanced): Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables.
 - [Google My Business : Visibilité Locale Expert | JUH Ecomm](/googlemybusiness): Optimisez votre fiche Google My Business pour augmenter votre visibilité locale. Attirez plus de clients et améliorez votre présence en ligne sur Google Maps.
 - [GTM Server-Side : Tracking Cookieless & RGPD | JUH Ecomm](/gtmserverside): Implémentez GTM Server-Side pour améliorer votre tracking RGPD. Réduisez la dépendance aux cookies tiers et augmentez la qualité de vos données.
 - [Landing Pages Haute Conversion & A/B Testing | JUH Ecomm](/landingpages): Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion.
+- [Mentions Légales - Juh Ecomm Data](/mentionslegales): Mentions légales du site Juh Ecomm Data. Informations sur l
+- [Page non trouvée | Juh Ecomm Data](/notfound): La page que vous recherchez n
+- [Politique de Confidentialité - Juh Ecomm Data](/politiqueconfidentialite): Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l
+- [Réponse Leads - Automatisation Prospection | Juh Ecomm Data](/reponseleads): Automatisez la gestion de vos leads. Réponses instantanées, qualification automatique et suivi personnalisé pour maximiser votre taux de conversion.
 - [Shopify Tracking GA4 & Google Ads Expert | JUH Ecomm Data](/shopify): Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes.
+- [Tracking Hub : GA4, GTM & Conversions Expert | JUH Ecomm](/trackinghub): Centralisez votre tracking avec notre hub complet. Maîtrisez Google Analytics 4, GTM et vos données de conversion pour une stratégie data-driven optimale.

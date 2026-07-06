@@ -116,6 +116,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/agent-ia-conversationnel" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  Agent IA conversationnel
+                </Link>
+              </li>
+              <li>
                 <Link to="/google-my-business" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Google My Business
                 </Link>

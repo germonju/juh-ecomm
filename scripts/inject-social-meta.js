@@ -88,6 +88,33 @@ const CONVERSIONS_FAQ_ITEMS = [
   },
 ];
 
+const AGENT_IA_FAQ_ITEMS = [
+  {
+    question: "Qu'est-ce qu'un agent IA conversationnel connecté à mes données ?",
+    answer: "C'est un assistant intelligent, disponible via une simple messagerie (chat écrit ou vocal), branché sur VOS outils : planning, CRM/clients, facturation, base de données et documents internes. Au lieu d'ouvrir cinq logiciels différents pour retrouver une information, vous la demandez en langage naturel et l'agent vous répond instantanément, en s'appuyant sur vos données réelles et en citant ses sources. Contrairement à un chatbot générique, il connaît votre activité et peut agir dessus.",
+  },
+  {
+    question: "À quels outils l'agent peut-il se connecter ?",
+    answer: "À la grande majorité des outils du marché dès qu'ils disposent d'une API ou d'un export : agendas (Google Calendar, Outlook), CRM (HubSpot, Pipedrive, Salesforce…), facturation et comptabilité, bases de données (Airtable, Notion, PostgreSQL, Google Sheets), messageries et espaces de documents. Lors du cadrage, nous identifions ensemble vos sources prioritaires et la façon la plus sûre de les connecter.",
+  },
+  {
+    question: "L'agent peut-il vraiment accomplir des tâches, pas seulement répondre ?",
+    answer: "Oui. En plus de répondre à vos questions, il peut exécuter des actions que vous lui autorisez : créer un rendez-vous ou un rappel, envoyer un e-mail, générer un devis ou une facture, mettre à jour une fiche client, rédiger un contenu. Vous gardez la main : pour les actions sensibles (envoi, facturation), l'agent prépare et vous validez d'un clic avant exécution.",
+  },
+  {
+    question: "Mes données sont-elles en sécurité et conformes au RGPD ?",
+    answer: "La sécurité et la confidentialité sont au cœur du dispositif. L'agent est cloisonné à votre environnement, avec une gestion fine des droits d'accès : il ne voit que ce que vous l'autorisez à voir et ne répond qu'à vous. Les échanges sont chiffrés, aucune donnée n'est utilisée pour entraîner des modèles publics, et l'ensemble est conçu dans le respect du RGPD.",
+  },
+  {
+    question: "Combien de temps faut-il pour le mettre en place ?",
+    answer: "Cela dépend du nombre de sources à connecter et des tâches à automatiser. Un premier agent utile — connecté à une ou deux sources clés — se met généralement en place en quelques jours. On démarre sur un périmètre restreint à forte valeur, on valide les résultats, puis on élargit progressivement les connexions et les actions.",
+  },
+  {
+    question: "Pourquoi le tarif est-il sur devis ?",
+    answer: "Parce que chaque activité a ses outils, ses données et ses cas d'usage. Le prix dépend du nombre de sources à connecter, de la complexité des tâches à automatiser et du niveau d'intégration souhaité. Après un échange pour comprendre votre fonctionnement, vous recevez un devis détaillé et transparent, sans engagement.",
+  },
+];
+
 // ---------------------------------------------------------------------------
 // Structured data builders
 // ---------------------------------------------------------------------------
@@ -255,6 +282,13 @@ const routes = [
     breadcrumbName: 'Back Office Conciergerie',
   },
   {
+    path: '/agent-ia-conversationnel',
+    title: `Création d'Agent IA Conversationnel sur Mesure | JUH Ecomm Data`,
+    description: "Un agent IA conversationnel relié à votre planning, vos clients, votre facturation et votre base de données. Réponses instantanées et tâches accomplies à votre place.",
+    breadcrumbName: 'Agent IA Conversationnel',
+    faqItems: AGENT_IA_FAQ_ITEMS,
+  },
+  {
     path: '/reponse-leads',
     title: `Réponse Leads - Automatisation Prospection | ${SITE_NAME}`,
     description: "Automatisez la gestion de vos leads. Réponses instantanées, qualification automatique et suivi personnalisé pour maximiser votre taux de conversion.",
@@ -304,6 +338,7 @@ const H1_BY_PATH = {
   '/conversions-offline': 'Conversions Offline Google Ads',
   '/conciergerie': 'Service pour conciergerie : automatisation Airbnb & Booking',
   '/back-office-conciergerie': 'Back office sur mesure pour conciergeries',
+  '/agent-ia-conversationnel': 'Votre agent IA conversationnel, relié à toute votre activité',
   '/reponse-leads': 'Réponse Leads',
   '/automatisation-hub': 'Automatisation Hub',
   '/tracking-hub': 'Tracking Hub',

@@ -26,6 +26,7 @@ const STATIC_PAGES = [
   { loc: `${BASE_URL}/consent-mode`,        changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE_URL}/conciergerie`,        changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE_URL}/back-office-conciergerie`, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${BASE_URL}/agent-ia-conversationnel`, changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE_URL}/reponse-leads`,       changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE_URL}/automatisation-hub`,  changefreq: 'monthly', priority: '0.8' },
   { loc: `${BASE_URL}/landing-pages`,       changefreq: 'monthly', priority: '0.8' },

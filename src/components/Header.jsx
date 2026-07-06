@@ -59,6 +59,7 @@ const Header = () => {
 
   const automatisationLinks = [
     { name: 'Automatisation Hub', path: '/automatisation-hub' },
+    { name: 'Agent IA conversationnel', path: '/agent-ia-conversationnel' },
     { name: 'Réponse Leads', path: '/reponse-leads' },
     { name: 'Google My Business', path: '/google-my-business' },
     { name: 'Service pour conciergerie', path: '/conciergerie' },

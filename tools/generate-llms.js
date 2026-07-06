@@ -6,7 +6,7 @@ import path from 'path';
 const CLEAN_CONTENT_REGEX = {
   comments: /\/\*[\s\S]*?\*\/|\/\/.*$/gm,
   templateLiterals: /`[\s\S]*?`/g,
-  strings: /'[^']*'|"[^"]*"/g,
+  strings: /'[^'\n]*'|"[^"\n]*"/g,
   jsxExpressions: /\{.*?\}/g,
   htmlEntities: {
     quot: /&quot;/g,
@@ -103,7 +103,7 @@ function extractHelmetData(content, filePath, routes) {
   const description = cleanText(descMatch?.[1]);
   
   const fileName = path.basename(filePath, path.extname(filePath));
-  const url = routes.length && routes.has(fileName) 
+  const url = routes.length && routes.has(fileName)
     ? routes.get(fileName) 
     : generateFallbackUrl(fileName);
   
