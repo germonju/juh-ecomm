@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { WorkflowIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import { Link, useLocation } from 'react-router-dom';
-import { MessageSquare, Clock, TrendingUp, ShieldCheck, Home, Key, Users, Wifi, MapPin, Coffee, AlertCircle, ArrowRight, Check, Star } from 'lucide-react';
+import { MessageSquare, Clock, TrendingUp, ShieldCheck, Home, Key, Users, Wifi, MapPin, Coffee, AlertCircle, ArrowRight, Check, Star, Bot, Sparkles, Receipt, BarChart3, MessageCircle, CalendarCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -330,6 +330,91 @@ const ConciergeriePage = () => {
           <p className="mt-6 text-slate-400">
             Nécessite une adresse GMAIL et un travail en amont pour récolter et organiser toutes les informations nécessaires au bon fonctionnement de l'agent IA.
           </p>
+        </div>
+      </section>
+
+      {/* Agent IA complet : WhatsApp + tout l'environnement */}
+      <section className="py-20 px-4 bg-slate-800/30">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 mb-4 text-sm font-medium rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
+              <Sparkles className="w-4 h-4" /> Nouveau : agent IA complet
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Bien plus qu'une messagerie voyageurs</h2>
+            <p className="text-slate-400 max-w-3xl mx-auto leading-relaxed">
+              Au-delà des réponses automatiques sur Airbnb et Booking, votre agent IA répond aussi à vos voyageurs
+              sur <strong className="text-white">WhatsApp</strong> — et devient surtout votre assistant personnel, relié
+              à tout l'environnement de votre conciergerie. Posez-lui une question, il vous répond instantanément.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* WhatsApp */}
+            <div className="bg-slate-900 border border-slate-700/50 rounded-2xl p-8">
+              <div className="w-12 h-12 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5">
+                <MessageCircle className="w-6 h-6 text-emerald-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Réponses voyageurs sur WhatsApp</h3>
+              <p className="text-slate-400 leading-relaxed">
+                Vos voyageurs vous écrivent aussi en dehors des plateformes. L'agent répond directement sur WhatsApp,
+                avec le même niveau de précision : code Wi-Fi, boîte à clé, adresse, horaires d'arrivée et
+                recommandations locales. Un seul assistant, tous vos canaux.
+              </p>
+            </div>
+
+            {/* Assistant relié à l'environnement */}
+            <div className="bg-slate-900 border border-slate-700/50 rounded-2xl p-8">
+              <div className="w-12 h-12 bg-violet-500/10 rounded-lg flex items-center justify-center mb-5">
+                <Bot className="w-6 h-6 text-violet-400" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">Un assistant relié à tout votre environnement</h3>
+              <p className="text-slate-400 leading-relaxed mb-5">
+                Plus besoin de fouiller vos fichiers, vos mails ou vos plannings. Votre agent connaît toute votre
+                activité et vous répond en une phrase :
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {[
+                  { icon: Users, label: "Noms de vos clients propriétaires" },
+                  { icon: Receipt, label: "Vos factures et commissions" },
+                  { icon: Key, label: "Boîte à clé, Wi-Fi et adresses des logements" },
+                  { icon: CalendarCheck, label: "Réservations et noms des voyageurs" },
+                  { icon: Home, label: "Détails et équipements de chaque bien" },
+                  { icon: BarChart3, label: "Statistiques et performances" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-2.5 text-sm text-slate-300">
+                    <item.icon className="w-4 h-4 text-cyan-400 flex-shrink-0 mt-0.5" />
+                    {item.label}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Exemple d'échange avec l'agent */}
+          <div className="mt-8 bg-slate-950 border border-slate-800 rounded-2xl p-6 lg:p-8 max-w-3xl mx-auto shadow-2xl">
+            <h4 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-5">Exemple : vous demandez à votre agent</h4>
+            <div className="space-y-3">
+              <div className="flex justify-end">
+                <div className="bg-slate-800 text-slate-200 py-2 px-4 rounded-2xl rounded-tr-sm text-sm max-w-[85%]">
+                  Quel est le code de la boîte à clé du studio Victor Hugo, et qui y séjourne ce week-end ?
+                </div>
+              </div>
+              <div className="flex justify-start">
+                <div className="bg-violet-600 text-white py-2 px-4 rounded-2xl rounded-tl-sm text-sm max-w-[90%] shadow-lg">
+                  Boîte à clé du studio Victor Hugo : 4827. Ce week-end (14-16 juin), c'est Marie Lefèvre (réservation Airbnb, 2 voyageurs, arrivée samedi 15h).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button asChild variant="outline" className="border-violet-500 text-violet-400 hover:bg-violet-950 rounded-full">
+              <Link to="/agent-ia-conversationnel" onClick={() => handleCtaClick('agent_ia_crosssell')}>
+                Découvrir l'agent IA conversationnel
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
 
