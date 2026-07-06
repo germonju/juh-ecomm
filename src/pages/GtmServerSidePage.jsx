@@ -575,9 +575,9 @@ const GtmServerSidePage = () => {
                     <h2 className="text-3xl lg:text-4xl font-bold text-white">
                     Partenaire
                     </h2>
-                     <img 
-                        src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/07fc5223a8be758a82aeebe5dbb64526.png" 
-                        alt="AddingWell Logo" 
+                     <img
+                        src="/images/logos/addingwell.webp"
+                        alt="AddingWell Logo"
                         className="h-10 w-auto object-contain opacity-90 brightness-0 invert"
                     />
                 </div>

@@ -228,10 +228,12 @@ const ConsentManager = () => {
             >
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
                 <div className="flex items-center space-x-3 mb-2 sm:mb-0">
-                  <img 
-                    src="https://horizons-cdn.hostinger.com/a0243299-3f37-4051-bfc2-4b0057952451/8fee8d7d42c2e3c68f9f7b880a71ab17.png" 
-                    alt="Juh Ecomm Data Logo" 
+                  <img
+                    src="/images/logo.png"
+                    alt="Juh Ecomm Data Logo"
                     className="h-10 w-auto object-contain"
+                    width="40"
+                    height="40"
                   />
                   <div className="flex flex-col">
                     <span className="text-xl font-bold bg-gradient-to-r from-cyan-400 via-violet-400 to-lime-400 bg-clip-text text-transparent">
