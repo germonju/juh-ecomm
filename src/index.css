@@ -32,6 +32,52 @@
   }
 }
 
+/* =========================================
+   FUTURISTIC UI — grille & halos
+   Charte : slate-900 / violet #8b5cf6 / cyan #22d3ee
+   ========================================= */
+
+/* Grille technique en fond de section, avec fondu radial doux */
+.bg-tech-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 184, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 184, 0.055) 1px, transparent 1px);
+  background-size: 46px 46px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 100%);
+}
+
+/* Bordure en dégradé (violet → cyan) révélée au survol des cartes */
+.border-gradient-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.55), rgba(34, 211, 238, 0.45));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.border-gradient-glow:hover::before {
+  opacity: 1;
+}
+
+/* Halo lumineux à pulsation douce */
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.10; transform: scale(1); }
+  50%      { opacity: 0.20; transform: scale(1.05); }
+}
+.glow-pulse {
+  animation: glow-pulse 7s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-pulse { animation: none; }
+}
+
 /* Scroll behavior set to auto to prevent sticky/smooth scroll issues on route change */
 html {
   scroll-behavior: auto;

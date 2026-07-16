@@ -274,21 +274,27 @@ const AgentIaPage = () => {
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-violet-900/30 via-slate-900 to-slate-900" />
+        <div className="absolute inset-0 bg-tech-grid pointer-events-none" />
         <DataNetworkIllustration />
-        <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none glow-pulse" />
+        <div className="absolute top-24 right-0 w-[380px] h-[380px] bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none glow-pulse" />
         <div className="container mx-auto relative z-10 max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-block px-3 py-1 mb-6 text-sm font-medium rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 text-sm font-medium rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75 animate-ping" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-violet-400" />
+                </span>
                 Nouveau Service
               </div>
-              <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-                Votre agent IA conversationnel,<br />
+              <h1 className="text-4xl md:text-5xl font-extrabold mb-6 leading-[1.15] tracking-tight text-balance">
+                Votre agent IA conversationnel,{' '}
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">
                   relié à toute votre activité
                 </span>
               </h1>
-              <p className="text-xl text-slate-400 mb-8 leading-relaxed">
+              <p className="text-xl text-slate-400 mb-8 leading-relaxed max-w-xl">
                 Un assistant branché sur votre planning, vos clients, votre facturation et votre base de données.
                 Demandez-lui ce que vous voulez : il répond instantanément et accomplit vos tâches à votre place.
               </p>
@@ -337,10 +343,12 @@ const AgentIaPage = () => {
               </div>
             ))}
           </div>
-          <div className="mt-10 bg-gradient-to-r from-violet-900/20 to-cyan-900/20 border border-violet-500/20 rounded-xl p-6 text-center">
-            <p className="text-lg text-violet-200">
-              <Zap className="inline-block w-5 h-5 mr-2 -mt-1" />
-              <strong>Une seule question suffit.</strong> Votre agent va chercher l'information là où elle se trouve et vous répond en quelques secondes.
+          <div className="mt-10 bg-gradient-to-r from-violet-900/20 to-cyan-900/20 border border-violet-500/20 rounded-xl p-6">
+            <p className="flex items-start sm:items-center justify-center gap-3 text-lg text-violet-200 text-center">
+              <Zap className="w-5 h-5 flex-shrink-0 mt-1 sm:mt-0 text-violet-300" />
+              <span>
+                <strong className="text-white">Une seule question suffit.</strong> Votre agent va chercher l'information là où elle se trouve et vous répond en quelques secondes.
+              </span>
             </p>
           </div>
         </div>
@@ -349,7 +357,10 @@ const AgentIaPage = () => {
       {/* Schéma : agent relié à vos sources */}
       <section className="py-20 px-4 bg-slate-900">
         <div className="container mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-center mb-4">Un seul assistant, branché sur tout</h2>
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Un seul assistant,{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">branché sur tout</span>
+          </h2>
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
             L'agent centralise vos sources et vous répond en langage naturel — plus besoin d'aller chercher l'info à droite ou à gauche.
           </p>
@@ -371,10 +382,10 @@ const AgentIaPage = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {agentFeatures.map((feature, index) => (
-              <Card key={index} className="bg-slate-900 border-slate-700/50 hover:border-violet-500/30 transition-all">
+              <Card key={index} className="group relative bg-slate-900 border-slate-700/50 border-gradient-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-violet-900/20">
                 <CardHeader>
-                  <div className="w-12 h-12 bg-violet-500/10 rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="w-6 h-6 text-violet-400" />
+                  <div className="w-12 h-12 bg-violet-500/10 rounded-lg flex items-center justify-center mb-4 ring-1 ring-inset ring-violet-500/20 transition-all group-hover:bg-violet-500/20 group-hover:ring-violet-400/40">
+                    <feature.icon className="w-6 h-6 text-violet-400 transition-transform group-hover:scale-110" />
                   </div>
                   <CardTitle className="text-lg text-white">{feature.title}</CardTitle>
                 </CardHeader>
@@ -433,13 +444,13 @@ const AgentIaPage = () => {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {useCases.map((item, index) => (
-              <div key={index} className="bg-slate-900 border border-slate-700/50 rounded-xl p-6 hover:border-cyan-500/30 transition-all">
+              <div key={index} className="group relative bg-slate-900 border border-slate-700/50 rounded-xl p-6 border-gradient-glow transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-900/20">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                  <div className="w-10 h-10 bg-cyan-500/10 rounded-lg flex items-center justify-center flex-shrink-0 ring-1 ring-inset ring-cyan-500/20 transition-all group-hover:bg-cyan-500/20 group-hover:ring-cyan-400/40">
                     <item.icon className="w-5 h-5 text-cyan-400" />
                   </div>
                   <div>
-                    <p className="text-white font-semibold mb-2">{item.q}</p>
+                    <p className="text-white font-semibold mb-2 leading-snug">{item.q}</p>
                     <p className="text-slate-400 text-sm leading-relaxed">{item.a}</p>
                   </div>
                 </div>
@@ -607,10 +618,15 @@ const AgentIaPage = () => {
       </section>
 
       {/* CTA final */}
-      <section className="py-24 px-4 bg-slate-950 text-center">
-        <div className="container mx-auto max-w-3xl">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Arrêtez de chercher, commencez à demander</h2>
-          <p className="text-xl text-slate-400 mb-10 leading-relaxed">
+      <section className="relative py-24 px-4 bg-slate-950 text-center overflow-hidden">
+        <div className="absolute inset-0 bg-tech-grid pointer-events-none" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none glow-pulse" />
+        <div className="container mx-auto relative z-10 max-w-3xl">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 text-balance">
+            Arrêtez de chercher,{' '}
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-violet-400">commencez à demander</span>
+          </h2>
+          <p className="text-xl text-slate-400 mb-10 leading-relaxed max-w-2xl mx-auto">
             Vos données valent de l'or, à condition d'y accéder en une phrase. Parlons de votre activité et
             construisons ensemble l'agent IA qui vous répond et agit à votre place.
           </p>

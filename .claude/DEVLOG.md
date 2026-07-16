@@ -98,3 +98,18 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-03 17:41 — `main`
 - e62ae47 feat(back-office): hero animé, mockup produit fidèle, grille 4x2
+
+#### 2026-07-03 21:55 — `main`
+- 5cddf10 fix(seo): canonical client avec trailing slash + 301 anciennes URLs
+
+#### 2026-07-06 12:59 — `main`
+- 3855db4 feat: nouvelle page service Agent IA conversationnel
+
+#### 2026-07-06 13:08 — `main`
+- dc3c2c0 fix: remplace les logos CDN Hostinger morts (404) par des assets locaux
+
+#### 2026-07-06 13:13 — `main`
+- ba97bb7 build: régénère dist/ (page Agent IA + fix logos CDN + articles à jour)
+
+#### 2026-07-06 13:39 — `main`
+- 3e78620 feat(conciergerie): section agent IA (WhatsApp + assistant environnement)
