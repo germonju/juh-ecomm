@@ -7,7 +7,6 @@ import {
   Euro, Send, ShieldCheck, Workflow
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { DataNetworkIllustration } from '@/components/HeroIllustrations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
@@ -17,10 +16,30 @@ import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 // Illustrations SVG sur mesure
 // ---------------------------------------------------------------------------
 
-// Mockup d'une conversation avec l'agent IA (thème sombre, données fictives) :
-// question de l'utilisateur, réponse instantanée puisée dans les données métier.
+// Mockup d'une conversation avec l'agent IA (thème sombre, données fictives).
+// La conversation se joue en boucle : la question apparaît, l'agent « écrit »
+// (indicateur de frappe), puis la réponse s'affiche, puis tout se réinitialise.
 const ChatConversationIllustration = () => (
-  <svg viewBox="0 0 460 400" className="w-full h-auto drop-shadow-2xl" role="img" aria-label="Aperçu d'une conversation avec l'agent IA : question de l'utilisateur et réponse instantanée basée sur les données de l'entreprise">
+  <svg viewBox="0 0 460 400" className="w-full h-auto drop-shadow-2xl" role="img" aria-label="Aperçu animé d'une conversation avec l'agent IA : question de l'utilisateur, agent en train d'écrire, puis réponse instantanée basée sur les données de l'entreprise">
+    <defs>
+      <style>{`
+        @keyframes chat-user  { 0%,3%{opacity:0;transform:translateY(8px)} 9%,90%{opacity:1;transform:translateY(0)} 96%,100%{opacity:0} }
+        @keyframes chat-type  { 0%,14%{opacity:0} 18%,35%{opacity:1} 39%,100%{opacity:0} }
+        @keyframes chat-agent { 0%,40%{opacity:0;transform:translateY(8px)} 48%,90%{opacity:1;transform:translateY(0)} 96%,100%{opacity:0} }
+        @keyframes chat-dot   { 0%,100%{opacity:.25} 50%{opacity:1} }
+        @keyframes chat-caret { 0%,100%{opacity:0} 50%{opacity:.9} }
+        .chat-user  { animation: chat-user  8s ease-in-out infinite; }
+        .chat-type  { animation: chat-type  8s ease-in-out infinite; }
+        .chat-agent { animation: chat-agent 8s ease-in-out infinite; }
+        .chat-dot   { animation: chat-dot 1.1s ease-in-out infinite; }
+        .chat-caret { animation: chat-caret 1s step-end infinite; }
+        @media (prefers-reduced-motion: reduce) {
+          .chat-user, .chat-agent { animation: none; opacity: 1; transform: none; }
+          .chat-type { display: none; }
+        }
+      `}</style>
+    </defs>
+
     {/* Fenêtre */}
     <rect x="4" y="4" width="452" height="392" rx="16" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
     {/* Barre de titre */}
@@ -35,14 +54,26 @@ const ChatConversationIllustration = () => (
     </g>
 
     {/* Message utilisateur (bulle à droite, cyan) */}
-    <g fontFamily="sans-serif">
+    <g fontFamily="sans-serif" className="chat-user">
       <rect x="150" y="66" width="290" height="46" rx="14" fill="#0e7490" fillOpacity="0.25" stroke="#22d3ee" strokeOpacity="0.35" strokeWidth="1" />
       <text x="170" y="86" fill="#e0f2fe" fontSize="11">Quel est mon CA ce mois-ci et qui</text>
       <text x="170" y="102" fill="#e0f2fe" fontSize="11">n'a pas encore réglé sa facture ?</text>
     </g>
 
+    {/* Indicateur de frappe (l'agent « écrit ») */}
+    <g fontFamily="sans-serif" className="chat-type">
+      <circle cx="30" cy="140" r="14" fill="#2e1065" stroke="#8b5cf6" strokeWidth="1.2" />
+      <path d="M24 140 a6 6 0 0 1 12 0" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
+      <circle cx="27" cy="137" r="1.3" fill="#a78bfa" />
+      <circle cx="33" cy="137" r="1.3" fill="#a78bfa" />
+      <rect x="52" y="126" width="70" height="32" rx="14" fill="#1e293b" stroke="#334155" strokeWidth="1" />
+      <circle cx="72"  cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0s' }} />
+      <circle cx="87"  cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0.2s' }} />
+      <circle cx="102" cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0.4s' }} />
+    </g>
+
     {/* Réponse agent (bulle à gauche, violet) */}
-    <g fontFamily="sans-serif">
+    <g fontFamily="sans-serif" className="chat-agent">
       <circle cx="30" cy="140" r="14" fill="#2e1065" stroke="#8b5cf6" strokeWidth="1.2" />
       <path d="M24 140 a6 6 0 0 1 12 0" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
       <circle cx="27" cy="137" r="1.3" fill="#a78bfa" />
@@ -68,58 +99,154 @@ const ChatConversationIllustration = () => (
     {/* Barre de saisie */}
     <rect x="20" y="342" width="420" height="38" rx="19" fill="#1e293b" stroke="#334155" strokeWidth="1" />
     <text x="40" y="366" fill="#64748b" fontSize="11" fontFamily="sans-serif">Posez votre question…</text>
+    <rect x="146" y="356" width="1.5" height="12" fill="#67e8f9" className="chat-caret" />
     <circle cx="418" cy="361" r="15" fill="#8b5cf6" />
     <path d="M411 361 l14 0 M419 355 l6 6 l-6 6" fill="none" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
+// Fond du hero : des particules de données (agenda, mails, CRM, tableurs…)
+// qui convergent en flux lumineux vers un cœur central pulsant.
+const ConvergingDataIllustration = () => {
+  const CX = 600, CY = 300;
+  const sources = [
+    [120, 90, '#22d3ee'], [1060, 110, '#8b5cf6'], [90, 300, '#a3e635'],
+    [1120, 300, '#22d3ee'], [180, 520, '#8b5cf6'], [1030, 500, '#a3e635'],
+    [430, 60, '#22d3ee'], [800, 545, '#8b5cf6'], [340, 470, '#a3e635'],
+    [880, 120, '#22d3ee'], [250, 210, '#8b5cf6'], [960, 380, '#a3e635'],
+  ];
+  return (
+    <div
+      className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden [mask-image:radial-gradient(65%_65%_at_58%_45%,#000_35%,transparent_100%)]"
+      aria-hidden="true"
+    >
+      <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <radialGradient id="cv-core" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.9" />
+            <stop offset="60%" stopColor="#8b5cf6" stopOpacity="0.35" />
+            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+          </radialGradient>
+          <style>{`
+            @keyframes cv-flow { to { stroke-dashoffset: -200; } }
+            @keyframes cv-core { 0%,100% { transform: scale(1); opacity:.55 } 50% { transform: scale(1.15); opacity:.9 } }
+            @keyframes cv-src  { 0%,100% { opacity:.35 } 50% { opacity:.9 } }
+            .cv-flow { stroke-dasharray: 2 16; stroke-linecap: round; animation: cv-flow 2.4s linear infinite; }
+            .cv-core { transform-origin: 600px 300px; animation: cv-core 5s ease-in-out infinite; }
+            .cv-src  { animation: cv-src 3s ease-in-out infinite; }
+            @media (prefers-reduced-motion: reduce) {
+              .cv-flow, .cv-core, .cv-src { animation: none; }
+            }
+          `}</style>
+        </defs>
+
+        {sources.map(([x, y, c], i) => (
+          <g key={i}>
+            <line x1={x} y1={y} x2={CX} y2={CY} stroke={c} strokeWidth="1" opacity="0.1" />
+            <line x1={x} y1={y} x2={CX} y2={CY} stroke={c} strokeWidth="1.6" opacity="0.55" className="cv-flow" style={{ animationDelay: `${i * 0.2}s` }} />
+            <circle cx={x} cy={y} r="3" fill={c} className="cv-src" style={{ animationDelay: `${i * 0.25}s` }} />
+          </g>
+        ))}
+
+        {/* Cœur central pulsant */}
+        <circle cx={CX} cy={CY} r="60" fill="url(#cv-core)" className="cv-core" />
+        <circle cx={CX} cy={CY} r="6" fill="#c4b5fd" opacity="0.8" />
+      </svg>
+    </div>
+  );
+};
+
 // Schéma : l'agent IA au centre, relié à toutes vos sources de données
-const ConnectionsSchemaIllustration = () => (
-  <svg viewBox="0 0 760 320" className="w-full h-auto min-w-[600px] md:min-w-0" role="img" aria-label="Schéma de l'agent IA relié à votre planning, vos clients, votre facturation et votre base de données">
-    <defs>
-      <linearGradient id="agentCore" x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0%" stopColor="#22d3ee" />
-        <stop offset="100%" stopColor="#8b5cf6" />
-      </linearGradient>
-      <marker id="agentArrow" markerWidth="8" markerHeight="8" refX="4" refY="3" orient="auto">
-        <path d="M0,0 L6,3 L0,6 Z" fill="#8b5cf6" />
-      </marker>
-    </defs>
-    <g fontFamily="sans-serif">
-      {/* Sources (colonne gauche) */}
-      {[
-        { y: 40,  label: 'Planning',    sub: 'agenda, RDV' },
-        { y: 120, label: 'Clients',     sub: 'CRM, contacts' },
-        { y: 200, label: 'Facturation', sub: 'devis, factures' },
-        { y: 280, label: 'Base de données', sub: 'produits, stock' },
-      ].map((s, i) => (
-        <g key={i}>
-          <rect x="20" y={s.y - 26} width="190" height="52" rx="10" fill="#1e293b" stroke="#334155" strokeWidth="1.5" />
-          <text x="40" y={s.y - 4} fill="#f8fafc" fontSize="12" fontWeight="bold">{s.label}</text>
-          <text x="40" y={s.y + 13} fill="#94a3b8" fontSize="9">{s.sub}</text>
-          {/* Flèche vers l'agent */}
-          <line x1="210" y1={s.y} x2="300" y2="160" stroke="#8b5cf6" strokeWidth="1.5" opacity="0.6" markerEnd="url(#agentArrow)" />
+const ConnectionsSchemaIllustration = () => {
+  const sources = [
+    { cy: 60,  label: 'Planning',        sub: 'agenda, RDV',      color: '#22d3ee' },
+    { cy: 140, label: 'Clients',         sub: 'CRM, contacts',    color: '#8b5cf6' },
+    { cy: 220, label: 'Facturation',     sub: 'devis, factures',  color: '#22d3ee' },
+    { cy: 300, label: 'Base de données', sub: 'produits, stock',  color: '#8b5cf6' },
+  ];
+  const HUB_X = 420, HUB_Y = 180;
+  // Point d'arrivée en éventail sur le bord gauche du hub
+  const endY = (i) => HUB_Y + (i - 1.5) * 12;
+
+  return (
+    <svg viewBox="0 0 780 360" className="w-full h-auto min-w-[680px] md:min-w-0" role="img" aria-label="Schéma de l'agent IA relié à votre planning, vos clients, votre facturation et votre base de données">
+      <defs>
+        <linearGradient id="agentCore" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#22d3ee" />
+          <stop offset="100%" stopColor="#8b5cf6" />
+        </linearGradient>
+        <radialGradient id="hubGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+        </radialGradient>
+        <marker id="agentArrow" markerWidth="9" markerHeight="9" refX="5" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="#22d3ee" />
+        </marker>
+        <style>{`
+          @keyframes cs-flow { to { stroke-dashoffset: -16; } }
+          @keyframes cs-spin { to { transform: rotate(360deg); } }
+          @keyframes cs-breathe { 0%,100% { opacity:.35 } 50% { opacity:.6 } }
+          .cs-flow { stroke-dasharray: 1 15; stroke-linecap: round; animation: cs-flow 1.3s linear infinite; }
+          .cs-ring { transform-origin: 420px 180px; animation: cs-spin 24s linear infinite; }
+          .cs-glow { animation: cs-breathe 5s ease-in-out infinite; }
+          @media (prefers-reduced-motion: reduce) {
+            .cs-flow, .cs-ring, .cs-glow { animation: none; }
+          }
+        `}</style>
+      </defs>
+
+      <g fontFamily="sans-serif">
+        {/* Connexions source → hub (base + flux animé) */}
+        {sources.map((s, i) => {
+          const d = `M224,${s.cy} C 312,${s.cy} 330,${endY(i)} 366,${endY(i)}`;
+          return (
+            <g key={`link-${i}`}>
+              <path d={d} fill="none" stroke={s.color} strokeWidth="1.5" opacity="0.18" />
+              <path d={d} fill="none" stroke={s.color} strokeWidth="2.4" className="cs-flow" style={{ animationDelay: `${i * 0.28}s` }} />
+            </g>
+          );
+        })}
+
+        {/* Cartes sources (colonne gauche) */}
+        {sources.map((s, i) => (
+          <g key={`src-${i}`}>
+            <rect x="24" y={s.cy - 27} width="200" height="54" rx="12" fill="#1e293b" stroke="#334155" strokeWidth="1.5" />
+            <rect x="24" y={s.cy - 27} width="4" height="54" rx="2" fill={s.color} />
+            <circle cx="48" cy={s.cy} r="8" fill={s.color} fillOpacity="0.15" stroke={s.color} strokeWidth="1.3" />
+            <circle cx="48" cy={s.cy} r="2.4" fill={s.color} />
+            <text x="70" y={s.cy - 3} fill="#f8fafc" fontSize="13" fontWeight="bold">{s.label}</text>
+            <text x="70" y={s.cy + 14} fill="#94a3b8" fontSize="10">{s.sub}</text>
+          </g>
+        ))}
+
+        {/* Hub — Agent IA */}
+        <circle cx={HUB_X} cy={HUB_Y} r="88" fill="url(#hubGlow)" className="cs-glow" />
+        <circle cx={HUB_X} cy={HUB_Y} r="68" fill="none" stroke="#8b5cf6" strokeWidth="1" strokeDasharray="4 8" opacity="0.5" className="cs-ring" />
+        <circle cx={HUB_X} cy={HUB_Y} r="56" fill="#0f172a" stroke="url(#agentCore)" strokeWidth="2" />
+        <circle cx={HUB_X} cy={HUB_Y} r="56" fill="url(#agentCore)" fillOpacity="0.1" />
+        <text x={HUB_X} y={HUB_Y - 4} textAnchor="middle" fill="#f8fafc" fontSize="17" fontWeight="bold">Agent IA</text>
+        <text x={HUB_X} y={HUB_Y + 15} textAnchor="middle" fill="#c4b5fd" fontSize="11">conversationnel</text>
+
+        {/* Pastille sous le hub */}
+        <g>
+          <rect x={HUB_X - 78} y={HUB_Y + 74} width="156" height="26" rx="13" fill="#0e7490" fillOpacity="0.15" stroke="#22d3ee" strokeOpacity="0.4" strokeWidth="1" />
+          <circle cx={HUB_X - 58} cy={HUB_Y + 87} r="3" fill="#34d399" />
+          <text x={HUB_X + 6} y={HUB_Y + 91} textAnchor="middle" fill="#67e8f9" fontSize="10.5" fontWeight="500">réponses en temps réel</text>
         </g>
-      ))}
 
-      {/* Agent IA (centre) */}
-      <circle cx="380" cy="160" r="66" fill="#2e1065" fillOpacity="0.4" />
-      <circle cx="380" cy="160" r="52" fill="url(#agentCore)" fillOpacity="0.15" stroke="url(#agentCore)" strokeWidth="2" />
-      <text x="380" y="150" textAnchor="middle" fill="#f8fafc" fontSize="14" fontWeight="bold">Agent IA</text>
-      <text x="380" y="170" textAnchor="middle" fill="#c4b5fd" fontSize="10">conversationnel</text>
-      <text x="380" y="186" textAnchor="middle" fill="#67e8f9" fontSize="9">réponses en temps réel</text>
-
-      {/* Sortie : la réponse / l'action */}
-      <line x1="446" y1="160" x2="548" y2="160" stroke="#22d3ee" strokeWidth="2" markerEnd="url(#agentArrow)" />
-      <rect x="550" y="100" width="190" height="120" rx="12" fill="#1e293b" stroke="#22d3ee" strokeWidth="1.5" />
-      <text x="645" y="128" textAnchor="middle" fill="#22d3ee" fontSize="12" fontWeight="bold">Vous</text>
-      <text x="645" y="152" textAnchor="middle" fill="#e2e8f0" fontSize="10">« Réponse immédiate,</text>
-      <text x="645" y="168" textAnchor="middle" fill="#e2e8f0" fontSize="10">chiffrée et sourcée »</text>
-      <text x="645" y="192" textAnchor="middle" fill="#94a3b8" fontSize="9">+ tâches exécutées</text>
-      <text x="645" y="206" textAnchor="middle" fill="#94a3b8" fontSize="9">à votre place</text>
-    </g>
-  </svg>
-);
+        {/* Sortie : la réponse / l'action */}
+        <path d="M480,180 L560,180" fill="none" stroke="#22d3ee" strokeWidth="1.5" opacity="0.25" />
+        <path d="M480,180 L560,180" fill="none" stroke="#22d3ee" strokeWidth="2.4" className="cs-flow" markerEnd="url(#agentArrow)" />
+        <rect x="576" y="118" width="184" height="124" rx="14" fill="#1e293b" stroke="#22d3ee" strokeWidth="1.5" />
+        <text x="668" y="146" textAnchor="middle" fill="#22d3ee" fontSize="13" fontWeight="bold">Vous</text>
+        <line x1="612" y1="158" x2="724" y2="158" stroke="#334155" strokeWidth="1" />
+        <text x="668" y="180" textAnchor="middle" fill="#e2e8f0" fontSize="11">« Réponse immédiate,</text>
+        <text x="668" y="196" textAnchor="middle" fill="#e2e8f0" fontSize="11">chiffrée et sourcée »</text>
+        <text x="668" y="220" textAnchor="middle" fill="#94a3b8" fontSize="10">+ tâches exécutées à votre place</text>
+      </g>
+    </svg>
+  );
+};
 
 // ---------------------------------------------------------------------------
 // Page
@@ -275,7 +402,7 @@ const AgentIaPage = () => {
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-violet-900/30 via-slate-900 to-slate-900" />
         <div className="absolute inset-0 bg-tech-grid pointer-events-none" />
-        <DataNetworkIllustration />
+        <ConvergingDataIllustration />
         <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none glow-pulse" />
         <div className="absolute top-24 right-0 w-[380px] h-[380px] bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none glow-pulse" />
         <div className="container mx-auto relative z-10 max-w-6xl">
@@ -302,18 +429,24 @@ const AgentIaPage = () => {
                 <Button
                   asChild
                   size="lg"
-                  className="bg-white text-slate-900 hover:bg-slate-200 rounded-full px-8 py-6 h-auto text-lg font-semibold"
+                  className="group relative rounded-full px-8 py-6 h-auto text-base font-semibold text-white bg-gradient-to-r from-violet-600 to-cyan-500 hover:from-violet-500 hover:to-cyan-400 shadow-lg shadow-violet-900/40 hover:shadow-xl hover:shadow-violet-700/40 transition-all duration-300"
                   onClick={() => handleCtaClick('hero')}
                 >
-                  <Link to="/contact">Demander un devis</Link>
+                  <Link to="/contact" className="flex items-center gap-2">
+                    Demander un devis
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-slate-700 hover:bg-slate-800 text-slate-300 rounded-full px-8 py-6 h-auto text-lg"
+                  className="group rounded-full px-8 py-6 h-auto text-base font-medium bg-white/5 border-slate-700 text-slate-200 backdrop-blur-sm hover:bg-white/10 hover:border-cyan-500/40 hover:text-white transition-all duration-300"
                 >
-                  <a href="#fonctionnalites">Découvrir les fonctionnalités</a>
+                  <a href="#fonctionnalites" className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-cyan-400 transition-transform duration-300 group-hover:scale-110" />
+                    Découvrir les fonctionnalités
+                  </a>
                 </Button>
               </div>
             </div>

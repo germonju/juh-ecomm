@@ -113,3 +113,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-06 13:39 — `main`
 - 3e78620 feat(conciergerie): section agent IA (WhatsApp + assistant environnement)
+
+#### 2026-07-16 02:45 — `main`
+- bc2ddcc style(agent-ia): design futuriste + corrections d'espacement
