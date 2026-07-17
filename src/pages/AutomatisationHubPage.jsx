@@ -3,7 +3,7 @@ import { CircuitBoardIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
-import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key, LayoutDashboard } from 'lucide-react';
+import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key, LayoutDashboard, Bot, Receipt, CalendarCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 
@@ -36,29 +36,57 @@ const AutomatisationHubPage = () => {
       icon: MapPin,
       title: 'Google My Business',
       description: 'Optimisez votre fiche GMB et répondez automatiquement aux avis pour améliorer votre SEO local.',
-      link: '/google-my-business',
+      link: '/automatisation-ia/google-my-business',
       color: 'text-blue-400'
     },
     {
       icon: MessageSquare,
       title: 'Réponse Leads',
       description: 'Qualifiez et répondez instantanément à vos leads entrants pour ne jamais manquer une opportunité.',
-      link: '/reponse-leads',
+      link: '/automatisation-ia/reponse-leads',
       color: 'text-violet-400'
     },
     {
       icon: Key,
       title: 'Service pour conciergerie',
       description: 'Répondez automatiquement aux messages de vos voyageurs Airbnb et Booking 24h/24. Gérez plusieurs logements sans multiplier le temps passé.',
-      link: '/conciergerie',
+      link: '/automatisation-ia/conciergerie',
       color: 'text-emerald-400'
     },
     {
       icon: LayoutDashboard,
       title: 'Back office conciergerie',
       description: 'Fiches contact automatiques, statistiques en temps réel par propriétaire, rapports automatiques et facturation entièrement automatisée.',
-      link: '/back-office-conciergerie',
+      link: '/automatisation-ia/back-office',
       color: 'text-cyan-400'
+    },
+    {
+      icon: Bot,
+      title: 'Agent IA conversationnel',
+      description: "Un assistant IA relié à votre planning, vos clients et votre facturation, qui répond et agit à votre place.",
+      link: '/automatisation-ia/agent-ia-conversationnel',
+      color: 'text-violet-400'
+    },
+    {
+      icon: Receipt,
+      title: 'Facturation & relances',
+      description: 'Devis, factures et rappels de paiement générés et envoyés automatiquement, avec validation humaine sur les envois sensibles.',
+      link: '/automatisation-ia/facturation-relances',
+      color: 'text-lime-400'
+    },
+    {
+      icon: CalendarCheck,
+      title: 'Prise de RDV & devis',
+      description: 'Prise de rendez-vous en ligne 24h/24 et génération automatique de devis à partir de vos formulaires.',
+      link: '/automatisation-ia/prise-rdv-devis',
+      color: 'text-amber-400'
+    },
+    {
+      icon: MapPin,
+      title: 'Automatisation locale (Angoulême)',
+      description: "Automatisation et agents IA pour les TPE et commerces d'Angoulême et de Charente.",
+      link: '/automatisation-ia/angouleme',
+      color: 'text-blue-400'
     }
   ];
 

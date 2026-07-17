@@ -168,11 +168,6 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/realisations" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
-                  Réalisations
-                </Link>
-              </li>
-              <li>
                 <a 
                   href="https://www.jesuisnumerique.fr"
                   target="_blank"

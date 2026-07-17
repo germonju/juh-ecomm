@@ -39,7 +39,6 @@ const NotFoundPage            = lazy(() => import('@/pages/NotFoundPage'));
 
 // Pages ombrelle (pont inter-silos) + nouvelles pages silo (placeholders)
 const AProposPage             = lazy(() => import('@/pages/AProposPage'));
-const RealisationsPage        = lazy(() => import('@/pages/RealisationsPage'));
 const FacturationRelancesPage = lazy(() => import('@/pages/FacturationRelancesPage'));
 const PriseRdvDevisPage       = lazy(() => import('@/pages/PriseRdvDevisPage'));
 const AngoulemePage           = lazy(() => import('@/pages/AngoulemePage'));
@@ -80,7 +79,6 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/a-propos" element={<AProposPage />} />
-                <Route path="/realisations" element={<RealisationsPage />} />
 
                 {/* Silo 1 — Tracking & Data */}
                 <Route path="/tracking-data" element={<TrackingHubPage />} />

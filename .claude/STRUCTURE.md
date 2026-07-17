@@ -98,8 +98,7 @@ plates sont redirigées en 301 vers les nouvelles (cf. `public/_redirects`).
 |---|---|---|
 | `/` | HomePage | Oui |
 | `/contact` | ContactPage | Oui |
-| `/a-propos` | AProposPage | **Non** (placeholder) |
-| `/realisations` | RealisationsPage | **Non** (placeholder) |
+| `/a-propos` | AProposPage | Oui |
 | **Silo 1 — `/tracking-data/`** | | |
 | `/tracking-data` | TrackingHubPage (hub) | Oui |
 | `/tracking-data/gtm-server-side` | GtmServerSidePage | Oui |
@@ -116,15 +115,15 @@ plates sont redirigées en 301 vers les nouvelles (cf. `public/_redirects`).
 | `/automatisation-ia/google-my-business` | GoogleMyBusinessPage | Oui |
 | `/automatisation-ia/conciergerie` | ConciergeriePage | Oui |
 | `/automatisation-ia/back-office` | BackOfficeConciergeriePage | Oui |
-| `/automatisation-ia/facturation-relances` | FacturationRelancesPage | **Non** (placeholder) |
-| `/automatisation-ia/prise-rdv-devis` | PriseRdvDevisPage | **Non** (placeholder) |
-| `/automatisation-ia/angouleme` | AngoulemePage | **Non** (placeholder, landing SEO local) |
+| `/automatisation-ia/facturation-relances` | FacturationRelancesPage | Oui |
+| `/automatisation-ia/prise-rdv-devis` | PriseRdvDevisPage | Oui |
+| `/automatisation-ia/angouleme` | AngoulemePage | Oui (landing SEO local) |
 | `/blog` + `/blog/:slug` | BlogPage / BlogPostPage | Oui |
 | `/api-docs`, `/seo-audit`, `/mentions-legales`, `/politique-confidentialite` | — | **Non** |
 
-> Les 5 placeholders sont en `noindex` (contenu `[À RÉDIGER]`) et exclus du sitemap
-> tant qu'ils ne sont pas rédigés. Retirer le `noindex` dans `src/seo/meta.config.js`
-> une fois le contenu écrit → la page rejoint automatiquement le sitemap.
+> Les anciennes pages « placeholder » ont été rédigées et sont désormais indexées
+> (incluses au sitemap). Le champ `noindex` dans `src/seo/meta.config.js` ne sert
+> plus qu'aux pages techniques/légales.
 
 ## Fichiers de configuration clés
 

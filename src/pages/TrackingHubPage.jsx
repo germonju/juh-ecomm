@@ -717,6 +717,41 @@ const TrackingHubPage = () => {
           </div>
         </section>
 
+        {/* Explorer le silo Tracking & Data (maillage interne) */}
+        <section className="py-20 bg-slate-900 border-t border-slate-800">
+          <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3 text-center">
+              Explorer le silo Tracking &amp; Data
+            </h2>
+            <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
+              Chaque brique de votre écosystème data, en détail.
+            </p>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {[
+                { name: 'GTM Server-Side', desc: 'Tracking cookieless & RGPD', to: '/tracking-data/gtm-server-side' },
+                { name: 'GA4 Avancé', desc: 'Analytics, audiences & reporting', to: '/tracking-data/ga4' },
+                { name: 'Tracking Shopify', desc: 'GA4 & Google Ads e-commerce', to: '/tracking-data/tracking-ecommerce-shopify' },
+                { name: 'Audit Google Ads', desc: 'ROI & performance de vos campagnes', to: '/tracking-data/audit-google-ads' },
+                { name: 'Conversions Offline', desc: 'Relier ventes offline & Google Ads', to: '/tracking-data/conversions-offline' },
+                { name: 'Consent Mode V2', desc: 'Conformité RGPD & CMP', to: '/tracking-data/consent-mode' },
+                { name: 'Landing Pages', desc: 'Pages haute conversion & A/B test', to: '/tracking-data/landing-pages' },
+              ].map((item) => (
+                <Link
+                  key={item.to}
+                  to={item.to}
+                  className="group block rounded-2xl border border-slate-700 bg-slate-800/40 p-5 hover:border-cyan-500/50 transition-colors"
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-white font-semibold">{item.name}</span>
+                    <ArrowRight className="w-4 h-4 text-cyan-400 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <span className="text-slate-400 text-sm">{item.desc}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* FAQ SECTION */}
         <section className="py-24 bg-slate-950 border-t border-slate-800">
           <div className="container mx-auto px-4 lg:px-8 max-w-4xl">

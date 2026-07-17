@@ -69,16 +69,6 @@ export const META = {
     description: "Julien Germon, expert tracking, data et automatisation pour e-commerçants et TPE. Parcours, expertise et approche.",
     h1: 'À propos',
     breadcrumbName: 'À propos',
-    noindex: true,
-    placeholder: true,
-  },
-  '/realisations': {
-    title: `Réalisations & Cas Clients${B}`,
-    description: "Exemples de projets tracking, data et automatisation menés pour des e-commerçants et des TPE.",
-    h1: 'Réalisations',
-    breadcrumbName: 'Réalisations',
-    noindex: true,
-    placeholder: true,
   },
 
   // === SILO 1 — Tracking & Data ===
@@ -190,8 +180,6 @@ export const META = {
     h1: 'Automatisation de la facturation et des relances',
     breadcrumbName: 'Facturation & Relances',
     silo: SILO_AUTOMATISATION,
-    noindex: true,
-    placeholder: true,
   },
   '/automatisation-ia/prise-rdv-devis': {
     title: `Automatisation Prise de RDV & Devis${B}`,
@@ -199,8 +187,6 @@ export const META = {
     h1: 'Automatisation de la prise de RDV et des devis',
     breadcrumbName: 'Prise de RDV & Devis',
     silo: SILO_AUTOMATISATION,
-    noindex: true,
-    placeholder: true,
   },
   '/automatisation-ia/angouleme': {
     title: `Automatisation & IA pour TPE à Angoulême${B}`,
@@ -208,8 +194,6 @@ export const META = {
     h1: 'Automatisation & IA pour les TPE à Angoulême',
     breadcrumbName: 'Angoulême',
     silo: SILO_AUTOMATISATION,
-    noindex: true,
-    placeholder: true,
   },
 
   // === Blog (intouché) ===
