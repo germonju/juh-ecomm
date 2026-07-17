@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import https from 'https';
+import { META } from '../src/seo/meta.config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -18,26 +19,23 @@ const STATIC_LASTMOD = '2026-07-17';
 const SUPABASE_URL = 'https://altplorphoohlgjmonbd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsdHBsb3JwaG9vaGxnam1vbmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NjgwNzAsImV4cCI6MjA4MDU0NDA3MH0.1ZbFI32wZsdSZ5EQ1vomEFLofggBC-CGWybj_n76ZhE';
 
-// Static pages — noindex pages (api-docs, seo-audit, mentions-legales, politique-confidentialite) sont exclus
-const STATIC_PAGES = [
-  { loc: `${BASE_URL}/`,                    changefreq: 'weekly',  priority: '1.0' },
-  { loc: `${BASE_URL}/contact`,             changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/tracking-hub`,        changefreq: 'monthly', priority: '0.9' },
-  { loc: `${BASE_URL}/gtm-server-side`,     changefreq: 'monthly', priority: '0.9' },
-  { loc: `${BASE_URL}/ga4-advanced`,        changefreq: 'monthly', priority: '0.9' },
-  { loc: `${BASE_URL}/audit-google-ads`,    changefreq: 'monthly', priority: '0.9' },
-  { loc: `${BASE_URL}/shopify`,             changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/google-my-business`,  changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/conversions-offline`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/consent-mode`,        changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/conciergerie`,        changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/back-office-conciergerie`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/agent-ia-conversationnel`, changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/reponse-leads`,       changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/automatisation-hub`,  changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/landing-pages`,       changefreq: 'monthly', priority: '0.8' },
-  { loc: `${BASE_URL}/blog`,                changefreq: 'daily',   priority: '0.9' },
-];
+// Pages statiques indexables DÉRIVÉES de la source unique src/seo/meta.config.js
+// (exclut les entrées noindex : pages légales + placeholders non rédigés). Une
+// nouvelle page indexable dans META rejoint donc automatiquement le sitemap.
+// changefreq/priority : hint par page, valeur par défaut sinon.
+const SITEMAP_HINTS = {
+  '/': { changefreq: 'weekly', priority: '1.0' },
+  '/tracking-data': { changefreq: 'monthly', priority: '0.9' },
+  '/automatisation-ia': { changefreq: 'monthly', priority: '0.9' },
+  '/blog': { changefreq: 'daily', priority: '0.9' },
+};
+const DEFAULT_HINT = { changefreq: 'monthly', priority: '0.8' };
+const STATIC_PAGES = Object.entries(META)
+  .filter(([, m]) => !m.noindex)
+  .map(([routePath]) => ({
+    loc: `${BASE_URL}${routePath === '/' ? '' : routePath}`,
+    ...(SITEMAP_HINTS[routePath] || DEFAULT_HINT),
+  }));
 
 function fetchJson(url, headers) {
   return new Promise((resolve, reject) => {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShieldCircuitIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -72,7 +73,7 @@ const ConsentModePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-violet-500/30">
-      <SeoHead route="/consent-mode" />
+      <SeoHead route="/tracking-data/consent-mode" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
@@ -80,6 +81,7 @@ const ConsentModePage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
+          <Breadcrumb route="/tracking-data/consent-mode" />
           <Badge className="bg-violet-500/10 text-violet-400 hover:bg-violet-500/20 border-violet-500/20 mb-6 px-4 py-1.5 text-sm uppercase tracking-wider">
             RGPD & Tracking
           </Badge>

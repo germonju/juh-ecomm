@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import {
   Smartphone, BarChart3, Send, Receipt, Upload, TrendingUp,
@@ -300,7 +301,7 @@ const BackOfficeConciergeriePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <SeoHead route="/back-office-conciergerie" />
+      <SeoHead route="/automatisation-ia/back-office" />
 
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
@@ -308,6 +309,7 @@ const BackOfficeConciergeriePage = () => {
         <BackOfficeFlowIllustration />
         <div className="absolute top-0 left-1/3 -translate-x-1/2 w-[600px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
         <div className="container mx-auto relative z-10 max-w-6xl">
+          <Breadcrumb route="/automatisation-ia/back-office" />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block px-3 py-1 mb-6 text-sm font-medium rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300">
@@ -606,7 +608,7 @@ const BackOfficeConciergeriePage = () => {
                   </li>
                 </ul>
                 <Button asChild variant="outline" className="border-violet-500 text-violet-400 hover:bg-violet-950">
-                  <Link to="/conciergerie">
+                  <Link to="/automatisation-ia/conciergerie">
                     Découvrir l'automatisation de messagerie
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>

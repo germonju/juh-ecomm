@@ -118,12 +118,17 @@ const AGENT_IA_FAQ_ITEMS = [
 // Structured data builders
 // ---------------------------------------------------------------------------
 
-function buildBreadcrumb(routePath, pageName) {
+function buildBreadcrumb(route) {
   const items = [
     { '@type': 'ListItem', position: 1, name: 'Accueil', item: canonicalUrl('/') },
   ];
-  if (routePath !== '/') {
-    items.push({ '@type': 'ListItem', position: 2, name: pageName, item: canonicalUrl(routePath) });
+  let position = 2;
+  // Silo intermédiaire : Accueil → Hub de silo → Page.
+  if (route.silo && META[route.silo]) {
+    items.push({ '@type': 'ListItem', position: position++, name: META[route.silo].breadcrumbName, item: canonicalUrl(route.silo) });
+  }
+  if (route.path !== '/') {
+    items.push({ '@type': 'ListItem', position, name: route.breadcrumbName, item: canonicalUrl(route.path) });
   }
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
 }
@@ -365,7 +370,7 @@ async function run() {
 
   console.log('📄 Pages statiques:');
   for (const route of routes) {
-    const schemas = [buildBreadcrumb(route.path, route.breadcrumbName)];
+    const schemas = [buildBreadcrumb(route)];
     if (route.path === '/') {
       schemas.push(buildOrganizationSchema());
     }

@@ -43,35 +43,34 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [openDropdown]);
 
+  // Silo 1 — Tracking & Data (national, technique)
   const trackingLinks = [
-    { name: 'Tracking Hub', path: '/tracking-hub' },
-    { name: 'GTM Server-Side', path: '/gtm-server-side' },
-    { name: 'GA4 Avancé', path: '/ga4-advanced' },
-    { name: 'Shopify Tracking', path: '/shopify' },
+    { name: 'Tracking & Data (hub)', path: '/tracking-data' },
+    { name: 'GTM Server-Side', path: '/tracking-data/gtm-server-side' },
+    { name: 'GA4 Avancé', path: '/tracking-data/ga4' },
+    { name: 'Tracking Shopify', path: '/tracking-data/tracking-ecommerce-shopify' },
+    { name: 'Audit Google Ads', path: '/tracking-data/audit-google-ads' },
+    { name: 'Conversions Offline', path: '/tracking-data/conversions-offline' },
+    { name: 'Consent Mode', path: '/tracking-data/consent-mode' },
+    { name: 'Landing Pages', path: '/tracking-data/landing-pages' },
   ];
 
-  const performanceLinks = [
-    { name: 'Audit Google Ads', path: '/audit-google-ads' },
-    { name: 'Conversions Offline', path: '/conversions-offline' },
-    { name: 'Landing Pages', path: '/landing-pages' },
-    { name: 'Consent Mode', path: '/consent-mode' },
-  ];
-
+  // Silo 2 — Automatisation & IA (local + national)
   const automatisationLinks = [
-    { name: 'Automatisation Hub', path: '/automatisation-hub' },
-    { name: 'Agent IA conversationnel', path: '/agent-ia-conversationnel' },
-    { name: 'Réponse Leads', path: '/reponse-leads' },
-    { name: 'Google My Business', path: '/google-my-business' },
-    { name: 'Service pour conciergerie', path: '/conciergerie' },
-    { name: 'Back office conciergerie', path: '/back-office-conciergerie' },
+    { name: 'Automatisation & IA (hub)', path: '/automatisation-ia' },
+    { name: 'Agent IA conversationnel', path: '/automatisation-ia/agent-ia-conversationnel' },
+    { name: 'Réponse Leads', path: '/automatisation-ia/reponse-leads' },
+    { name: 'Google My Business', path: '/automatisation-ia/google-my-business' },
+    { name: 'Service pour conciergerie', path: '/automatisation-ia/conciergerie' },
+    { name: 'Back office', path: '/automatisation-ia/back-office' },
   ];
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-slate-900/95 backdrop-blur-sm border-b border-slate-800">
       <nav className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center gap-3 group"
             onClick={() => handleMenuClick('logo')}
           >
@@ -89,14 +88,14 @@ const Header = () => {
           </Link>
 
           <div className="hidden lg:flex items-center space-x-8">
-            {/* Tracking & Data Dropdown */}
+            {/* Silo 1 — Tracking & Data */}
             <div className="relative group">
               <button
                 className="flex items-center space-x-1 text-slate-300 hover:text-cyan-400 transition-colors py-2 font-medium"
                 onMouseEnter={() => setOpenDropdown('tracking')}
                 onClick={() => handleMenuClick('tracking-menu')}
               >
-                <span>Tracking</span>
+                <span>Tracking &amp; Data</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openDropdown === 'tracking' ? 'rotate-180' : ''} group-hover:rotate-180`} />
               </button>
               <AnimatePresence>
@@ -106,7 +105,7 @@ const Header = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-56 bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden"
+                    className="absolute top-full left-0 mt-2 w-60 bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden"
                     onMouseLeave={() => setOpenDropdown(null)}
                   >
                     {trackingLinks.map((link) => (
@@ -124,49 +123,14 @@ const Header = () => {
               </AnimatePresence>
             </div>
 
-            {/* Performance Dropdown */}
-            <div className="relative group">
-              <button
-                className="flex items-center space-x-1 text-slate-300 hover:text-amber-400 transition-colors py-2 font-medium"
-                onMouseEnter={() => setOpenDropdown('performance')}
-                onClick={() => handleMenuClick('performance-menu')}
-              >
-                <span>Performance</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openDropdown === 'performance' ? 'rotate-180' : ''} group-hover:rotate-180`} />
-              </button>
-              <AnimatePresence>
-                {openDropdown === 'performance' && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-56 bg-slate-800 rounded-lg shadow-xl border border-slate-700 overflow-hidden"
-                    onMouseLeave={() => setOpenDropdown(null)}
-                  >
-                    {performanceLinks.map((link) => (
-                      <Link
-                        key={link.path}
-                        to={link.path}
-                        className="block px-4 py-3 text-slate-300 hover:bg-slate-700 hover:text-amber-400 transition-colors"
-                        onClick={() => handleMenuClick(link.name)}
-                      >
-                        {link.name}
-                      </Link>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Automatisation Dropdown */}
+            {/* Silo 2 — Automatisation & IA */}
             <div className="relative group">
               <button
                 className="flex items-center space-x-1 text-slate-300 hover:text-violet-400 transition-colors py-2 font-medium"
                 onMouseEnter={() => setOpenDropdown('automatisation')}
                 onClick={() => handleMenuClick('automatisation-menu')}
               >
-                <span>Automatisation</span>
+                <span>Automatisation &amp; IA</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${openDropdown === 'automatisation' ? 'rotate-180' : ''} group-hover:rotate-180`} />
               </button>
               <AnimatePresence>
@@ -235,7 +199,15 @@ const Header = () => {
                 )}
               </AnimatePresence>
             </div>
-            
+
+            <Link
+              to="/a-propos"
+              className="text-slate-300 hover:text-cyan-400 transition-colors font-medium"
+              onClick={() => handleMenuClick('a-propos')}
+            >
+              À propos
+            </Link>
+
             <a
               href="https://simulateur.juh-ecomm.fr"
               target="_blank"
@@ -275,13 +247,13 @@ const Header = () => {
               className="lg:hidden border-t border-slate-800 overflow-hidden"
             >
               <div className="py-4 space-y-4 max-h-[80vh] overflow-y-auto">
-                {/* Tracking Mobile */}
+                {/* Silo 1 Mobile */}
                 <div>
                   <button
                     className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-cyan-400 transition-colors"
                     onClick={() => setOpenDropdown(openDropdown === 'tracking' ? null : 'tracking')}
                   >
-                    <span>Tracking</span>
+                    <span>Tracking &amp; Data</span>
                     <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'tracking' ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence>
@@ -307,45 +279,13 @@ const Header = () => {
                   </AnimatePresence>
                 </div>
 
-                {/* Performance Mobile */}
-                <div>
-                  <button
-                    className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-amber-400 transition-colors"
-                    onClick={() => setOpenDropdown(openDropdown === 'performance' ? null : 'performance')}
-                  >
-                    <span>Performance</span>
-                    <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'performance' ? 'rotate-180' : ''}`} />
-                  </button>
-                  <AnimatePresence>
-                    {openDropdown === 'performance' && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="pl-4 space-y-2 mt-2"
-                      >
-                        {performanceLinks.map((link) => (
-                          <Link
-                            key={link.path}
-                            to={link.path}
-                            className="block px-4 py-2 text-slate-400 hover:text-amber-400 transition-colors"
-                            onClick={() => handleMenuClick(link.name)}
-                          >
-                            {link.name}
-                          </Link>
-                        ))}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Automatisation Mobile */}
+                {/* Silo 2 Mobile */}
                 <div>
                   <button
                     className="w-full flex items-center justify-between px-4 py-2 text-slate-300 hover:text-violet-400 transition-colors"
                     onClick={() => setOpenDropdown(openDropdown === 'automatisation' ? null : 'automatisation')}
                   >
-                    <span>Automatisation</span>
+                    <span>Automatisation &amp; IA</span>
                     <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === 'automatisation' ? 'rotate-180' : ''}`} />
                   </button>
                   <AnimatePresence>
@@ -409,7 +349,15 @@ const Header = () => {
                     )}
                   </AnimatePresence>
                 </div>
-                
+
+                <Link
+                  to="/a-propos"
+                  className="block px-4 py-2 text-slate-300 hover:text-cyan-400 transition-colors font-medium"
+                  onClick={() => handleMenuClick('a-propos')}
+                >
+                  À propos
+                </Link>
+
                 <a
                   href="https://simulateur.juh-ecomm.fr"
                   target="_blank"

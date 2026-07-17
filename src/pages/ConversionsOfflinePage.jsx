@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { BridgeIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import {
   Database, UploadCloud, CheckCircle2, ArrowRight, Info, Settings, Server,
@@ -93,7 +94,7 @@ const ConversionsOfflinePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-lime-500/30">
-      <SeoHead route="/conversions-offline" />
+      <SeoHead route="/tracking-data/conversions-offline" />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
@@ -106,6 +107,7 @@ const ConversionsOfflinePage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-lime-500/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
+          <Breadcrumb route="/tracking-data/conversions-offline" />
           <Badge className="bg-lime-500/10 text-lime-400 hover:bg-lime-500/20 border-lime-500/20 mb-6 px-4 py-1.5 text-sm uppercase tracking-wider">
             Google Ads & CRM
           </Badge>

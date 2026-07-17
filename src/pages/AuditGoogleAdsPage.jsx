@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuditScanIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import {
   Search, Target, MessageSquare, TrendingUp, Activity, ShoppingBag,
@@ -146,7 +147,7 @@ const AuditGoogleAdsPage = () => {
 
   return (
     <>
-      <SeoHead route="/audit-google-ads" />
+      <SeoHead route="/tracking-data/audit-google-ads" />
 
       {/* Main container with standard page background */}
       <div className="min-h-screen bg-slate-900 pt-24 pb-20">
@@ -154,6 +155,7 @@ const AuditGoogleAdsPage = () => {
 
           {/* Hero Section */}
           <div className="max-w-4xl mx-auto text-center mb-20 relative overflow-hidden">
+            <Breadcrumb route="/tracking-data/audit-google-ads" />
             <AuditScanIllustration />
             <Badge className="mb-4 bg-violet-500/10 text-violet-400 border-violet-500/20 px-4 py-1 text-sm rounded-full">
               Expertise Google Ads & Analytics

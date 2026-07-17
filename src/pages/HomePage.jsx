@@ -44,7 +44,7 @@ const HomePage = () => {
       title: "Tracking Hub",
       description:
         "Configuration complète de votre tracking e-commerce / Leadgen pour des données fiables et exploitables.",
-      link: "/tracking-hub",
+      link: "/tracking-data",
       color: "cyan",
     },
     {
@@ -52,35 +52,35 @@ const HomePage = () => {
       title: "GTM Server-Side",
       description:
         "Implémentation du tracking côté serveur pour une précision maximale et récupérer 25 % de data supplémentaire.",
-      link: "/gtm-server-side",
+      link: "/tracking-data/gtm-server-side",
       color: "violet",
     },
     {
       icon: BarChart3,
       title: "GA4 Avancé",
       description: "Configuration avancée de Google Analytics 4 avec événements personnalisés et tableaux de bord.",
-      link: "/ga4-advanced",
+      link: "/tracking-data/ga4",
       color: "lime",
     },
     {
       icon: Gauge,
       title: "Automatisation",
       description: "Automatisez vos processus marketing et gagnez un temps précieux avec nos solutions sur mesure.",
-      link: "/automatisation-hub",
+      link: "/automatisation-ia",
       color: "cyan",
     },
     {
       icon: Target,
       title: "Audit Google Ads",
       description: "Analyse complète de vos campagnes publicitaires pour optimiser votre ROI.",
-      link: "/audit-google-ads",
+      link: "/tracking-data/audit-google-ads",
       color: "violet",
     },
     {
       icon: Shield,
       title: "Consent Mode",
       description: "Mise en conformité RGPD avec le Consent Mode V2 pour respecter la vie privée de vos utilisateurs.",
-      link: "/consent-mode",
+      link: "/tracking-data/consent-mode",
       color: "lime",
     },
   ];
@@ -236,7 +236,7 @@ const HomePage = () => {
                   size="lg"
                   className="border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 font-semibold px-8 py-6 text-lg rounded-full transition-all"
                 >
-                  <Link to="/tracking-hub" onClick={() => handleCTAClick("Découvrir mes services", "hero")}>
+                  <Link to="/tracking-data" onClick={() => handleCTAClick("Découvrir mes services", "hero")}>
                     Découvrir mes services
                   </Link>
                 </Button>

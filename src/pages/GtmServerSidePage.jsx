@@ -2,6 +2,7 @@ import React from 'react';
 import { ServerFlowIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Server, Lock, Gauge, BarChart3, CheckCircle2, Shield, Zap, Globe, Database, LineChart, UserCheck, Activity, PieChart, ArrowRight, Laptop, Layers, Share2, Cog, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -15,7 +16,7 @@ const GtmServerSidePage = () => {
     pushEvent('cta_click', {
       cta_name: ctaName,
       cta_location: 'gtm-server-side-page',
-      page_path: '/gtm-server-side'
+      page_path: '/tracking-data/gtm-server-side'
     });
   };
 
@@ -113,7 +114,7 @@ const GtmServerSidePage = () => {
 
   return (
     <>
-      <SeoHead route="/gtm-server-side" />
+      <SeoHead route="/tracking-data/gtm-server-side" />
       <Helmet>
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
@@ -128,6 +129,7 @@ const GtmServerSidePage = () => {
           <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiM4YjNWZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItaDJjMC0xLjEtLjktMi0yLTJ6bTAtNGgyYzEuMSAwIDIgLjkgMiAyaC0ydi0yem0tMiAydjJoMnYtMmgtMnptLTIgMGgtMnYyaDJ2LTJ6bTItMnYtMmgydjJoLTJ6bTAtNGgydi0yYzAtMS4xLS45LTItMi0ydjJoMnptLTIgMnYtMmgtMnYyaDJ6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <Breadcrumb route="/tracking-data/gtm-server-side" />
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-violet-400 to-purple-400 bg-clip-text text-transparent">
                 Google Tag Manager Server-Side

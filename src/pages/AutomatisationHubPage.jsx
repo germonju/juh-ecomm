@@ -1,6 +1,7 @@
 import React from 'react';
 import { CircuitBoardIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -74,13 +75,14 @@ const AutomatisationHubPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <SeoHead route="/automatisation-hub" />
+      <SeoHead route="/automatisation-ia" />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">
         <CircuitBoardIllustration />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-900/20 via-slate-900 to-slate-900" />
         <div className="container mx-auto relative z-10 text-center max-w-4xl">
+          <Breadcrumb route="/automatisation-ia" />
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
             Automatisation Hub
           </h1>

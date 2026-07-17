@@ -1,6 +1,7 @@
 import React from 'react';
 import { WireframeIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
@@ -128,13 +129,14 @@ const LandingPagesPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-amber-500/30">
-      <SeoHead route="/landing-pages" />
+      <SeoHead route="/tracking-data/landing-pages" />
 
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <WireframeIllustration />
         <div className="container mx-auto px-4 relative z-10 flex flex-col items-center">
-          <motion.div 
+          <Breadcrumb route="/tracking-data/landing-pages" />
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -464,9 +466,9 @@ const LandingPagesPage = () => {
            </div>
            <div className="grid md:grid-cols-3 gap-6">
               {[
-                { title: "Tracking Server-Side", link: "/gtm-server-side", desc: "Fiabilisez vos conversions à 100%." },
-                { title: "Audit de Tracking", link: "/tracking-hub", desc: "Vérifiez la santé de vos données actuelles." },
-                { title: "Automatisation Marketing", link: "/automatisation-hub", desc: "Connectez votre landing page à tout votre écosystème." }
+                { title: "Tracking Server-Side", link: "/tracking-data/gtm-server-side", desc: "Fiabilisez vos conversions à 100%." },
+                { title: "Audit de Tracking", link: "/tracking-data", desc: "Vérifiez la santé de vos données actuelles." },
+                { title: "Automatisation Marketing", link: "/automatisation-ia", desc: "Connectez votre landing page à tout votre écosystème." }
               ].map((card, i) => (
                 <Link to={card.link} key={i} className="group" onClick={() => trackCtaClick('cross_sell', card.title)}>
                   <div className="bg-slate-950/50 p-8 rounded-xl border border-slate-700 hover:border-amber-500/50 transition-all h-full flex flex-col justify-between hover:shadow-lg">

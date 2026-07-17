@@ -51,15 +51,15 @@ const Footer = () => {
   };
 
   const serviceLinks = [
-    { name: 'Audit Google Ads', path: '/audit-google-ads' },
-    { name: 'Consent Mode', path: '/consent-mode' },
-    { name: 'Conversions Offline', path: '/conversions-offline' },
-    { name: 'GA4 Avancé', path: '/ga4-advanced' },
-    { name: 'GTM Server-Side', path: '/gtm-server-side' },
-    { name: 'Landing Pages', path: '/landing-pages' },
-    { name: 'Shopify Tracking', path: '/shopify' },
-    { name: 'Tracking Hub', path: '/tracking-hub' }
-  ].sort((a, b) => a.name.localeCompare(b.name));
+    { name: 'Tracking & Data (hub)', path: '/tracking-data' },
+    { name: 'GTM Server-Side', path: '/tracking-data/gtm-server-side' },
+    { name: 'GA4 Avancé', path: '/tracking-data/ga4' },
+    { name: 'Tracking Shopify', path: '/tracking-data/tracking-ecommerce-shopify' },
+    { name: 'Audit Google Ads', path: '/tracking-data/audit-google-ads' },
+    { name: 'Conversions Offline', path: '/tracking-data/conversions-offline' },
+    { name: 'Consent Mode', path: '/tracking-data/consent-mode' },
+    { name: 'Landing Pages', path: '/tracking-data/landing-pages' }
+  ];
 
   return (
     <footer className="bg-slate-950 border-t border-slate-800">
@@ -95,7 +95,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4">Services Tracking</h3>
+            <h3 className="text-white font-semibold mb-4">Tracking &amp; Data</h3>
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
                 <li key={link.path}>
@@ -108,36 +108,36 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-white font-semibold mb-4">Automatisation & Outils</h3>
+            <h3 className="text-white font-semibold mb-4">Automatisation &amp; IA</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/automatisation-hub" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
-                  Automatisation Hub
+                <Link to="/automatisation-ia" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  Automatisation &amp; IA (hub)
                 </Link>
               </li>
               <li>
-                <Link to="/agent-ia-conversationnel" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                <Link to="/automatisation-ia/agent-ia-conversationnel" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Agent IA conversationnel
                 </Link>
               </li>
               <li>
-                <Link to="/google-my-business" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                <Link to="/automatisation-ia/google-my-business" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Google My Business
                 </Link>
               </li>
               <li>
-                <Link to="/reponse-leads" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                <Link to="/automatisation-ia/reponse-leads" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Réponse Leads
                 </Link>
               </li>
               <li>
-                <Link to="/conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                <Link to="/automatisation-ia/conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Service pour conciergerie
                 </Link>
               </li>
               <li>
-                <Link to="/back-office-conciergerie" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
-                  Back office conciergerie
+                <Link to="/automatisation-ia/back-office" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  Back office
                 </Link>
               </li>
               <li>
@@ -160,6 +160,16 @@ const Footer = () => {
               <li>
                 <Link to="/contact" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
                   Contact
+                </Link>
+              </li>
+              <li>
+                <Link to="/a-propos" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  À propos
+                </Link>
+              </li>
+              <li>
+                <Link to="/realisations" className="text-slate-400 hover:text-violet-400 transition-colors text-sm">
+                  Réalisations
                 </Link>
               </li>
               <li>

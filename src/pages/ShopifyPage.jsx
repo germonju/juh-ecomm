@@ -1,6 +1,7 @@
 import React from 'react';
 import { EcommerceFunnelIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
+import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
 import {
   ShoppingCart,
@@ -76,7 +77,7 @@ const ShopifyPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
-      <SeoHead route="/shopify" />
+      <SeoHead route="/tracking-data/tracking-ecommerce-shopify" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
@@ -84,6 +85,7 @@ const ShopifyPage = () => {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none" />
         
         <div className="container mx-auto max-w-5xl relative z-10 text-center">
+          <Breadcrumb route="/tracking-data/tracking-ecommerce-shopify" />
           <Badge className="bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500/20 border-emerald-500/20 mb-6 px-4 py-1.5 text-sm uppercase tracking-wider">
             E-commerce Specialist
           </Badge>

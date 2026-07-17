@@ -37,6 +37,13 @@ const PolitiqueConfidentialitePage = lazy(() => import('@/pages/PolitiqueConfide
 const SeoAuditPage            = lazy(() => import('@/pages/SeoAuditPage'));
 const NotFoundPage            = lazy(() => import('@/pages/NotFoundPage'));
 
+// Pages ombrelle (pont inter-silos) + nouvelles pages silo (placeholders)
+const AProposPage             = lazy(() => import('@/pages/AProposPage'));
+const RealisationsPage        = lazy(() => import('@/pages/RealisationsPage'));
+const FacturationRelancesPage = lazy(() => import('@/pages/FacturationRelancesPage'));
+const PriseRdvDevisPage       = lazy(() => import('@/pages/PriseRdvDevisPage'));
+const AngoulemePage           = lazy(() => import('@/pages/AngoulemePage'));
+
 function App() {
   // Domain redirect logic: automatically redirect non-www "juh-ecomm.fr" to "www.juh-ecomm.fr"
   // This performs a client-side 301-style redirect to ensure consistent URL structure
@@ -72,22 +79,35 @@ function App() {
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/audit-google-ads" element={<AuditGoogleAdsPage />} />
-                <Route path="/gtm-server-side" element={<GtmServerSidePage />} />
-                <Route path="/ga4-advanced" element={<Ga4AdvancedPage />} />
-                <Route path="/shopify" element={<ShopifyPage />} />
-                <Route path="/google-my-business" element={<GoogleMyBusinessPage />} />
-                <Route path="/conversions-offline" element={<ConversionsOfflinePage />} />
-                <Route path="/conciergerie" element={<ConciergeriePage />} />
-                <Route path="/back-office-conciergerie" element={<BackOfficeConciergeriePage />} />
-                <Route path="/agent-ia-conversationnel" element={<AgentIaPage />} />
-                <Route path="/reponse-leads" element={<ReponseLeadsPage />} />
-                <Route path="/automatisation-hub" element={<AutomatisationHubPage />} />
-                <Route path="/tracking-hub" element={<TrackingHubPage />} />
-                <Route path="/consent-mode" element={<ConsentModePage />} />
-                <Route path="/landing-pages" element={<LandingPagesPage />} />
+                <Route path="/a-propos" element={<AProposPage />} />
+                <Route path="/realisations" element={<RealisationsPage />} />
+
+                {/* Silo 1 — Tracking & Data */}
+                <Route path="/tracking-data" element={<TrackingHubPage />} />
+                <Route path="/tracking-data/gtm-server-side" element={<GtmServerSidePage />} />
+                <Route path="/tracking-data/ga4" element={<Ga4AdvancedPage />} />
+                <Route path="/tracking-data/tracking-ecommerce-shopify" element={<ShopifyPage />} />
+                <Route path="/tracking-data/audit-google-ads" element={<AuditGoogleAdsPage />} />
+                <Route path="/tracking-data/conversions-offline" element={<ConversionsOfflinePage />} />
+                <Route path="/tracking-data/consent-mode" element={<ConsentModePage />} />
+                <Route path="/tracking-data/landing-pages" element={<LandingPagesPage />} />
+
+                {/* Silo 2 — Automatisation & IA */}
+                <Route path="/automatisation-ia" element={<AutomatisationHubPage />} />
+                <Route path="/automatisation-ia/agent-ia-conversationnel" element={<AgentIaPage />} />
+                <Route path="/automatisation-ia/reponse-leads" element={<ReponseLeadsPage />} />
+                <Route path="/automatisation-ia/google-my-business" element={<GoogleMyBusinessPage />} />
+                <Route path="/automatisation-ia/conciergerie" element={<ConciergeriePage />} />
+                <Route path="/automatisation-ia/back-office" element={<BackOfficeConciergeriePage />} />
+                <Route path="/automatisation-ia/facturation-relances" element={<FacturationRelancesPage />} />
+                <Route path="/automatisation-ia/prise-rdv-devis" element={<PriseRdvDevisPage />} />
+                <Route path="/automatisation-ia/angouleme" element={<AngoulemePage />} />
+
+                {/* Blog (intouché) */}
                 <Route path="/blog" element={<BlogPage />} />
                 <Route path="/blog/:slug" element={<BlogPostPage />} />
+
+                {/* Pages noindex */}
                 <Route path="/api-docs" element={<ApiDocsPage />} />
                 <Route path="/mentions-legales" element={<MentionsLegalesPage />} />
                 <Route path="/politique-confidentialite" element={<PolitiqueConfidentialitePage />} />

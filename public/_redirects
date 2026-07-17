@@ -7,9 +7,40 @@
 # Cloudflare Pages redirige automatiquement /foo → /foo/ (308) ; canonical et
 # sitemap déclarent la version AVEC slash pour rester cohérents.
 
-# Anciennes URLs (encore explorées par Google, cf. Search Console) → 301
-# vers leurs équivalents actuels pour consolider les signaux.
-/automatisation        /automatisation-hub/  301
-/automatisation/       /automatisation-hub/  301
-/tracking-server-side  /gtm-server-side/     301
-/tracking-server-side/ /gtm-server-side/     301
+# === Restructuration en 2 silos (2026-07-17) : anciennes URLs → nouvelles (301) ===
+# Silo 1 — Tracking & Data
+/tracking-hub                /tracking-data/                               301
+/tracking-hub/               /tracking-data/                               301
+/gtm-server-side             /tracking-data/gtm-server-side/               301
+/gtm-server-side/            /tracking-data/gtm-server-side/               301
+/ga4-advanced                /tracking-data/ga4/                           301
+/ga4-advanced/               /tracking-data/ga4/                           301
+/shopify                     /tracking-data/tracking-ecommerce-shopify/    301
+/shopify/                    /tracking-data/tracking-ecommerce-shopify/    301
+/audit-google-ads            /tracking-data/audit-google-ads/              301
+/audit-google-ads/           /tracking-data/audit-google-ads/              301
+/conversions-offline         /tracking-data/conversions-offline/           301
+/conversions-offline/        /tracking-data/conversions-offline/           301
+/consent-mode                /tracking-data/consent-mode/                  301
+/consent-mode/               /tracking-data/consent-mode/                  301
+/landing-pages               /tracking-data/landing-pages/                 301
+/landing-pages/              /tracking-data/landing-pages/                 301
+# Silo 2 — Automatisation & IA
+/automatisation-hub          /automatisation-ia/                           301
+/automatisation-hub/         /automatisation-ia/                           301
+/agent-ia-conversationnel    /automatisation-ia/agent-ia-conversationnel/  301
+/agent-ia-conversationnel/   /automatisation-ia/agent-ia-conversationnel/  301
+/reponse-leads               /automatisation-ia/reponse-leads/             301
+/reponse-leads/              /automatisation-ia/reponse-leads/             301
+/google-my-business          /automatisation-ia/google-my-business/        301
+/google-my-business/         /automatisation-ia/google-my-business/        301
+/conciergerie                /automatisation-ia/conciergerie/              301
+/conciergerie/               /automatisation-ia/conciergerie/              301
+/back-office-conciergerie    /automatisation-ia/back-office/               301
+/back-office-conciergerie/   /automatisation-ia/back-office/               301
+
+# === Anciennes URLs héritées (Search Console) → cibles finales (pas de chaîne 301) ===
+/automatisation        /automatisation-ia/               301
+/automatisation/       /automatisation-ia/               301
+/tracking-server-side  /tracking-data/gtm-server-side/   301
+/tracking-server-side/ /tracking-data/gtm-server-side/   301
