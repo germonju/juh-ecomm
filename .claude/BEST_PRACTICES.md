@@ -15,13 +15,13 @@
 
 ---
 
-## SEO — Sitemap : ne pas mettre `lastmod` dynamique sur les pages statiques
+## SEO — Sitemap : `lastmod` figé (jamais la date de build) sur les pages statiques
 
-**Quoi :** `<lastmod>` supprimé des pages statiques dans `scripts/generate-sitemap.js`.
+**Quoi :** Les pages statiques utilisent une constante `STATIC_LASTMOD` figée dans `scripts/generate-sitemap.js`, au lieu de la date du jour.
 
-**Comment :** La variable `today` était appliquée à toutes les pages statiques. Supprimée pour les pages statiques, conservée pour les articles blog (calculée depuis `updated_at` en base).
+**Comment :** La variable `today` était appliquée à toutes les pages statiques (le rebuild nocturne la faisait donc avancer chaque nuit). Remplacée par `p.lastmod || STATIC_LASTMOD` (constante à bumper à la main quand une page change vraiment). Les articles blog gardent leur `lastmod` dynamique (calculé depuis `updated_at`).
 
-**Pourquoi :** Google ignore les `lastmod` dont il détecte qu'ils ne sont pas fiables. Mettre la date du jour sur des pages qui n'ont pas changé = signal menteur → Google déprioritise tout le sitemap. Pour les articles, `lastmod` reste pertinent car il reflète une vraie modification en base.
+**Pourquoi :** Google ignore les `lastmod` qu'il détecte non fiables. Mettre la date du build (qui avance chaque nuit) sur des pages inchangées = signal menteur → déprioritisation du sitemap. Une date figée reflète la dernière vraie modification ; pour les articles, `updated_at` reste pertinent.
 
 ---
 
@@ -55,6 +55,32 @@
 **Comment :** Comparaison des deux repos (diff + log exclusifs), migration Cloudflare Pages, suppression remote `lovable`, archivage `juh-ecommerce-studio`.
 
 **Pourquoi :** Il existait deux repos (Lovable original + fork local). Cloudflare déployait depuis l'ancien repo Lovable pendant que tout le travail se faisait dans le fork → les corrections ne partaient pas en prod. Un seul repo évite cette confusion.
+
+---
+
+## SEO — Source unique de vérité pour les meta (`src/seo/meta.config.js` + `SeoHead`)
+
+**Quoi :** Toutes les meta SEO (title, description, canonical, OG, Twitter, robots, h1, breadcrumb, silo) vivent dans un seul objet `META` indexé par route dans `src/seo/meta.config.js`.
+
+**Comment :** Trois consommateurs lisent cette source unique :
+- `scripts/inject-social-meta.js` (baker du HTML statique) importe `META` ;
+- `src/components/SeoHead.jsx` (`<SeoHead route="..." />`) rend le `<Helmet>` depuis `META` ;
+- `index.html` (title de base) est aligné manuellement (ne peut pas importer de JS).
+`scripts/generate-sitemap.js` dérive aussi ses URLs indexables de `META` (exclut `noindex`).
+
+**Pourquoi :** Avant, le `<title>` de la home existait en 3 versions divergentes (index.html, baker, Helmet). Google « flippait » entre elles. Avec une source unique, le HTML pré-rendu (1ʳᵉ vague de crawl) et le DOM hydraté (rendu JS) portent des balises **identiques par construction** — plus aucun flip. Une seule édition met tout à jour.
+
+---
+
+## SEO — Architecture en 2 silos étanches + 301
+
+**Quoi :** Deux silos thématiques : `/tracking-data/*` (Tracking & Data, national/technique) et `/automatisation-ia/*` (Automatisation & IA, local + national). Pages ombrelle `/a-propos` et `/realisations` en pont. Blog **intouché** (`/blog/*`).
+
+**Comment :** Routing silo dans `App.jsx`, meta/breadcrumb dérivés du champ `silo` de `META`, breadcrumb visuel (`Breadcrumb.jsx`) + JSON-LD `BreadcrumbList` à 3 niveaux (Accueil → Hub → Page). Nav Header/Footer réorganisée en 2 silos. Chaque ancienne URL plate → 301 vers la nouvelle dans `public/_redirects` (redirections héritées repointées vers les cibles finales pour éviter les chaînes 301).
+
+**Pourquoi :** Séparer deux univers d'expertise pour concentrer la pertinence thématique (maillage dense intra-silo, quasi nul inter-silos). Les 301 préservent le peu d'équité SEO des anciennes URLs. Le blog n'est pas déplacé (il rank déjà) : silotage par maillage + breadcrumb, zéro 301 sur son contenu.
+
+**Règle :** liens denses **à l'intérieur** de chaque silo ; ponts inter-silos uniquement via home, `/a-propos`, `/realisations`. Les nouvelles pages sans contenu sont des placeholders **noindex** (exclus du sitemap) tant qu'elles ne sont pas rédigées.
 
 ---
 

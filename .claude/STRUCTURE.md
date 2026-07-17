@@ -16,7 +16,7 @@ juh-ecomm/
 │   └── workflows/
 │       └── nightly-build.yml   # Build nocturne automatique
 ├── public/                     # Fichiers statiques servis tels quels
-│   ├── _redirects              # Règles Cloudflare Pages (non-www→www, SPA fallback)
+│   ├── _redirects              # 301 anciennes URLs → silos (pas de SPA fallback ; non-www→www dans _middleware.js)
 │   ├── sitemap.xml             # Généré par scripts/generate-sitemap.js
 │   ├── robots.txt              # Généré par scripts/generate-sitemap.js
 │   ├── llms.txt                # Généré par tools/generate-llms.js
@@ -65,12 +65,16 @@ src/
 │   └── [15 autres pages de service]
 ├── components/
 │   ├── ui/                     # shadcn/ui (style New York, base neutral)
-│   ├── Header.jsx
+│   ├── Header.jsx              # Nav 2 silos (Tracking & Data / Automatisation & IA)
 │   ├── Footer.jsx
+│   ├── SeoHead.jsx            # Balises SEO (title/desc/canonical/OG/robots) depuis meta.config
+│   ├── Breadcrumb.jsx         # Fil d'Ariane visuel reflétant le silo
 │   ├── ConsentManager.jsx      # RGPD / Consent Mode V2
 │   ├── AdParamsCapture.jsx     # Capture UTM + GCLID
 │   ├── HeroIllustrations.jsx   # SVG animés (~38 ko)
 │   └── ServicePageTemplate.jsx # Template réutilisable pages service
+├── seo/
+│   └── meta.config.js         # SOURCE UNIQUE des meta SEO par route (title/desc/h1/silo/noindex)
 ├── contexts/
 │   ├── DataLayerContext.jsx    # GTM dataLayer (page_view, scroll, time_on_page)
 │   └── SupabaseAuthContext.jsx
@@ -85,31 +89,42 @@ src/
     └── utils.js
 ```
 
-## Routes de l'application
+## Routes de l'application — architecture en 2 silos
 
-| Route | Page | Lazy ? | Indexée ? |
-|---|---|---|---|
-| `/` | HomePage | Non | Oui |
-| `/contact` | ContactPage | Oui | Oui |
-| `/tracking-hub` | TrackingHubPage | Oui | Oui |
-| `/gtm-server-side` | GtmServerSidePage | Oui | Oui |
-| `/ga4-advanced` | Ga4AdvancedPage | Oui | Oui |
-| `/audit-google-ads` | AuditGoogleAdsPage | Oui | Oui |
-| `/shopify` | ShopifyPage | Oui | Oui |
-| `/google-my-business` | GoogleMyBusinessPage | Oui | Oui |
-| `/conversions-offline` | ConversionsOfflinePage | Oui | Oui |
-| `/consent-mode` | ConsentModePage | Oui | Oui |
-| `/conciergerie` | ConciergeriePage | Oui | Oui |
-| `/back-office-conciergerie` | BackOfficeConciergeriePage | Oui | Oui |
-| `/reponse-leads` | ReponseLeadsPage | Oui | Oui |
-| `/automatisation-hub` | AutomatisationHubPage | Oui | Oui |
-| `/landing-pages` | LandingPagesPage | Oui | Oui |
-| `/blog` | BlogPage | Oui | Oui |
-| `/blog/:slug` | BlogPostPage | Oui | Oui |
-| `/api-docs` | ApiDocsPage | Oui | **Non** |
-| `/mentions-legales` | MentionsLegalesPage | Oui | **Non** |
-| `/politique-confidentialite` | PolitiqueConfidentialitePage | Oui | **Non** |
-| `/seo-audit` | SeoAuditPage | Oui | **Non** |
+Toutes les pages sont en `lazy()` sauf HomePage (critique LCP). Les anciennes URLs
+plates sont redirigées en 301 vers les nouvelles (cf. `public/_redirects`).
+
+| Route | Page | Indexée ? |
+|---|---|---|
+| `/` | HomePage | Oui |
+| `/contact` | ContactPage | Oui |
+| `/a-propos` | AProposPage | **Non** (placeholder) |
+| `/realisations` | RealisationsPage | **Non** (placeholder) |
+| **Silo 1 — `/tracking-data/`** | | |
+| `/tracking-data` | TrackingHubPage (hub) | Oui |
+| `/tracking-data/gtm-server-side` | GtmServerSidePage | Oui |
+| `/tracking-data/ga4` | Ga4AdvancedPage | Oui |
+| `/tracking-data/tracking-ecommerce-shopify` | ShopifyPage | Oui |
+| `/tracking-data/audit-google-ads` | AuditGoogleAdsPage | Oui |
+| `/tracking-data/conversions-offline` | ConversionsOfflinePage | Oui |
+| `/tracking-data/consent-mode` | ConsentModePage | Oui |
+| `/tracking-data/landing-pages` | LandingPagesPage | Oui |
+| **Silo 2 — `/automatisation-ia/`** | | |
+| `/automatisation-ia` | AutomatisationHubPage (hub) | Oui |
+| `/automatisation-ia/agent-ia-conversationnel` | AgentIaPage | Oui |
+| `/automatisation-ia/reponse-leads` | ReponseLeadsPage | Oui |
+| `/automatisation-ia/google-my-business` | GoogleMyBusinessPage | Oui |
+| `/automatisation-ia/conciergerie` | ConciergeriePage | Oui |
+| `/automatisation-ia/back-office` | BackOfficeConciergeriePage | Oui |
+| `/automatisation-ia/facturation-relances` | FacturationRelancesPage | **Non** (placeholder) |
+| `/automatisation-ia/prise-rdv-devis` | PriseRdvDevisPage | **Non** (placeholder) |
+| `/automatisation-ia/angouleme` | AngoulemePage | **Non** (placeholder, landing SEO local) |
+| `/blog` + `/blog/:slug` | BlogPage / BlogPostPage | Oui |
+| `/api-docs`, `/seo-audit`, `/mentions-legales`, `/politique-confidentialite` | — | **Non** |
+
+> Les 5 placeholders sont en `noindex` (contenu `[À RÉDIGER]`) et exclus du sitemap
+> tant qu'ils ne sont pas rédigés. Retirer le `noindex` dans `src/seo/meta.config.js`
+> une fois le contenu écrit → la page rejoint automatiquement le sitemap.
 
 ## Fichiers de configuration clés
 
@@ -118,6 +133,6 @@ src/
 | `vite.config.js` | Alias `@/` → `src/`, port 8080 |
 | `jsconfig.json` | Alias `@/` pour l'IDE |
 | `components.json` | Config shadcn/ui |
-| `public/_redirects` | Cloudflare : non-www→www (301) + SPA fallback |
+| `public/_redirects` | Cloudflare : 301 anciennes URLs plates → silos (non-www→www géré dans `functions/_middleware.js`) |
 | `.nvmrc` | Version Node.js de référence |
 | `bun.lock` | Lock file Bun (utilisé en CI) |
