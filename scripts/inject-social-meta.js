@@ -13,13 +13,12 @@
 import fs from 'fs';
 import path from 'path';
 import https from 'https';
+import process from 'node:process';
 import { fileURLToPath } from 'url';
+import { META, SITE_NAME, BASE_URL, OG_IMAGE } from '../src/seo/meta.config.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(__dirname, '../dist');
-const BASE_URL = 'https://www.juh-ecomm.fr';
-const OG_IMAGE = `${BASE_URL}/images/og-image.jpg`;
-const SITE_NAME = 'Juh Ecomm Data';
 const AUTHOR_NAME = 'JUH Ecomm Data';
 
 // Supabase credentials (same as generate-sitemap.js)
@@ -211,153 +210,26 @@ function buildJsonLdTags(schemas) {
 }
 
 // ---------------------------------------------------------------------------
-// Titres synchronisés avec les balises <title> des composants React (Helmet).
-// Descriptions limitées à 155 caractères max pour éviter la troncature Google.
-// Les pages noindex (seo-audit, mentions-legales, politique-confidentialite, api-docs) sont exclues.
+// Routes dérivées de la SOURCE UNIQUE src/seo/meta.config.js.
+// Titres / descriptions / H1 / breadcrumb viennent de META : aucune duplication
+// ici (fin du bug des titres divergents). Les items FAQ (contenu long, utile au
+// seul pré-rendu) restent dans ce script, mappés par `faqKey`. Les pages
+// noindex sont filtrées via le flag `noindex`.
 // ---------------------------------------------------------------------------
 
-const routes = [
-  {
-    path: '/',
-    title: `Expert Tracking Server-Side & Automatisation E-commerce | ${SITE_NAME}`,
-    description: "Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience.",
-    breadcrumbName: 'Accueil',
-    h1: 'Expert Tracking Server-Side & Automatisation E-commerce',
-  },
-  {
-    path: '/contact',
-    title: `Contactez JUH Ecomm Data | ${SITE_NAME}`,
-    description: "Contactez JUH Ecomm Data pour discuter de votre stratégie tracking, GA4 et GTM Server-Side. Nos experts vous répondent rapidement.",
-    breadcrumbName: 'Contact',
-  },
-  {
-    path: '/audit-google-ads',
-    title: `Audit Google Ads Expert : ROI & Performance | JUH Ecomm`,
-    description: "Audit complet de votre compte Google Ads : Search, Shopping, PMax. Identifiez les gaspillages et boostez votre rentabilité e-commerce.",
-    breadcrumbName: 'Audit Google Ads',
-  },
-  {
-    path: '/gtm-server-side',
-    title: `GTM Server-Side : Tracking Cookieless & RGPD | JUH Ecomm`,
-    description: "Implémentez GTM Server-Side pour améliorer votre tracking RGPD. Réduisez la dépendance aux cookies tiers et améliorez la qualité de vos données.",
-    breadcrumbName: 'GTM Server-Side',
-    faqItems: GTM_FAQ_ITEMS,
-  },
-  {
-    path: '/ga4-advanced',
-    title: `GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm`,
-    description: "Maîtrisez Google Analytics 4 avancé pour exploiter vos données. Configurations avancées, audiences personnalisées et insights actionnables.",
-    breadcrumbName: 'GA4 Avancé',
-  },
-  {
-    path: '/shopify',
-    title: `Shopify Tracking GA4 & Google Ads Expert | JUH Ecomm Data`,
-    description: "Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes.",
-    breadcrumbName: 'Shopify',
-  },
-  {
-    path: '/google-my-business',
-    title: `Google My Business : Visibilité Locale Expert | JUH Ecomm`,
-    description: "Optimisez votre fiche Google My Business pour augmenter votre visibilité locale. Attirez plus de clients et améliorez votre présence sur Google Maps.",
-    breadcrumbName: 'Google My Business',
-  },
-  {
-    path: '/conversions-offline',
-    title: `Conversions Offline Google Ads & GA4 | JUH Ecomm Data`,
-    description: "Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes digitales pour une vision 360° de votre ROI.",
-    breadcrumbName: 'Conversions Offline',
-    faqItems: CONVERSIONS_FAQ_ITEMS,
-  },
-  {
-    path: '/conciergerie',
-    title: `Conciergerie Marketing : Pilotage Expert | JUH Ecomm Data`,
-    description: "Service de conciergerie marketing : pilotage expert de vos campagnes Google Ads, GA4 et tracking. Résultats mesurables pour votre croissance.",
-    breadcrumbName: 'Conciergerie',
-    ogImage: `${BASE_URL}/images/conciergerie-og.jpg`,
-  },
-  {
-    path: '/back-office-conciergerie',
-    title: `Back Office Conciergerie : Gestion Automatisée | JUH Ecomm Data`,
-    description: "Back office sur mesure pour conciergeries : fiches contact automatiques, statistiques temps réel, facturation automatisée, analyse d'annonces et retouche photo.",
-    breadcrumbName: 'Back Office Conciergerie',
-  },
-  {
-    path: '/agent-ia-conversationnel',
-    title: `Création d'Agent IA Conversationnel sur Mesure | JUH Ecomm Data`,
-    description: "Un agent IA conversationnel relié à votre planning, vos clients, votre facturation et votre base de données. Réponses instantanées et tâches accomplies à votre place.",
-    breadcrumbName: 'Agent IA Conversationnel',
-    faqItems: AGENT_IA_FAQ_ITEMS,
-  },
-  {
-    path: '/reponse-leads',
-    title: `Réponse Leads - Automatisation Prospection | ${SITE_NAME}`,
-    description: "Automatisez la gestion de vos leads. Réponses instantanées, qualification automatique et suivi personnalisé pour maximiser votre taux de conversion.",
-    breadcrumbName: 'Réponse Leads',
-  },
-  {
-    path: '/automatisation-hub',
-    title: `Automatisation Marketing : Workflows & Make | JUH Ecomm`,
-    description: "Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance.",
-    breadcrumbName: 'Automatisation Hub',
-  },
-  {
-    path: '/tracking-hub',
-    title: `Tracking Hub : GA4, GTM & Conversions Expert | JUH Ecomm`,
-    description: "Centralisez votre tracking avec notre hub complet. Maîtrisez Google Analytics 4, GTM et vos données de conversion pour une stratégie data-driven optimale.",
-    breadcrumbName: 'Tracking Hub',
-  },
-  {
-    path: '/consent-mode',
-    title: `Consent Mode V2 & CMP - Conformité RGPD | ${SITE_NAME}`,
-    description: "Mise en conformité RGPD avec Google Consent Mode V2. Audit, installation de CMP (Cookiebot, Axeptio...) et configuration GTM pour respecter la vie privée.",
-    breadcrumbName: 'Consent Mode V2',
-  },
-  {
-    path: '/landing-pages',
-    title: `Landing Pages Haute Conversion & A/B Testing | JUH Ecomm`,
-    description: "Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion.",
-    breadcrumbName: 'Landing Pages',
-  },
-  {
-    path: '/blog',
-    title: `Blog Marketing Digital | ${SITE_NAME}`,
-    description: "Guides experts sur Google Ads, GA4, GTM et e-commerce. Cas d'études et stratégies pour optimiser votre performance digitale.",
-    breadcrumbName: 'Blog',
-  },
-];
-
-// H1 réels des composants React, repris à l'identique pour le corps
-// pré-rendu (cohérence entre la vague pré-rendu et la vague rendu JS).
-const H1_BY_PATH = {
-  '/contact': 'Parlons de votre projet tracking',
-  '/audit-google-ads': 'Optimisez vos campagnes avec un Audit Google Ads complet',
-  '/gtm-server-side': 'Google Tag Manager Server-Side',
-  '/ga4-advanced': 'GA4 Avancé',
-  '/shopify': 'Tracking Shopify & E-commerce',
-  '/google-my-business': 'Google My Business automatisé',
-  '/conversions-offline': 'Conversions Offline Google Ads',
-  '/conciergerie': 'Service pour conciergerie : automatisation Airbnb & Booking',
-  '/back-office-conciergerie': 'Back office sur mesure pour conciergeries',
-  '/agent-ia-conversationnel': 'Votre agent IA conversationnel, relié à toute votre activité',
-  '/reponse-leads': 'Réponse Leads',
-  '/automatisation-hub': 'Automatisation Hub',
-  '/tracking-hub': 'Tracking Hub',
-  '/consent-mode': 'Consent Mode V2, CMP et mise en conformité RGPD',
-  '/landing-pages': 'Landing Pages Haute Conversion pour Vos Campagnes Publicitaires',
-  '/blog': 'Le Blog Expert Data',
+const FAQ_BY_KEY = {
+  gtm: GTM_FAQ_ITEMS,
+  conversions: CONVERSIONS_FAQ_ITEMS,
+  agentIa: AGENT_IA_FAQ_ITEMS,
 };
 
-// Pages exclues de l'indexation. On les pré-rend quand même (avec un
-// <meta robots noindex> statique) pour deux raisons :
-//   1. garantir le noindex dès le crawl, sans dépendre du rendu JS ;
-//   2. donner un fichier statique à CHAQUE route React, ce qui permet de
-//      retirer le fallback SPA et de servir une vraie 404 (cf. _redirects).
-const NOINDEX_ROUTES = [
-  { path: '/api-docs',                  title: `Documentation API | ${SITE_NAME}`,            breadcrumbName: 'API' },
-  { path: '/seo-audit',                 title: `Audit SEO | ${SITE_NAME}`,                    breadcrumbName: 'Audit SEO' },
-  { path: '/mentions-legales',          title: `Mentions légales | ${SITE_NAME}`,             breadcrumbName: 'Mentions légales' },
-  { path: '/politique-confidentialite', title: `Politique de confidentialité | ${SITE_NAME}`, breadcrumbName: 'Politique de confidentialité' },
-];
+const metaEntries = Object.entries(META).map(([path, m]) => ({ path, ...m }));
+const routes = metaEntries.filter(m => !m.noindex);
+
+// Pages noindex : pré-rendues quand même (avec <meta robots noindex> statique)
+// pour garantir le noindex dès le crawl et donner un fichier statique à chaque
+// route (permet une vraie 404 sans fallback SPA, cf. _redirects).
+const NOINDEX_ROUTES = metaEntries.filter(m => m.noindex);
 
 // ---------------------------------------------------------------------------
 // Supabase fetch
@@ -497,11 +369,12 @@ async function run() {
     if (route.path === '/') {
       schemas.push(buildOrganizationSchema());
     }
-    if (route.faqItems) {
-      schemas.push(buildFaqSchema(route.faqItems));
+    const faqItems = route.faqKey && FAQ_BY_KEY[route.faqKey];
+    if (faqItems) {
+      schemas.push(buildFaqSchema(faqItems));
     }
 
-    const heading = route.h1 || H1_BY_PATH[route.path] || route.breadcrumbName;
+    const heading = route.h1 || route.breadcrumbName;
     const bodyHtml = buildPrerenderBody({ heading, lead: route.description });
     const html = injectIntoHtml(baseHtml, route, schemas, bodyHtml);
 
@@ -519,9 +392,8 @@ async function run() {
 
   console.log('\n🚫 Pages noindex:');
   for (const route of NOINDEX_ROUTES) {
-    const routeData = { ...route, description: route.title, noindex: true };
-    const bodyHtml = buildPrerenderBody({ heading: route.breadcrumbName });
-    const html = injectIntoHtml(baseHtml, routeData, [], bodyHtml);
+    const bodyHtml = buildPrerenderBody({ heading: route.h1 || route.breadcrumbName });
+    const html = injectIntoHtml(baseHtml, route, [], bodyHtml);
     const routeDir = path.join(distDir, route.path);
     fs.mkdirSync(routeDir, { recursive: true });
     fs.writeFileSync(path.join(routeDir, 'index.html'), html);

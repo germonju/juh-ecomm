@@ -1,15 +1,15 @@
 import React from 'react';
 import { EcommerceFunnelIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  ShoppingCart, 
-  AlertTriangle, 
-  Database, 
-  Server, 
-  ShieldCheck, 
-  Code2, 
-  ArrowRight, 
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
+import {
+  ShoppingCart,
+  AlertTriangle,
+  Database,
+  Server,
+  ShieldCheck,
+  Code2,
+  ArrowRight,
   CheckCircle,
   Globe,
   Lock
@@ -17,12 +17,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const ShopifyPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const problems = [
     {
       title: "Pas de dataLayer natif",
@@ -80,28 +76,7 @@ const ShopifyPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-emerald-500/30">
-      <Helmet>
-        <title>Shopify Tracking GA4 & Google Ads Expert | JUH Ecomm Data</title>
-        <meta name="description" content="Optimisez votre boutique Shopify avec notre expertise. Intégrations Google Ads, GA4, tracking avancé et stratégie de croissance pour maximiser vos ventes." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Shopify Optimisé | JUH Ecomm Data" />
-        <meta property="og:description" content="Optimisez votre boutique Shopify avec intégrations Google Ads et GA4. Stratégie de croissance pour vos ventes." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Shopify Optimisé | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Optimisez votre boutique Shopify avec notre expertise. Intégrations avancées et stratégie de croissance." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/shopify" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">

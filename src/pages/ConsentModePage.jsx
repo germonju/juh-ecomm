@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { ShieldCircuitIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Shield, 
-  SearchCheck, 
-  Settings, 
-  CheckCircle2, 
+import {
+  Shield,
+  SearchCheck,
+  Settings,
+  CheckCircle2,
   ArrowRight,
   Lock,
   EyeOff,
@@ -19,12 +19,9 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const ConsentModePage = () => {
   const [openFaq, setOpenFaq] = useState(null);
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const auditPoints = [
     "Configuration CMP : La bannière est-elle conforme RGPD ? Les textes sont-ils clairs ? Le design est-il correct ?",
@@ -75,28 +72,7 @@ const ConsentModePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-violet-500/30">
-      <Helmet>
-        <title>Consent Mode V2 & CMP - Conformité RGPD | Juh Ecomm Data</title>
-        <meta name="description" content="Mise en conformité RGPD avec Google Consent Mode V2. Audit, installation de CMP (Cookiebot, Axeptio...) et configuration GTM pour respecter la vie privée." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta name="twitter:url" content={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Consent Mode V2 & CMP | Juh Ecomm Data" />
-        <meta property="og:description" content="Mise en conformité RGPD avec Consent Mode V2. Installation CMP, configuration GTM, données fiables et légales." />
-        <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Consent Mode V2 & CMP | Juh Ecomm Data" />
-        <meta name="twitter:description" content="Mise en conformité RGPD avec Consent Mode V2. Installation CMP, configuration GTM, données fiables et légales." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-      </Helmet>
+      <SeoHead route="/consent-mode" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">

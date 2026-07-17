@@ -1,18 +1,18 @@
 import React from 'react';
 import { AnalyticsChartIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  BarChart3, 
-  Target, 
-  Layers, 
-  TrendingUp, 
-  ArrowRight, 
-  Search, 
-  CheckCircle2, 
-  Globe, 
-  Shield, 
-  Server, 
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
+import {
+  BarChart3,
+  Target,
+  Layers,
+  TrendingUp,
+  ArrowRight,
+  Search,
+  CheckCircle2,
+  Globe,
+  Shield,
+  Server,
   Cookie,
   ShoppingCart,
   Users,
@@ -22,12 +22,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const Ga4AdvancedPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const auditPoints = [
     "Configuration des événements et conversions",
     "Paramétrage e-commerce (si applicable)",
@@ -136,28 +132,7 @@ const Ga4AdvancedPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-orange-500/30">
-      <Helmet>
-        <title>GA4 Avancé : Analytics, Audiences & Reporting | JUH Ecomm</title>
-        <meta name="description" content="Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données. Configurations avancées, audiences personnalisées et insights actionnables." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="GA4 Avancé | JUH Ecomm Data" />
-        <meta property="og:description" content="Maîtrisez GA4 avancé pour exploiter vos données. Configurations avancées et audiences personnalisées." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="GA4 Avancé | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Maîtrisez Google Analytics 4 avancé pour exploiter tout le potentiel de vos données et insights." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/ga4-advanced" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">

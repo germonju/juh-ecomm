@@ -1,7 +1,7 @@
 import React from 'react';
 import { WireframeIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   ArrowRight, 
@@ -29,12 +29,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useScrollTracking } from '@/hooks/ScrollTrackingHook';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const LandingPagesPage = () => {
   const { trackCtaClick, trackFaqToggle, trackSectionView } = useScrollTracking();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const handleScrollToProcess = (e) => {
     e.preventDefault();
@@ -131,28 +128,7 @@ const LandingPagesPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-amber-500/30">
-      <Helmet>
-        <title>Landing Pages Haute Conversion & A/B Testing | JUH Ecomm</title>
-        <meta name="description" content="Créez des landing pages haute conversion avec notre expertise. Designs optimisés, copywriting persuasif et tests A/B pour maximiser vos taux de conversion." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Landing Pages Haute Conversion | JUH Ecomm Data" />
-        <meta property="og:description" content="Créez des landing pages haute conversion. Designs optimisés et copywriting persuasif pour maximiser vos conversions." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Landing Pages Haute Conversion | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Créez des landing pages haute conversion avec notre expertise. Designs optimisés et tests A/B." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/landing-pages" />
 
       {/* HERO SECTION */}
       <section className="relative min-h-[90vh] flex items-center pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">

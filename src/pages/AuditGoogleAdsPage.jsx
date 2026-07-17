@@ -1,22 +1,18 @@
 import React from 'react';
 import { AuditScanIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  Search, Target, MessageSquare, TrendingUp, Activity, ShoppingBag, 
-  PieChart, BarChart3, Users, ArrowRight, 
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
+import {
+  Search, Target, MessageSquare, TrendingUp, Activity, ShoppingBag,
+  PieChart, BarChart3, Users, ArrowRight,
   CheckCircle, Check
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const AuditGoogleAdsPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const analysisPoints = [{
     icon: Search,
     title: "Structure du compte",
@@ -150,28 +146,7 @@ const AuditGoogleAdsPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Audit Google Ads Expert : ROI & Performance | JUH Ecomm</title>
-        <meta name="description" content="Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Audit Google Ads Expert | Optimisation ROI & Performance | Juh Ecomm Data" />
-        <meta property="og:description" content="Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Audit Google Ads Expert | Optimisation ROI & Performance | Juh Ecomm Data" />
-        <meta name="twitter:description" content="Audit complet de votre compte Google Ads (Search, Shopping, PMax). Identifiez les gaspillages budgétaires et boostez votre rentabilité e-commerce ou leadgen." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/audit-google-ads" />
 
       {/* Main container with standard page background */}
       <div className="min-h-screen bg-slate-900 pt-24 pb-20">

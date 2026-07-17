@@ -1,7 +1,7 @@
 import React from "react";
 import { DataNetworkIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from "react-helmet";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   TrendingUp,
@@ -24,13 +24,11 @@ import {
 } from "lucide-react";
 import { useDataLayer } from "@/contexts/DataLayerContext";
 import { Button } from "@/components/ui/button";
-import { getCanonicalUrl } from "@/lib/canonicalUrlHandler";
+import SeoHead from "@/components/SeoHead";
 import TrustLogosCarousel from "@/components/TrustLogosCarousel";
 
 const HomePage = () => {
   const { pushEvent } = useDataLayer();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const handleCTAClick = (ctaName, ctaLocation) => {
     pushEvent("cta_click", {
@@ -108,23 +106,8 @@ const HomePage = () => {
 
   return (
     <>
+      <SeoHead route="/" />
       <Helmet>
-        <title>Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm</title>
-        <meta name="description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm" />
-        <meta property="og:description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Expert GTM Server-Side & Analytics E-commerce | Juh Ecomm" />
-        <meta name="twitter:description" content="Expert en tracking et data pour votre croissance. Implémentation GTM Server-Side, GA4, Google Ads et automatisation e-commerce. +10 ans d'expérience." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@graph": [

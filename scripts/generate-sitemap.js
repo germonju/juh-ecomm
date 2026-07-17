@@ -8,6 +8,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BASE_URL = 'https://www.juh-ecomm.fr';
 const SITEMAP_URL = `${BASE_URL}/sitemap.xml`;
 
+// lastmod FIGÉ des pages statiques. Ne PAS utiliser la date de build : le rebuild
+// nocturne ferait avancer lastmod chaque nuit sans changement réel de contenu,
+// signal de fraîcheur que Google finit par ignorer. À bumper à la main quand une
+// page statique change vraiment. Les articles gardent leur updated_at (dynamique).
+const STATIC_LASTMOD = '2026-07-17';
+
 // Hardcoded credentials — same as customSupabaseClient.js
 const SUPABASE_URL = 'https://altplorphoohlgjmonbd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFsdHBsb3JwaG9vaGxnam1vbmJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQ5NjgwNzAsImV4cCI6MjA4MDU0NDA3MH0.1ZbFI32wZsdSZ5EQ1vomEFLofggBC-CGWybj_n76ZhE';
@@ -77,7 +83,7 @@ function buildSitemap(staticPages, articles) {
 
   const staticEntries = staticPages.map(p => `  <url>
     <loc>${withSlash(p.loc)}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${p.lastmod || STATIC_LASTMOD}</lastmod>
     <changefreq>${p.changefreq}</changefreq>
     <priority>${p.priority}</priority>
   </url>`).join('\n');

@@ -1,13 +1,13 @@
 import React from 'react';
 import { DecisionTreeIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  MessageCircle, 
-  Zap, 
-  Target, 
-  Clock, 
-  Check, 
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
+import {
+  MessageCircle,
+  Zap,
+  Target,
+  Clock,
+  Check,
   ArrowRight,
   Inbox,
   Brain,
@@ -18,12 +18,8 @@ import {
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const ReponseLeadsPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const features = [
     {
       icon: MessageCircle,
@@ -59,28 +55,7 @@ const ReponseLeadsPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-cyan-500/30">
-      <Helmet>
-        <title>Réponse Leads - Automatisation Prospection | Juh Ecomm Data</title>
-        <meta name="description" content="Automatisez la gestion de vos leads. Réponses instantanées, qualification automatique et suivi personnalisé pour maximiser votre taux de conversion." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Réponse Automatique aux Leads | Juh Ecomm Data" />
-        <meta property="og:description" content="Répondez instantanément à chaque demande avec une IA. Augmentez votre taux de conversion et ne perdez plus jamais un lead." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Réponse Automatique aux Leads | Juh Ecomm Data" />
-        <meta name="twitter:description" content="Répondez instantanément à chaque demande avec une IA. Augmentez votre taux de conversion et ne perdez plus jamais un lead." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/reponse-leads" />
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">

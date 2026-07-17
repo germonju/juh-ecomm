@@ -1,18 +1,15 @@
 import React, { useEffect } from 'react';
 import { WorkflowIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import { MessageSquare, Clock, TrendingUp, ShieldCheck, Home, Key, Users, Wifi, MapPin, Coffee, AlertCircle, ArrowRight, Check, Star, Bot, Sparkles, Receipt, BarChart3, MessageCircle, CalendarCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const ConciergeriePage = () => {
   const { pushEvent } = useDataLayer();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   // Scroll to top on mount
   useEffect(() => {
@@ -133,20 +130,7 @@ const ConciergeriePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <Helmet>
-        <title>Conciergerie Marketing : Pilotage Expert | JUH Ecomm Data</title>
-        <meta name="description" content="Service de conciergerie marketing : pilotage expert de vos campagnes, optimisation continue et résultats mesurables pour votre croissance e-commerce." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Service Conciergerie Marketing | JUH Ecomm Data" />
-        <meta property="og:description" content="Service de conciergerie marketing pour piloter votre stratégie. Expertise, optimisation continue et résultats garantis." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/conciergerie-og.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Conciergerie Marketing Expert | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Maîtrisez votre stratégie marketing avec notre service de conciergerie. Pilotage expert et résultats mesurables." />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/conciergerie" />
 
       {/* Hero Section */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">

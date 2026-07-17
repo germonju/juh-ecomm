@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { BlogIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Search, Tag, Calendar, ArrowRight, LayoutGrid, AlertCircle, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getArticles, getArticlesByCategory, BLOG_CATEGORIES } from '@/lib/blogService';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
+import SeoHead from '@/components/SeoHead';
 
 const BlogPage = () => {
   const [articles, setArticles] = useState([]);
@@ -16,7 +15,6 @@ const BlogPage = () => {
   const [loading, setLoading] = useState(true);
   const [fetchError, setFetchError] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
   const categorySlug = searchParams.get('category');
   
   const currentCategory = categorySlug 
@@ -92,23 +90,11 @@ const BlogPage = () => {
     }
   };
 
-  const canonicalUrl = getCanonicalUrl(location.pathname);
   const totalArticlesCount = allArticles.length;
 
   return (
     <div className="min-h-screen bg-slate-900 pt-20">
-      <Helmet>
-        <title>{currentCategory ? `${currentCategory.name} — Blog Tracking & Ads | JUH Ecomm` : 'Blog Expert Google Ads, GA4 & GTM | JUH Ecomm Data'}</title>
-        <meta name="description" content="Guides complets sur Google Ads, GA4 et GTM e-commerce. Conseils d'experts, cas d'études et stratégies pour optimiser votre performance digitale." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Blog Marketing Digital | JUH Ecomm Data" />
-        <meta property="og:description" content="Guides experts sur Google Ads, GA4, GTM et e-commerce. Stratégies et conseils pour optimiser votre performance." />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Blog Marketing Digital | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Découvrez nos guides complets sur Google Ads, GA4 et e-commerce. Conseils d'experts et stratégies éprouvées." />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/blog" />
 
       {/* Hero Section */}
       <section className="relative py-20 bg-slate-900 border-b border-slate-800">

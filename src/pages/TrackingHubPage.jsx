@@ -1,20 +1,17 @@
 import React from 'react';
 import { RadarIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
+import SeoHead from '@/components/SeoHead';
 import { motion } from 'framer-motion';
 import { Target, TrendingUp, Shield, Zap, CheckCircle, ArrowRight, Database, Search, Tag, Globe, ClipboardCheck, FileText, Server, Workflow, Settings, CheckCircle2, MessageCircle, Link as LinkIcon } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useDataLayer } from '@/contexts/DataLayerContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const TrackingHubPage = () => {
   const { pushEvent } = useDataLayer();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   const handleCTAClick = (ctaName) => {
     pushEvent('cta_click', {
@@ -135,23 +132,7 @@ const TrackingHubPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Tracking Hub : GA4, GTM & Conversions Expert | JUH Ecomm</title>
-        <meta name="description" content="Centralisez votre tracking avec notre hub complet. Maîtrisez Google Analytics 4, GTM et vos données de conversion pour une stratégie data-driven optimale." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Tracking Hub Complet | JUH Ecomm Data" />
-        <meta property="og:description" content="Centralisez votre tracking avec GA4, GTM et conversions. Maîtrisez vos données pour une stratégie data-driven." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Tracking Hub Complet | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Centralisez votre tracking avec notre hub complet. Maîtrisez GA4, GTM et vos données de conversion." />
-        <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-      </Helmet>
+      <SeoHead route="/tracking-hub" />
 
       <div className="pt-16 lg:pt-20">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 lg:py-32">

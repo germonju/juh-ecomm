@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import {
   Smartphone, BarChart3, Send, Receipt, Upload, TrendingUp,
   Sparkles, Camera, Clock, Zap, ArrowRight, Check, LayoutDashboard, Trophy,
@@ -11,7 +11,6 @@ import { BackOfficeFlowIllustration } from '@/components/HeroIllustrations';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 // ---------------------------------------------------------------------------
 // Illustrations SVG sur mesure
@@ -182,8 +181,6 @@ const FlowSchemaIllustration = () => (
 
 const BackOfficeConciergeriePage = () => {
   const { pushEvent } = useDataLayer();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -303,23 +300,7 @@ const BackOfficeConciergeriePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <Helmet>
-        <title>Back Office Conciergerie : Gestion Automatisée | JUH Ecomm Data</title>
-        <meta name="description" content="Back office sur mesure pour conciergeries : fiches contact automatiques, statistiques temps réel, facturation automatisée, analyse d'annonces et retouche photo." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Back Office sur mesure pour Conciergeries | JUH Ecomm Data" />
-        <meta property="og:description" content="Automatisez votre gestion : fiches contact, statistiques par propriétaire, rapports automatiques et facturation. Gagnez des heures chaque semaine." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:title" content="Back Office Conciergerie Automatisé | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Fiches contact automatiques, statistiques temps réel, facturation automatisée. Le back office pensé pour les conciergeries." />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/back-office-conciergerie" />
 
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">

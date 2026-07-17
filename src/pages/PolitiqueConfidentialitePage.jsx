@@ -1,38 +1,11 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SeoHead from '@/components/SeoHead';
 import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const PolitiqueConfidentialitePage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   return (
     <>
-      <Helmet>
-        <title>Politique de Confidentialité - Juh Ecomm Data</title>
-        <meta name="robots" content="noindex, follow" />
-        <meta name="description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Politique de Confidentialité - Juh Ecomm Data" />
-        <meta property="og:description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Politique de Confidentialité - Juh Ecomm Data" />
-        <meta name="twitter:description" content="Politique de confidentialité de Juh Ecomm Data. Informations sur la collecte, l'utilisation et la protection de vos données personnelles." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/politique-confidentialite" />
 
       <div className="pt-16 lg:pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="container mx-auto px-4 lg:px-8 py-20">

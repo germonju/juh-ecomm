@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
 import { Search, FileText, ShoppingBasket as Sitemap, Globe, CheckCircle2, XCircle, AlertTriangle, AlertCircle, Download, RefreshCw, BarChart3, TrendingUp, Activity, FileCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
@@ -8,11 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/components/ui/use-toast';
 import BlogArticleAnalyzer from '@/components/BlogArticleAnalyzer';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const SeoAuditPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
   const { toast } = useToast();
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [auditResults, setAuditResults] = useState(null);
@@ -208,29 +204,7 @@ const SeoAuditPage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Audit SEO Complet : Technique & Contenu | Juh Ecomm Data</title>
-        <meta name="robots" content="noindex, nofollow" />
-        <meta name="description" content="Outil d'audit SEO complet : analysez la structure technique de votre site et le contenu de vos articles de blog pour améliorer votre référencement naturel." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Audit SEO Complet · Analyse technique & Articles | Juh Ecomm Data" />
-        <meta property="og:description" content="Outil d'audit SEO complet : analyse technique du site et vérification du contenu des articles de blog." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Audit SEO Complet · Analyse technique & Articles | Juh Ecomm Data" />
-        <meta name="twitter:description" content="Outil d'audit SEO complet : analyse technique du site et vérification du contenu des articles de blog." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/seo-audit" />
 
       <div className="pt-16 lg:pt-20 min-h-screen bg-slate-950">
         <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 border-b border-slate-800">

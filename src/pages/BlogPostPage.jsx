@@ -175,7 +175,7 @@ const BlogPostPage = () => {
               src={pageImage} 
               alt={article.image_alt || article.title}
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-              fetchpriority="high"
+              fetchPriority="high"
               onError={handleImageError}
             />
           </motion.div>

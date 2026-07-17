@@ -1,38 +1,11 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SeoHead from '@/components/SeoHead';
 import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const MentionsLegalesPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   return (
     <>
-      <Helmet>
-        <title>Mentions Légales - Juh Ecomm Data</title>
-        <meta name="robots" content="noindex, follow" />
-        <meta name="description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation du site." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Mentions Légales - Juh Ecomm Data" />
-        <meta property="og:description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Mentions Légales - Juh Ecomm Data" />
-        <meta name="twitter:description" content="Mentions légales du site Juh Ecomm Data. Informations sur l'éditeur, l'hébergement et les conditions d'utilisation." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/mentions-legales" />
 
       <div className="pt-16 lg:pt-20 min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
         <div className="container mx-auto px-4 lg:px-8 py-20">

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { BridgeIllustration } from '@/components/HeroIllustrations';
 import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
-import { 
-  Database, UploadCloud, CheckCircle2, ArrowRight, Info, Settings, Server, 
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
+import {
+  Database, UploadCloud, CheckCircle2, ArrowRight, Info, Settings, Server,
   Target, TrendingUp, BarChart3, Users, XCircle, ChevronDown, ChevronUp,
   MousePointerClick, Save, BadgeCheck, RefreshCcw
 } from 'lucide-react';
@@ -11,7 +12,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { motion, AnimatePresence } from 'framer-motion';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const FaqItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,9 +51,6 @@ const FaqItem = ({ question, answer }) => {
 };
 
 const ConversionsOfflinePage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const faqData = [
     {
       question: "Est-ce compatible avec mon CRM ?",
@@ -96,23 +93,8 @@ const ConversionsOfflinePage = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-50 font-sans selection:bg-lime-500/30">
+      <SeoHead route="/conversions-offline" />
       <Helmet>
-        <title>Conversions Offline Google Ads & GA4 | JUH Ecomm Data</title>
-        <meta name="description" content="Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes digitales pour une vision 360° de votre ROI." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        <meta property="og:title" content="Conversions Offline | JUH Ecomm Data" />
-        <meta property="og:description" content="Tracez vos conversions offline avec Google Ads et GA4. Connectez vos ventes en magasin à vos campagnes." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:locale" content="fr_FR" />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Conversions Offline | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Tracez vos conversions offline avec Google Ads et GA4. Vision 360° de votre ROI." />
-        <meta name="twitter:url" content={canonicalUrl} />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
         <script type="application/ld+json">
           {JSON.stringify(faqSchema)}
         </script>

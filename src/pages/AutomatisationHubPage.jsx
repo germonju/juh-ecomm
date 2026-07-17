@@ -1,16 +1,12 @@
 import React from 'react';
 import { CircuitBoardIllustration } from '@/components/HeroIllustrations';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import { Zap, Workflow, Clock, TrendingUp, Settings, Calendar, CheckCircle2, ArrowRight, Check, MapPin, MessageSquare, Key, LayoutDashboard } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 const AutomatisationHubPage = () => {
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
-
   const features = [
     {
       icon: Zap,
@@ -78,28 +74,7 @@ const AutomatisationHubPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <Helmet>
-        <title>Automatisation Marketing : Workflows & Make | JUH Ecomm</title>
-        <meta name="description" content="Automatisez votre marketing avec notre hub complet. Workflows intelligents, optimisation continue et gain de temps pour accélérer votre croissance." />
-        <link rel="canonical" href={canonicalUrl} />
-        
-        {/* Open Graph tags */}
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:title" content="Automatisation Marketing Hub | JUH Ecomm Data" />
-        <meta property="og:description" content="Automatisez votre marketing avec workflows intelligents. Optimisation continue et gain de temps." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        
-        {/* Twitter Card tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@juh_ecomm" />
-        <meta name="twitter:title" content="Automatisation Marketing Hub | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Automatisez votre marketing avec notre hub complet. Workflows intelligents et optimisation continue." />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/automatisation-hub" />
 
       {/* Hero Section */}
       <section className="relative py-20 px-4 overflow-hidden">

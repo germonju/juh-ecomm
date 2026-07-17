@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import { Helmet } from 'react-helmet';
-import { Link, useLocation } from 'react-router-dom';
+import SeoHead from '@/components/SeoHead';
+import { Link } from 'react-router-dom';
 import {
   Bot, MessageSquare, CalendarClock, Users, Receipt, Database,
   Zap, Search, Clock, ArrowRight, Check, Sparkles, Brain, PlugZap,
@@ -10,7 +10,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useDataLayer } from '@/contexts/DataLayerContext';
-import { getCanonicalUrl } from '@/lib/canonicalUrlHandler';
 
 // ---------------------------------------------------------------------------
 // Illustrations SVG sur mesure
@@ -254,8 +253,6 @@ const ConnectionsSchemaIllustration = () => {
 
 const AgentIaPage = () => {
   const { pushEvent } = useDataLayer();
-  const location = useLocation();
-  const canonicalUrl = getCanonicalUrl(location.pathname);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -380,23 +377,7 @@ const AgentIaPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-900 text-slate-50">
-      <Helmet>
-        <title>Création d'Agent IA Conversationnel sur Mesure | JUH Ecomm Data</title>
-        <meta name="description" content="Un agent IA conversationnel relié à votre planning, vos clients, votre facturation et votre base de données. Réponses instantanées et tâches accomplies à votre place." />
-        <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Agent IA Conversationnel sur Mesure | JUH Ecomm Data" />
-        <meta property="og:description" content="Votre assistant IA relié à toute votre activité : demandez ce que vous voulez, obtenez une réponse instantanée et laissez-le accomplir vos tâches." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={canonicalUrl} />
-        <meta property="og:site_name" content="Juh Ecomm Data" />
-        <meta property="og:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta property="og:locale" content="fr_FR" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="https://www.juh-ecomm.fr/images/og-image.jpg" />
-        <meta name="twitter:title" content="Agent IA Conversationnel sur Mesure | JUH Ecomm Data" />
-        <meta name="twitter:description" content="Un assistant IA relié à votre planning, vos clients et votre facturation. Réponses instantanées et tâches automatisées." />
-        <meta name="twitter:url" content={canonicalUrl} />
-      </Helmet>
+      <SeoHead route="/agent-ia-conversationnel" />
 
       {/* Hero */}
       <section className="relative py-20 lg:py-28 px-4 overflow-hidden">
