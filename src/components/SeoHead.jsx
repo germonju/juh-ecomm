@@ -36,6 +36,9 @@ const SeoHead = ({ route }) => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      {image === OG_IMAGE && <meta property="og:image:width" content="1200" />}
+      {image === OG_IMAGE && <meta property="og:image:height" content="630" />}
+      {image === OG_IMAGE && <meta property="og:image:type" content="image/jpeg" />}
       <meta property="og:locale" content="fr_FR" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={TWITTER_SITE} />

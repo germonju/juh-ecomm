@@ -292,6 +292,11 @@ function canonicalUrl(routePath) {
 function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 'website', noindex = false }) {
   const url = canonicalUrl(routePath);
   const image = ogImage || OG_IMAGE;
+  // og:image:width/height/type : renseignés seulement pour l'image de marque
+  // (JPEG 1200×630 connue) — aide Facebook/LinkedIn à afficher l'aperçu tout de suite.
+  const ogDims = image === OG_IMAGE
+    ? '\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:type" content="image/jpeg" />\n    <meta property="og:image:alt" content="Juh Ecomm Data — expert tracking, data & automatisation" />'
+    : '';
   const safeTitle = escapeAttr(title);
   const safeDesc = escapeAttr(description);
   const safeImage = escapeAttr(image);
@@ -309,7 +314,7 @@ function buildMetaTags({ path: routePath, title, description, ogImage, ogType = 
     <meta property="og:url" content="${safeUrl}" />
     <meta property="og:title" content="${safeTitle}" />
     <meta property="og:description" content="${safeDesc}" />
-    <meta property="og:image" content="${safeImage}" />
+    <meta property="og:image" content="${safeImage}" />${ogDims}
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@juh_ecomm" />
@@ -437,9 +442,13 @@ async function run() {
 
     const title = article.meta_title || article.title || SITE_NAME;
     const description = article.meta_description || title;
-    const ogImage = article.image_name
-      ? `${BASE_URL}/images/blog/${article.image_name}.webp`
-      : (article.featured_image || OG_IMAGE);
+    // og:image / twitter:image : image de marque JPEG garantie. Raison : Facebook &
+    // LinkedIn ne lisent pas le WebP, et la copie locale /images/blog/*.webp n'existe
+    // pas (404). Résultat : chaque partage d'article affiche l'aperçu de marque.
+    const ogImage = OG_IMAGE;
+    // Image réelle de l'article (WebP hébergé sur Supabase) pour le JSON-LD :
+    // Google, lui, sait lire le WebP et l'utilise pour les rich results.
+    const articleImage = article.featured_image || OG_IMAGE;
     const publishDate = article.publish_date
       ? new Date(article.publish_date).toISOString().split('T')[0]
       : undefined;
@@ -456,7 +465,7 @@ async function run() {
     };
 
     const schemas = [
-      buildArticleSchema({ title, description, image: ogImage, publishDate, modifiedDate, slug }),
+      buildArticleSchema({ title, description, image: articleImage, publishDate, modifiedDate, slug }),
       buildBreadcrumbArticle(slug, title),
     ];
 

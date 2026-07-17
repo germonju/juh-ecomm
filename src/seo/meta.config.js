@@ -172,7 +172,6 @@ export const META = {
     h1: 'Service pour conciergerie : automatisation Airbnb & Booking',
     breadcrumbName: 'Conciergerie',
     silo: SILO_AUTOMATISATION,
-    ogImage: `${BASE_URL}/images/conciergerie-og.jpg`,
   },
   '/automatisation-ia/back-office': {
     title: `Back Office Conciergerie Automatisé${B}`,
