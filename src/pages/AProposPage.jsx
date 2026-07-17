@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, TrendingUp, Bot, Linkedin, MapPin, ShieldCheck, Target, HeartHandshake as Handshake, Sparkles, Briefcase } from 'lucide-react';
 import { Helmet } from 'react-helmet';
-import { DataNetworkIllustration } from '@/components/HeroIllustrations';
+import AboutHeroAnimation from '@/components/AboutHeroAnimation';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -84,7 +84,7 @@ const AProposPage = () => (
     <div className="min-h-screen bg-slate-900">
       {/* ===== HERO FUTURISTE ===== */}
       <section className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <DataNetworkIllustration />
+        <AboutHeroAnimation />
         {/* Halos lumineux */}
         <div className="absolute -top-24 left-1/4 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute top-10 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-3xl pointer-events-none" />
