@@ -10,6 +10,8 @@ import AdParamsCapture from '@/components/AdParamsCapture';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
+import { applyFrenchTypography } from '@/lib/frenchTypography';
+
 // HomePage chargée immédiatement (critique pour le LCP)
 import HomePage from '@/pages/HomePage';
 
@@ -62,6 +64,14 @@ function App() {
   useEffect(() => {
     if (typeof document !== 'undefined') {
       document.documentElement.lang = 'fr';
+    }
+  }, []);
+
+  // Applique la typographie française (espaces insécables avant ! ? : ;) sur tout
+  // le DOM, y compris le contenu dynamique (changements de route, chat animé…).
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      return applyFrenchTypography(document.body);
     }
   }, []);
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import {
   Bot, MessageSquare, CalendarClock, Users, Receipt, Database,
   Zap, Search, Clock, ArrowRight, Check, Sparkles, Brain, PlugZap,
-  Euro, Send, ShieldCheck, Workflow
+  Euro, Send, ShieldCheck, Workflow, ArrowDown
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -260,6 +260,55 @@ const ConnectionsSchemaIllustration = () => {
   );
 };
 
+// Version verticale du schéma pour mobile (le SVG horizontal déborde sur petit
+// écran). Même contenu : sources → agent IA → vous.
+const ConnectionsSchemaMobile = ({ className = '' }) => {
+  const sources = [
+    { label: 'Planning', sub: 'agenda, RDV', dot: 'bg-cyan-400', border: 'border-l-cyan-400/60' },
+    { label: 'Clients', sub: 'CRM, contacts', dot: 'bg-violet-400', border: 'border-l-violet-400/60' },
+    { label: 'Facturation', sub: 'devis, factures', dot: 'bg-cyan-400', border: 'border-l-cyan-400/60' },
+    { label: 'Base de données', sub: 'produits, stock', dot: 'bg-violet-400', border: 'border-l-violet-400/60' },
+  ];
+  return (
+    <div className={className}>
+      <div className="grid grid-cols-2 gap-3">
+        {sources.map((s) => (
+          <div key={s.label} className={`rounded-xl bg-slate-800 border border-slate-700 border-l-4 ${s.border} p-3`}>
+            <div className="flex items-center gap-2">
+              <span className={`w-2.5 h-2.5 rounded-full ${s.dot} shrink-0`} />
+              <span className="text-white text-sm font-semibold leading-tight">{s.label}</span>
+            </div>
+            <p className="text-slate-400 text-xs mt-1 pl-[18px]">{s.sub}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="flex justify-center py-2"><ArrowDown className="w-6 h-6 text-slate-500" /></div>
+
+      <div className="relative overflow-hidden rounded-2xl border border-violet-500/40 bg-slate-900 p-5 text-center">
+        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-violet-500/10" />
+        <div className="relative">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-slate-950 border border-cyan-400/50 mb-2">
+            <Bot className="w-6 h-6 text-violet-300" />
+          </div>
+          <p className="text-white font-bold">Agent IA conversationnel</p>
+          <span className="inline-flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-300 text-xs">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" /> réponses en temps réel
+          </span>
+        </div>
+      </div>
+
+      <div className="flex justify-center py-2"><ArrowDown className="w-6 h-6 text-slate-500" /></div>
+
+      <div className="rounded-2xl border border-cyan-500/40 bg-slate-800 p-4 text-center">
+        <p className="text-cyan-400 font-bold text-sm mb-1">Vous</p>
+        <p className="text-slate-200 text-sm">« Réponse immédiate, chiffrée et sourcée »</p>
+        <p className="text-slate-400 text-xs mt-1">+ tâches exécutées à votre place</p>
+      </div>
+    </div>
+  );
+};
+
 // ---------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------
@@ -492,8 +541,11 @@ const AgentIaPage = () => {
           <p className="text-slate-400 text-center mb-12 max-w-2xl mx-auto">
             L'agent centralise vos sources et vous répond en langage naturel — plus besoin d'aller chercher l'info à droite ou à gauche.
           </p>
-          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 lg:p-10 overflow-x-auto">
-            <ConnectionsSchemaIllustration />
+          <div className="bg-slate-950 border border-slate-800 rounded-2xl p-6 lg:p-10">
+            <div className="hidden md:block overflow-x-auto">
+              <ConnectionsSchemaIllustration />
+            </div>
+            <ConnectionsSchemaMobile className="md:hidden" />
           </div>
         </div>
       </section>
