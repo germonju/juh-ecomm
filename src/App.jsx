@@ -29,6 +29,7 @@ const AutomatisationHubPage   = lazy(() => import('@/pages/AutomatisationHubPage
 const TrackingHubPage         = lazy(() => import('@/pages/TrackingHubPage'));
 const ConsentModePage         = lazy(() => import('@/pages/ConsentModePage'));
 const LandingPagesPage        = lazy(() => import('@/pages/LandingPagesPage'));
+const PilotageMargePage       = lazy(() => import('@/pages/PilotageMargePage'));
 const BlogPage                = lazy(() => import('@/pages/BlogPage'));
 const BlogPostPage            = lazy(() => import('@/pages/BlogPostPage'));
 const ApiDocsPage             = lazy(() => import('@/pages/ApiDocsPage'));
@@ -89,6 +90,7 @@ function App() {
                 <Route path="/tracking-data/conversions-offline" element={<ConversionsOfflinePage />} />
                 <Route path="/tracking-data/consent-mode" element={<ConsentModePage />} />
                 <Route path="/tracking-data/landing-pages" element={<LandingPagesPage />} />
+                <Route path="/tracking-data/pilotage-a-la-marge" element={<PilotageMargePage />} />
 
                 {/* Silo 2 — Automatisation & IA */}
                 <Route path="/automatisation-ia" element={<AutomatisationHubPage />} />

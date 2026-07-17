@@ -129,6 +129,13 @@ export const META = {
     breadcrumbName: 'Landing Pages',
     silo: SILO_TRACKING,
   },
+  '/tracking-data/pilotage-a-la-marge': {
+    title: `Pilotage à la marge (POAS) plutôt que ROAS${B}`,
+    description: "Arrêtez de piloter au ROAS : optimisez Google Ads sur la marge (POAS) et donnez à l'algorithme le vrai KPI de rentabilité — le profit.",
+    h1: 'Pilotez vos campagnes à la marge, pas au ROAS',
+    breadcrumbName: 'Pilotage à la marge',
+    silo: SILO_TRACKING,
+  },
 
   // === SILO 2 — Automatisation & IA ===
   '/automatisation-ia': {

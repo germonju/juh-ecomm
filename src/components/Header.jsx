@@ -53,6 +53,7 @@ const Header = () => {
     { name: 'Conversions Offline', path: '/tracking-data/conversions-offline' },
     { name: 'Consent Mode', path: '/tracking-data/consent-mode' },
     { name: 'Landing Pages', path: '/tracking-data/landing-pages' },
+    { name: 'Pilotage à la marge', path: '/tracking-data/pilotage-a-la-marge' },
   ];
 
   // Silo 2 — Automatisation & IA (local + national)

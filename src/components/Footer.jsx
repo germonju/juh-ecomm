@@ -58,7 +58,8 @@ const Footer = () => {
     { name: 'Audit Google Ads', path: '/tracking-data/audit-google-ads' },
     { name: 'Conversions Offline', path: '/tracking-data/conversions-offline' },
     { name: 'Consent Mode', path: '/tracking-data/consent-mode' },
-    { name: 'Landing Pages', path: '/tracking-data/landing-pages' }
+    { name: 'Landing Pages', path: '/tracking-data/landing-pages' },
+    { name: 'Pilotage à la marge', path: '/tracking-data/pilotage-a-la-marge' }
   ];
 
   return (

@@ -735,6 +735,7 @@ const TrackingHubPage = () => {
                 { name: 'Conversions Offline', desc: 'Relier ventes offline & Google Ads', to: '/tracking-data/conversions-offline' },
                 { name: 'Consent Mode V2', desc: 'Conformité RGPD & CMP', to: '/tracking-data/consent-mode' },
                 { name: 'Landing Pages', desc: 'Pages haute conversion & A/B test', to: '/tracking-data/landing-pages' },
+                { name: 'Pilotage à la marge', desc: 'Optimiser sur le profit (POAS), pas le ROAS', to: '/tracking-data/pilotage-a-la-marge' },
               ].map((item) => (
                 <Link
                   key={item.to}
