@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
@@ -17,93 +17,105 @@ import { useDataLayer } from '@/contexts/DataLayerContext';
 // ---------------------------------------------------------------------------
 
 // Mockup d'une conversation avec l'agent IA (thème sombre, données fictives).
-// La conversation se joue en boucle : la question apparaît, l'agent « écrit »
-// (indicateur de frappe), puis la réponse s'affiche, puis tout se réinitialise.
-const ChatConversationIllustration = () => (
-  <svg viewBox="0 0 460 400" className="w-full h-auto drop-shadow-2xl" role="img" aria-label="Aperçu animé d'une conversation avec l'agent IA : question de l'utilisateur, agent en train d'écrire, puis réponse instantanée basée sur les données de l'entreprise">
-    <defs>
+// Le chat cycle sur une douzaine d'exemples : la question apparaît, l'agent
+// « écrit » (indicateur de frappe), puis la réponse s'affiche, puis on enchaîne
+// sur l'exemple suivant. Exemples 100% fictifs, à visée démonstrative.
+const CHAT_EXAMPLES = [
+  { q: "Quel est mon CA ce mois-ci et qui n'a pas réglé sa facture ?", a: "CA du mois : 18 420 € (+12 %). 2 factures impayées : Dupont SARL (1 240 €, échue) et Martin & Co (860 €, dans 3 jours)." },
+  { q: "Suis-je disponible jeudi après-midi ?", a: "Oui : créneau libre jeudi de 14h à 16h30, puis RDV avec Mme Leroy à 16h30." },
+  { q: "Crée un devis : 3 jours à 600 €/jour pour la société Nova.", a: "Devis prêt : 3 j × 600 € = 1 800 € HT (2 160 € TTC). Je te l'envoie pour validation ?" },
+  { q: "Quels clients n'ont pas eu de nouvelles depuis 2 mois ?", a: "5 clients sans contact depuis 60 jours. Je prépare un e-mail de relance personnalisé ?" },
+  { q: "Résume-moi le dernier échange avec le client Bernard.", a: "E-mail du 12 juin : il attend un devis pour la refonte de son site et demande les délais. Pas encore de réponse de ta part." },
+  { q: "Combien de RDV cette semaine, et lesquels sont à confirmer ?", a: "8 RDV cette semaine, 2 à confirmer : mardi 10h (Durand) et vendredi 15h (Petit)." },
+  { q: "Envoie un rappel aux clients avec une facture en retard.", a: "3 clients concernés. J'ai rédigé les rappels — tu valides l'envoi ?" },
+  { q: "Quel est mon panier moyen ce trimestre ?", a: "Panier moyen T2 : 74 € (+5 % vs T1). Meilleur mois : juin (81 €)." },
+  { q: "Ajoute un rendez-vous demain à 9h avec le fournisseur Kler.", a: "RDV créé : demain 9h–9h30, « Fournisseur Kler ». J'envoie l'invitation ?" },
+  { q: "Qui sont mes 3 meilleurs clients cette année ?", a: "1. Nova — 12 400 €  ·  2. Dupont SARL — 9 100 €  ·  3. Bernard — 7 350 €." },
+  { q: "Rédige une réponse à l'avis Google 3★ de Mme Roy.", a: "Brouillon prêt (ton pro et courtois). Je te le montre avant publication ?" },
+  { q: "Combien me reste-t-il à facturer ce mois-ci ?", a: "4 prestations livrées non facturées = 3 250 €. Je génère les factures ?" },
+];
+
+const ChatConversationIllustration = () => {
+  const [idx, setIdx] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
+
+  useEffect(() => {
+    setShowAnswer(false);
+    const t1 = setTimeout(() => setShowAnswer(true), 1300);
+    const t2 = setTimeout(() => setIdx((v) => (v + 1) % CHAT_EXAMPLES.length), 5200);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [idx]);
+
+  const ex = CHAT_EXAMPLES[idx];
+
+  return (
+    <div
+      className="w-full max-w-md mx-auto rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl overflow-hidden"
+      role="img"
+      aria-label="Aperçu animé d'une conversation avec l'agent IA : l'utilisateur pose une question en langage naturel (CA, agenda, factures, devis, relances, avis…) et l'agent répond instantanément à partir des données de l'entreprise."
+    >
       <style>{`
-        @keyframes chat-user  { 0%,3%{opacity:0;transform:translateY(8px)} 9%,90%{opacity:1;transform:translateY(0)} 96%,100%{opacity:0} }
-        @keyframes chat-type  { 0%,14%{opacity:0} 18%,35%{opacity:1} 39%,100%{opacity:0} }
-        @keyframes chat-agent { 0%,40%{opacity:0;transform:translateY(8px)} 48%,90%{opacity:1;transform:translateY(0)} 96%,100%{opacity:0} }
-        @keyframes chat-dot   { 0%,100%{opacity:.25} 50%{opacity:1} }
-        @keyframes chat-caret { 0%,100%{opacity:0} 50%{opacity:.9} }
-        .chat-user  { animation: chat-user  8s ease-in-out infinite; }
-        .chat-type  { animation: chat-type  8s ease-in-out infinite; }
-        .chat-agent { animation: chat-agent 8s ease-in-out infinite; }
-        .chat-dot   { animation: chat-dot 1.1s ease-in-out infinite; }
-        .chat-caret { animation: chat-caret 1s step-end infinite; }
-        @media (prefers-reduced-motion: reduce) {
-          .chat-user, .chat-agent { animation: none; opacity: 1; transform: none; }
-          .chat-type { display: none; }
-        }
+        @keyframes chatfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+        @keyframes chatdot{0%,100%{opacity:.25;transform:translateY(0)}50%{opacity:1;transform:translateY(-2px)}}
+        .chatfade{animation:chatfade .35s ease-out both}
+        .chatdot{animation:chatdot 1.1s ease-in-out infinite}
+        @media (prefers-reduced-motion:reduce){.chatfade{animation:none}.chatdot{animation:none}}
       `}</style>
-    </defs>
 
-    {/* Fenêtre */}
-    <rect x="4" y="4" width="452" height="392" rx="16" fill="#0f172a" stroke="#334155" strokeWidth="1.5" />
-    {/* Barre de titre */}
-    <rect x="4" y="4" width="452" height="44" rx="16" fill="#1e293b" />
-    <rect x="4" y="34" width="452" height="14" fill="#1e293b" />
-    <line x1="4" y1="48" x2="456" y2="48" stroke="#334155" strokeWidth="1" />
-    <circle cx="28" cy="26" r="12" fill="#8b5cf6" fillOpacity="0.18" stroke="#8b5cf6" strokeWidth="1" />
-    <g fontFamily="sans-serif">
-      <text x="48" y="30" fill="#f8fafc" fontSize="12" fontWeight="bold">Votre assistant IA</text>
-      <circle cx="424" cy="26" r="4" fill="#34d399" />
-      <text x="416" y="30" textAnchor="end" fill="#94a3b8" fontSize="9">En ligne</text>
-    </g>
+      {/* Barre de titre */}
+      <div className="flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700">
+        <div className="flex items-center gap-2.5">
+          <span className="w-8 h-8 rounded-full bg-violet-500/20 border border-violet-500/40 flex items-center justify-center">
+            <Bot className="w-4 h-4 text-violet-300" />
+          </span>
+          <span className="text-sm font-bold text-slate-50">Votre assistant IA</span>
+        </div>
+        <span className="flex items-center gap-1.5 text-xs text-slate-400">
+          <span className="w-2 h-2 rounded-full bg-emerald-400" /> En ligne
+        </span>
+      </div>
 
-    {/* Message utilisateur (bulle à droite, cyan) */}
-    <g fontFamily="sans-serif" className="chat-user">
-      <rect x="150" y="66" width="290" height="46" rx="14" fill="#0e7490" fillOpacity="0.25" stroke="#22d3ee" strokeOpacity="0.35" strokeWidth="1" />
-      <text x="170" y="86" fill="#e0f2fe" fontSize="11">Quel est mon CA ce mois-ci et qui</text>
-      <text x="170" y="102" fill="#e0f2fe" fontSize="11">n'a pas encore réglé sa facture ?</text>
-    </g>
+      {/* Corps de la conversation */}
+      <div className="p-4 h-[300px] flex flex-col gap-3 overflow-hidden">
+        {/* Question de l'utilisateur */}
+        <div key={`q-${idx}`} className="chatfade self-end max-w-[88%] rounded-2xl rounded-tr-sm bg-cyan-500/15 border border-cyan-400/30 px-4 py-2.5 text-sm text-cyan-50 leading-relaxed">
+          {ex.q}
+        </div>
 
-    {/* Indicateur de frappe (l'agent « écrit ») */}
-    <g fontFamily="sans-serif" className="chat-type">
-      <circle cx="30" cy="140" r="14" fill="#2e1065" stroke="#8b5cf6" strokeWidth="1.2" />
-      <path d="M24 140 a6 6 0 0 1 12 0" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
-      <circle cx="27" cy="137" r="1.3" fill="#a78bfa" />
-      <circle cx="33" cy="137" r="1.3" fill="#a78bfa" />
-      <rect x="52" y="126" width="70" height="32" rx="14" fill="#1e293b" stroke="#334155" strokeWidth="1" />
-      <circle cx="72"  cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0s' }} />
-      <circle cx="87"  cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0.2s' }} />
-      <circle cx="102" cy="142" r="3.5" fill="#a78bfa" className="chat-dot" style={{ animationDelay: '0.4s' }} />
-    </g>
+        {/* Frappe puis réponse de l'agent */}
+        {!showAnswer ? (
+          <div key={`t-${idx}`} className="chatfade self-start flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-violet-500/20 border border-violet-500/40 flex items-center justify-center shrink-0">
+              <Bot className="w-3.5 h-3.5 text-violet-300" />
+            </span>
+            <span className="flex items-center gap-1.5 rounded-2xl bg-slate-800 border border-slate-700 px-4 py-3">
+              <span className="w-2 h-2 rounded-full bg-violet-400 chatdot" style={{ animationDelay: '0s' }} />
+              <span className="w-2 h-2 rounded-full bg-violet-400 chatdot" style={{ animationDelay: '.2s' }} />
+              <span className="w-2 h-2 rounded-full bg-violet-400 chatdot" style={{ animationDelay: '.4s' }} />
+            </span>
+          </div>
+        ) : (
+          <div key={`a-${idx}`} className="chatfade self-start flex items-start gap-2 max-w-[92%]">
+            <span className="w-7 h-7 rounded-full bg-violet-500/20 border border-violet-500/40 flex items-center justify-center shrink-0 mt-0.5">
+              <Bot className="w-3.5 h-3.5 text-violet-300" />
+            </span>
+            <span className="rounded-2xl rounded-tl-sm bg-slate-800 border border-slate-700 px-4 py-2.5 text-sm text-slate-100 leading-relaxed">
+              {ex.a}
+            </span>
+          </div>
+        )}
+      </div>
 
-    {/* Réponse agent (bulle à gauche, violet) */}
-    <g fontFamily="sans-serif" className="chat-agent">
-      <circle cx="30" cy="140" r="14" fill="#2e1065" stroke="#8b5cf6" strokeWidth="1.2" />
-      <path d="M24 140 a6 6 0 0 1 12 0" fill="none" stroke="#a78bfa" strokeWidth="1.5" />
-      <circle cx="27" cy="137" r="1.3" fill="#a78bfa" />
-      <circle cx="33" cy="137" r="1.3" fill="#a78bfa" />
-      <rect x="52" y="122" width="388" height="150" rx="14" fill="#1e293b" stroke="#334155" strokeWidth="1" />
-      <text x="70" y="146" fill="#f8fafc" fontSize="11">Ce mois-ci, votre CA s'élève à</text>
-      <text x="70" y="146" fill="#f8fafc" fontSize="11" dx="176" fontWeight="bold">18 420 €</text>
-      <text x="70" y="164" fill="#f8fafc" fontSize="11">(+12 % vs le mois dernier).</text>
-
-      <text x="70" y="192" fill="#94a3b8" fontSize="10">2 factures restent impayées :</text>
-      {/* Ligne facture 1 */}
-      <rect x="70" y="202" width="352" height="26" rx="6" fill="#0f172a" />
-      <circle cx="86" cy="215" r="3" fill="#f59e0b" />
-      <text x="98" y="219" fill="#e2e8f0" fontSize="10">Dupont SARL — 1 240 €</text>
-      <text x="410" y="219" textAnchor="end" fill="#f59e0b" fontSize="9">échue</text>
-      {/* Ligne facture 2 */}
-      <rect x="70" y="234" width="352" height="26" rx="6" fill="#0f172a" />
-      <circle cx="86" cy="247" r="3" fill="#fbbf24" />
-      <text x="98" y="251" fill="#e2e8f0" fontSize="10">Martin &amp; Co — 860 €</text>
-      <text x="410" y="251" textAnchor="end" fill="#94a3b8" fontSize="9">dans 3 j</text>
-    </g>
-
-    {/* Barre de saisie */}
-    <rect x="20" y="342" width="420" height="38" rx="19" fill="#1e293b" stroke="#334155" strokeWidth="1" />
-    <text x="40" y="366" fill="#64748b" fontSize="11" fontFamily="sans-serif">Posez votre question…</text>
-    <rect x="146" y="356" width="1.5" height="12" fill="#67e8f9" className="chat-caret" />
-    <circle cx="418" cy="361" r="15" fill="#8b5cf6" />
-    <path d="M411 361 l14 0 M419 355 l6 6 l-6 6" fill="none" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+      {/* Barre de saisie */}
+      <div className="flex items-center gap-2 px-4 py-3 border-t border-slate-700">
+        <div className="flex-1 rounded-full bg-slate-800 border border-slate-700 px-4 py-2 text-sm text-slate-500">Posez votre question…</div>
+        <span aria-hidden="true" className="w-9 h-9 rounded-full bg-violet-500 flex items-center justify-center shrink-0">
+          <Send className="w-4 h-4 text-white" />
+        </span>
+      </div>
+    </div>
+  );
+};
 
 // Fond du hero : des particules de données (agenda, mails, CRM, tableurs…)
 // qui convergent en flux lumineux vers un cœur central pulsant.
