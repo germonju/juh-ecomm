@@ -1,0 +1,1 @@
+import{s as e}from"./index-1c4d1f73.js";const r=e("Code2",[["path",{d:"m18 16 4-4-4-4",key:"1inbqp"}],["path",{d:"m6 8-4 4 4 4",key:"15zrgr"}],["path",{d:"m14.5 4-5 16",key:"e7oirm"}]]);export{r as C};

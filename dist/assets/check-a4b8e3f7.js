@@ -1,0 +1,1 @@
+import{s as c}from"./index-1c4d1f73.js";const o=c("Check",[["path",{d:"M20 6 9 17l-5-5",key:"1gmf2c"}]]);export{o as C};
