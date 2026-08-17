@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { DataNetworkIllustration } from '@/components/HeroIllustrations';
+import { TagManagerIllustration } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
@@ -191,7 +191,7 @@ const SpecialisteGtmPage = () => (
 
     {/* Hero */}
     <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-      <DataNetworkIllustration />
+      <TagManagerIllustration />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto max-w-5xl relative z-10 text-center">

@@ -143,3 +143,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-08-17 10:47 — `main`
 - cc744f6 feat(tracking-data): page Spécialiste Google Tag Manager + refonte À propos
+
+#### 2026-08-17 10:49 — `main`
+- b17e75f build: régénère dist/ (page Spécialiste GTM, À propos, llms.txt)

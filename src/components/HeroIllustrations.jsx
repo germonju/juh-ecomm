@@ -721,6 +721,152 @@ export const BackOfficeFlowIllustration = () => (
   </div>
 );
 
+/* ─── Spécialiste GTM — dataLayer → conteneur (déclencheurs / balises / variables) → destinations ─── */
+export const TagManagerIllustration = () => {
+  const rows = [175, 265, 355, 445];
+  const events = ['page_view', 'view_item', 'add_to_cart', 'purchase'];
+  const tags = ['GA4 EVENT', 'ADS CONVERSION', 'META CAPI', 'TIKTOK EVENT'];
+  const dests = ['GA4', 'GOOGLE ADS', 'META', 'TIKTOK'];
+  // déclencheur (index) → balise (index) : un même déclencheur peut alimenter plusieurs balises
+  const wires = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 1], [3, 2], [3, 3]];
+  const variables = ['{{Page}}', '{{Value}}', '{{Order ID}}', '{{Consent}}'];
+  return (
+    <div className={base} aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <style>{`
+            @keyframes tm-flow{0%{stroke-dashoffset:300}100%{stroke-dashoffset:0}}
+            @keyframes tm-fire{0%,100%{opacity:.12}45%{opacity:.35}}
+            @keyframes tm-blink{0%,100%{opacity:.1}50%{opacity:.32}}
+            @keyframes tm-push{0%{transform:translateX(0)}100%{transform:translateX(-1500px)}}
+            @keyframes tm-push-2{0%{transform:translateX(-400px)}100%{transform:translateX(-1900px)}}
+            @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+          `}</style>
+        </defs>
+
+        {/* grille technique de fond */}
+        {[0,1,2,3,4,5,6,7,8,9].map(i => (
+          <line key={i} x1={i*130} y1="0" x2={i*130} y2="600" stroke="#22d3ee" strokeWidth="1" opacity=".03" />
+        ))}
+        {[0,1,2,3,4,5,6].map(i => (
+          <line key={i} x1="0" y1={i*100} x2="1200" y2={i*100} stroke="#22d3ee" strokeWidth="1" opacity=".03" />
+        ))}
+
+        {/* pushes dataLayer en fond */}
+        {[
+          {y:50,  anim:'tm-push',   dur:'26s', code:"window.dataLayer = window.dataLayer || [];   dataLayer.push({ event: 'view_item', ecommerce: { currency: 'EUR', value: 49.90, items: [{ item_id: 'SKU_001', item_name: 'Produit', price: 49.90, quantity: 1 }] } });"},
+          {y:578, anim:'tm-push-2', dur:'30s', code:"dataLayer.push({ event: 'purchase', ecommerce: { transaction_id: 'ORD-1042', value: 149.90, tax: 24.98, shipping: 4.90, currency: 'EUR' } });   gtag('consent','update',{ ad_storage: 'granted', analytics_storage: 'granted' });"},
+        ].map(({y,anim,dur,code},i) => (
+          <text key={i} y={y} fill="#22d3ee" fontSize="11" fontFamily="monospace" opacity=".06"
+            style={{animation:`${anim} ${dur} linear infinite`}}>
+            {code}
+          </text>
+        ))}
+
+        {/* colonne gauche — événements du dataLayer */}
+        <text x="205" y="128" textAnchor="middle" fill="#22d3ee" fontSize="9" opacity=".22" fontFamily="monospace">DATALAYER</text>
+        {rows.map((y,i) => (
+          <g key={i}>
+            <rect x="140" y={y-17} width="130" height="34" rx="6"
+              fill="none" stroke="#22d3ee" strokeWidth="1" opacity=".16" />
+            <text x="205" y={y+4} textAnchor="middle" fill="#67e8f9"
+              fontSize="9" opacity=".26" fontFamily="monospace">{events[i]}</text>
+          </g>
+        ))}
+
+        {/* conteneur GTM */}
+        <rect x="430" y="95" width="360" height="440" rx="10"
+          fill="none" stroke="#22d3ee" strokeWidth="1.5" opacity=".2"
+          style={{animation:'tm-blink 4s ease-in-out infinite'}} />
+        <text x="444" y="120" fill="#67e8f9" fontSize="9" opacity=".28" fontFamily="monospace">CONTENEUR GTM · GTM-XXXXXXX</text>
+        <text x="500" y="146" textAnchor="middle" fill="#a78bfa" fontSize="8" opacity=".24" fontFamily="monospace">DÉCLENCHEURS</text>
+        <text x="670" y="146" textAnchor="middle" fill="#22d3ee" fontSize="8" opacity=".24" fontFamily="monospace">BALISES</text>
+
+        {/* flux dataLayer → déclencheurs */}
+        {rows.map((y,i) => (
+          <line key={i} x1="270" y1={y} x2="474" y2={y}
+            stroke="#22d3ee" strokeWidth="1.5" strokeDasharray="300"
+            style={{animation:`tm-flow ${2.4+i*0.35}s linear infinite`,opacity:.13}} />
+        ))}
+        {rows.map((y,i) => (
+          <circle key={i} r="3" fill="#22d3ee" opacity=".38">
+            <animateMotion dur={`${2.4+i*0.35}s`} repeatCount="indefinite" path={`M270,${y} L474,${y}`} />
+          </circle>
+        ))}
+
+        {/* déclencheurs (losanges) */}
+        {rows.map((y,i) => (
+          <g key={i}>
+            <polygon points={`500,${y-24} 526,${y} 500,${y+24} 474,${y}`}
+              fill="none" stroke="#8b5cf6" strokeWidth="1.5"
+              style={{animation:`tm-fire ${2.4+i*0.35}s ease-in-out infinite`}} />
+            <circle cx="500" cy={y} r="3" fill="#a78bfa"
+              style={{animation:`tm-fire ${2.4+i*0.35}s ease-in-out infinite`}} />
+          </g>
+        ))}
+
+        {/* câblage déclencheurs → balises */}
+        {wires.map(([a,b],i) => (
+          <path key={i}
+            d={`M526,${rows[a]} C563,${rows[a]} 563,${rows[b]} 600,${rows[b]}`}
+            fill="none" stroke="#8b5cf6" strokeWidth="1.5" strokeDasharray="300"
+            style={{animation:`tm-flow ${2+i*0.25}s linear infinite`,opacity:.12}} />
+        ))}
+
+        {/* balises */}
+        {rows.map((y,i) => (
+          <g key={i}>
+            <rect x="600" y={y-17} width="140" height="34" rx="4"
+              fill="none" stroke="#22d3ee" strokeWidth="1.5" opacity=".2" />
+            <circle cx="614" cy={y} r="3" fill="#22d3ee"
+              style={{animation:`tm-blink ${1.6+i*0.4}s ease-in-out infinite`}} />
+            <text x="678" y={y+4} textAnchor="middle" fill="#67e8f9"
+              fontSize="8" opacity=".26" fontFamily="monospace">{tags[i]}</text>
+          </g>
+        ))}
+
+        {/* variables du conteneur */}
+        {variables.map((v,i) => (
+          <g key={i}>
+            <rect x={438+i*88} y="488" width="80" height="26" rx="13"
+              fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".14" />
+            <text x={478+i*88} y="505" textAnchor="middle" fill="#fbbf24"
+              fontSize="8" opacity=".2" fontFamily="monospace">{v}</text>
+          </g>
+        ))}
+
+        {/* barrière Consent Mode traversée par les flux sortants */}
+        <line x1="855" y1="130" x2="855" y2="500" stroke="#f59e0b" strokeWidth="1"
+          strokeDasharray="6 6" opacity=".18" />
+        <text x="855" y="120" textAnchor="middle" fill="#fbbf24" fontSize="8" opacity=".22" fontFamily="monospace">CONSENT MODE V2</text>
+
+        {/* flux balises → destinations */}
+        {rows.map((y,i) => (
+          <line key={i} x1="740" y1={y} x2="960" y2={y}
+            stroke="#06b6d4" strokeWidth="1.5" strokeDasharray="300"
+            style={{animation:`tm-flow ${2.2+i*0.4}s linear infinite`,opacity:.13}} />
+        ))}
+        {rows.map((y,i) => (
+          <circle key={i} r="3" fill="#06b6d4" opacity=".38">
+            <animateMotion dur={`${2.2+i*0.4}s`} repeatCount="indefinite" path={`M740,${y} L960,${y}`} />
+          </circle>
+        ))}
+
+        {/* destinations */}
+        <text x="1020" y="128" textAnchor="middle" fill="#22d3ee" fontSize="9" opacity=".22" fontFamily="monospace">DESTINATIONS</text>
+        {rows.map((y,i) => (
+          <g key={i}>
+            <rect x="960" y={y-17} width="120" height="34" rx="17"
+              fill="none" stroke="#22d3ee" strokeWidth="1" opacity=".18" />
+            <text x="1020" y={y+4} textAnchor="middle" fill="#67e8f9"
+              fontSize="9" opacity=".26" fontFamily="monospace">{dests[i]}</text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+};
+
 export const WorkflowIllustration = () => (
   <div className={base} aria-hidden="true">
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
