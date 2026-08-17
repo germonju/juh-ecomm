@@ -86,6 +86,14 @@ export const META = {
     silo: SILO_TRACKING,
     faqKey: 'gtm',
   },
+  '/tracking-data/specialiste-google-tag-manager': {
+    title: `Spécialiste Google Tag Manager (GTM)${B}`,
+    description: "Spécialiste Google Tag Manager : audit de conteneur, plan de marquage, dataLayer, GA4 et Google Ads. Un expert GTM pour un tracking enfin fiable.",
+    h1: 'Spécialiste Google Tag Manager',
+    breadcrumbName: 'Spécialiste GTM',
+    silo: SILO_TRACKING,
+    faqKey: 'specialisteGtm',
+  },
   '/tracking-data/ga4': {
     title: `GA4 Avancé : Analytics & Audiences${B}`,
     description: "Maîtrisez Google Analytics 4 avancé pour exploiter vos données. Configurations avancées, audiences personnalisées et insights actionnables.",

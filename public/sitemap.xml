@@ -31,6 +31,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.juh-ecomm.fr/tracking-data/specialiste-google-tag-manager/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.juh-ecomm.fr/tracking-data/ga4/</loc>
     <lastmod>2026-07-17</lastmod>
     <changefreq>monthly</changefreq>
@@ -131,6 +137,102 @@
     <lastmod>2026-07-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/plafond-acquisition-saturation-audience-quand-lancer-notoriete/</loc>
+    <lastmod>2026-08-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/rentabilite-conversions-offline-seuil-volume-leadgen/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/roas-breakeven-produit-seuil-rentabilite-reference/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/conversion-nouveaux-clients-segmentation-recurrents-google-ads/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/baisse-performance-google-ads-apres-correctif-consent-mode/</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-paiement-echoue-abandon-checkout-ga4/</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/retour-experience-conversions-offline-avant-apres-90-jours/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/firestore-sgtm-enrichissement-evenement-server-side/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/avantages-conversions-offline-google-ads/</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/tracking-ga4-google-ads-consent-mode-v2-juillet-2026/</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/taux-correspondance-customer-match-google-ads/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/signaux-audience-ltv-performance-max/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/customer-match-ltv-listes-clients-acquisition-retention/</loc>
+    <lastmod>2026-07-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-cmp-ga4-google-ads-meta-2026/</loc>
+    <lastmod>2026-07-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/remonter-marge-conversions-server-side-poas-vs-roas/</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.juh-ecomm.fr/blog/tcf-v2-3-iab-deadline-disclosed-vendors-cmp-conformite/</loc>
+    <lastmod>2026-07-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.juh-ecomm.fr/blog/consent-mode-v2-basic-advanced-configuration-gtm/</loc>

@@ -60,6 +60,41 @@ const GTM_FAQ_ITEMS = [
   },
 ];
 
+const SPECIALISTE_GTM_FAQ_ITEMS = [
+  {
+    question: "Qu'est-ce qu'un spécialiste Google Tag Manager fait exactement ?",
+    answer: "Un spécialiste Google Tag Manager conçoit, implémente et maintient la couche de mesure de votre site. Concrètement : il audite votre conteneur GTM, rédige un plan de marquage, définit le dataLayer avec vos développeurs, configure les balises et déclencheurs vers GA4, Google Ads et vos autres plateformes, gère le consentement, puis teste chaque événement avant publication. Son rôle n'est pas de « poser des balises » mais de garantir que les chiffres sur lesquels vous pilotez sont justes.",
+  },
+  {
+    question: "Quelle différence entre un spécialiste GTM et une agence web ?",
+    answer: "Une agence web installe généralement GTM parce qu'il faut bien le faire : le conteneur est créé, quelques balises sont posées, et personne ne revient dessus. Un spécialiste GTM travaille la donnée elle-même : cohérence des événements, réconciliation avec votre back-office, qualité des conversions envoyées à Google Ads, conformité RGPD. C'est un métier de mesure, pas un livrable annexe d'un projet de site.",
+  },
+  {
+    question: "Ai-je besoin d'un développeur pour travailler avec vous ?",
+    answer: "Pas toujours. Une grande partie du marquage se fait directement dans GTM sans toucher au code. En revanche, un dataLayer fiable — surtout en e-commerce — demande souvent quelques ajouts côté site. Dans ce cas, je fournis des spécifications précises à vos développeurs (ou à votre agence) et je recette leur intégration. Sur Shopify, l'essentiel se met en place sans développement spécifique.",
+  },
+  {
+    question: "Combien de temps prend une mission GTM ?",
+    answer: "Un audit de conteneur se livre généralement en quelques jours. Une implémentation complète (plan de marquage, dataLayer, GTM, GA4, Google Ads, consentement) s'étale plutôt sur deux à quatre semaines selon la complexité du site et la disponibilité des équipes techniques. Le passage en Server-Side ajoute une phase supplémentaire de mise en place et de recette.",
+  },
+  {
+    question: "Faut-il repartir de zéro si mon conteneur GTM est en désordre ?",
+    answer: "Rarement. Dans la plupart des cas, on nettoie l'existant : suppression des balises mortes, correction des déclencheurs, normalisation des variables. Une reconstruction complète ne se justifie que si le conteneur est devenu ingérable ou si le site change entièrement. Dans tous les cas, on travaille dans un espace de travail dédié avec un historique de versions : rien n'est perdu, tout est réversible.",
+  },
+  {
+    question: "GTM Web ou GTM Server-Side : lequel me faut-il ?",
+    answer: "Le conteneur Web reste la base : c'est lui qui capte les interactions sur votre site. Le Server-Side s'ajoute par-dessus quand la fiabilité de la donnée devient un enjeu (bloqueurs de publicité, limitations des navigateurs, performance, contrôle de ce qui part vers les plateformes). Commencer par un conteneur web propre est toujours la bonne première étape ; le Server-Side vient ensuite amplifier ce qui est déjà correct.",
+  },
+  {
+    question: "Est-ce que Google Tag Manager est compatible RGPD ?",
+    answer: "Oui, à condition d'être configuré correctement. GTM n'est qu'un gestionnaire de balises : la conformité dépend de ce que vous déclenchez et à quel moment. Avec une CMP branchée au Consent Mode V2 et des déclencheurs conditionnés au consentement, vos balises respectent le choix de l'utilisateur. C'est un point systématiquement vérifié en audit, car c'est aussi l'une des sources d'erreurs de mesure les plus fréquentes.",
+  },
+  {
+    question: "Intervenez-vous sur un site déjà suivi par une agence ?",
+    answer: "Oui, et c'est un cas fréquent. J'interviens sur le périmètre mesure — conteneur GTM, GA4, conversions Google Ads — pendant que votre agence garde la main sur les campagnes ou le site. Le plan de marquage sert alors de référence commune : tout le monde travaille sur les mêmes définitions et les mêmes chiffres.",
+  },
+];
+
 const CONVERSIONS_FAQ_ITEMS = [
   {
     question: "Est-ce compatible avec mon CRM ?",
@@ -224,6 +259,7 @@ function buildJsonLdTags(schemas) {
 
 const FAQ_BY_KEY = {
   gtm: GTM_FAQ_ITEMS,
+  specialisteGtm: SPECIALISTE_GTM_FAQ_ITEMS,
   conversions: CONVERSIONS_FAQ_ITEMS,
   agentIa: AGENT_IA_FAQ_ITEMS,
 };

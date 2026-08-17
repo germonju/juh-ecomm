@@ -26,6 +26,7 @@ const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const SITEMAP_HINTS = {
   '/': { changefreq: 'weekly', priority: '1.0' },
   '/tracking-data': { changefreq: 'monthly', priority: '0.9' },
+  '/tracking-data/specialiste-google-tag-manager': { changefreq: 'monthly', priority: '0.9', lastmod: '2026-08-17' },
   '/automatisation-ia': { changefreq: 'monthly', priority: '0.9' },
   '/blog': { changefreq: 'daily', priority: '0.9' },
 };

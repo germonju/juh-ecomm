@@ -101,6 +101,7 @@ plates sont redirigées en 301 vers les nouvelles (cf. `public/_redirects`).
 | `/a-propos` | AProposPage | Oui |
 | **Silo 1 — `/tracking-data/`** | | |
 | `/tracking-data` | TrackingHubPage (hub) | Oui |
+| `/tracking-data/specialiste-google-tag-manager` | SpecialisteGtmPage | Oui |
 | `/tracking-data/gtm-server-side` | GtmServerSidePage | Oui |
 | `/tracking-data/ga4` | Ga4AdvancedPage | Oui |
 | `/tracking-data/tracking-ecommerce-shopify` | ShopifyPage | Oui |
@@ -108,6 +109,7 @@ plates sont redirigées en 301 vers les nouvelles (cf. `public/_redirects`).
 | `/tracking-data/conversions-offline` | ConversionsOfflinePage | Oui |
 | `/tracking-data/consent-mode` | ConsentModePage | Oui |
 | `/tracking-data/landing-pages` | LandingPagesPage | Oui |
+| `/tracking-data/pilotage-a-la-marge` | PilotageMargePage | Oui |
 | **Silo 2 — `/automatisation-ia/`** | | |
 | `/automatisation-ia` | AutomatisationHubPage (hub) | Oui |
 | `/automatisation-ia/agent-ia-conversationnel` | AgentIaPage | Oui |

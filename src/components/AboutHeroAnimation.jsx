@@ -6,6 +6,10 @@ import React from 'react';
  * en circulation (animateMotion), hexagones blockchain à double rotation + cœur
  * pulsant, réseau neuronal avec signaux « qui tirent » et ondes radar.
  * 100% SVG/CSS/SMIL : pas de JS de rendu, respecte prefers-reduced-motion.
+ *
+ * Intensité : volontairement discrète (opacité globale basse, amplitudes de
+ * pulsation réduites, animations ralenties, glow léger) — le fond doit rester
+ * une texture, jamais concurrencer le contenu du hero.
  */
 
 // Hexagone (pointy-top) centré en (cx, cy), rayon r.
@@ -40,24 +44,25 @@ const firing = [
 ];
 
 const AboutHeroAnimation = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-90 [mask-image:radial-gradient(120%_100%_at_50%_40%,black,transparent_92%)]" aria-hidden="true">
+  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.22] [mask-image:radial-gradient(110%_90%_at_50%_45%,black,transparent_78%)]" aria-hidden="true">
     <style>{`
-      @keyframes ahx-pulse{0%,100%{opacity:.35}50%{opacity:1}}
-      @keyframes ahx-soft{0%,100%{opacity:.1}50%{opacity:.5}}
+      @keyframes ahx-pulse{0%,100%{opacity:.25}50%{opacity:.55}}
+      @keyframes ahx-soft{0%,100%{opacity:.08}50%{opacity:.22}}
       @keyframes ahx-flow{to{stroke-dashoffset:-160}}
       @keyframes ahx-spin{to{transform:rotate(360deg)}}
       @keyframes ahx-rspin{to{transform:rotate(-360deg)}}
-      @keyframes ahx-tw{0%,100%{opacity:.1;transform:scale(.6)}50%{opacity:.9;transform:scale(1)}}
-      @keyframes ahx-drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
-      .ahx-node{animation:ahx-pulse 3.2s ease-in-out infinite}
-      .ahx-edge{animation:ahx-soft 4s ease-in-out infinite}
-      .ahx-flow{stroke-dasharray:4 10;animation:ahx-flow 3s linear infinite}
-      .ahx-hex{transform-box:fill-box;transform-origin:center;animation:ahx-spin 48s linear infinite}
-      .ahx-hex-in{transform-box:fill-box;transform-origin:center;animation:ahx-rspin 24s linear infinite}
-      .ahx-tw{transform-box:fill-box;transform-origin:center;animation:ahx-tw 4s ease-in-out infinite}
-      .ahx-drift{animation:ahx-drift 18s ease-in-out infinite}
-      .ahx-drift2{animation:ahx-drift 22s ease-in-out infinite reverse}
-      .ahx-lbl{fill:#94a3b8;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.34em}
+      @keyframes ahx-tw{0%,100%{opacity:.08;transform:scale(.75)}50%{opacity:.4;transform:scale(1)}}
+      @keyframes ahx-drift{0%,100%{transform:translate(0,0)}50%{transform:translate(22px,-16px)}}
+      .ahx-node{animation:ahx-pulse 6s ease-in-out infinite}
+      .ahx-edge{animation:ahx-soft 8s ease-in-out infinite}
+      .ahx-flow{stroke-dasharray:4 10;animation:ahx-flow 6s linear infinite}
+      .ahx-hex{transform-box:fill-box;transform-origin:center;animation:ahx-spin 90s linear infinite}
+      .ahx-hex-in{transform-box:fill-box;transform-origin:center;animation:ahx-rspin 48s linear infinite}
+      .ahx-tw{transform-box:fill-box;transform-origin:center;animation:ahx-tw 8s ease-in-out infinite}
+      .ahx-pkt{opacity:.45}
+      .ahx-drift{animation:ahx-drift 34s ease-in-out infinite}
+      .ahx-drift2{animation:ahx-drift 40s ease-in-out infinite reverse}
+      .ahx-lbl{fill:#64748b;font:600 12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.34em}
       @media (prefers-reduced-motion:reduce){
         .ahx-node,.ahx-edge,.ahx-flow,.ahx-hex,.ahx-hex-in,.ahx-tw,.ahx-drift,.ahx-drift2,.ahx-pkt{animation:none}
       }
@@ -77,13 +82,13 @@ const AboutHeroAnimation = () => (
           <stop offset="0%" stopColor="#d9f99d" /><stop offset="100%" stopColor="#65a30d" />
         </radialGradient>
         <radialGradient id="ahx-aura" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.5" /><stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
+          <stop offset="0%" stopColor="#a78bfa" stopOpacity="0.22" /><stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
         </radialGradient>
         <radialGradient id="ahx-aura2" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.45" /><stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.2" /><stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
         </radialGradient>
         <filter id="ahx-glow" x="-70%" y="-70%" width="240%" height="240%">
-          <feGaussianBlur stdDeviation="3.2" result="b" />
+          <feGaussianBlur stdDeviation="1.6" result="b" />
           <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
         </filter>
       </defs>
@@ -98,7 +103,7 @@ const AboutHeroAnimation = () => (
       ))}
 
       {/* Spine reliant les 3 univers + paquets lumineux */}
-      <path id="ahx-spine" d="M 40 300 Q 300 210 500 300 T 950 300 T 1180 300" fill="none" stroke="url(#ahx-g)" strokeWidth="1.5" opacity="0.4" />
+      <path id="ahx-spine" d="M 40 300 Q 300 210 500 300 T 950 300 T 1180 300" fill="none" stroke="url(#ahx-g)" strokeWidth="1.2" opacity="0.22" />
       {[0, 2, 4].map((d, i) => (
         <circle key={i} className="ahx-pkt" r="4.5" fill="#c4b5fd" filter="url(#ahx-glow)">
           <animateMotion dur="6s" begin={`${d}s`} repeatCount="indefinite" path="M 40 300 Q 300 210 500 300 T 950 300 T 1180 300" />
@@ -159,8 +164,8 @@ const AboutHeroAnimation = () => (
       {/* ondes radar autour de la sortie */}
       {[0, 1.3, 2.6].map((d, i) => (
         <circle key={i} cx="1110" cy="300" r="10" fill="none" stroke="#a3e635" strokeWidth="1" opacity="0">
-          <animate attributeName="r" from="10" to="70" dur="4s" begin={`${d}s`} repeatCount="indefinite" />
-          <animate attributeName="opacity" from="0.6" to="0" dur="4s" begin={`${d}s`} repeatCount="indefinite" />
+          <animate attributeName="r" from="10" to="70" dur="7s" begin={`${d * 2}s`} repeatCount="indefinite" />
+          <animate attributeName="opacity" from="0.25" to="0" dur="7s" begin={`${d * 2}s`} repeatCount="indefinite" />
         </circle>
       ))}
       <text className="ahx-lbl" x="1010" y="540" textAnchor="middle">IA</text>

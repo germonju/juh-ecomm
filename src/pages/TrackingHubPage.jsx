@@ -728,6 +728,7 @@ const TrackingHubPage = () => {
             </p>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {[
+                { name: 'Spécialiste GTM', desc: 'Audit, plan de marquage & dataLayer', to: '/tracking-data/specialiste-google-tag-manager' },
                 { name: 'GTM Server-Side', desc: 'Tracking cookieless & RGPD', to: '/tracking-data/gtm-server-side' },
                 { name: 'GA4 Avancé', desc: 'Analytics, audiences & reporting', to: '/tracking-data/ga4' },
                 { name: 'Tracking Shopify', desc: 'GA4 & Google Ads e-commerce', to: '/tracking-data/tracking-ecommerce-shopify' },

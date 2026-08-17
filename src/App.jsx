@@ -19,6 +19,7 @@ import HomePage from '@/pages/HomePage';
 const ContactPage             = lazy(() => import('@/pages/ContactPage'));
 const AuditGoogleAdsPage      = lazy(() => import('@/pages/AuditGoogleAdsPage'));
 const GtmServerSidePage       = lazy(() => import('@/pages/GtmServerSidePage'));
+const SpecialisteGtmPage      = lazy(() => import('@/pages/SpecialisteGtmPage'));
 const Ga4AdvancedPage         = lazy(() => import('@/pages/Ga4AdvancedPage'));
 const ShopifyPage             = lazy(() => import('@/pages/ShopifyPage'));
 const GoogleMyBusinessPage    = lazy(() => import('@/pages/GoogleMyBusinessPage'));
@@ -94,6 +95,7 @@ function App() {
                 {/* Silo 1 — Tracking & Data */}
                 <Route path="/tracking-data" element={<TrackingHubPage />} />
                 <Route path="/tracking-data/gtm-server-side" element={<GtmServerSidePage />} />
+                <Route path="/tracking-data/specialiste-google-tag-manager" element={<SpecialisteGtmPage />} />
                 <Route path="/tracking-data/ga4" element={<Ga4AdvancedPage />} />
                 <Route path="/tracking-data/tracking-ecommerce-shopify" element={<ShopifyPage />} />
                 <Route path="/tracking-data/audit-google-ads" element={<AuditGoogleAdsPage />} />

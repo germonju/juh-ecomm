@@ -52,6 +52,7 @@ const Footer = () => {
 
   const serviceLinks = [
     { name: 'Tracking & Data (hub)', path: '/tracking-data' },
+    { name: 'Spécialiste GTM', path: '/tracking-data/specialiste-google-tag-manager' },
     { name: 'GTM Server-Side', path: '/tracking-data/gtm-server-side' },
     { name: 'GA4 Avancé', path: '/tracking-data/ga4' },
     { name: 'Tracking Shopify', path: '/tracking-data/tracking-ecommerce-shopify' },

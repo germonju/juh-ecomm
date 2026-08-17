@@ -116,3 +116,30 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-07-16 02:45 — `main`
 - bc2ddcc style(agent-ia): design futuriste + corrections d'espacement
+
+#### 2026-07-17 17:01 — `main`
+- baebe80 build: régénère dist/ après merge des builds nocturnes
+
+#### 2026-07-17 17:18 — `main`
+- 7689e7d feat(a-propos): photo + fond futuriste + parcours réel + schéma Person
+
+#### 2026-07-17 17:28 — `main`
+- cfaed04 feat(a-propos): animation Data → Blockchain → IA (SVG/CSS)
+
+#### 2026-07-17 17:35 — `main`
+- 7d4e08f feat(tracking-data): nouvelle page Pilotage à la marge (POAS)
+
+#### 2026-07-17 17:46 — `main`
+- 1d27b67 feat: animation À propos plus futuriste + page Pilotage à la marge au modèle service
+
+#### 2026-07-17 17:59 — `main`
+- 10f73f4 feat(agent-ia): chat fictif cyclant sur 12 exemples
+
+#### 2026-07-17 18:14 — `main`
+- 6387bfe fix(seo): image d'aperçu réseaux sociaux (og:image) fiable partout
+
+#### 2026-07-18 01:38 — `main`
+- 05c3c9c fix: typographie française (espaces insécables) + schéma agent IA lisible sur mobile
+
+#### 2026-08-17 10:47 — `main`
+- cc744f6 feat(tracking-data): page Spécialiste Google Tag Manager + refonte À propos
