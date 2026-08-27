@@ -36,6 +36,7 @@
 ## Blog
 
 - [Blog Marketing Digital & Data E-commerce](https://www.juh-ecomm.fr/blog/): Guides experts sur Google Ads, GA4, GTM et e-commerce. Cas d'études et stratégies pour optimiser votre performance digitale.
+- [Customer Match et RGPD : conformité liste clients Google Ads](https://www.juh-ecomm.fr/blog/customer-match-rgpd-conformite-liste-clients/): Customer Match RGPD : base légale, hashage SHA-256 et conformité liste clients. Guide pratique pour e-commerçants qui veulent performer sans risque.
 - [Addingwell : guide complet et comparatif avec Stape](https://www.juh-ecomm.fr/blog/addingwell-server-side-france-guide-comparatif-stape/): Addingwell, la solution server-side française : comment ça fonctionne, ce que ça change pour votre tracking et quand choisir Stape à la place.
 - [MER Marketing : pilotez votre rentabilité au-delà du ROAS](https://www.juh-ecomm.fr/blog/mer-marketing-efficiency-ratio-kpi-ecommerce/): Le MER (Marketing Efficiency Ratio) révèle ce que le ROAS cache. Découvrez comment calculer, suivre et utiliser ce KPI e-commerce pour sécuriser vos budgets.
 - [Plafond d'acquisition : 5 signaux pour lancer la notoriété](https://www.juh-ecomm.fr/blog/plafond-acquisition-saturation-audience-quand-lancer-notoriete/): Votre ROAS stagne malgré plus de budget ? Découvrez 5 signaux concrets de saturation d'audience et quand basculer vers une stratégie notoriété.
