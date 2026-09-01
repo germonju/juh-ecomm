@@ -36,6 +36,7 @@
 ## Blog
 
 - [Blog Marketing Digital & Data E-commerce](https://www.juh-ecomm.fr/blog/): Guides experts sur Google Ads, GA4, GTM et e-commerce. Cas d'études et stratégies pour optimiser votre performance digitale.
+- [Conversions offline : combien vous coûte l'inaction ?](https://www.juh-ecomm.fr/blog/cout-inaction-conversions-offline-google-ads/): Sans conversions offline, Google Ads optimise sur de faux signaux. Découvrez comment chiffrer le manque à gagner et reprendre le contrôle de vos budgets.
 - [GA4, GTM, Google Ads, Meta Ads : nouveautés août 2026](https://www.juh-ecomm.fr/blog/tracking-google-ads-meta-ads-ga4-gtm-consent-mode-nouveautes-2026/): Unification GTM, dashboards GA4, placements Meta, bidding Google Ads, Consent Mode TCF 2.3 : les nouveautés d'août 2026 et ce qu'elles changent pour votre e-commerce.
 - [Customer Match et RGPD : conformité liste clients Google Ads](https://www.juh-ecomm.fr/blog/customer-match-rgpd-conformite-liste-clients/): Customer Match RGPD : base légale, hashage SHA-256 et conformité liste clients. Guide pratique pour e-commerçants qui veulent performer sans risque.
 - [Addingwell : guide complet et comparatif avec Stape](https://www.juh-ecomm.fr/blog/addingwell-server-side-france-guide-comparatif-stape/): Addingwell, la solution server-side française : comment ça fonctionne, ce que ça change pour votre tracking et quand choisir Stape à la place.
