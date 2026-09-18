@@ -36,6 +36,7 @@
 ## Blog
 
 - [Blog Marketing Digital & Data E-commerce](https://www.juh-ecomm.fr/blog/): Guides experts sur Google Ads, GA4, GTM et e-commerce. Cas d'études et stratégies pour optimiser votre performance digitale.
+- [Audit GTM : les erreurs fréquentes et comment les corriger](https://www.juh-ecomm.fr/blog/audit-gtm-erreurs-frequentes-comment-corriger/): Doublons de tags, tags zombies, Consent Mode mal câblé... Découvrez comment auditer votre conteneur GTM et corriger les erreurs qui faussent vos données.
 - [Codes promo : quel impact réel sur votre marge ?](https://www.juh-ecomm.fr/blog/impact-codes-promo-marge-commande/): Un code -10 % peut détruire bien plus que 10 % de votre profit. Découvrez comment mesurer l'impact réel des codes promo sur votre marge par commande.
 - [Signal propre : l'avantage concurrentiel caché dans vos enchères](https://www.juh-ecomm.fr/blog/signal-propre-conversion-avantage-concurrentiel-encheres/): Pourquoi le même clic ne vaut pas le même prix pour vous et vos concurrents ? Découvrez comment un signal de conversion propre change tout dans vos enchères Google Ads.
 - [Durée de conservation des cookies : ce que dit le RGPD](https://www.juh-ecomm.fr/blog/duree-conservation-cookies-rgpd/): RGPD cookies : cookie, consentement, données collectées ont chacun leur durée. Comprenez les règles CNIL et évitez les erreurs qui faussent vos stats Ads.
