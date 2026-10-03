@@ -71,7 +71,8 @@ src/
 │   ├── Breadcrumb.jsx         # Fil d'Ariane visuel reflétant le silo
 │   ├── ConsentManager.jsx      # RGPD / Consent Mode V2
 │   ├── AdParamsCapture.jsx     # Capture UTM + GCLID
-│   ├── HeroIllustrations.jsx   # SVG animés (~38 ko)
+│   ├── HeroIllustrations.jsx   # SVG animés de fond de hero (~38 ko) + HeroLayer / useCalmHeroMotion (opacité + ralenti globaux)
+│   ├── LpFactoryDashboard.jsx  # Maquette du tableau de bord LP Factory (données de démo) — page Landing Pages
 │   └── ServicePageTemplate.jsx # Template réutilisable pages service
 ├── seo/
 │   └── meta.config.js         # SOURCE UNIQUE des meta SEO par route (title/desc/h1/silo/noindex)

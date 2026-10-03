@@ -134,3 +134,13 @@ if (url.hostname === 'juh-ecomm.fr') {
 Bonus : pages noindex pré-rendues avec `<meta robots noindex>` statique, purge des articles orphelins dans `dist/blog/`, `dateModified` + `inLanguage` ajoutés au JSON-LD `Article`.
 
 **Pourquoi :** La home s'indexait mais pas les pages internes ni les articles. Cause : canonical/sitemap pointaient vers des 308, soft 404 généralisé, et `#root` vide rendu uniquement côté JS. Ces trois défauts se combinaient pour bloquer/retarder l'indexation. Voir [[project_seo_redirect]].
+
+---
+
+## Fonds animés de hero discrets (réglage centralisé)
+
+**Quoi :** Toutes les illustrations de fond de hero passent par `HeroLayer` / `useCalmHeroMotion` (`src/components/HeroIllustrations.jsx`), y compris `AboutHeroAnimation` et le fond de `AgentIaPage`.
+
+**Comment :** Deux constantes globales — `HERO_OPACITY` (opacité du calque, `opacity-40`) et `HERO_SLOWDOWN` (2,5×). Le hook passe le `playbackRate` de toutes les animations CSS du calque à `1/HERO_SLOWDOWN` (Web Animations API) et multiplie les `dur`/`begin` des animations SMIL (`animateMotion`, `animate`). Si `prefers-reduced-motion`, tout est figé. Idempotent via `data-calm` (StrictMode).
+
+**Pourquoi :** Les animations étaient trop présentes derrière le texte du hero. Un seul point de réglage évite de retoucher les durées/opacités dans 18 SVG. Toute nouvelle illustration de hero doit utiliser `HeroLayer` (ou le hook).

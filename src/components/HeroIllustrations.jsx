@@ -1,6 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-const base = "absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-[1]";
+/* Réglages globaux de discrétion des fonds animés de hero */
+const HERO_OPACITY = 'opacity-40';
+const HERO_SLOWDOWN = 2.5; // les animations tournent 2,5× plus lentement
+
+/* Ralentit toutes les animations (CSS + SMIL) d'un fond de hero, et les fige si
+   l'utilisateur a demandé moins de mouvement. Idempotent (StrictMode). */
+export const useCalmHeroMotion = (ref) => {
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || el.dataset.calm) return;
+    el.dataset.calm = '1';
+    const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+    el.getAnimations?.({ subtree: true }).forEach((a) => {
+      if (reduce) a.pause();
+      else a.playbackRate = 1 / HERO_SLOWDOWN;
+    });
+
+    el.querySelectorAll('animate, animateMotion, animateTransform').forEach((node) => {
+      ['dur', 'begin'].forEach((attr) => {
+        const v = node.getAttribute(attr);
+        if (v && /^-?[\d.]+s$/.test(v)) node.setAttribute(attr, `${parseFloat(v) * HERO_SLOWDOWN}s`);
+      });
+    });
+    if (reduce) el.querySelectorAll('svg').forEach((svg) => svg.pauseAnimations?.());
+  }, [ref]);
+};
+
+const HeroLayer = ({ children }) => {
+  const ref = useRef(null);
+  useCalmHeroMotion(ref);
+  return (
+    <div ref={ref} className={`absolute inset-0 w-full h-full pointer-events-none overflow-hidden z-[1] ${HERO_OPACITY}`} aria-hidden="true">
+      {children}
+    </div>
+  );
+};
 
 /* ─── HomePage — réseau décentralisé blockchain ─── */
 export const DataNetworkIllustration = () => {
@@ -21,7 +57,7 @@ export const DataNetworkIllustration = () => {
     [14,18],[15,16],[16,17],[17,18],[0,6],[2,8],[4,13],[9,17],[1,11],[3,12],
   ];
   return (
-    <div className={base} aria-hidden="true">
+    <HeroLayer>
       <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <style>{`
@@ -40,13 +76,13 @@ export const DataNetworkIllustration = () => {
             style={{animation:`dn2-dot ${2+i*0.3}s ease-in-out infinite`}} />
         ))}
       </svg>
-    </div>
+    </HeroLayer>
   );
 };
 
 /* ─── Tracking Hub — schéma technique full-hero ─── */
 export const RadarIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -130,7 +166,7 @@ export const RadarIllustration = () => (
         );
       })}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── GTM Server-Side — sources → serveur → dispatch ─── */
@@ -140,7 +176,7 @@ export const ServerFlowIllustration = () => {
   const dests = [[1100,140],[1100,220],[1100,300],[1100,380],[1100,460]];
   const destLabels = ['GA4','G.ADS','META','PIANO','BigQ.'];
   return (
-    <div className={base} aria-hidden="true">
+    <HeroLayer>
       <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <style>{`
@@ -211,13 +247,13 @@ export const ServerFlowIllustration = () => {
           </circle>
         ))}
       </svg>
-    </div>
+    </HeroLayer>
   );
 };
 
 /* ─── GA4 — scatter plot + courbe de tendance ─── */
 export const AnalyticsChartIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -265,12 +301,12 @@ export const AnalyticsChartIllustration = () => (
         </g>
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Audit Google Ads — enchères PPC ─── */
 export const AuditScanIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -316,7 +352,7 @@ export const AuditScanIllustration = () => (
         </g>
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Automatisation Hub — workflow n8n complexe ─── */
@@ -342,7 +378,7 @@ export const CircuitBoardIllustration = () => {
     [6,9],[7,9],[8,10],[9,11],[10,11],[10,12],[11,13],[12,13],
   ];
   return (
-    <div className={base} aria-hidden="true">
+    <HeroLayer>
       <svg width="100%" height="100%" viewBox="0 0 1240 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <style>{`
@@ -369,13 +405,13 @@ export const CircuitBoardIllustration = () => {
           </g>
         ))}
       </svg>
-    </div>
+    </HeroLayer>
   );
 };
 
 /* ─── Consent Mode — shield + circuit ─── */
 export const ShieldCircuitIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -411,12 +447,12 @@ export const ShieldCircuitIllustration = () => (
         ))}
       </g>
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Conversions Offline — pont online→offline ─── */
 export const BridgeIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -450,12 +486,12 @@ export const BridgeIllustration = () => (
       <text x="280" y="440" textAnchor="middle" fill="#84cc16" fontSize="11" opacity=".2" fontFamily="monospace">DIGITAL</text>
       <text x="920" y="440" textAnchor="middle" fill="#4ade80" fontSize="11" opacity=".2" fontFamily="monospace">OFFLINE</text>
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Google My Business — grille géo + pins ─── */
 export const GeoGridIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -491,12 +527,12 @@ export const GeoGridIllustration = () => (
           style={{animation:`gg-pulse ${2.5+i*0.3}s ease-in-out infinite`}} />
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Réponse Leads — arbre de décision ─── */
 export const DecisionTreeIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -533,12 +569,12 @@ export const DecisionTreeIllustration = () => (
         </g>
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Shopify — flux de données e-commerce ─── */
 export const EcommerceFunnelIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -572,12 +608,12 @@ export const EcommerceFunnelIllustration = () => (
           style={{animation:`ef-flow ${2.5+i*0.5}s linear infinite`,opacity:.12}} />
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Landing Pages — wireframe LP ─── */
 export const WireframeIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -606,12 +642,12 @@ export const WireframeIllustration = () => (
       <rect x="480" y="360" width="240" height="44" rx="22"
         fill="none" stroke="#f59e0b" strokeWidth="1" opacity=".1" />
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Blog — data viz high-tech : barres + courbes + chiffres ─── */
 export const BlogIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -667,13 +703,13 @@ export const BlogIllustration = () => (
       {/* axe X */}
       <line x1="80" y1="500" x2="1120" y2="500" stroke="#334155" strokeWidth="1" opacity=".2" />
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Conciergerie — workflow nœuds ─── */
 /* ─── Back office conciergerie — réservations vers dashboard ─── */
 export const BackOfficeFlowIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -718,7 +754,7 @@ export const BackOfficeFlowIllustration = () => (
       ))}
       <line x1="940" y1="480" x2="1170" y2="480" stroke="#8b5cf6" strokeWidth="1" opacity=".1" />
     </svg>
-  </div>
+  </HeroLayer>
 );
 
 /* ─── Spécialiste GTM — dataLayer → conteneur (déclencheurs / balises / variables) → destinations ─── */
@@ -731,7 +767,7 @@ export const TagManagerIllustration = () => {
   const wires = [[0, 0], [1, 0], [1, 1], [2, 1], [2, 2], [3, 1], [3, 2], [3, 3]];
   const variables = ['{{Page}}', '{{Value}}', '{{Order ID}}', '{{Consent}}'];
   return (
-    <div className={base} aria-hidden="true">
+    <HeroLayer>
       <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <style>{`
@@ -863,12 +899,12 @@ export const TagManagerIllustration = () => {
           </g>
         ))}
       </svg>
-    </div>
+    </HeroLayer>
   );
 };
 
 export const WorkflowIllustration = () => (
-  <div className={base} aria-hidden="true">
+  <HeroLayer>
     <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <style>{`
@@ -906,5 +942,5 @@ export const WorkflowIllustration = () => (
           style={{animation:`wk-flow ${2+i*0.3}s linear infinite`,opacity:.12}} />
       ))}
     </svg>
-  </div>
+  </HeroLayer>
 );

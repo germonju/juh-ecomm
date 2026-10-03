@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useCalmHeroMotion } from '@/components/HeroIllustrations';
 import SeoHead from '@/components/SeoHead';
 import Breadcrumb from '@/components/Breadcrumb';
 import { Link } from 'react-router-dom';
@@ -127,9 +128,12 @@ const ConvergingDataIllustration = () => {
     [430, 60, '#22d3ee'], [800, 545, '#8b5cf6'], [340, 470, '#a3e635'],
     [880, 120, '#22d3ee'], [250, 210, '#8b5cf6'], [960, 380, '#a3e635'],
   ];
+  const ref = useRef(null);
+  useCalmHeroMotion(ref);
   return (
     <div
-      className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden [mask-image:radial-gradient(65%_65%_at_58%_45%,#000_35%,transparent_100%)]"
+      ref={ref}
+      className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden opacity-40 [mask-image:radial-gradient(65%_65%_at_58%_45%,#000_35%,transparent_100%)]"
       aria-hidden="true"
     >
       <svg width="100%" height="100%" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">

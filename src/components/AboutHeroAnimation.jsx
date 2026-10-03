@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useCalmHeroMotion } from '@/components/HeroIllustrations';
 
 /**
  * Fond animé de la page À propos — narratif DATA → BLOCKCHAIN → IA.
@@ -43,8 +44,11 @@ const firing = [
   [[910, 180], [1010, 150]], [[1010, 450], [1110, 390]], [[910, 420], [1010, 350]],
 ];
 
-const AboutHeroAnimation = () => (
-  <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.22] [mask-image:radial-gradient(110%_90%_at_50%_45%,black,transparent_78%)]" aria-hidden="true">
+const AboutHeroAnimation = () => {
+  const ref = useRef(null);
+  useCalmHeroMotion(ref);
+  return (
+  <div ref={ref} className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.12] [mask-image:radial-gradient(110%_90%_at_50%_45%,black,transparent_78%)]" aria-hidden="true">
     <style>{`
       @keyframes ahx-pulse{0%,100%{opacity:.25}50%{opacity:.55}}
       @keyframes ahx-soft{0%,100%{opacity:.08}50%{opacity:.22}}
@@ -171,6 +175,7 @@ const AboutHeroAnimation = () => (
       <text className="ahx-lbl" x="1010" y="540" textAnchor="middle">IA</text>
     </svg>
   </div>
-);
+  );
+};
 
 export default AboutHeroAnimation;

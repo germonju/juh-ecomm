@@ -24,12 +24,16 @@ import {
   RefreshCw,
   Edit,
   BarChart3,
-  Lightbulb
+  Lightbulb,
+  FlaskConical,
+  CircleOff,
+  Repeat
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { useScrollTracking } from '@/hooks/ScrollTrackingHook';
+import LpFactoryDashboard from '@/components/LpFactoryDashboard';
 
 const LandingPagesPage = () => {
   const { trackCtaClick, trackFaqToggle, trackSectionView } = useScrollTracking();
@@ -116,13 +120,36 @@ const LandingPagesPage = () => {
     }
   ];
 
+  const factoryPillars = [
+    {
+      icon: FlaskConical,
+      title: "Déploiement des A/B tests",
+      desc: "Chaque landing page est publiée en plusieurs versions, avec une répartition du trafic maîtrisée."
+    },
+    {
+      icon: BarChart3,
+      title: "Statistiques complètes",
+      desc: "Impressions, temps passé, leads, conversion, couverture tracking et consentement : par LP et par version."
+    },
+    {
+      icon: CircleOff,
+      title: "Kill des versions perdantes",
+      desc: "Dès que les données sont suffisantes, la version la moins performante est arrêtée."
+    },
+    {
+      icon: Repeat,
+      title: "A/B test constant",
+      desc: "Une nouvelle version challenger remplace la perdante : la page progresse en continu."
+    }
+  ];
+
   const faqs = [
     { q: "Combien de temps pour créer une landing page ?", a: "Entre 2 et 4 jours selon la complexité du projet et vos besoins en automatisation. Les projets urgents peuvent être traités en mode prioritaire pour une livraison encore plus rapide." },
     { q: "Puis-je modifier la page après livraison ?", a: "Oui, nous faisons un point ensemble après la mise en ligne et je me charge personnellement de toutes les modifications nécessaires pour garantir des performances optimales." },
     { q: "Quel est le coût d'une landing page ?", a: "Le tarif dépend de vos besoins spécifiques (nombre d'automatisations, intégrations CRM, tracking complexe, etc.). Contactez-moi pour un devis personnalisé gratuit." },
     { q: "Fournissez-vous l'hébergement ?", a: "Je peux gérer l'hébergement ou travailler avec votre infrastructure existante. Pour le tracking server-side, je recommande une solution optimisée que je configure et maintiens." },
     { q: "Que se passe-t-il si le tracking ne fonctionne pas après la mise en ligne ?", a: "Tous mes projets incluent une période de garantie avec support. Je vérifie systématiquement le bon fonctionnement avant livraison et reste disponible pour corrections immédiates." },
-    { q: "Peut-on faire de l'A/B testing ?", a: "Absolument. Je peux créer plusieurs versions de votre landing page et configurer les tests A/B directement sur vos plateformes publicitaires (Google Ads, Meta Ads, TikTok Ads) pour identifier la version la plus performante." },
+    { q: "Peut-on faire de l'A/B testing ?", a: "Absolument. Je peux créer plusieurs versions de votre landing page et configurer les tests A/B directement sur vos plateformes publicitaires (Google Ads, Meta Ads, TikTok Ads). Avec la LP Factory, vos pages sont en A/B test constant : vous accédez aux statistiques complètes, les versions les moins bonnes sont arrêtées et remplacées par de nouvelles versions à tester." },
     { q: "Travaillez-vous avec toutes les plateformes publicitaires ?", a: "Je travaille principalement avec Google Ads, Meta Ads (Facebook/Instagram) et TikTok Ads. Je peux m'adapter à d'autres plateformes selon vos besoins spécifiques." },
     { q: "Incluez-vous la rédaction du contenu ?", a: "Je peux rédiger le contenu orienté conversion en collaboration avec vous, ou travailler avec vos contenus existants que j'optimise pour la performance et l'alignement avec vos campagnes publicitaires." }
   ];
@@ -349,6 +376,44 @@ const LandingPagesPage = () => {
         </div>
       </section>
 
+      {/* SECTION : LP FACTORY */}
+      <section id="lp-factory" className="py-20 lg:py-28 px-4 bg-slate-950 border-y border-slate-800 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[600px] h-[500px] bg-violet-500/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto max-w-6xl relative z-10">
+          <div className="text-center mb-12 max-w-3xl mx-auto">
+            <Badge className="bg-amber-500/10 text-amber-400 border-amber-500/20 mb-4 px-3 py-1 text-xs uppercase tracking-wider">
+              LP Factory
+            </Badge>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-white">Vos LP au sein de ma LP Factory</h2>
+            <p className="text-slate-400 text-lg leading-relaxed">
+              Déploiement des A/B tests avec accès aux statistiques complètes, kill des versions les moins bonnes et mise en place de nouvelles versions : vos landing pages sont en A/B test constant.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+            {factoryPillars.map((item, idx) => (
+              <div key={idx} className="bg-slate-900/60 p-6 rounded-xl border border-slate-800 hover:border-amber-500/30 transition-colors">
+                <div className="bg-amber-500/10 w-10 h-10 rounded-lg flex items-center justify-center mb-4">
+                  <item.icon className="w-5 h-5 text-amber-400" />
+                </div>
+                <h3 className="text-base font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <LpFactoryDashboard />
+          </motion.div>
+        </div>
+      </section>
+
       {/* SECTION 5: USE CASES */}
       <section className="py-20 lg:py-28 px-4 bg-slate-950">
         <div className="container mx-auto max-w-6xl">
@@ -434,10 +499,10 @@ const LandingPagesPage = () => {
             <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-white">Ma Stack Technique</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
               {[
-                { title: "Tracking & Analytics", items: ["Google Tag Manager", "GA4", "Piano Analytics", "Cookiebot"], icon: BarChart },
-                { title: "Automatisation", items: ["Make (Integromat)", "Zapier", "n8n", "Brevo / Klaviyo"], icon: Zap },
-                { title: "CRM & Data", items: ["Hubspot", "Salesforce", "Google Sheets", "Airtable"], icon: Database },
-                { title: "Hébergement & Perf.", items: ["Vercel / Netlify", "React / Next.js", "Unbounce / Webflow", "Shopify"], icon: Server }
+                { title: "Tracking & Analytics", items: ["Google Tag Manager", "GA4", "Matomo", "Cookiebot", "Votre CMP ou CMP sur mesure"], icon: BarChart },
+                { title: "Automatisation", items: ["Make", "n8n"], icon: Zap },
+                { title: "CRM", items: ["Airtable", "Ou votre CRM"], icon: Database },
+                { title: "Hébergement & Perf.", items: ["Cloudflare", "React / Next.js", "Astro"], icon: Server }
               ].map((cat, idx) => (
                 <div key={idx} className="bg-slate-950 p-6 rounded-xl border border-slate-800 hover:border-amber-500/20 transition-colors">
                   <div className="flex items-center gap-3 mb-4 text-slate-200 font-bold">

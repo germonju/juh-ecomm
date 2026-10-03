@@ -146,3 +146,6 @@ curl -I https://juh-ecomm.fr/blog/
 
 #### 2026-08-17 10:49 — `main`
 - b17e75f build: régénère dist/ (page Spécialiste GTM, À propos, llms.txt)
+
+#### 2026-08-17 15:39 — `main`
+- a0f6e9b feat(tracking-data): animation hero dédiée GTM sur la page Spécialiste GTM
